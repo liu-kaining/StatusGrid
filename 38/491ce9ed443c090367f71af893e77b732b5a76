@@ -1,0 +1,66 @@
+tests/fixtures/statuspage/claude/summary.json
+  s_79c9ef7a230eaf::t_1e3cc1fe0b76b8 1-8
+tests/fixtures/statuspage/github/summary.json
+  s_79c9ef7a230eaf::t_1e3cc1fe0b76b8 1-9
+src/shared/status.ts
+  s_79c9ef7a230eaf::t_112b8fcfe91885 7,46
+  s_79c9ef7a230eaf::t_a714cafc50bdbb 40
+package.json
+  s_79c9ef7a230eaf::t_5641ffee7f905a 13-14
+src/collector/cli.ts
+  s_79c9ef7a230eaf::t_2e0aa275024872 93
+  s_79c9ef7a230eaf::t_1febd3b3aff423 1-92
+src/collector/types.ts
+  s_79c9ef7a230eaf::t_034c70c67afc68 1,20
+  s_79c9ef7a230eaf::t_367e62bb4bf437 2-19,21
+tests/fixtures/statuspage/moonshot/summary.json
+  s_79c9ef7a230eaf::t_1e3cc1fe0b76b8 1-9
+tests/fixtures/statuspage/README.md
+  s_79c9ef7a230eaf::t_1e3cc1fe0b76b8 1-12
+src/collector/adapters/index.ts
+  s_79c9ef7a230eaf::t_034c70c67afc68 2,4-6
+  s_79c9ef7a230eaf::t_367e62bb4bf437 1,3,7
+tests/collector/statuspage.test.ts
+  s_79c9ef7a230eaf::t_9fa46335159382 32,37,40-41,43
+  s_79c9ef7a230eaf::t_1e3cc1fe0b76b8 1-12,14-31,33-36,38-39,42,44-63,65-89,112-126,142-160,162-186,205-206
+  s_79c9ef7a230eaf::t_6ee13f82a3eea7 13,90-111,127-141,187-204
+  s_79c9ef7a230eaf::t_1cce4ae4fcb2ec 64,161
+registry/providers.json
+  s_79c9ef7a230eaf::t_112b8fcfe91885 16,23,41,48,66,113
+src/collector/adapters/statuspage.ts
+  s_79c9ef7a230eaf::t_367e62bb4bf437 7,131,134,238
+  s_79c9ef7a230eaf::t_f1c740149de932 1-6,8-77,79-92,96-126,128-130,132-133,135-161,163-168,183-190,192,197-206,220-222,225,227-233,236-237,239-269
+  s_79c9ef7a230eaf::t_034c70c67afc68 78,93-94,127
+  s_79c9ef7a230eaf::t_1cce4ae4fcb2ec 95,207-214,219
+  s_79c9ef7a230eaf::t_cbca0bd518936a 169-182,191,193-196,224,226,234
+  s_79c9ef7a230eaf::t_bdf48e1fe9d64c 162,223,235
+  s_79c9ef7a230eaf::t_a714cafc50bdbb 215-218
+src/collector/run.ts
+  s_79c9ef7a230eaf::t_367e62bb4bf437 7-8,89,93,119
+  s_79c9ef7a230eaf::t_034c70c67afc68 1-6,9-88,90-92,94-118
+tests/fixtures/statuspage/cloudflare/summary.json
+  s_79c9ef7a230eaf::t_1e3cc1fe0b76b8 1-12
+src/shared/schemas.ts
+  s_79c9ef7a230eaf::t_112b8fcfe91885 37-40
+src/shared/contracts.ts
+  s_79c9ef7a230eaf::t_bdf48e1fe9d64c 94,168
+  s_79c9ef7a230eaf::t_112b8fcfe91885 78-81,169
+tests/fixtures/statuspage/openai/summary.json
+  s_79c9ef7a230eaf::t_1e3cc1fe0b76b8 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "38491ce9ed443c090367f71af893e77b732b5a76",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
