@@ -1,0 +1,26 @@
+tests/collector/browser.test.ts
+  s_79c9ef7a230eaf::t_956d50595ffe31 2,217-237
+  s_79c9ef7a230eaf::t_c3f08205cab610 240-274
+  s_79c9ef7a230eaf::t_922b495574fe53 1,156-216,238
+  s_79c9ef7a230eaf::t_0a1ff8286050c8 239,275-315
+src/collector/browser.ts
+  s_79c9ef7a230eaf::t_cbc696331c4ba6 23-24,90,95-100,102-105,107-120,122-151,163-164,166-173,178-179,186
+  s_79c9ef7a230eaf::t_4130ae66462716 21,32-43,152-153,155-156,158-160,177,185
+  s_79c9ef7a230eaf::t_53d86b9a4f0cfa 44-52,154,157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "fc0c7b575e2ee8c11ef00952510d749606fa15d3",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
