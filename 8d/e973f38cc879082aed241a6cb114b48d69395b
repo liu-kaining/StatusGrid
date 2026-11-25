@@ -1,0 +1,33 @@
+docs/superpowers/specs/2026-11-25-statusgrid-source-validation.md
+  s_79c9ef7a230eaf::t_54cf9726e882b3 1-94,96-97,100-115
+  s_79c9ef7a230eaf::t_b159a356a01b97 95,98-99
+docs/superpowers/specs/2026-11-25-statusgrid-data-contracts.md
+  s_79c9ef7a230eaf::t_1e2568b9582921 142,185-186,245-249,265-272,276-277,486
+  s_79c9ef7a230eaf::t_ab17c47cdb6363 1-141,143-184,187,213-229,232-244,250-264,273-274,278,281-303,307-308,310-388,390-422,427,429-485,487-499
+  s_79c9ef7a230eaf::t_b159a356a01b97 188-212,230-231,275,279-280,304-306,309,389,423-426,428
+docs/superpowers/specs/2026-11-25-statusgrid-design.md
+  s_79c9ef7a230eaf::t_ab17c47cdb6363 1-155,158-171,173-246,248,250,253-276,279,283-303,305-326,328-333
+  s_79c9ef7a230eaf::t_b159a356a01b97 156-157,172,247,249,251-252,277-278,304,327,334-343
+  s_79c9ef7a230eaf::t_e4de9f2679bbee 280-282
+docs/superpowers/plans/2026-11-25-statusgrid-implementation.md
+  s_79c9ef7a230eaf::t_e4de9f2679bbee 394-395
+  s_79c9ef7a230eaf::t_54cf9726e882b3 1-145,147-154,157-165,167-172,179-242,246-254,256-261,263-266,268-272,275-301,303-316,318-329,331-351,353-392,396-414,416-430,432-435
+  s_79c9ef7a230eaf::t_b159a356a01b97 146,155-156,166,173-178,243-245,255,262,267,302,317,330,352,393,415,431
+  s_79c9ef7a230eaf::t_1e2568b9582921 273-274
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8de973f38cc879082aed241a6cb114b48d69395b",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
