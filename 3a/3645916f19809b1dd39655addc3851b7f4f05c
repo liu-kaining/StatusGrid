@@ -1,0 +1,29 @@
+src/collector/browser.ts
+  s_79c9ef7a230eaf::t_9726c274119697 128-129
+  s_79c9ef7a230eaf::t_a2db3bde4e6b66 19,83-85,98,120,122,130-131,137-141,143-144,150-164
+  s_79c9ef7a230eaf::t_539e1545547ad5 125-127
+  s_79c9ef7a230eaf::t_8b6e6d80f72a42 67-73,75-82,87-89,91-95,97,99-100,119,133-135
+src/collector/http.ts
+  s_79c9ef7a230eaf::t_996e289b40d1a6 24
+tests/collector/http.test.ts
+  s_79c9ef7a230eaf::t_6834d3d3f89ecd 90-96
+tests/collector/browser.test.ts
+  s_79c9ef7a230eaf::t_9726c274119697 143,146,153
+  s_79c9ef7a230eaf::t_6834d3d3f89ecd 118-142,144-145,147-152,154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3a3645916f19809b1dd39655addc3851b7f4f05c",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
