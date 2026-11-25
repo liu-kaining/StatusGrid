@@ -164,9 +164,20 @@ export interface AdapterResult {
   };
 }
 
+export interface HttpResponse {
+  url: string;
+  status: number;
+  contentType: string | null;
+  encoding: string;
+  durationMs: number;
+  bytes: Uint8Array;
+  text: string;
+}
+
 export interface HttpClient {
   getText(url: string, signal: AbortSignal): Promise<string>;
   getJson(url: string, signal: AbortSignal): Promise<unknown>;
+  getResponse(url: string, signal: AbortSignal): Promise<HttpResponse>;
 }
 
 export interface BrowserPool {
@@ -176,6 +187,7 @@ export interface BrowserPool {
     signal: AbortSignal,
     responseMatcher: (url: string) => boolean,
   ): Promise<Array<{ url: string; status: number; body: string }>>;
+  close(): Promise<void>;
 }
 
 export interface AdapterContext {
