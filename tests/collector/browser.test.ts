@@ -1,4 +1,5 @@
-import { afterEach, expect, it } from 'vitest';
+import { afterEach, expect, it, vi } from 'vitest';
+import { chromium } from 'playwright';
 import { createBrowserPool } from '../../src/collector/browser.js';
 import { withHttpServer } from '../helpers/http-server.js';
 
@@ -151,4 +152,164 @@ it('applies one deadline to startup, queued admission, navigation, and cleanup',
     await pool.close();
   }
   expect(pool.isStarted()).toBe(false);
+}, 10000);
+
+it('does not admit a replacement while a cancelled context still owns a live request', async () => {
+  let live = 0;
+  let peak = 0;
+  const started: string[] = [];
+  const closed: string[] = [];
+  const local = await withHttpServer((request, response) => {
+    const id = new URL(`http://localhost${request.url}`).searchParams.get('task')!;
+    started.push(id);
+    live++;
+    peak = Math.max(peak, live);
+    response.once('close', () => {
+      live--;
+      closed.push(id);
+    });
+  });
+  servers.push(local);
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 6000 });
+  const firstController = new AbortController();
+  const secondController = new AbortController();
+  const thirdController = new AbortController();
+  const first = pool.collect('one', `${local.url}/?task=one`, firstController.signal, () => false);
+  const second = pool.collect('two', `${local.url}/?task=two`, secondController.signal, () => false);
+  let third: ReturnType<typeof pool.collect> | null = null;
+  try {
+    await vi.waitFor(() => expect(started).toHaveLength(2), { timeout: 3000 });
+    firstController.abort();
+    await expect(first).rejects.toMatchObject({ kind: 'cancelled' });
+    third = pool.collect('three', `${local.url}/?task=three`, thirdController.signal, () => false);
+    await vi.waitFor(() => expect(started).toContain('three'), { timeout: 3000 });
+    expect(closed).toContain('one');
+    expect(peak).toBe(2);
+  } finally {
+    firstController.abort();
+    secondController.abort();
+    thirdController.abort();
+    await Promise.allSettled([first, second, ...(third ? [third] : [])]);
+    await pool.close();
+  }
+}, 12000);
+
+it('closes the actual Chrome connections before pool.close resolves', async () => {
+  let live = 0;
+  const local = await withHttpServer((_request, response) => {
+    live++;
+    response.once('close', () => { live--; });
+  });
+  servers.push(local);
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 2500 });
+  const controller = new AbortController();
+  const task = pool.collect('open', local.url, controller.signal, () => false);
+  try {
+    await vi.waitFor(() => expect(live).toBe(1), { timeout: 2000 });
+    controller.abort();
+    await expect(task).rejects.toMatchObject({ kind: 'cancelled' });
+    await pool.close();
+    expect(live).toBe(0);
+    expect(pool.isStarted()).toBe(false);
+  } finally {
+    controller.abort();
+    await pool.close();
+  }
+}, 10000);
+
+it('characterizes context closure during a stalled navigation', async () => {
+  let live = 0;
+  const local = await withHttpServer((_request, response) => {
+    live++;
+    response.once('close', () => { live--; });
+  });
+  servers.push(local);
+  const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+  const context = await browser.newContext();
+  try {
+    const page = await context.newPage();
+    const navigation = page.goto(local.url, { waitUntil: 'networkidle' }).catch(() => {});
+    await vi.waitFor(() => expect(live).toBe(1), { timeout: 2000 });
+    await context.close();
+    await navigation;
+    expect(live).toBe(0);
+  } finally {
+    await browser.close();
+  }
+}, 10000);
+
+it('does not report shutdown complete while the real browser close is pending', async () => {
+  const local = await withHttpServer((_request, response) => {
+    response.writeHead(200, { 'content-type': 'text/html' });
+    response.end('<html></html>');
+  });
+  servers.push(local);
+  const originalLaunch = chromium.launch.bind(chromium);
+  let finishClose!: () => void;
+  const closeGate = new Promise<void>((resolve) => { finishClose = resolve; });
+  const launchSpy = vi.spyOn(chromium, 'launch').mockImplementation(async (options) => {
+    const browser = await originalLaunch(options);
+    const originalClose = browser.close.bind(browser);
+    vi.spyOn(browser, 'close').mockImplementation(async (closeOptions) => {
+      await closeGate;
+      await originalClose(closeOptions);
+    });
+    return browser;
+  });
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 2000 });
+  try {
+    await pool.collect('ready', local.url, new AbortController().signal, () => false);
+    let settled = false;
+    const shutdown = pool.close().then(() => { settled = true; });
+    await new Promise((resolve) => setTimeout(resolve, 2100));
+    expect(settled).toBe(false);
+    finishClose();
+    await shutdown;
+    expect(pool.isStarted()).toBe(false);
+  } finally {
+    finishClose();
+    await pool.close();
+    launchSpy.mockRestore();
+  }
+}, 10000);
+
+it('stops admission and reports failed context disposal after browser shutdown', async () => {
+  let live = 0;
+  let requests = 0;
+  const local = await withHttpServer((_request, response) => {
+    requests++;
+    live++;
+    response.once('close', () => { live--; });
+  });
+  servers.push(local);
+  const originalLaunch = chromium.launch.bind(chromium);
+  const launchSpy = vi.spyOn(chromium, 'launch').mockImplementation(async (options) => {
+    const browser = await originalLaunch(options);
+    const originalNewContext = browser.newContext.bind(browser);
+    vi.spyOn(browser, 'newContext').mockImplementation(async (contextOptions) => {
+      const context = await originalNewContext(contextOptions);
+      vi.spyOn(context, 'close').mockRejectedValueOnce(new Error('forced context disposal failure'));
+      return context;
+    });
+    return browser;
+  });
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 2000 });
+  const controller = new AbortController();
+  try {
+    const first = pool.collect('one', local.url, controller.signal, () => false);
+    await vi.waitFor(() => expect(live).toBe(1), { timeout: 1500 });
+    controller.abort();
+    await expect(first).rejects.toMatchObject({ kind: 'cancelled' });
+    await new Promise((resolve) => setImmediate(resolve));
+    await expect(pool.collect('two', local.url, new AbortController().signal, () => false))
+      .rejects.toMatchObject({ kind: 'cancelled' });
+    expect(requests).toBe(1);
+    await expect(pool.close()).rejects.toThrow('forced context disposal failure');
+    expect(live).toBe(0);
+    expect(pool.isStarted()).toBe(false);
+  } finally {
+    controller.abort();
+    await pool.close().catch(() => {});
+    launchSpy.mockRestore();
+  }
 }, 10000);
