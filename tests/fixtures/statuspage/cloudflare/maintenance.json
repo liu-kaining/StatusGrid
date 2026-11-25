@@ -1,0 +1,15 @@
+{
+  "id": "6450da4h5bdu",
+  "name": "GOT (Gothenburg) on 2026-11-25",
+  "status": "scheduled",
+  "impact": "maintenance",
+  "created_at": "2026-11-20T03:21:01.196Z",
+  "updated_at": "2026-11-24T22:45:34.797Z",
+  "scheduled_for": "2026-11-25T23:00:00.000Z",
+  "scheduled_until": "2026-11-26T08:00:00.000Z",
+  "started_at": "2026-11-25T23:00:00.000Z",
+  "resolved_at": null,
+  "shortlink": "https://www.cloudflarestatus.com/incidents/6450da4h5bdu",
+  "components": [{"id": "w8pgyc1hh9hw", "name": "Gothenburg, Sweden - (GOT)", "status": "operational"}],
+  "incident_updates": [{"id": "9yi3qsr50sa9", "status": "scheduled", "body": "Maintenance will begin soon as scheduled.", "display_at": "2026-11-24T22:00:15.878Z"}]
+}

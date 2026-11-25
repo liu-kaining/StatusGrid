@@ -160,14 +160,27 @@ export function parseStatuspage(
   }
   const excluded = new Set(config.adapter.componentDisplay?.excludeIds ?? []);
   const components = allComponents.filter((component) => !excluded.has(component.upstreamId!));
-  const allCurrent = activePayload == null
-    ? current.incidents
-    : object(activePayload, 'active').incidents;
+  if (config.adapter.endpoints.active && activePayload == null) {
+    throw new AdapterError('coverage_incomplete', 'Independent active incident response is unavailable');
+  }
+  const allCurrent = config.adapter.endpoints.active
+    ? object(activePayload, 'active').incidents
+    : activePayload == null ? current.incidents : object(activePayload, 'active').incidents;
   if (allCurrent === undefined) {
     throw new AdapterError('coverage_incomplete', 'Current incident coverage is unavailable');
   }
   const activeRows = list(allCurrent, 'active.incidents');
   const currentIncidents = activeRows.map((entry) => parseIncident(entry, config, now, warnings));
+  const maintenanceRows = current.scheduled_maintenances === undefined
+    ? []
+    : list(current.scheduled_maintenances, 'summary.scheduled_maintenances');
+  const scheduledMaintenances = maintenanceRows.map((entry) => {
+    const incident = parseIncident(entry, config, now, warnings);
+    if (incident.kind !== 'maintenance') {
+      throw new AdapterError('invalid_payload', 'Scheduled maintenance entry is not maintenance');
+    }
+    return incident;
+  });
   let historical: SourceIncident[] = [];
   let historyError: FailureReason | null = null;
   if (historyPayload != null) {
@@ -182,18 +195,16 @@ export function parseStatuspage(
   }
   const incidentMap = new Map(historical.map((incident) => [incident.sourceIdentity, incident]));
   for (const incident of currentIncidents) incidentMap.set(incident.sourceIdentity, incident);
+  for (const maintenance of scheduledMaintenances) incidentMap.set(maintenance.sourceIdentity, maintenance);
   let reportedStatus = sourceStatus;
   for (const component of allComponents) {
     if (component.reportedStatus && !excluded.has(component.upstreamId!)) {
       reportedStatus = worse(reportedStatus, component.reportedStatus);
     }
   }
-  for (const [index, incident] of currentIncidents.entries()) {
+  for (const incident of [...currentIncidents, ...scheduledMaintenances]) {
     if (incident.state === 'resolved' || incident.state === 'completed') continue;
-    if (incident.kind === 'maintenance' && incident.state === 'scheduled') {
-      const scheduledFor = object(activeRows[index], 'active incident').scheduled_for;
-      if (scheduledFor != null && Date.parse(iso(scheduledFor, 'incident.scheduled_for')) > Date.parse(now)) continue;
-    }
+    if (incident.kind === 'maintenance' && incident.state === 'scheduled') continue;
     if (incident.severity) reportedStatus = worse(reportedStatus, incident.severity);
   }
   if (reportedStatus !== sourceStatus) {
@@ -232,7 +243,9 @@ export function parseStatuspage(
         { name: 'active_incidents', passed: true, checkedAt: now },
       ],
       historyCompleteThrough: null, historyError, warnings,
-      currentIncidentIds: currentIncidents.map(({ sourceIdentity }) => sourceIdentity),
+      currentIncidentIds: [...new Set([...currentIncidents, ...scheduledMaintenances]
+        .filter(({ state }) => state !== 'resolved' && state !== 'completed')
+        .map(({ sourceIdentity }) => sourceIdentity))],
     },
   };
 }

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import registry from '../../registry/providers.json';
 import cloudflare from '../fixtures/statuspage/cloudflare/summary.json';
+import cloudflareMaintenance from '../fixtures/statuspage/cloudflare/maintenance.json';
 import github from '../fixtures/statuspage/github/summary.json';
 import claude from '../fixtures/statuspage/claude/summary.json';
 import openai from '../fixtures/statuspage/openai/summary.json';
@@ -82,9 +83,57 @@ describe('Statuspage parser', () => {
       scheduled_for: '2026-11-25T10:30:00Z', scheduled_until: '2026-11-25T12:00:00Z',
       incident_updates: [{ id: 'update-1', status: 'postmortem', body: 'Review', display_at: '2026-11-25T11:00:00Z' }],
     };
-    const result = parseStatuspage(config('github'), { ...github, incidents: [maintenance] }, { incidents: [maintenance] }, null, now);
+    const result = parseStatuspage(
+      config('github'),
+      { ...github, scheduled_maintenances: [maintenance] },
+      { incidents: [] },
+      null, now,
+    );
     expect(result.incidents[0]).toMatchObject({ kind: 'maintenance', state: 'in_progress', resolvedAt: null });
     expect(result.incidents[0]?.updates[0]?.phase).toBe('unknown');
+  });
+
+  it('retains scheduled_maintenances separately from incidents without degrading future work', () => {
+    const summary = { ...cloudflare, status: { indicator: 'none' }, components: [], incidents: [], scheduled_maintenances: [cloudflareMaintenance] };
+    const result = parseStatuspage(config('cloudflare'), summary, { incidents: [] }, null, now);
+    expect(result.reportedStatus).toBe('operational');
+    expect(result.incidents).toHaveLength(1);
+    expect(result.incidents[0]).toMatchObject({
+      sourceIdentity: 'cloudflare:6450da4h5bdu',
+      kind: 'maintenance', state: 'scheduled', startedAt: '2026-11-25T23:00:00.000Z',
+      affectedComponentIds: ['cloudflare:w8pgyc1hh9hw'], resolvedAt: null,
+    });
+    expect(result.evidence.currentIncidentIds).toEqual(['cloudflare:6450da4h5bdu']);
+  });
+
+  it('reflects in-progress native maintenance but does not resurrect completed maintenance', () => {
+    const current = {
+      ...cloudflareMaintenance, status: 'in_progress',
+      scheduled_for: '2026-11-25T12:30:00.000Z', scheduled_until: '2026-11-25T16:00:00.000Z',
+      started_at: '2026-11-25T13:00:00.000Z', updated_at: now,
+    };
+    const completed = {
+      ...cloudflareMaintenance,
+      id: 'maintenance-completed', status: 'completed', updated_at: now, resolved_at: now,
+      scheduled_for: '2026-11-25T10:00:00.000Z', scheduled_until: '2026-11-25T11:00:00.000Z',
+      started_at: '2026-11-25T10:00:00.000Z',
+    };
+    const summary = {
+      ...cloudflare, status: { indicator: 'none' }, components: [], incidents: [],
+      scheduled_maintenances: [current, completed],
+    };
+    const result = parseStatuspage(config('cloudflare'), summary, { incidents: [] }, null, now);
+    expect(result.reportedStatus).toBe('maintenance');
+    expect(result.incidents.map(({ state, resolvedAt }) => [state, resolvedAt])).toEqual([
+      ['in_progress', null], ['completed', now],
+    ]);
+    expect(result.evidence.currentIncidentIds).toEqual(['cloudflare:6450da4h5bdu']);
+  });
+
+  it('rejects malformed present maintenance payload but permits a source without that optional field', () => {
+    expect(parseStatuspage(config('openai'), openai, null, null, now).incidents).toHaveLength(1);
+    expect(() => parseStatuspage(config('cloudflare'), { ...cloudflare, scheduled_maintenances: null }, active(cloudflare), null, now))
+      .toThrowError(expect.objectContaining({ reason: 'invalid_payload' }));
   });
 
   it('applies declarative display groups without merging matching source IDs', () => {
@@ -105,7 +154,10 @@ describe('Statuspage parser', () => {
       created_at: '2026-11-25T13:00:00Z', updated_at: '2026-11-25T13:00:00Z',
       scheduled_for: '2026-11-26T10:30:00Z', incident_updates: [],
     };
-    expect(parseStatuspage(config('github'), { ...github, incidents: [maintenance] }, { incidents: [maintenance] }, null, now).reportedStatus)
+    expect(parseStatuspage(
+      config('github'), { ...github, scheduled_maintenances: [maintenance] },
+      { incidents: [] }, null, now,
+    ).reportedStatus)
       .toBe('operational');
   });
 
@@ -169,6 +221,33 @@ describe('collection boundary', () => {
     expect(run.providers[0]?.collection.reason).toBe('coverage_incomplete');
     expect(run.providers[0]?.result).toBeNull();
     expect(run.providers[0]?.lastTrustedResult?.incidents).toHaveLength(1);
+  });
+
+  it('configured independent active endpoint returning JSON null cannot fall back to summary incidents', async () => {
+    const run = await collectProviders([config('github')], new Map(), {
+      ...context(github),
+      http: {
+        ...context(github).http,
+        getJson: async (url) => url.includes('unresolved.json') ? null
+          : url.includes('incidents.json') ? { incidents: [] } : github,
+      },
+    });
+    expect(run.providers[0]?.collection.freshness).toBe('missing');
+    expect(run.providers[0]?.collection.reason).toBe('coverage_incomplete');
+    expect(run.providers[0]?.result).toBeNull();
+  });
+
+  it('configured independent active endpoint missing incidents array fails closed', async () => {
+    const run = await collectProviders([config('github')], new Map(), {
+      ...context(github),
+      http: {
+        ...context(github).http,
+        getJson: async (url) => url.includes('unresolved.json') ? {}
+          : url.includes('incidents.json') ? { incidents: [] } : github,
+      },
+    });
+    expect(run.providers[0]?.collection.freshness).toBe('missing');
+    expect(run.providers[0]?.collection.reason).toBe('coverage_incomplete');
   });
 
   it('isolates failed provider and rejects unknown adapters without creating results', async () => {
