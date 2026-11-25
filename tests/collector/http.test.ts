@@ -87,6 +87,13 @@ describe('HTTP transport', () => {
     expect(decodeBody(Uint8Array.from([0xfe, 0xff, 0x00, 0x5b, 0x00, 0x5d]), 'application/json;charset=utf-16')).toBe('[]');
   });
 
+  it('preserves valid non-BOM text beginning with the first byte of a BOM', () => {
+    expect(decodeBody(Uint8Array.from([0xef, 0xbc, 0xa1, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73]), 'text/plain;charset=utf-8'))
+      .toBe('Ａstatus');
+    expect(decodeBody(Uint8Array.from([0xfe, 0x00, 0x41, 0x00]), 'text/plain;charset=utf-16le'))
+      .toBe('þA');
+  });
+
   it('cancels a request externally, without retrying', async () => {
     let attempts = 0;
     const url = await server(() => { attempts++; });

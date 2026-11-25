@@ -115,3 +115,40 @@ it('interrupts an active navigation on external cancellation', async () => {
     await pool.close();
   }
 }, 25000);
+
+it('honors cancellation immediately after admission, before browser startup', async () => {
+  let requests = 0;
+  const local = await withHttpServer((_request, response) => {
+    requests++;
+    response.end('unexpected');
+  });
+  servers.push(local);
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 2000 });
+  try {
+    const controller = new AbortController();
+    const task = pool.collect('immediate', local.url, controller.signal, () => false);
+    controller.abort();
+    await expect(task).rejects.toMatchObject({ kind: 'cancelled' });
+    expect(requests).toBe(0);
+  } finally {
+    await pool.close();
+  }
+}, 10000);
+
+it('applies one deadline to startup, queued admission, navigation, and cleanup', async () => {
+  const local = await withHttpServer(() => {});
+  servers.push(local);
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 750 });
+  try {
+    const start = performance.now();
+    const results = await Promise.allSettled([1, 2, 3].map((index) =>
+      pool.collect(String(index), local.url, new AbortController().signal, () => false)));
+    const elapsed = performance.now() - start;
+    expect(results.map((result) => result.status === 'rejected' && 'kind' in result.reason ? result.reason.kind : 'resolved'))
+      .toEqual(['timeout', 'timeout', 'timeout']);
+    expect(elapsed).toBeLessThan(1250);
+  } finally {
+    await pool.close();
+  }
+  expect(pool.isStarted()).toBe(false);
+}, 10000);

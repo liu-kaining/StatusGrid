@@ -16,9 +16,9 @@ export interface ManagedBrowserPool extends BrowserPool {
 export function createBrowserPool(options: BrowserOptions): ManagedBrowserPool {
   if (options.timeoutMs <= 0) throw new Error('Invalid browser timeout');
   let browserPromise: Promise<Browser> | null = null;
+  let closing: Promise<void> | null = null;
   let closed = false;
   let active = 0;
-  const contexts = new Set<BrowserContext>();
   const pending: Array<{
     resolve: () => void;
     reject: (error: Error) => void;
@@ -63,21 +63,41 @@ export function createBrowserPool(options: BrowserOptions): ManagedBrowserPool {
   return {
     isStarted: () => browserPromise !== null,
     async collect(providerId, url, signal, responseMatcher) {
-      await acquire(signal);
-      let context: BrowserContext | null = null;
       const controller = new AbortController();
-      const onAbort = () => controller.abort();
+      let rejectAbort!: (error: TransportError) => void;
+      const abort = new Promise<never>((_resolve, reject) => { rejectAbort = reject; });
+      void abort.catch(() => {});
+      const onAbort = () => {
+        controller.abort();
+        rejectAbort(new TransportError('cancelled', 'Browser collection cancelled'));
+      };
       signal.addEventListener('abort', onAbort, { once: true });
-      const timer = setTimeout(() => controller.abort(), options.timeoutMs);
+      if (signal.aborted) onAbort();
+      const timer = setTimeout(() => {
+        controller.abort();
+        rejectAbort(new TransportError('timeout', 'Browser collection timed out'));
+      }, options.timeoutMs);
+      const withinBudget = <T>(operation: Promise<T>): Promise<T> => Promise.race([operation, abort]);
+      let admitted = false;
+      let context: BrowserContext | null = null;
+      let contextPromise: Promise<BrowserContext> | null = null;
+      let result: Array<{ url: string; status: number; body: string }> | null = null;
+      let failure: unknown = null;
       try {
+        await acquire(controller.signal);
+        admitted = true;
+        if (controller.signal.aborted || closed) throw new TransportError('cancelled', 'Browser collection cancelled');
         if (!browserPromise) {
-          browserPromise = chromium.launch({ headless: true, executablePath: options.executablePath });
+          browserPromise = chromium.launch({
+            headless: true,
+            executablePath: options.executablePath,
+            timeout: options.timeoutMs,
+          });
         }
-        const browser = await browserPromise;
-        if (controller.signal.aborted || closed) throw new TransportError(signal.aborted ? 'cancelled' : 'timeout', 'Browser collection cancelled');
-        context = await browser.newContext();
-        contexts.add(context);
-        const page = await context.newPage();
+        const browser = await withinBudget(browserPromise);
+        contextPromise = browser.newContext();
+        context = await withinBudget(contextPromise);
+        const page = await withinBudget(context.newPage());
         const responses: Array<Promise<{ url: string; status: number; body: string }>> = [];
         page.on('response', (response) => {
           if (responseMatcher(response.url())) {
@@ -96,40 +116,52 @@ export function createBrowserPool(options: BrowserOptions): ManagedBrowserPool {
             responses.push(bodyPromise);
           }
         });
-        const abort = new Promise<never>((_resolve, reject) => {
-          if (controller.signal.aborted) reject(new TransportError(signal.aborted ? 'cancelled' : 'timeout', 'Browser collection interrupted'));
-          else controller.signal.addEventListener('abort', () => reject(new TransportError(signal.aborted ? 'cancelled' : 'timeout', 'Browser collection interrupted')), { once: true });
-        });
-        await Promise.race([page.goto(url, { waitUntil: 'networkidle' }), abort]);
-        return await Promise.race([Promise.all(responses), abort]);
+        await withinBudget(page.goto(url, { waitUntil: 'networkidle' }));
+        result = await withinBudget(Promise.all(responses));
       } catch (error) {
-        if (error instanceof TransportError) throw error;
-        if (signal.aborted || closed) throw new TransportError('cancelled', `Browser collection cancelled for ${providerId}`);
-        if (controller.signal.aborted) throw new TransportError('timeout', `Browser collection timed out for ${providerId}`);
-        throw new TransportError('http_error', `Browser collection failed for ${providerId}`);
+        failure = error;
       } finally {
+        if (context) {
+          if (!controller.signal.aborted) {
+            await withinBudget(context.close().catch(() => {})).catch(() => {});
+          }
+          // Cancelled contexts are closed by Browser.close; concurrent context.close
+          // and Browser.close can block Playwright teardown during a stalled navigation.
+        } else if (contextPromise) {
+          void contextPromise.then((created) => created.close()).catch(() => {});
+        }
+        if (admitted) release();
         clearTimeout(timer);
         signal.removeEventListener('abort', onAbort);
-        if (context) {
-          contexts.delete(context);
-          await context.close().catch(() => {});
-        }
-        release();
       }
+      if (signal.aborted || closed) throw new TransportError('cancelled', `Browser collection cancelled for ${providerId}`);
+      if (controller.signal.aborted) throw new TransportError('timeout', `Browser collection timed out for ${providerId}`);
+      if (failure instanceof TransportError) throw failure;
+      if (failure) throw new TransportError('http_error', `Browser collection failed for ${providerId}`);
+      return result!;
     },
-    async close() {
-      if (closed) return;
+    close() {
+      if (closing) return closing;
       closed = true;
       for (const waiter of pending.splice(0)) {
         waiter.signal.removeEventListener('abort', waiter.cancel);
         waiter.reject(new TransportError('cancelled', 'Browser pool closed'));
       }
-      await Promise.all([...contexts].map((context) => context.close().catch(() => {})));
-      if (browserPromise) {
-        const browser = await browserPromise.catch(() => null);
-        await browser?.close();
-        browserPromise = null;
-      }
+      const shutdown = async () => {
+        if (browserPromise) {
+          const browser = await browserPromise.catch(() => null);
+          await browser?.close();
+          browserPromise = null;
+        }
+      };
+      closing = new Promise<void>((resolve) => {
+        const timer = setTimeout(resolve, options.timeoutMs);
+        void shutdown().catch(() => {}).finally(() => {
+          clearTimeout(timer);
+          resolve();
+        });
+      });
+      return closing;
     },
   };
 }

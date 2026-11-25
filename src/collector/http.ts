@@ -21,9 +21,7 @@ function encodingOf(bytes: Uint8Array, contentType: string | null): string {
 export function decodeBody(bytes: Uint8Array, contentType: string | null): string {
   try {
     const encoding = encodingOf(bytes, contentType);
-    const start = encoding === 'utf-8' && bytes[0] === 0xef ? 3
-      : encoding.startsWith('utf-16') && (bytes[0] === 0xfe || bytes[0] === 0xff) ? 2 : 0;
-    return new TextDecoder(encoding, { fatal: true }).decode(bytes.subarray(start));
+    return new TextDecoder(encoding, { fatal: true }).decode(bytes);
   } catch {
     throw new TransportError('invalid_payload', 'Response body cannot be decoded');
   }
