@@ -1,7 +1,7 @@
 # StatusGrid 数据源验证记录与接入门槛
 
 日期：2026-11-25  
-状态：开发前调查记录；不是 13 家接入完成报告。
+状态：开发前调查与首批编码验证记录；不是 13 家接入完成报告。
 
 ## 1. 证据范围
 
@@ -112,4 +112,43 @@ G0 / G1 / G2 通过后可以进入开发预览；G3 通过才计入正式“已�
 - Cloudflare 挑战与浏览器支持：`https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/`
 - Vite 环境要求：`https://vite.dev/guide/`
 
-这些外部约束由接入和部署验证负责跟踪，不影响本轮仅编写设计与计划的范围。
+这些外部约束由接入和部署阶段继续复核，不能由本机传输探测推定目标平台行为。
+
+## 7. 首批编码的可复现传输证据
+
+2026-11-25T13:54:44.857Z 使用项目探测脚本在本机重新采样，环境为 macOS arm64、Node 22.23.0。原始字节、运行环境、最终 URL、编码、耗时与 SHA-256 保存在被 Git 忽略的 `.statusgrid/probes/2026-11-25T13-54-44-857Z/`。这些是 G0 证据，不表示已实现专用解析器，也不表示 G3 通过。
+
+| 来源 | 实际结果 | 证据 SHA-256 |
+| --- | --- | --- |
+| Apple 中国 `current` | HTTP 200；UTF-8 JSON；54 项服务 | `d0a2f9784e401b93ab956cb62fdce601a024a6ed0a22a84483ba54c8cecf34c1` |
+| AWS 中国 `current` | HTTP 200；UTF-16BE；原始 6 字节解码为 `[]` | `bbf908a8ca98e2d204077c9a30192a1a36dc191b0d94adc68818281a240f7e9c` |
+| DeepSeek `feed` | HTTP 200；UTF-8 Atom；13289 字节 | `a57d688d987479fa5e37569759f174cdc7303501f3f250e201393b831d2003ad` |
+| DeepSeek `page` | HTTP 200；UTF-8 HTML；222876 字节 | `65f2f9e3425b1667b167e4c648bd90073d49ecd63967f292d91c672c312925e1` |
+
+探测结果明确写入 `transport: success`、`parserVersion: null` 和空的 `semanticChecks`，不将 HTTP 200 表述为语义接入成功。公开原始响应仅保存在本机；提交的传输 fixture 是经过检查的最小样本。
+
+同日复核标准来源发现：Cloudflare、GitHub、Claude、Moonshot 的 `incidents/unresolved.json` 可达；OpenAI 对应地址返回 404。OpenAI 正常摘要曾缺少 `incidents`，另一次异常摘要则包含活跃事件数组。因此，只有摘要明确提供完整事件数组或独立实时通道验证成功，才能认定活跃事件覆盖完整；有限历史列表不能代替此项验证。
+
+## 8. 标准来源的原始样本
+
+下列样本通过同一探测传输层保存到 `.statusgrid/statuspage-samples/`，均为本机 G0 证据。每家目录包含摘要、历史响应及 metadata；Cloudflare、GitHub、Moonshot 另外保存了独立未恢复事件响应。Claude 在并行采样中超时，随后单独重试成功，未把失败尝试计为成功。
+
+Claude 的独立未恢复事件接口又于 2026-11-25T16:04:06.354Z 单独采样成功，证据保存在对应时间目录；这与较早的摘要属于不同次观测，不应拼成同一官方快照。
+
+| 厂商 | 采样时间 UTC | 摘要 HTTP / 字节 | 摘要 SHA-256 |
+| --- | --- | --- | --- |
+| Cloudflare | 2026-11-25T14:16:53.599Z | 200 / 224304 | `833653d54ad47769e5709b6a8e48c2111f900b3cd0863d71719f28e49dea0d7f` |
+| GitHub | 2026-11-25T14:16:53.600Z | 200 / 4310 | `a3f50238040ac8382fab107cae093bdefcdf19d859ae861e6d16710040a9deaf` |
+| OpenAI | 2026-11-25T14:16:53.600Z | 200 / 7335 | `7c3dff9403fa608e982a01c0d77dc27228881ee28c8b511a98d69097e4a09755` |
+| Moonshot | 2026-11-25T14:16:53.600Z | 200 / 7709 | `dbda42d6803a465af19a35ba0115c1e283c72df56bbf017caa211503524ea22a` |
+| Claude | 2026-11-25T14:18:33.322Z | 200 / 6102 | `cd90f0b8af053fd05f6df1d7a9b17d2999b7d07f0b765caa9978a0d70ad216ad` |
+
+结构差异已进入适配器需求：OpenAI 事件可缺少 `components`、`shortlink`、`started_at`，不得伪造范围或具体详情链接；Moonshot 时间包含时区偏移，输出需统一 UTC；Cloudflare 父组状态可能强于根摘要指标，需要保守归一化并提示冲突。解析和语义通过情况在适配器实现后另行记录。
+
+## 9. 通用适配器的本地验证
+
+Statuspage 通用适配器及生产 CLI 已实现；五家有源自真实响应的精简 fixture 和明确构造的失败场景。审查修复了独立 `scheduled_maintenances` 漏读以及必需事件接口返回 `null` 被误接受的问题；保存的 Cloudflare 完整响应已回放验证全量组件与维护记录。
+
+本地 CLI 曾取得 Cloudflare、GitHub、Claude、Moonshot 的完整实时结果。根摘要、组件或当前事件严重度不一致时保守取值并输出 warning；有限历史候选与当前事件通过 `currentIncidentIds` 区分，历史补全失败单列 `historyError`。
+
+OpenAI 的本地 CLI 最终取得了缺少 `incidents` 的正常摘要，因此输出 `missing / coverage_incomplete`，未生成可信当前结果。前两次请求超时同样保留真实失败。该来源的完整 G2 仍未通过，不能计为五家全部接入完成。所有来源 G3 均待目标 Runner 实际观察。

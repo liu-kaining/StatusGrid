@@ -1,7 +1,7 @@
 # StatusGrid 数据契约 v1 设计
 
 日期：2026-11-25  
-状态：设计评审稿；下列 TypeScript 是协议说明，尚未创建实现文件。
+状态：用户已确认设计；下列 TypeScript 是协议约束，正在按完整开发计划实施。
 
 配套文档：[总体设计](2026-11-25-statusgrid-design.md)、[开发计划](../plans/2026-11-25-statusgrid-implementation.md)。
 
@@ -115,6 +115,10 @@ interface ProviderConfig {
       upstreamIds: string[];
       namePatterns: string[];
     }>;
+    componentDisplay?: {
+      excludeIds: string[];
+      collapseOperational: boolean;
+    };
     browserFallback: boolean;
   };
 }
@@ -133,6 +137,7 @@ interface Component {
   aliases: string[];
   region: string | null;
   reportedStatus: ServiceStatus | null;
+  displayCollapsed?: boolean;
 }
 
 interface AdapterResult {
@@ -149,6 +154,8 @@ interface AdapterResult {
       checkedAt: string;
     }>;
     historyCompleteThrough: string | null;
+    historyError?: FailureReason | null;
+    currentIncidentIds?: string[];
     warnings: string[];
   };
 }
@@ -160,9 +167,20 @@ interface AdapterContext {
   browser: BrowserPool;
 }
 
+interface HttpResponse {
+  url: string;
+  status: number;
+  contentType: string | null;
+  encoding: string;
+  durationMs: number;
+  bytes: Uint8Array;
+  text: string;
+}
+
 interface HttpClient {
   getText(url: string, signal: AbortSignal): Promise<string>;
   getJson(url: string, signal: AbortSignal): Promise<unknown>;
+  getResponse(url: string, signal: AbortSignal): Promise<HttpResponse>;
 }
 
 interface BrowserPool {
@@ -172,6 +190,7 @@ interface BrowserPool {
     signal: AbortSignal,
     responseMatcher: (url: string) => boolean
   ): Promise<Array<{ url: string; status: number; body: string }>>;
+  close(): Promise<void>;
 }
 
 interface Adapter {
@@ -181,7 +200,15 @@ interface Adapter {
 
 浏览器响应匹配必须由已验证接口规则决定，不用“所有 application/json 响应中的第一个”。`BrowserPool.collect` 的入参不表达完整校验逻辑，适配器仍须校验业务状态、范围和字段。
 
+首批实现增加 `getResponse`，让探测脚本复用同一传输层并记录原始字节、编码与响应摘要；增加 `close`，让采集入口负责释放共享浏览器资源。普通解析器仍优先使用 `getJson` / `getText`。
+
+`collect` 的调用等待受截止时间约束；被取消任务的内部并发名额保留到 context 实际关闭。`close` 等待已拥有任务的回收及浏览器实际关闭，并报告关闭错误；它不承诺协议永久卡死时仍能在调用预算内完成物理回收。
+
 适配器返回的服务状态，必须与组件和活跃事件一致；冲突产生明确 warning 或失败。未知枚举不能默认映射为 `operational`。
+
+`componentDisplay` 以配置声明说明项排除与正常组件折叠。折叠组件仍保留在 `components` 中，仅标记 `displayCollapsed`，确保全量搜索可用。排除说明组件时 `componentScope=filtered`，单纯折叠仍为 `full`。
+
+`historyError` 表达历史补全失败，不能靠匹配 warning 文案控制流程。`currentIncidentIds` 保存本轮已验证当前事件的 `sourceIdentity`，将它们与有限历史候选分开；历史候选不因仍在数组中就成为活跃故障。缺少此字段不代表已验证当前事件为空。
 
 `SourceIncident` 是下一节定义的无状态上游事件候选。适配器不分配 episode，不创建合成事件；只有归并层访问历史并确定最终生命周期 ID。
 

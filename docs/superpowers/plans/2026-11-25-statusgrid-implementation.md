@@ -12,8 +12,8 @@
 
 ## 当前状态与执行边界
 
-- 本文件为开发计划；应用代码、依赖与工作流均尚未创建。
-- 先评审设计和计划，再进入实现。计划中的命令是编码阶段的执行指令，不表示已运行或已通过。
+- 用户已于 2026-11-25 确认设计与计划，并要求开始编码；最初推进 Task 1～3，随后明确要求“全部写完再停”，现继续执行全部本地代码、测试和文档任务。
+- 计划中的命令是各阶段执行指令，不表示全部已运行或已通过；实际完成项与验证结果在阶段完成时更新。
 - 实施时先检查工作区，保留用户已有的 `spec/` 文件与所有无关更改，使用 `codex/statusgrid-mvp` 开发分支。
 - 不在本阶段自动创建远端分支、推送、部署、修改 DNS、配置云账号或发送消息。
 - 本地功能验证可自主执行；正式部署涉及的仓库权限和外部配置在交付时单独列明。
@@ -62,6 +62,8 @@ flowchart LR
 
 ## Task 1：工程基线、契约与注册表
 
+状态：已实现并通过独立审查。22 项测试、类型检查、lint 通过；本机验证环境为 Node 22.23.0。Node 24 的实际运行验证仍属于后续 CI 验收。
+
 **Files**
 
 - Create: `package.json`、`package-lock.json`、`tsconfig.json`、`vite.config.ts`、`vitest.config.ts`、`eslint.config.js`、`.gitignore`、`.nvmrc`。
@@ -77,12 +79,12 @@ flowchart LR
 
 **Steps**
 
-- [ ] 建立 npm scripts：`dev`、`build`、`preview`、`typecheck`、`lint`、`test:unit`、`test:e2e`、`probe`、`collect`、`release:check`。尚未实现的命令随对应任务加入，不用空实现冒充成功。
-- [ ] 锁定实际兼容的依赖版本，记录 Node 22 / 24 兼容范围，生成 lockfile。
-- [ ] 先写注册表与全局状态测试，覆盖重复 ID、非法地址、未知枚举、缺失状态、混合故障 / 维护 / 受阻。
-- [ ] 运行 `npm run test:unit -- tests/shared`，确认失败原因是待实现的协议行为。
-- [ ] 实现运行时校验与状态推导，填入全部 13 家厂商配置。未实现适配器保留明确的未接通结果。
-- [ ] 运行同一测试、`npm run typecheck` 和 `npm run lint`，检查结果。
+- [x] 建立 npm scripts：`dev`、`build`、`preview`、`typecheck`、`lint`、`test:unit`、`test:e2e`、`probe`、`collect`、`release:check`。尚未实现的命令随对应任务加入，不用空实现冒充成功。
+- [x] 锁定实际兼容的依赖版本，记录 Node 22 / 24 兼容范围，生成 lockfile。
+- [x] 先写注册表与全局状态测试，覆盖重复 ID、非法地址、未知枚举、缺失状态、混合故障 / 维护 / 受阻。
+- [x] 运行 `npm run test:unit -- tests/shared`，确认失败原因是待实现的协议行为。
+- [x] 实现运行时校验与状态推导，填入全部 13 家厂商配置。未实现适配器保留明确的未接通结果。
+- [x] 运行同一测试、`npm run typecheck` 和 `npm run lint`，检查结果。
 
 核心测试契约示例：
 
@@ -105,6 +107,8 @@ fixture 对象在测试工具中按数据契约完整定义，不从被测函数
 
 ## Task 2：HTTP、浏览器隔离与可复现探测
 
+状态：已实现并通过独立审查。截至本阶段累计 47 项测试通过，含 12 项真实 Chrome 浏览器测试；类型检查、lint 通过。调用等待有截止时间；物理资源回收等待实际关闭，不以超时冒充成功，协议永久卡死仍需进程级兜底。
+
 **Files**
 
 - Create: `src/collector/http.ts`、`src/collector/browser.ts`、`src/collector/errors.ts`、`scripts/probe.ts`。
@@ -115,17 +119,17 @@ fixture 对象在测试工具中按数据契约完整定义，不从被测函数
 
 - `createHttpClient(options): HttpClient`；统一 UA、请求超时、AbortSignal、受限重试及解码。
 - `decodeBody(bytes: Uint8Array, contentType: string | null): string`。
-- `createBrowserPool(options): BrowserPool`；按需启动，独立 context，总预算内清理。
+- `createBrowserPool(options): BrowserPool`；按需启动，独立 context，调用有总预算，资源实际回收后释放并发名额。
 - CLI：`npm run probe -- --provider aws-cn --output .statusgrid/probes`。
 
 **Steps**
 
-- [ ] 先写真实本地 HTTP 服务用例：超时、429 后成功、Retry-After 超预算、404 不重试、错误 HTML 200、UTF-8 / UTF-16 两种字节序、外部取消。
-- [ ] 运行 `npm run test:unit -- tests/collector/http.test.ts`，观察失败。
-- [ ] 实现请求与解码；错误保留分类与必要摘要，不输出敏感头。
-- [ ] 写探测 CLI 行为测试：输出真实 metadata、body hash 和响应文件；错误退出非零且不写成功报告。
-- [ ] 实现探测脚本和浏览器池，不执行抓取页面中的脚本片段、JSONP 字符串或 SSR Flight 代码。
-- [ ] 重跑单元测试；对 Apple、AWS 中国、DeepSeek 重新采样；保存并复查可提交的脱敏 fixture。
+- [x] 先写真实本地 HTTP 服务用例：超时、429 后成功、Retry-After 超预算、404 不重试、错误 HTML 200、UTF-8 / UTF-16 两种字节序、外部取消。
+- [x] 运行 `npm run test:unit -- tests/collector/http.test.ts`，观察失败。
+- [x] 实现请求与解码；错误保留分类与必要摘要，不输出敏感头。
+- [x] 写探测 CLI 行为测试：输出真实 metadata、body hash 和响应文件；错误退出非零且不写成功报告。
+- [x] 实现探测脚本和浏览器池，不执行抓取页面中的脚本片段、JSONP 字符串或 SSR Flight 代码。
+- [x] 重跑单元测试；对 Apple、AWS 中国、DeepSeek 重新采样；保存并复查可提交的脱敏 fixture。
 
 编码测试示例：
 
@@ -139,6 +143,8 @@ it('正确读取 AWS 中国本次调查中的 UTF-16BE 响应', () => {
 **验收**：网络错误可稳定回放；探测证据带采样时间和运行环境；浏览器任务互不共享 Cookie。
 
 ## Task 3：Statuspage v2 通用适配器
+
+状态：已实现并通过独立审查。截至该任务累计 72 项测试通过，类型检查、lint 通过。四家取得过可信本地结果；OpenAI 实际正常摘要缺少事件字段时返回 `coverage_incomplete`，尚未通过完整本地接入门槛。未做 Runner 稳定性观察。
 
 **Files**
 
@@ -158,13 +164,13 @@ it('正确读取 AWS 中国本次调查中的 UTF-16BE 响应', () => {
 
 **Steps**
 
-- [ ] 从五家实际响应保存 fixture，记录字段形态和样本时间；验证独立未恢复事件接口，尤其是 OpenAI 摘要无 `incidents` 的场景。
-- [ ] 先写映射测试：各等级、维护、空正常响应、缺必需字段、未知枚举、重复名称和分组。
-- [ ] 加入 Cloudflare 正常节点折叠但异常节点保留、GitHub 占位说明过滤、OpenAI 独立活跃事件必需检查。
-- [ ] 运行 `npm run test:unit -- tests/collector/statuspage.test.ts`，确认失败。
-- [ ] 实现通用适配器，按 ID 标识组件，按配置规则形成展示分组；历史补全失败不伪装成实时失败。
-- [ ] 实现最小生产采集编排、并发隔离和报告 CLI；先不写历史存储和公共 API。
-- [ ] 对五家运行探测与解析；复查输出服务状态和组件、活跃事件的一致性。
+- [x] 从五家实际响应保存 fixture，记录字段形态和样本时间；验证独立未恢复事件接口，尤其是 OpenAI 摘要无 `incidents` 的场景。
+- [x] 先写映射测试：各等级、维护、空正常响应、缺必需字段、未知枚举、重复名称和分组。
+- [x] 加入 Cloudflare 正常节点折叠但异常节点保留、GitHub 占位说明过滤、OpenAI 独立活跃事件必需检查。
+- [x] 运行 `npm run test:unit -- tests/collector/statuspage.test.ts`，确认失败。
+- [x] 实现通用适配器，按 ID 标识组件，按配置规则形成展示分组；历史补全失败不伪装成实时失败。
+- [x] 实现最小生产采集编排、并发隔离和报告 CLI；先不写历史存储和公共 API。
+- [x] 对五家运行探测与解析；复查输出服务状态和组件、活跃事件的一致性；明确记录 OpenAI 的实时覆盖不足。
 
 关键用例：
 
@@ -425,11 +431,13 @@ test('直接打开筛选与厂商深链可以恢复同一排障现场', async ({
 
 评审通过后的第一批只推进 Task 1～3：建立可校验的数据契约、可复现探测和五家标准来源的真实采集。先完成数据基础，再交付独立可运行的数据链；不会先生成一个显示模拟全绿的完整界面。
 
+用户随后已要求连续完成全部编码任务。首批退出后按依赖继续 Task 4～10；需要目标 Runner、仓库权限、Pages 设置和 DNS 的外部验收继续单列，不能用本机结果替代。
+
 ## 设计与计划评审清单
 
-- [ ] 确认面向个人及同类 SRE 的免费工具范围。
-- [ ] 确认 5 分钟目标周期及按 2 / 3 个周期计算的提示阈值。
-- [ ] 确认 13 家完整 MVP 与分阶段可用交付。
-- [ ] 确认官方 / 观测数据和服务 / 采集状态分离。
-- [ ] 确认跨月可修订历史、版本化热数据和三分支发布设计。
-- [ ] 确认先 Task 1～3 的首批编码顺序。
+- [x] 确认面向个人及同类 SRE 的免费工具范围。
+- [x] 确认 5 分钟目标周期及按 2 / 3 个周期计算的提示阈值。
+- [x] 确认 13 家完整 MVP 与分阶段可用交付。
+- [x] 确认官方 / 观测数据和服务 / 采集状态分离。
+- [x] 确认跨月可修订历史、版本化热数据和三分支发布设计。
+- [x] 确认先 Task 1～3 的首批编码顺序。
