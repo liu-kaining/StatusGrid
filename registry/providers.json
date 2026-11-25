@@ -1,0 +1,296 @@
+[
+  {
+    "id": "cloudflare",
+    "name": "Cloudflare",
+    "category": "infra",
+    "aliases": [],
+    "tags": ["cdn", "dns"],
+    "officialStatusUrl": "https://www.cloudflarestatus.com/",
+    "officialHomeUrl": "https://www.cloudflare.com/",
+    "displayOrder": 1,
+    "enabled": true,
+    "adapter": {
+      "type": "statuspage-v2",
+      "endpoints": {
+        "summary": "https://www.cloudflarestatus.com/api/v2/summary.json",
+        "incidents": "https://www.cloudflarestatus.com/api/v2/incidents.json"
+      },
+      "timeoutMs": 8000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "category": "infra",
+    "aliases": [],
+    "tags": ["developer"],
+    "officialStatusUrl": "https://www.githubstatus.com/",
+    "officialHomeUrl": "https://github.com/",
+    "displayOrder": 2,
+    "enabled": true,
+    "adapter": {
+      "type": "statuspage-v2",
+      "endpoints": {
+        "summary": "https://www.githubstatus.com/api/v2/summary.json",
+        "incidents": "https://www.githubstatus.com/api/v2/incidents.json"
+      },
+      "timeoutMs": 8000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "claude",
+    "name": "Claude",
+    "category": "ai",
+    "aliases": ["Anthropic"],
+    "tags": ["ai"],
+    "officialStatusUrl": "https://status.claude.com/",
+    "officialHomeUrl": "https://claude.ai/",
+    "displayOrder": 3,
+    "enabled": true,
+    "adapter": {
+      "type": "statuspage-v2",
+      "endpoints": {
+        "summary": "https://status.claude.com/api/v2/summary.json",
+        "incidents": "https://status.claude.com/api/v2/incidents.json"
+      },
+      "timeoutMs": 8000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "category": "ai",
+    "aliases": [],
+    "tags": ["ai"],
+    "officialStatusUrl": "https://status.openai.com/",
+    "officialHomeUrl": "https://openai.com/",
+    "displayOrder": 4,
+    "enabled": true,
+    "adapter": {
+      "type": "statuspage-v2",
+      "endpoints": {
+        "summary": "https://status.openai.com/api/v2/summary.json",
+        "incidents": "https://status.openai.com/api/v2/incidents.json"
+      },
+      "timeoutMs": 8000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "moonshot",
+    "name": "Moonshot AI",
+    "category": "ai",
+    "aliases": ["Kimi"],
+    "tags": ["ai"],
+    "officialStatusUrl": "https://status.moonshot.cn/",
+    "officialHomeUrl": "https://www.moonshot.cn/",
+    "displayOrder": 5,
+    "enabled": true,
+    "adapter": {
+      "type": "statuspage-v2",
+      "endpoints": {
+        "summary": "https://status.moonshot.cn/api/v2/summary.json",
+        "incidents": "https://status.moonshot.cn/api/v2/incidents.json"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "category": "ai",
+    "aliases": [],
+    "tags": ["ai"],
+    "officialStatusUrl": "https://status.deepseek.com/",
+    "officialHomeUrl": "https://www.deepseek.com/",
+    "displayOrder": 6,
+    "enabled": true,
+    "adapter": {
+      "type": "deepseek",
+      "endpoints": {
+        "feed": "https://status.deepseek.com/feed.atom",
+        "page": "https://status.deepseek.com/"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "gcp",
+    "name": "Google Cloud",
+    "category": "cloud-global",
+    "aliases": ["GCP"],
+    "tags": ["cloud"],
+    "officialStatusUrl": "https://status.cloud.google.com/",
+    "officialHomeUrl": "https://cloud.google.com/",
+    "displayOrder": 7,
+    "enabled": true,
+    "adapter": {
+      "type": "google-cloud-json",
+      "endpoints": {
+        "incidents": "https://status.cloud.google.com/incidents.json",
+        "products": "https://status.cloud.google.com/products.json"
+      },
+      "timeoutMs": 8000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "apple-cn",
+    "name": "Apple China",
+    "category": "infra",
+    "aliases": ["Apple System Status"],
+    "tags": ["consumer"],
+    "officialStatusUrl": "https://www.apple.com/cn/support/systemstatus/",
+    "officialHomeUrl": "https://www.apple.com/cn/",
+    "displayOrder": 8,
+    "enabled": true,
+    "adapter": {
+      "type": "apple-status",
+      "endpoints": {
+        "current": "https://www.apple.com/support/systemstatus/data/system_status_zh_CN.js"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": ["cn"],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "azure",
+    "name": "Azure",
+    "category": "cloud-global",
+    "aliases": ["Microsoft Azure"],
+    "tags": ["cloud"],
+    "officialStatusUrl": "https://azure.status.microsoft/en-us/status",
+    "officialHomeUrl": "https://azure.microsoft.com/",
+    "displayOrder": 9,
+    "enabled": true,
+    "adapter": {
+      "type": "azure-status",
+      "endpoints": {
+        "feed": "https://rssfeed.azure.status.microsoft/en-us/status/feed/",
+        "page": "https://azure.status.microsoft/en-us/status"
+      },
+      "timeoutMs": 8000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "aws-cn",
+    "name": "AWS China",
+    "category": "cloud-cn",
+    "aliases": ["Amazon Web Services China"],
+    "tags": ["cloud"],
+    "officialStatusUrl": "https://health.amazonaws.cn/health/status",
+    "officialHomeUrl": "https://www.amazonaws.cn/",
+    "displayOrder": 10,
+    "enabled": true,
+    "adapter": {
+      "type": "aws-cn-health",
+      "endpoints": {
+        "current": "https://health.amazonaws.cn/public/currentevents"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": ["cn-north-1", "cn-northwest-1"],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "tencent-cloud",
+    "name": "Tencent Cloud",
+    "category": "cloud-cn",
+    "aliases": ["腾讯云"],
+    "tags": ["cloud"],
+    "officialStatusUrl": "https://status.cloud.tencent.com/",
+    "officialHomeUrl": "https://cloud.tencent.com/",
+    "displayOrder": 11,
+    "enabled": true,
+    "adapter": {
+      "type": "tencent-cloud",
+      "endpoints": {
+        "page": "https://status.cloud.tencent.com/"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": true
+    }
+  },
+  {
+    "id": "aliyun",
+    "name": "Alibaba Cloud",
+    "category": "cloud-cn",
+    "aliases": ["阿里云", "Aliyun"],
+    "tags": ["cloud"],
+    "officialStatusUrl": "https://status.aliyun.com/",
+    "officialHomeUrl": "https://www.aliyun.com/",
+    "displayOrder": 12,
+    "enabled": true,
+    "adapter": {
+      "type": "aliyun",
+      "endpoints": {
+        "page": "https://status.aliyun.com/"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": true
+    }
+  },
+  {
+    "id": "baidu-cloud",
+    "name": "Baidu AI Cloud",
+    "category": "cloud-cn",
+    "aliases": ["百度智能云"],
+    "tags": ["cloud"],
+    "officialStatusUrl": "https://cloud.baidu.com/status.html",
+    "officialHomeUrl": "https://cloud.baidu.com/",
+    "displayOrder": 13,
+    "enabled": true,
+    "adapter": {
+      "type": "baidu-cloud",
+      "endpoints": {
+        "page": "https://cloud.baidu.com/status.html"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": true
+    }
+  }
+]
