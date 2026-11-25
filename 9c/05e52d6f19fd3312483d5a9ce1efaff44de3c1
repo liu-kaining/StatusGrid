@@ -1,0 +1,28 @@
+tests/fixtures/statuspage/cloudflare/maintenance.json
+  s_79c9ef7a230eaf::t_609739eebd7080 1-15
+src/collector/adapters/statuspage.ts
+  s_79c9ef7a230eaf::t_23188407b360ce 163-168,174-183,198,205,207,246-248
+tests/collector/statuspage.test.ts
+  s_79c9ef7a230eaf::t_2edffeecca898b 86-91,157-160
+  s_79c9ef7a230eaf::t_609739eebd7080 4,96-109,115-117,120-138,226-251
+  s_79c9ef7a230eaf::t_c974ef9cb50cff 110-114,118-119
+  s_79c9ef7a230eaf::t_2075699ce57184 252
+tests/fixtures/statuspage/README.md
+  s_79c9ef7a230eaf::t_609739eebd7080 7-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9c05e52d6f19fd3312483d5a9ce1efaff44de3c1",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
