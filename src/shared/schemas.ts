@@ -34,6 +34,10 @@ export const providerConfigSchema: z.ZodType<ProviderConfig> = z.strictObject({
     retries: z.number().int().nonnegative(),
     requiredRegions: z.array(nonempty),
     componentGroups: z.array(componentGroupSchema),
+    componentDisplay: z.strictObject({
+      excludeIds: z.array(nonempty),
+      collapseOperational: z.boolean(),
+    }).optional(),
     browserFallback: z.boolean(),
   }),
 });

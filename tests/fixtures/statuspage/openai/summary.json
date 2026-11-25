@@ -1,0 +1,8 @@
+{
+  "page": {"id": "01JMDK9XYNY6RXSED6SDWW50WY", "updated_at": "2026-11-25T13:22:34Z"},
+  "status": {"indicator": "minor"},
+  "components": [{"id": "01JMXBRMFE6N2NNT7DG6XZQ6PW", "name": "Chat Completions", "status": "operational"}],
+  "incidents": [
+    {"id": "01M898HVZGXFV2XC4775CG9GF8", "name": "ChatGPT, ChatGPT Work, and Codex Cloud are experiencing elevated conversation errors", "status": "monitoring", "impact": "minor", "created_at": "2026-11-25T11:48:13Z", "updated_at": "2026-11-25T13:22:34Z", "monitoring_at": "2026-11-25T13:22:34Z", "incident_updates": [{"id": "01M89DYKK1HQ3BY50DZA1EH775", "status": "monitoring", "body": "We are monitoring the affected services.", "display_at": "2026-11-25T13:22:34Z"}]}
+  ]
+}

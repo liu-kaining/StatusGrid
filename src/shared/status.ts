@@ -4,7 +4,7 @@ export function publicStatus(reportedStatus: ServiceStatus | null, freshness: Fr
   return freshness === 'fresh' && reportedStatus !== null ? reportedStatus : 'stale';
 }
 
-const severity: Record<ServiceStatus, number> = {
+export const STATUS_SEVERITY: Readonly<Record<ServiceStatus, number>> = {
   operational: 0,
   maintenance: 1,
   degraded: 2,
@@ -37,13 +37,13 @@ export function summarizeProviders(providers: ProviderSummary[]): Summary['globa
     countsByStatus[status] += 1;
     if (status !== 'stale') {
       connectedProviders += 1;
-      if (severity[status] > severity[highestKnown]) highestKnown = status;
+      if (STATUS_SEVERITY[status] > STATUS_SEVERITY[highestKnown]) highestKnown = status;
     }
     activeIncidentCount += provider.activeIncidents.length;
   }
 
   const staleProviderCount = countsByStatus.stale;
-  const overallStatus: PublicStatus = severity[highestKnown] >= severity.degraded
+  const overallStatus: PublicStatus = STATUS_SEVERITY[highestKnown] >= STATUS_SEVERITY.degraded
     ? highestKnown
     : staleProviderCount > 0 || providers.length === 0
       ? 'stale'

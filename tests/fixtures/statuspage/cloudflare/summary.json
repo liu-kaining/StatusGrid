@@ -1,0 +1,12 @@
+{
+  "page": {"id": "yh6f0r4529hb", "updated_at": "2026-11-25T14:14:24.265Z"},
+  "status": {"indicator": "minor"},
+  "components": [
+    {"id": "1km35smx8p41", "name": "Cloudflare Sites and Services", "status": "degraded_performance", "group": true, "group_id": null},
+    {"id": "57srcl8zcn7c", "name": "Workers", "status": "degraded_performance", "group": false, "group_id": "1km35smx8p41"},
+    {"id": "57ctn3f2qsyj", "name": "Amsterdam, Netherlands - (AMS)", "status": "operational", "group": false, "group_id": "zqxhg7y54vy8"}
+  ],
+  "incidents": [
+    {"id": "0ocqieaifg7h", "name": "Changes to Cloudflare Workers are not producing Event Subscription events", "status": "identified", "impact": "minor", "created_at": "2026-11-10T01:53:58.905Z", "started_at": "2026-11-10T01:53:58.905Z", "updated_at": "2026-11-11T05:05:06.331Z", "shortlink": "https://www.cloudflarestatus.com/incidents/0ocqieaifg7h", "components": [{"id": "57srcl8zcn7c"}], "incident_updates": [{"id": "tsd2wb2nx1mq", "status": "identified", "body": "The issue has been identified and a fix is being implemented.", "display_at": "2026-11-11T05:05:06.331Z"}]}
+  ]
+}

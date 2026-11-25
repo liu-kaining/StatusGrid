@@ -1,0 +1,9 @@
+{
+  "page": {"id": "10y9y5wx5xh3", "updated_at": "2026-11-25T21:39:42.735+08:00"},
+  "status": {"indicator": "none"},
+  "components": [
+    {"id": "01l1n50g13g6", "name": "Kimi", "status": "operational", "group": true},
+    {"id": "sttxgsd2bps7", "name": "Website", "status": "operational", "group_id": "01l1n50g13g6"}
+  ],
+  "incidents": []
+}

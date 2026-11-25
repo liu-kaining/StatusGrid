@@ -75,6 +75,10 @@ export interface ProviderConfig {
       upstreamIds: string[];
       namePatterns: string[];
     }>;
+    componentDisplay?: {
+      excludeIds: string[];
+      collapseOperational: boolean;
+    };
     browserFallback: boolean;
   };
 }
@@ -87,6 +91,7 @@ export interface Component {
   aliases: string[];
   region: string | null;
   reportedStatus: ServiceStatus | null;
+  displayCollapsed?: boolean;
 }
 
 export type IncidentState =
@@ -160,6 +165,8 @@ export interface AdapterResult {
       checkedAt: string;
     }>;
     historyCompleteThrough: string | null;
+    currentIncidentIds?: string[];
+    historyError?: FailureReason | null;
     warnings: string[];
   };
 }
