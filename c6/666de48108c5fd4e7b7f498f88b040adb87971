@@ -1,0 +1,47 @@
+src/shared/schemas.ts
+  s_79c9ef7a230eaf::t_fd0beeff21f132 1,4-67
+  s_79c9ef7a230eaf::t_e58361954fbb94 2-3,68
+package.json
+  s_79c9ef7a230eaf::t_5d29b82b535731 1-26
+src/shared/contracts.ts
+  s_79c9ef7a230eaf::t_e58361954fbb94 1-303
+.nvmrc
+  s_79c9ef7a230eaf::t_5d29b82b535731 1
+vitest.config.ts
+  s_79c9ef7a230eaf::t_5d29b82b535731 1-7
+vite.config.ts
+  s_79c9ef7a230eaf::t_5d29b82b535731 1-3
+tsconfig.json
+  s_79c9ef7a230eaf::t_5d29b82b535731 1-16
+tests/shared/contracts.test.ts
+  s_79c9ef7a230eaf::t_5d29b82b535731 1-71
+.gitignore
+  s_79c9ef7a230eaf::t_5d29b82b535731 1-7
+src/shared/status.ts
+  s_79c9ef7a230eaf::t_fd0beeff21f132 3-4,7-58
+  s_79c9ef7a230eaf::t_e58361954fbb94 1-2,5-6,59
+eslint.config.js
+  s_79c9ef7a230eaf::t_5d29b82b535731 1-8
+tests/shared/status.test.ts
+  s_79c9ef7a230eaf::t_5d29b82b535731 1-154
+registry/providers.json
+  s_79c9ef7a230eaf::t_87605cd57425ed 1-296
+package-lock.json
+  s_79c9ef7a230eaf::t_4b23323143379d 1-2653
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c6666de48108c5fd4e7b7f498f88b040adb87971",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
