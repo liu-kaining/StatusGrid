@@ -26,10 +26,14 @@ export function summarizeProviders(providers: ProviderSummary[]): Summary['globa
   let highestKnown: ServiceStatus = 'operational';
 
   for (const provider of providers) {
+    const expectedStatus = publicStatus(provider.reportedStatus, provider.collection.freshness);
+    if (provider.status !== expectedStatus) {
+      throw new Error(`Inconsistent public status for provider ${provider.id}`);
+    }
     const connected = provider.collection.freshness === 'fresh'
       && (provider.collection.outcome === 'success' || provider.collection.outcome === 'partial')
       && provider.coverage.currentState === 'complete';
-    const status = connected ? publicStatus(provider.reportedStatus, 'fresh') : 'stale';
+    const status = connected ? provider.status : 'stale';
     countsByStatus[status] += 1;
     if (status !== 'stale') {
       connectedProviders += 1;

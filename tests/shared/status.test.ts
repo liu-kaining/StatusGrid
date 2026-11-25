@@ -133,6 +133,37 @@ describe('summarizeProviders', () => {
     expect(summarizeProviders([minor, major]).overallStatus).toBe('major_outage');
   });
 
+  it.each([
+    ['stale', 'operational'],
+    ['major_outage', 'operational'],
+    ['operational', 'major_outage'],
+  ] as const)('rejects a published %s status inconsistent with reported %s', (status, reportedStatus) => {
+    const contradictory: ProviderSummary = { ...operational, status, reportedStatus };
+    expect(() => summarizeProviders([contradictory])).toThrow(/inconsistent.*status/i);
+  });
+
+  it('shows maintenance when every provider is fresh and no service has failed', () => {
+    const maintenance: ProviderSummary = {
+      ...operational, status: 'maintenance', reportedStatus: 'maintenance',
+    };
+    expect(summarizeProviders([operational, maintenance])).toMatchObject({
+      overallStatus: 'maintenance',
+      maintenanceCount: 1,
+      staleProviderCount: 0,
+    });
+  });
+
+  it('shows stale ahead of maintenance when a provider is unconnected', () => {
+    const maintenance: ProviderSummary = {
+      ...operational, status: 'maintenance', reportedStatus: 'maintenance',
+    };
+    expect(summarizeProviders([maintenance, notConnected])).toMatchObject({
+      overallStatus: 'stale',
+      maintenanceCount: 1,
+      staleProviderCount: 1,
+    });
+  });
+
   it('does not announce operational for an empty provider list', () => {
     expect(summarizeProviders([])).toMatchObject({
       overallStatus: 'stale',
