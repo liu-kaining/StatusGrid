@@ -1,0 +1,21 @@
+tests/shared/status.test.ts
+  s_79c9ef7a230eaf::t_66c50c95ea4048 136-166
+src/shared/status.ts
+  s_79c9ef7a230eaf::t_3631e5ca3d57a1 29-32,36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6b1da4d2c9f7248fa0a53335c73a59aa00c3488d",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
