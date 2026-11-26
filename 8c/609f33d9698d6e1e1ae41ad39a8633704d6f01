@@ -1,0 +1,38 @@
+src/web/components/DayPopover.tsx
+  s_79c9ef7a230eaf::t_e63214389b7e3c 7,10,14
+tests/e2e/day.spec.ts
+  s_79c9ef7a230eaf::t_d2418c6ba4820f 10-11,23-28
+  s_79c9ef7a230eaf::t_a0bdba126a6e6b 4,8,12-22,29-34,51,55-56,74,77
+  s_79c9ef7a230eaf::t_44428595d3ca8f 43,83
+  s_79c9ef7a230eaf::t_17a67a2b23c9d8 79
+  s_79c9ef7a230eaf::t_fe7d4526146d10 5-7,9,35-42,44-50,52-54,57-73,75-76,78,80-82,84-111
+src/web/components/DayView.tsx
+  s_79c9ef7a230eaf::t_e63214389b7e3c 13,16,22,72
+src/web/data/use-day-history.ts
+  s_79c9ef7a230eaf::t_17a67a2b23c9d8 17
+  s_79c9ef7a230eaf::t_e63214389b7e3c 3,5-6,11,13,15-16,20-21
+src/web/components/HealthTrack.tsx
+  s_79c9ef7a230eaf::t_e63214389b7e3c 13,15,63
+src/web/App.tsx
+  s_79c9ef7a230eaf::t_e63214389b7e3c 154,160,169
+docs/superpowers/plans/2026-11-25-statusgrid-implementation.md
+  s_79c9ef7a230eaf::t_fea9c8bf0c8a0b 446,448-450,529-530
+tests/web/queries.test.ts
+  s_79c9ef7a230eaf::t_1b9c55708fe6cb 53-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8c609f33d9698d6e1e1ae41ad39a8633704d6f01",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
