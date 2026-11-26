@@ -397,6 +397,10 @@ interface ProviderSummary {
     affectedRegions: string[];
   };
   dailyTrack30d: string;
+  dailyCoverage30d: Array<{
+    observedCoverageMinutes: number;
+    unknownMinutes: number;
+  }>;
   activeIncidents: Array<{
     id: string;
     title: string;
@@ -429,9 +433,26 @@ interface ProviderDetail extends Envelope {
   recentIncidents: Incident[];
   warnings: string[];
 }
+
+interface RecentIncidents extends Envelope {
+  incidents: Incident[];
+}
+
+interface CollectorHealth extends Envelope {
+  runId: string;
+  durationMs: number;
+  latestPublishedSnapshotId: string;
+  providers: Array<{
+    providerId: string;
+    sourceType: ProviderConfig['adapter']['type'];
+    collection: CollectionState;
+  }>;
+}
 ```
 
 摘要中的活跃事件仅存展示摘要，完整更新保存在详情和事件库。异常组件名称做去重和可解释截断；完整列表仍可在详情与索引中找到。
+
+`dailyCoverage30d` 固定 30 项，与 `dailyTrack30d` 按 UTC 日期从旧到新对齐，日期锚定本快照的 `generatedAt`。它使首页的已知异常也能显示覆盖不足纹理和分钟数，无需预先下载所有厂商详情；额外字段仍受摘要 40 KiB Gzip 预算约束。
 
 全局状态规则：
 
@@ -479,9 +500,22 @@ interface IncidentArchive {
   updatedAt: string;
   incidents: Incident[];
 }
+
+type PublicArchiveIndex = Omit<ArchiveIndex, 'generatedAt'> & {
+  dataMode: 'live' | 'fixture';
+  generatedAt: string | null;
+};
+
+type PublicIncidentArchive = IncidentArchive & {
+  dataMode: 'live' | 'fixture';
+};
 ```
 
 `Manifest.paths.archiveIndex` 指向 `/api/v1/incidents/archive/indexes/{revision}.json`，且 revision 必须等于 `archiveIndexRevision`。`ArchiveIndex.months[].path` 指向 `/api/v1/incidents/archive/{month}/{revision}.json`。内容有变化才生成新 revision，不在原不可变路径覆盖不同内容。
+
+公开冷归档使用 `PublicArchiveIndex` / `PublicIncidentArchive`，携带 `dataMode`，不携带快照 ID；既有内部状态分片保持独立的校验约定。冷索引的 `generatedAt` 是内容时间标记：取已引用月份最新的 `updatedAt`，没有月份时为 `null`。它不表示本轮采集或发布时间；该时间由热文件的 `Envelope.generatedAt` 提供，不能用 1970 年占位制造未知事实。
+
+公开月份与索引的 revision 为包含 `dataMode` 的规范内容 SHA-256 前 24 位。空索引不因每轮采集而改变时间或 revision；fixture 与 live 内容分别标识。热目录同时保留各自的 `manifest.json`，供清理时追踪完整引用关系。
 
 固定路径 `/api/v1/incidents/archive/index.json` 和 `/api/v1/incidents/archive/{month}.json` 是最新版本别名，供外部兼容使用。前端优先使用不可变路径并核对响应体版本。
 
