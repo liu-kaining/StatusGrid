@@ -123,7 +123,7 @@ public/                                静态资源；本地生成的 API / Feed
 | Cloudflare | Statuspage v2 | 核心服务分组、所有异常节点保留；正常节点折叠不丢搜索索引 |
 | GitHub | Statuspage v2 | 排除说明组件；动态识别实际组件 |
 | Claude | Statuspage v2 | 保留 API、网页、开发工具及云平台组件，避免固定数量假设 |
-| OpenAI | Statuspage v2 兼容层 | 摘要与事件分别验证；组件 ID 作为标识，名称作为可配置展示映射 |
+| OpenAI | incident.io 官方结构化页面 | 页面身份、组件目录、当前影响、事件和维护数组联合验证；安全解码 Flight，不执行捕获脚本 |
 | Moonshot | Statuspage v2 | 使用官方域名；支持分组和重复名称 |
 | DeepSeek | 独立适配器：公开 Feed + 组件快照 | Feed 历史不能单独证明实时健康；SSR 数据仅做结构解析 |
 | GCP | incidents + products JSON | 活跃判定、产品映射、地域与历史时间 |

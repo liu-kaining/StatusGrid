@@ -97,6 +97,7 @@ interface ProviderConfig {
   adapter: {
     type:
       | 'statuspage-v2'
+      | 'incident-io'
       | 'deepseek'
       | 'google-cloud-json'
       | 'apple-status'
@@ -106,6 +107,7 @@ interface ProviderConfig {
       | 'aliyun'
       | 'baidu-cloud';
     endpoints: Record<string, string>;
+    sourcePageId?: string;
     timeoutMs: number;
     retries: number;
     requiredRegions: string[];
@@ -125,6 +127,8 @@ interface ProviderConfig {
 ```
 
 所有厂商必须有显式适配器类型；不存在适配器时输出 `not_connected`，不能返回正常空对象。未知注册表字段在开发阶段报错；重复 ID、非法 URL 和重复地域须验证。
+
+`incident-io` 要求配置公开页面的 `sourcePageId`，与官方 URL 和响应内身份联合验证。腾讯云、阿里云、百度云要求非空的显式 `requiredRegions`；“完整”仅指该配置范围，不能暗示覆盖整个上游地域目录。
 
 ## 4. 适配器契约
 
@@ -188,9 +192,26 @@ interface BrowserPool {
     providerId: string,
     url: string,
     signal: AbortSignal,
-    responseMatcher: (url: string) => boolean
-  ): Promise<Array<{ url: string; status: number; body: string }>>;
+    responseMatcher: (url: string) => boolean,
+    options?: BrowserCollectionOptions
+  ): Promise<BrowserResponse[]>;
   close(): Promise<void>;
+}
+
+interface BrowserResponse {
+  url: string;
+  status: number;
+  body: string;
+  requestScope?: Record<string, string>;
+}
+
+interface BrowserCollectionOptions {
+  requestScopeFields?: string[];
+  steps?: Array<{
+    clickText: string;
+    waitFor: { url: string; requestFields?: Record<string, string> }
+      | Array<{ url: string; requestFields?: Record<string, string> }>;
+  }>;
 }
 
 interface Adapter {
@@ -199,6 +220,8 @@ interface Adapter {
 ```
 
 浏览器响应匹配必须由已验证接口规则决定，不用“所有 application/json 响应中的第一个”。`BrowserPool.collect` 的入参不表达完整校验逻辑，适配器仍须校验业务状态、范围和字段。
+
+地域切换使用声明式的普通界面点击，并在点击前注册精确 URL 与地域请求字段的响应等待；页面空闲不代表异步地域数据完整。`requestScope` 只保留显式选择的公开查询字段，不包含请求头、Cookie、完整请求体或页面内置 token；不向适配器暴露原始 Playwright page。
 
 首批实现增加 `getResponse`，让探测脚本复用同一传输层并记录原始字节、编码与响应摘要；增加 `close`，让采集入口负责释放共享浏览器资源。普通解析器仍优先使用 `getJson` / `getText`。
 
@@ -301,6 +324,8 @@ interface SourceIncident extends Omit<
 ```
 
 原生事件的 `sourceIdentity` 使用 `providerId + upstreamId`；仅有 URL 的源使用规范化官方 URL 的稳定摘要。生命周期事件的 `id` 为 `sourceIdentity + episode`，从 episode 1 开始；同一上游事件恢复后再打开，创建 episode 2，保留 episode 1 的时间与更新记录。统计、分片和通知都按生命周期事件 ID 处理。
+
+没有稳定事件线程 ID、也没有独立事件 URL 的来源，不能把共享首页当成所有事件的同一身份。腾讯云当前公开通道仅证实更新 ID，采用厂商、地域、产品与首条已提供更新 ID 的摘要，`upstreamId=null`，并披露有限更新窗口截断可能引起身份变化。该标识只保证相同输入重跑稳定，不宣称跨截断窗口的线程唯一性，也不能自动合并未经证实的事件。
 
 重开的开始时间优先采用上游明确重开时间或上次恢复后的第一条活跃阶段更新，标记 `source_reopened_at`；没有可靠时间则采用首次观测并标记 `first_observed`。不得沿用最初的 `created_at`，也不能将上次 episode 的更新和恢复间隔计入本次影响时长。
 
