@@ -6,11 +6,11 @@
 
 ## 当前阶段
 
-任务 1～7 的数据链已实现：工程契约、13 家注册表、HTTP 传输、隔离浏览器池、探测脚本、全部适配器、事件状态机、持久历史、日统计、公共 JSON 和 RSS / Atom。OpenAI 使用官方 incident.io 页面，不再依赖缺少完整当前状态的旧兼容接口。
+任务 1～8 已完成本地实现与独立审查：13 家真实采集、事件状态与公共数据链，以及矩阵、搜索、厂商详情、历史库、深浅主题和移动端页面。OpenAI 使用官方 incident.io 页面，不再依赖缺少完整当前状态的旧兼容接口。
 
 2026-11-26 本机完整采集、持久化和导出已通过，单轮 13 家实时数据均可信；公共发布目录校验通过，摘要为 4,738 B Gzip，低于 40 KiB 预算。GitHub 官方历史中的矛盾时间被隔离为历史补全失败，不影响已验证当前状态。这些是本地证据，不能替代目标 Runner 稳定性验收。
 
-接下来实现前端、自动调度和发布验收；当前尚无可用前端，也未部署。具体来源能力与限制见来源验证记录。
+前端可以本地使用，自动调度和发布验收继续开发中，尚未部署。具体来源能力与限制见来源验证记录。
 
 国内云首版显式覆盖腾讯云北京 / 上海、阿里云上海、百度云北京 / 上海。完整采集仅指配置地域，每个必需地域均须通过校验。OpenAI 本地采集出现过间歇传输失败；Azure 原生事件生命周期仍未确认，当前影响取自已校验的服务地域矩阵。
 
@@ -25,9 +25,23 @@ npm ci
 npm run typecheck
 npm run lint
 npm run test:unit
+npm run build
+npm run test:e2e
 ```
 
 浏览器池按需启动，普通 HTTP 采集无需浏览器。采集 CLI 可通过 `STATUSGRID_BROWSER_EXECUTABLE` 选择本机浏览器，未指定时使用 Playwright Chromium。浏览器测试的跨平台配置和目标 Runner 验证仍属于后续验收。
+
+本地启动真实数据界面：
+
+```sh
+npx playwright install chromium
+npm run collect -- --state-dir .statusgrid/state --output-dir public --report .statusgrid/run.json
+npm run dev
+```
+
+采集命令运行一轮。页面每 60 秒检查已发布数据，手动刷新不会触发源站采集；超过两 / 三个采集周期分别提示延迟 / 过期。没有数据时显示空态，过期卡片和组件显示中性历史状态。事件时间分别标注官方来源和本站观测依据。
+
+独立演示预览使用 `npm run preview:fixture`，所有演示数据带 fixture 标识且生成在被忽略目录中。只读查看其他本地发布目录可用 `STATUSGRID_DATA_DIR=<目录> npm run dev`，不会修改其中的快照时间。
 
 ## 数据源探测
 
