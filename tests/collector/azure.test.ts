@@ -73,4 +73,16 @@ describe('Azure', () => {
     expect(result.evidence.historyError).toBe('timeout');
     expect(result.reportedStatus).toBe('operational');
   });
+  it('keeps parser invalid_payload when a successful RSS fetch has malformed XML', async () => {
+    const result = await azureAdapter.collect(config, {
+      now, signal: new AbortController().signal,
+      http: {
+        getText: async (url) => url === config.adapter.endpoints.page ? page : '<rss>',
+        getJson: async () => { throw new Error('unexpected'); },
+        getResponse: async () => { throw new Error('unexpected'); },
+      }, browser: { collect: async () => [], close: async () => {} },
+    });
+    expect(result.reportedStatus).toBe('operational');
+    expect(result.evidence.historyError).toBe('invalid_payload');
+  });
 });

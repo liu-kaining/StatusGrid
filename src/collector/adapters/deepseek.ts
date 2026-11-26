@@ -61,7 +61,9 @@ function initialData(html: string): {
 }
 
 function parseChange(config: ProviderConfig, raw: unknown, now: string, pageId: string,
-  componentIds: ReadonlySet<string>, active: boolean): { entry: SourceIncident; impact: ServiceStatus } {
+  componentIds: ReadonlySet<string>, active: boolean): {
+    entry: SourceIncident; impact: ServiceStatus; componentStatuses: Map<string, ServiceStatus>; isCurrent: boolean;
+  } {
   const change = record(raw, 'DeepSeek change');
   const id = sourceId(change.change_id, 'DeepSeek change_id');
   if (sourceId(change.page_id, 'DeepSeek change page_id') !== pageId) {
@@ -74,6 +76,9 @@ function parseChange(config: ProviderConfig, raw: unknown, now: string, pageId: 
   if (active && ['resolved', 'completed'].includes(state)) {
     throw new AdapterError('coverage_incomplete', 'DeepSeek resolved change in active snapshot');
   }
+  if (active && kind === 'maintenance' && state !== 'scheduled' && state !== 'in_progress') {
+    throw new AdapterError('coverage_incomplete', 'DeepSeek active maintenance lifecycle is unknown');
+  }
   const startedAt = epoch(Number(change.start_at_seconds) * 1000, 'DeepSeek start_at_seconds');
   const resolvedAt = change.close_at_seconds == null ? null
     : epoch(Number(change.close_at_seconds) * 1000, 'DeepSeek close_at_seconds');
@@ -85,14 +90,18 @@ function parseChange(config: ProviderConfig, raw: unknown, now: string, pageId: 
     throw new AdapterError('invalid_payload', 'DeepSeek resolved change lacks end time');
   }
   let currentImpact: ServiceStatus = 'operational';
+  const componentStatuses = new Map<string, ServiceStatus>();
   const affectedIds = rows(change.affected_components, 'DeepSeek affected_components').map((rawComponent) => {
     const component = record(rawComponent, 'DeepSeek affected component');
     const componentId = text(component.component_id, 'DeepSeek affected component_id');
     if (!componentIds.has(componentId)) {
       throw new AdapterError('coverage_incomplete', `DeepSeek component ${componentId} not in current directory`);
     }
-    currentImpact = worse(currentImpact, status(component.status));
-    return `${config.id}:${componentId}`;
+    const impact = status(component.status);
+    const id = `${config.id}:${componentId}`;
+    currentImpact = worse(currentImpact, impact);
+    componentStatuses.set(id, impact);
+    return id;
   });
   if (!affectedIds.length || new Set(affectedIds).size !== affectedIds.length) {
     throw new AdapterError('coverage_incomplete', 'DeepSeek affected components missing or duplicated');
@@ -121,7 +130,9 @@ function parseChange(config: ProviderConfig, raw: unknown, now: string, pageId: 
     throw new AdapterError('coverage_incomplete', 'DeepSeek change impact or updates incomplete');
   }
   const impact = active ? currentImpact : worse(currentImpact, historicalImpact);
-  const effective = active && kind === 'maintenance' ? 'maintenance' : impact;
+  const isCurrent = active && (kind !== 'maintenance'
+    || (state === 'in_progress' && Date.parse(startedAt) <= Date.parse(now)));
+  const effective = isCurrent && kind === 'maintenance' ? 'maintenance' : impact;
   return {
     entry: incident(config, now, id, text(change.title, 'DeepSeek title'), startedAt, updates.at(-1)!.timestamp, {
       kind, state, affectedComponentIds: affectedIds, resolvedAt,
@@ -129,7 +140,7 @@ function parseChange(config: ProviderConfig, raw: unknown, now: string, pageId: 
       sourceSeverity: impact, severityBasis: impact === 'operational' ? 'unknown' : 'component',
       sourceUrl: new URL(`incidents/${id}`, config.officialStatusUrl).href, updates,
     }),
-    impact: effective,
+    impact: effective, componentStatuses, isCurrent,
   };
 }
 
@@ -159,11 +170,13 @@ export function parseDeepSeek(config: ProviderConfig, html: string, feed: string
   const knownIds = new Set(components.map((component) => component.upstreamId!));
   const activeChanges = active.map((change) => parseChange(config, change, now, pageId, knownIds, true));
   let reportedStatus: ServiceStatus = 'operational';
-  for (const { entry, impact } of activeChanges) {
+  for (const { entry, impact, componentStatuses, isCurrent } of activeChanges) {
+    if (!isCurrent) continue;
     reportedStatus = worse(reportedStatus, impact);
     for (const id of entry.affectedComponentIds) {
       const component = components.find((candidate) => candidate.id === id)!;
-      component.reportedStatus = worse(component.reportedStatus!, impact);
+      const ownStatus = entry.kind === 'maintenance' ? 'maintenance' : componentStatuses.get(id)!;
+      component.reportedStatus = worse(component.reportedStatus!, ownStatus);
     }
   }
   if (new Set(activeChanges.map(({ entry }) => entry.sourceIdentity)).size !== activeChanges.length) {
@@ -205,7 +218,8 @@ export function parseDeepSeek(config: ProviderConfig, html: string, feed: string
       'Native calendar covers a finite supplied month; Atom feed does not establish incident start times'),
       nativeHistoryEarliestAt: earliest },
     { components, incidents, sourceUpdatedAt: updatedAt });
-  output.evidence.currentIncidentIds = activeChanges.map(({ entry }) => entry.sourceIdentity);
+  output.evidence.currentIncidentIds = activeChanges.filter(({ isCurrent }) => isCurrent)
+    .map(({ entry }) => entry.sourceIdentity);
   output.evidence.historyError = historyError;
   output.evidence.warnings.push(`Atom feed supplied ${feedEntries} entries; history from source-native calendar only`);
   return output;

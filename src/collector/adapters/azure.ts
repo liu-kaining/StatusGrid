@@ -106,7 +106,7 @@ export const azureAdapter: Adapter = {
       }
     }
     const output = parseAzure(config, feed, html, context.now);
-    output.evidence.historyError = historyError;
+    output.evidence.historyError ??= historyError;
     return output;
   },
 };

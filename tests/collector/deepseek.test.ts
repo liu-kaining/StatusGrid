@@ -14,6 +14,8 @@ const now = '2026-11-25T16:20:00Z';
 const page = readFileSync('tests/fixtures/deepseek/page.txt', 'utf8');
 const withHistory = (snapshot: string, payload: unknown) => snapshot.replace('</script>',
   `self.__next_f.push([1,${JSON.stringify(`3c:${JSON.stringify(['$', '$L41', null, { pageId: 6410630422455, initialCalendarData: payload }])}\n`)}])</script>`);
+const withActive = (snapshot: string, changes: unknown[]) => snapshot.replace('active_changes\\":[]',
+  `active_changes\\":${JSON.stringify(changes).replaceAll('"', '\\"')}`);
 
 describe('DeepSeek current snapshot', () => {
   it('reads the reviewed SSR component snapshot and active changes as inert data', () => {
@@ -61,6 +63,48 @@ describe('DeepSeek current snapshot', () => {
     expect(result.evidence.currentIncidentIds).toEqual(['deepseek:12345']);
     expect(result.components[0]?.reportedStatus).toBe('partial_outage');
     expect(result.incidents[0]?.state).toBe('identified');
+  });
+  it('keeps future scheduled maintenance as an incident without current provider or component impact', () => {
+    const scheduled = { ...history.changes[0]!, change_id: 12346, type: 'maintenance',
+      status: 'scheduled', start_at_seconds: 1795655400, close_at_seconds: undefined,
+      updates: [{ ...history.changes[0]!.updates[0], status: 'scheduled', component_changes: [] }] };
+    const result = parseDeepSeek(config, withActive(page, [scheduled]), null, now);
+    expect(result.reportedStatus).toBe('operational');
+    expect(result.components[0]?.reportedStatus).toBe('operational');
+    expect(result.evidence.currentIncidentIds).toEqual([]);
+    expect(result.incidents[0]).toMatchObject({ kind: 'maintenance', state: 'scheduled', severity: null });
+  });
+  it('reports only in-progress maintenance after its start as current maintenance', () => {
+    const underway = { ...history.changes[0]!, change_id: 12347, type: 'maintenance',
+      status: 'in_progress', close_at_seconds: undefined,
+      updates: [{ ...history.changes[0]!.updates[0], status: 'in_progress', component_changes: [] }] };
+    const result = parseDeepSeek(config, withActive(page, [underway]), null, now);
+    expect(result.reportedStatus).toBe('maintenance');
+    expect(result.components[0]?.reportedStatus).toBe('maintenance');
+    expect(result.evidence.currentIncidentIds).toEqual(['deepseek:12347']);
+  });
+  it('keeps each affected component source status distinct across active incidents', () => {
+    const twoComponents = page.replace('component_id\\":\\"api\\",\\"name\\":\\"API\\"',
+      'component_id\\":\\"api\\",\\"name\\":\\"API\\"},{\\"component_id\\":\\"web\\",\\"name\\":\\"Web\\"');
+    const degraded = { ...history.changes[0]!, change_id: 12348, status: 'identified', close_at_seconds: undefined,
+      affected_components: [
+        { component_id: 'api', name: 'API', status: 'degraded' },
+        { component_id: 'web', name: 'Web', status: 'operational' },
+      ], updates: [history.changes[0]!.updates[0]] };
+    const oneIncident = parseDeepSeek(config, withActive(twoComponents, [degraded]), null, now);
+    expect(oneIncident.reportedStatus).toBe('degraded');
+    expect(oneIncident.components.map(({ id, reportedStatus }) => [id, reportedStatus]))
+      .toEqual([['deepseek:api', 'degraded'], ['deepseek:web', 'operational']]);
+    const webOutage = { ...degraded, change_id: 12349,
+      affected_components: [{ component_id: 'web', name: 'Web', status: 'partial_outage' }],
+      updates: [{ ...history.changes[0]!.updates[0], component_changes: [
+        { component_id: 'web', component_name: 'Web', status: 'partial_outage' },
+      ] }] };
+    const result = parseDeepSeek(config, withActive(twoComponents, [degraded, webOutage]), null, now);
+    expect(result.reportedStatus).toBe('partial_outage');
+    expect(result.components.map(({ id, reportedStatus }) => [id, reportedStatus]))
+      .toEqual([['deepseek:api', 'degraded'], ['deepseek:web', 'partial_outage']]);
+    expect(result.incidents.find(({ upstreamId }) => upstreamId === '12348')?.severity).toBe('degraded');
   });
   it('rejects conflicting matching current snapshots and wrong page identity', () => {
     const conflicting = page.replace('</script>', `self.__next_f.push([1,${JSON.stringify(`4a:${JSON.stringify(['$', '$L41', null, { pageId: 6410630422455, initialData: { page: { page_id: 6410630422455, custom_domain: 'status.deepseek.com', name: 'DeepSeek', components: [{ component_id: 'api', name: 'API 2' }] }, active_changes: [] } }])}\n`)}])</script>`);

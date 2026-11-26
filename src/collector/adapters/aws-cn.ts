@@ -1,4 +1,4 @@
-import type { Adapter, AdapterResult, ProviderConfig } from '../../shared/contracts.js';
+import type { Adapter, AdapterResult, ProviderConfig, SourceIncident } from '../../shared/contracts.js';
 import { AdapterError, TransportError } from '../errors.js';
 import { coverage, epoch, incident, record, rows, text, worse } from './common.js';
 import type { ServiceStatus } from '../../shared/contracts.js';
@@ -20,12 +20,7 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
     const event = record(raw, 'AWS China current event');
     return JSON.stringify([event.service, event.region, event.startTime, event.typeCode]);
   }));
-  const sourceHistory = (historyPayload == null ? [] : rows(historyPayload, 'AWS China history events'))
-    .filter((raw) => {
-      const event = record(raw, 'AWS China historical event');
-      return !currentKeys.has(JSON.stringify([event.service, event.region, event.startTime, event.typeCode]));
-    });
-  const parsed = [...events, ...sourceHistory].map((raw, index) => {
+  const parseEvent = (raw: unknown, index: number): SourceIncident => {
     const event = record(raw, 'AWS China event');
     const service = text(event.service, 'AWS China service');
     const region = text(event.region, 'AWS China region');
@@ -97,16 +92,29 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
       updates: updates.map(({ id: updateId, phase, body, timestamp: time }) =>
         ({ id: updateId, phase, body, timestamp: time })),
     });
-  });
+  };
+  const parsed = events.map(parseEvent);
+  let historical: SourceIncident[] = [];
+  let historyError: AdapterResult['evidence']['historyError'] = null;
+  try {
+    const sourceHistory = (historyPayload == null ? [] : rows(historyPayload, 'AWS China history events'))
+      .filter((raw) => {
+        const event = record(raw, 'AWS China historical event');
+        return !currentKeys.has(JSON.stringify([event.service, event.region, event.startTime, event.typeCode]));
+      });
+    historical = sourceHistory.map((raw, index) => parseEvent(raw, events.length + index));
+  } catch (error) {
+    historyError = error instanceof AdapterError ? error.reason : 'invalid_payload';
+  }
   return {
     providerId: config.id, reportedStatus: serviceRows ? reportedStatus : null, components: [],
-    incidents: [...new Map(parsed.reverse().map((entry) => [entry.sourceIdentity, entry])).values()],
+    incidents: [...new Map([...historical, ...parsed].map((entry) => [entry.sourceIdentity, entry])).values()],
     coverage: {
-      ...coverage(config, 'events_only', historyPayload == null ? 'none' : 'native',
+      ...coverage(config, 'events_only', historyPayload == null || historyError ? 'none' : 'native',
         'AWS China public events; service catalog verifies China-region scope, finite history not exhaustive'),
       currentState: serviceRows ? 'complete' : 'partial',
-      nativeHistoryEarliestAt: sourceHistory.length
-        ? parsed.reduce<string | null>((min, entry) => min === null || entry.startedAt < min ? entry.startedAt : min, null) : null,
+      nativeHistoryEarliestAt: historical.reduce<string | null>((min, entry) =>
+        min === null || entry.startedAt < min ? entry.startedAt : min, null),
     },
     sourceUpdatedAt: null,
     evidence: {
@@ -114,7 +122,7 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
         { name: 'currentevents_shape', passed: true, checkedAt: now },
         ...(serviceRows ? [{ name: 'services_region_catalog', passed: true, checkedAt: now }] : []),
       ],
-      historyCompleteThrough: null, currentIncidentIds: currentIds, warnings: [
+      historyCompleteThrough: null, historyError, currentIncidentIds: currentIds, warnings: [
         'Only cn-north-1/MULTIPLE_SERVICES event form sampled; unrecognized shapes fail closed',
       ],
     },
@@ -138,7 +146,7 @@ export const awsChinaAdapter: Adapter = {
       }
     }
     const output = parseAwsChina(config, current, context.now, services, history);
-    output.evidence.historyError = historyError;
+    output.evidence.historyError ??= historyError;
     return output;
   },
 };

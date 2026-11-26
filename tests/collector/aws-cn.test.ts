@@ -126,4 +126,23 @@ describe('AWS China current events', () => {
     expect(result.reportedStatus).toBe('operational');
     expect(result.evidence.historyError).toBe('timeout');
   });
+  it('marks malformed optional nonduplicate history separately from verified current and catalog', async () => {
+    const result = await awsChinaAdapter.collect(config, {
+      now, signal: new AbortController().signal,
+      http: {
+        getJson: async (url) => {
+          if (url === config.adapter.endpoints.current) return [];
+          if (url === config.adapter.endpoints.services) return catalog;
+          return [{ ...observed[0], metadata: { EVENT_LOG: 'not JSON' } }];
+        },
+        getText: async () => { throw new Error('unexpected'); },
+        getResponse: async () => { throw new Error('unexpected'); },
+      },
+      browser: { collect: async () => [], close: async () => {} },
+    });
+    expect(result.reportedStatus).toBe('operational');
+    expect(result.coverage.currentState).toBe('complete');
+    expect(result.incidents).toEqual([]);
+    expect(result.evidence.historyError).toBe('invalid_payload');
+  });
 });
