@@ -152,3 +152,24 @@ Statuspage 通用适配器及生产 CLI 已实现；五家有源自真实响应�
 本地 CLI 曾取得 Cloudflare、GitHub、Claude、Moonshot 的完整实时结果。根摘要、组件或当前事件严重度不一致时保守取值并输出 warning；有限历史候选与当前事件通过 `currentIncidentIds` 区分，历史补全失败单列 `historyError`。
 
 OpenAI 的本地 CLI 最终取得了缺少 `incidents` 的正常摘要，因此输出 `missing / coverage_incomplete`，未生成可信当前结果。前两次请求超时同样保留真实失败。该来源的完整 G2 仍未通过，不能计为五家全部接入完成。所有来源 G3 均待目标 Runner 实际观察。
+
+## 10. 专用来源调查补充（2026-11-26）
+
+以下是适配器实现期间的公开来源证据，不能单凭这些样本宣布适配器或 G2 已通过。采样包含前一 UTC 日、同一上海自然日的数据；原始响应保存在被忽略的 `.statusgrid/source-samples/`。
+
+| 来源 | 新确认的事实 | 实现约束 |
+| --- | --- | --- |
+| GCP | 同一官方 `incidents.json`、`products.json` 在本机 Node / curl 失败后，经普通 Chrome 导航取得 HTTP 200 | 可以在传输失败时使用精确端点的浏览器兜底；仍需相同的产品、地域和事件校验 |
+| AWS 中国 | 官方应用声明分区 `aws-cn`；公开服务目录覆盖北京、宁夏；历史接口有非空真实事件 | 空当前列表须结合目录验证；不能再将原方案中的状态枚举视为事实 |
+| 腾讯云 | 公开 GET 业务接口返回地域、产品、当前状态和分组历史；查询要求上海日期的 `EndDate` | HTTP 200 仍须检查业务错误、配置地域与产品覆盖；关闭的异常横幅不代表当前故障 |
+| 阿里云 | 直接请求地域目录曾返回业务“不在白名单”；普通浏览器加载取得成功目录及当前、历史、进行中事件 | 通道差异须如实保留；不得绕过限制，也不得仅凭空稀疏映射判绿 |
+| 百度智能云 | 直接业务请求返回 DEVICE sign error；普通浏览器及真实地域切换取得当前数据 | 使用页面自己的公开请求，按请求地域等待精确响应；不得复制页面 token 或账号式请求头 |
+| OpenAI | 官方 incident.io 页面包含显式当前事件和组件目录；本次样本 37 项，旧兼容摘要 25 项 | 专用结构化解析就绪后替换不完整的兼容来源；数量仅为样本，不能成为断言 |
+
+AWS 中国的官方目录为 `https://servicedata-cn-north-1-prod.s3.cn-north-1.amazonaws.com.cn/services.json`，历史为 `https://history-events-cn-north-1-prod.s3.cn-north-1.amazonaws.com.cn/historyevents.json`。官方应用枚举为 `0=resolved`、`1=impacted/info`、`2=degraded`、`3=disrupted`，与早期采集提案不同。历史顶层状态可能保留旧值，应结合最新明确日志或结束时间判定，不能靠标题中的“RESOLVED”恢复事件。
+
+OpenAI 的当前页面使用 Next Flight。解析只解码 JSON 字面量，不执行 `self.__next_f`、`eval` 或捕获脚本；必须识别与官方页面身份匹配的完整摘要，检查组件、稀疏受影响组件、进行中事件和维护数组。多个冲突摘要或未知枚举均失败。有限旧历史接口可作回填，不能替代当前覆盖。该来源替换是为了修复已观察到的完整性差异，新增解析维护成本与失败受阻风险需继续保留。
+
+Azure 的空 RSS 仍不是正常证据。官方页面的当前影响区和服务地域矩阵都需要结构及状态校验；仅找到一个正常单元格不足以覆盖其余单元格。RSS 发布时间不自动等于故障开始或结束时间。
+
+对应证据目录包括 `gcp-browser/`、`2026-11-26T02-50-07-088Z/aws-services/`、`2026-11-26T02-50-07-092Z/aws-history/`、`2026-11-25T16-18-28-330Z/tencent-current/`、`2026-11-25T16-36-46-239Z/aliyun-browser/`、`baidu-region-interaction/` 和 `openai-browser/`。完整本地采集结果与 G0～G2 判定在对应任务验收后补充；G3 继续等待目标 Runner。
