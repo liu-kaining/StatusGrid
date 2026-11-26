@@ -1,0 +1,23 @@
+README.md
+  s_79c9ef7a230eaf::t_1c439c5b3bfe59 9,11-13
+docs/superpowers/plans/2026-11-25-statusgrid-implementation.md
+  s_79c9ef7a230eaf::t_1c439c5b3bfe59 226-227,242-250
+docs/superpowers/specs/2026-11-25-statusgrid-source-validation.md
+  s_79c9ef7a230eaf::t_1c439c5b3bfe59 192-212
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "fed17bd00477de436bcdc6c0e7c1d94825e5290a",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
