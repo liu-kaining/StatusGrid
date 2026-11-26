@@ -1,0 +1,30 @@
+docs/acceptance-report.md
+  s_79c9ef7a230eaf::t_67167be6c47648 3,7,33-54,59,141,151
+  s_79c9ef7a230eaf::t_be2a4c4d0917c2 55-58
+tests/collector/publish.test.ts
+  s_79c9ef7a230eaf::t_c11d4ba535b337 19-21,53-97
+tests/collector/run.test.ts
+  s_79c9ef7a230eaf::t_83d871a794989f 17-18,47-59
+tests/collector/apple.test.ts
+  s_79c9ef7a230eaf::t_83d871a794989f 10-16
+docs/superpowers/specs/2026-11-25-statusgrid-data-contracts.md
+  s_79c9ef7a230eaf::t_c11d4ba535b337 33-36
+docs/runbook.md
+  s_79c9ef7a230eaf::t_67167be6c47648 78-85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "210464e2d17c04a1c0be1df2b953eaeb9513edc6",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
