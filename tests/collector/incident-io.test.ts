@@ -114,3 +114,28 @@ it('rejects a future-dated component impact from establishing current severity',
   await expect(createAdapter(config).collect(config, context(page(payload))))
     .rejects.toMatchObject({ reason: 'coverage_incomplete' });
 });
+it.each([
+  ['2026-11-25T16:30:00Z', '2026-11-25T16:30:00.000Z'],
+  ['$undefined', null],
+])('retains completed maintenance with source end %s without current impact', async (endAt, resolvedAt) => {
+  const maintenance = { ...structuredClone(summary.ongoing_incidents[0]!), id: 'constructed-completed-maintenance',
+    type: 'maintenance', status: 'maintenance_complete',
+    affected_components: [{ component_id: '01JVCV8YSWZFRSM1G5CVP253SK', current_status: 'operational', status: 'under_maintenance' }],
+    component_impacts: [{ component_id: '01JVCV8YSWZFRSM1G5CVP253SK',
+      start_at: '2026-11-25T16:00:00Z', end_at: endAt, status: 'under_maintenance' }],
+    status_summaries: [{ start_at: '2026-11-25T16:00:00Z', end_at: endAt, worst_component_status: 'under_maintenance' }],
+    updates: [{ id: 'complete-update', published_at: '2026-11-25T16:31:00Z',
+      to_status: 'maintenance_complete', message_string: 'Maintenance complete' }],
+  };
+  const output = await createAdapter(config).collect(config, context(page({
+    ...summary, affected_components: [], ongoing_incidents: [], scheduled_maintenances: [maintenance],
+  })));
+  expect(output.reportedStatus).toBe('operational');
+  expect(output.evidence.currentIncidentIds).toEqual([]);
+  expect(output.components[2]!.reportedStatus).toBe('operational');
+  expect(output.incidents[0]).toMatchObject({
+    kind: 'maintenance', state: 'completed', resolvedAt,
+    resolvedTimeBasis: resolvedAt ? 'source' : null, severity: null,
+    updates: [{ phase: 'completed', timestamp: '2026-11-25T16:31:00.000Z' }],
+  });
+});

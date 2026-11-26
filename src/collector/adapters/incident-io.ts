@@ -122,7 +122,7 @@ export function parseIncidentIo(config: ProviderConfig, html: string, now: strin
     requireCoverage(entry.type === expectedKind && entry.status_page_id === pageId, 'incident.io entry type/page identity mismatch');
     const state = lifecycle(entry.status);
     requireCoverage(expectedKind === 'incident' ? ['investigating', 'identified', 'monitoring'].includes(state)
-      : ['scheduled', 'in_progress'].includes(state), 'incident.io closed/unknown lifecycle in current list');
+      : ['scheduled', 'in_progress', 'completed'].includes(state), 'incident.io closed/unknown lifecycle in current list');
     const publishedAt = timestamp(entry.published_at, 'incident.io published_at');
     const affectedIds = rows(entry.affected_components, 'incident.io incident affected_components').map((rawAffected) => {
       const affected = record(rawAffected, 'incident.io incident affected component');
@@ -166,11 +166,22 @@ export function parseIncidentIo(config: ProviderConfig, html: string, now: strin
     let startedAt = impacts.reduce<string | null>((min, impact) => min === null || impact.start < min ? impact.start : min, null) ?? publishedAt;
     let startTimeBasis: SourceIncident['startTimeBasis'] = impacts.length ? 'source_started_at' : 'source_published_at';
     let current = expectedKind === 'incident';
+    let resolvedAt: string | null = null;
     if (expectedKind === 'maintenance') {
       requireCoverage(impacts.length, 'incident.io maintenance has no source component impact schedule');
       startedAt = impacts.reduce((min, impact) => impact.start < min ? impact.start : min, impacts[0]!.start);
       startTimeBasis = 'source_started_at';
       current = state === 'in_progress' && Date.parse(startedAt) <= Date.parse(now);
+      if (state === 'completed') {
+        requireCoverage(impacts.every(({ start, end }) => Date.parse(start) <= Date.parse(now)
+          && (end === null || Date.parse(end) <= Date.parse(now))),
+        'incident.io completed maintenance has a future source impact interval');
+        if (impacts.every(({ end }) => end !== null)) {
+          resolvedAt = impacts.reduce((max, { end }) => end! > max ? end! : max, impacts[0]!.end!);
+          requireCoverage(resolvedAt <= updates.at(-1)!.timestamp,
+            'incident.io completed maintenance ends after its latest published update');
+        }
+      }
       const activeImpacts = impacts.filter(({ start, end }) => Date.parse(start) <= Date.parse(now)
         && (end === null || Date.parse(end) > Date.parse(now)));
       if (current) {
@@ -190,7 +201,7 @@ export function parseIncidentIo(config: ProviderConfig, html: string, now: strin
       }
     }
     const output = incident(config, now, id, text(entry.name, 'incident.io incident name'), startedAt, updates.at(-1)!.timestamp, {
-      kind: expectedKind, state, startTimeBasis,
+      kind: expectedKind, state, startTimeBasis, resolvedAt,
       severity: expectedKind === 'maintenance' ? current ? 'maintenance' : null : impact === 'operational' ? null : impact,
       sourceSeverity: expectedKind === 'maintenance' || impact === 'maintenance' ? 'under_maintenance'
         : impact === 'degraded' ? 'degraded_performance' : impact === 'major_outage' ? 'full_outage' : impact,
