@@ -11,6 +11,15 @@
 
 首次流程成功后，`data` 和 `gh-pages` 由代码在缺失时自动创建，无需手工塞入空 JSON。已存在的非生成或损坏目录会被拒绝，不能按首次启动清空。
 
+## 首次运行报错时
+
+2026-11-27 的首次 hosted 运行确认了两个独立失败，按失败步骤处理：
+
+- **CI 的 probe 测试提示 expected local / received github-actions**：旧测试依赖开发机环境，实际 Runner 正确记录了 `github-actions`。更新到包含环境隔离回归的最新 main，等待新提交触发的 CI；重跑旧提交仍会使用旧断言。本地可用 `GITHUB_ACTIONS=true npm run test:unit -- tests/collector/probe.test.ts` 复现 Runner 环境。测试分别显式覆盖本地和 Actions，并恢复环境变量，不改变生产探针的环境记录。
+- **Frontend release 在 configure-pages 提示 Get Pages site failed / Not Found**：先进入 Settings → Pages，将 Source 设为 GitHub Actions。若之后仍失败，核对管理员权限、组织 Pages 策略和工作流权限。该设置不会自动重跑失败任务。
+
+完成 Pages 设置后，先按下文配置本项目的自定义域名，再到 Actions → Frontend release → Run workflow，选择 main；已有工作流，无需点击 GitHub 建议的模板生成器。只有测试或文档变更时，自动发布会因壳指纹未变而跳过，因此首次恢复请手动运行。成功后再运行 Collect and maintain status，mode=sync、interval=5；看到空态页面只是壳已发布，采集成功后才有真实状态。
+
 ## 首次发布顺序
 
 1. 通过 push 到 main 或 PR 触发 **CI**（`ci.yml`），在 Actions 查看结果；该工作流没有手动 Run 入口。它验证 Node 22／24 的类型、lint、单元、构建、空态产物和浏览器用例，不采集真实上游、不写状态。

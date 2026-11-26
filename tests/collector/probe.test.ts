@@ -3,15 +3,22 @@ import { mkdtemp, readFile, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { afterEach, expect, it } from 'vitest';
+import { afterEach, expect, it, vi } from 'vitest';
 import { createHttpClient } from '../../src/collector/http.js';
 import { probeProvider } from '../../scripts/probe.js';
 import { withHttpServer } from '../helpers/http-server.js';
 
 const servers: Array<{ close: () => Promise<void> }> = [];
-afterEach(async () => Promise.all(servers.splice(0).map((server) => server.close())));
+afterEach(async () => {
+  vi.unstubAllEnvs();
+  await Promise.all(servers.splice(0).map((server) => server.close()));
+});
 
-it('writes actual response bytes and reproducible G0 metadata without claiming semantics', async () => {
+it.each([
+  { githubActions: undefined, environment: 'local' },
+  { githubActions: 'true', environment: 'github-actions' },
+])('writes actual response bytes and G0 metadata for $environment without claiming semantics', async ({ githubActions, environment }) => {
+  vi.stubEnv('GITHUB_ACTIONS', githubActions);
   const local = await withHttpServer((_request, response) => {
     response.writeHead(200, { 'content-type': 'application/json;charset=utf-16' });
     response.end(Buffer.from([0xfe, 0xff, 0x00, 0x5b, 0x00, 0x5d]));
@@ -28,7 +35,7 @@ it('writes actual response bytes and reproducible G0 metadata without claiming s
   expect(bytes).toEqual(Buffer.from([0xfe, 0xff, 0x00, 0x5b, 0x00, 0x5d]));
   expect(metadata).toMatchObject({
     providerId: 'aws-cn',
-    environment: 'local',
+    environment,
     responses: {
       current: {
         statusCode: 200,
