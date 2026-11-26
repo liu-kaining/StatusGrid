@@ -1,0 +1,88 @@
+src/collector/events/reconcile.ts
+  s_79c9ef7a230eaf::t_ea61b3a4b547f9 7-12,139
+  s_79c9ef7a230eaf::t_585eca8c12e75c 1,3,27-32,62-65,78,82,101
+  s_79c9ef7a230eaf::t_c151f89085e21c 2,4-5,13-26,33-61,66-77,79-81,83-100,102-110,138
+  s_79c9ef7a230eaf::t_f872286de95803 131-133
+  s_79c9ef7a230eaf::t_39317dc49f0749 6,111-130,134-137
+src/collector/cli.ts
+  s_79c9ef7a230eaf::t_923117ac9bf2cf 9-10,19,24,33,44-47,58-59,64,68,75,81,91-94,102-103,113
+  s_79c9ef7a230eaf::t_5461ab53b14d88 2,60-63
+src/collector/run.ts
+  s_79c9ef7a230eaf::t_3f7e0d18285e35 7-9,12,14-20,22,60-61,63,75,80,90,99,103,118-126,146
+  s_79c9ef7a230eaf::t_b71ff7cbc66883 83
+  s_79c9ef7a230eaf::t_5461ab53b14d88 21
+  s_79c9ef7a230eaf::t_b841d3df53be3f 6,10-11,13,23
+src/collector/storage/load.ts
+  s_79c9ef7a230eaf::t_5461ab53b14d88 12-25
+  s_79c9ef7a230eaf::t_585eca8c12e75c 50
+  s_79c9ef7a230eaf::t_418cd0343e7244 5
+  s_79c9ef7a230eaf::t_883a8138da2aa0 1-4,6-11,26-49,51-59
+src/collector/events/normalize.ts
+  s_79c9ef7a230eaf::t_172ba228eecfea 7
+  s_79c9ef7a230eaf::t_c151f89085e21c 1-6,8-29,38-41
+  s_79c9ef7a230eaf::t_585eca8c12e75c 30-37
+tests/collector/run.test.ts
+  s_79c9ef7a230eaf::t_e6a7da0ff20718 1-12,14-68,70-86,97-113
+  s_79c9ef7a230eaf::t_178fc776d86a74 13
+  s_79c9ef7a230eaf::t_f3d9938ec2f1af 69,87-96
+src/collector/events/synthetic.ts
+  s_79c9ef7a230eaf::t_585eca8c12e75c 4,41
+  s_79c9ef7a230eaf::t_c151f89085e21c 1-3,5-40,42-71
+tests/collector/rollup.test.ts
+  s_79c9ef7a230eaf::t_b6cbd6d209cd94 1-3,5-6,14-65
+  s_79c9ef7a230eaf::t_178fc776d86a74 4
+  s_79c9ef7a230eaf::t_684d288285935b 7-13
+tests/collector/storage.test.ts
+  s_79c9ef7a230eaf::t_418cd0343e7244 2-7,9-96,150
+  s_79c9ef7a230eaf::t_3b150884b810d0 1,116-137
+  s_79c9ef7a230eaf::t_178fc776d86a74 8
+  s_79c9ef7a230eaf::t_374b458b8512da 97-115,138
+  s_79c9ef7a230eaf::t_1e0ac5a0991f96 139-149
+src/collector/events/milestones.ts
+  s_79c9ef7a230eaf::t_c151f89085e21c 1-29
+src/collector/types.ts
+  s_79c9ef7a230eaf::t_ea61b3a4b547f9 1,5,22-47,49-69
+  s_79c9ef7a230eaf::t_39317dc49f0749 48
+src/collector/storage/archive.ts
+  s_79c9ef7a230eaf::t_883a8138da2aa0 1-48
+src/collector/storage/save.ts
+  s_79c9ef7a230eaf::t_883a8138da2aa0 1-2,4-5,7-8,12-20,25-50
+  s_79c9ef7a230eaf::t_418cd0343e7244 3
+  s_79c9ef7a230eaf::t_5461ab53b14d88 6,9-11,21-24
+src/collector/storage/rollup.ts
+  s_79c9ef7a230eaf::t_82db680924f66a 3-4,72
+  s_79c9ef7a230eaf::t_39317dc49f0749 1-2,5-51,53-54,57-71
+  s_79c9ef7a230eaf::t_4d62a59391492f 52,55-56
+src/collector/storage/directory.ts
+  s_79c9ef7a230eaf::t_883a8138da2aa0 1-24,28-52
+  s_79c9ef7a230eaf::t_a2e145a9341fe0 25-27
+tests/collector/cli.test.ts
+  s_79c9ef7a230eaf::t_3b150884b810d0 36-37
+  s_79c9ef7a230eaf::t_b3a76d94cfba75 1-35,38-68
+src/collector/storage/validate.ts
+  s_79c9ef7a230eaf::t_883a8138da2aa0 1-3,5-156,161-164
+  s_79c9ef7a230eaf::t_585eca8c12e75c 4,157-160
+tests/collector/events.test.ts
+  s_79c9ef7a230eaf::t_178fc776d86a74 2-3
+  s_79c9ef7a230eaf::t_374b458b8512da 75,85-132
+  s_79c9ef7a230eaf::t_896538483d6af8 76-84
+  s_79c9ef7a230eaf::t_776eee9ba40b95 1,4-74,133
+tests/helpers/history.ts
+  s_79c9ef7a230eaf::t_178fc776d86a74 1-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2251bab75890fbd1b199569128cd22e2ff261fe1",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
