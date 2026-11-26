@@ -418,6 +418,128 @@ test('直接打开筛选与厂商深链可以恢复同一排障现场', async ({
 
 **验收**：本地发布演练与临时仓库测试通过；实际触发一次手动采集和一次前端更新；确认锁、外壳复用和部署结果。
 
+## Task 8B：每日悬浮摘要与聚合详情页
+
+新增于 2026-11-26，用户已确认设计并要求继续编码。执行顺序为已完成的
+Task 9 之后、Task 10 之前。本项是完整的一条前端交互链，统一实现和审查，
+避免为日期工具、缓存和页面分别重复准备上下文。
+
+**Spec:** [每日聚合设计](../specs/2026-11-26-statusgrid-day-drilldown.md)。
+
+**Global Constraints**
+
+- 默认采集周期：5 分钟；配置支持 10 分钟。
+- 首屏 `summary.json` Gzip 后不超过 40 KiB。
+- 历史无数据不补绿；采集失败不生成 / 恢复服务故障。
+- 服务状态与采集健康度分别存储；官方时间与观测时间分别标注。
+- 不引入依赖、不修改公共数据契约、不改写真实数据或时间。
+- 页面只读取同一快照的已验证公开数据；保留既有厂商抽屉和筛选行为。
+
+**Files and responsibilities**
+
+- Create `src/web/data/day.ts`：日历日期、窗口与事件归属的纯计算。
+- Update `src/web/data/client.ts`：按快照共用、有界且可取消的每日历史加载。
+- Update `src/web/state/{types,url}.ts`：`view=day`、`date` 及深链安全解析。
+- Update `src/web/components/HealthTrack.tsx`：语义链接、键盘导航及悬浮入口。
+- Create `src/web/components/DayPopover.tsx`：窗口内定位及有限内容展示。
+- Create `src/web/components/DayView.tsx`：完整每日聚合页、统计及事件列表。
+- Update `src/web/{App.tsx,components/ProviderCard.tsx,components/ProviderDetail.tsx,components/Header.tsx}`：
+  接入共享数据与路由、清理过时模态状态、返回与焦点。
+- Update `src/web/styles/{components,layout}.css`：主题一致、响应式交互样式。
+- Test `tests/web/{day,url,queries,health-track}.test.ts`、
+  `tests/e2e/day.spec.ts`；必要时扩展现有明确标记的测试场景。
+- 若悬浮数据状态需要独立 hook，可新增 `src/web/data/use-day-history.ts`，
+  只承接该功能，不迁移无关组件或引入通用状态框架。
+
+**Interfaces**
+
+```typescript
+// src/web/data/day.ts
+import type { Incident } from '../../shared/contracts.js';
+
+export function isCalendarDate(value: string): boolean;
+export function incidentsForDay(
+  incidents: Incident[], providerId: string, date: string, generatedAt: string,
+): Incident[];
+
+// createDataClient 的新增公开方法；原方法和语义保留
+loadDayHistory(snapshotId: string, signal: AbortSignal): Promise<Incident[]>;
+
+// ViewState
+// view: 'grid' | 'incidents' | 'day'
+// date: string  // 合法 YYYY-MM-DD，非日期值为空；不得回退为今天
+```
+
+- [ ] 先加入纯函数和 URL 行为测试，确认日期验证及日归属功能尚未实现。
+  测试至少独立构造以下输入：前日开始且当天未恢复；当天零点恢复；
+  次日零点开始；零时长事件；其他厂商；被替代事件；未知严重度；
+  午夜和月底跨越。期望值直接给出事件 ID，不能使用被测函数生成。
+
+```typescript
+expect(isCalendarDate('2026-02-30')).toBe(false);
+expect(isCalendarDate('2028-02-29')).toBe(true);
+const state = parseViewState('?view=day&provider=cloudflare&date=2026-11-26&q=API');
+expect(state).toMatchObject({
+  view: 'day', provider: 'cloudflare', date: '2026-11-26', query: 'API',
+});
+expect(parseViewState(serializeViewState(state))).toEqual(state);
+```
+
+- [ ] 实现 UTC 日期验证及区间归属。先用既有规则去重／排除被替代事件，
+  恢复端点按半开区间处理，零时长事件单独归入开始日。未恢复区间以
+  `generatedAt` 为观测上限；保留所有事件类型和严重度。
+
+```typescript
+export function isCalendarDate(value: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const time = Date.parse(`${value}T00:00:00.000Z`);
+  return Number.isFinite(time) && new Date(time).toISOString().slice(0, 10) === value;
+}
+```
+
+- [ ] 为 `loadDayHistory` 先写真实版本化文件读取测试：同快照并发共享；
+  一方取消而另一方成功；失败后重试；旧快照请求不能混入新快照；
+  冷分片跨月事件被保留。缓存最多保留两个快照，取消清理采用明确所有权，
+  不让首次悬浮的 AbortSignal 成为所有后续调用者的唯一请求控制器。
+- [ ] 在现有 `loadHistory({range:'30d', snapshotId}, signal)` 及其校验之上
+  实现每日历史入口；快照变化与异常继续由原有错误类型传递。运行：
+  `npm run test:unit -- tests/web/day.test.ts tests/web/url.test.ts tests/web/queries.test.ts`。
+- [ ] 先写浏览器 RED：鼠标悬浮展示准确日期和事件标题，点击后进入对应
+  日聚合页并展示实际事件；返回、刷新及前进后退恢复 URL 和筛选现场。
+  页面与抽屉两处轨迹均覆盖，修饰键仍保留新标签页链接语义。
+
+```typescript
+const cell = page.getByRole('link', { name: /OpenAI.*2026-11-26/ }).first();
+await cell.hover();
+await expect(page.getByRole('tooltip')).toContainText('2026-11-26');
+await cell.click();
+await expect(page).toHaveURL(/view=day/);
+await expect(page).toHaveURL(/date=2026-11-26/);
+await expect(page.getByRole('heading', { level: 1 })).toContainText('OpenAI');
+```
+
+- [ ] 实现 `HealthTrack`、`DayPopover`、`DayView` 和 App 接入。悬浮先显示
+  即时摘要，再懒加载事件；摘要最多三条，其余数量引导进入聚合页。
+  聚合页显示精确日统计、相关事件、影响范围和既有安全时间线。
+  日期窗口以快照 UTC 日为准；错误／窗外日期／未知厂商有明确提示。
+  页面导航与模态条件分开，关闭旧抽屉不会遮住日聚合页。
+- [ ] 用已有样式 token 实现明暗主题。浮层定位避开边缘和裁切，
+  轨迹保留文字状态与覆盖细纹；键盘每条轨迹一个 Tab 入口，
+  左右／Home／End 移动，Enter 导航，Escape 关闭悬浮层。
+- [ ] 补充行为验证：触屏点按、空历史／失败重试、部分覆盖提示、
+  共享缓存、不在加载完成前宣称“无事件”、跨日持续事件和非法日期。
+  复用场景数据必须明确标记 fixture，不改变 `.statusgrid/local`。
+- [ ] 运行相关 web 单元、全量浏览器、类型、lint、构建及差异检查：
+  `npm run test:unit -- tests/web`；
+  `npm run test:e2e`；
+  `npm run typecheck && npm run lint && npm run build && git diff --check`。
+  保存桌面／390px、明暗主题的悬浮与日聚合页截图，验证 5174 真实数据。
+- [ ] 自查、提交功能和必要测试，交由独立任务审查；重要问题修复后，
+  将结论及限制带入 Task 10 文档与整个分支审查。
+
+**验收**：轨迹可读、可操作、可分享；事件与日统计含义准确；
+未知覆盖和快照陈旧不被交互掩盖；首页不提前加载所有详情或膨胀摘要。
+
 ## Task 10：完整验收、运行观察与文档交付
 
 **Files**
