@@ -1,0 +1,23 @@
+docs/acceptance-report.md
+  s_79c9ef7a230eaf::t_122c5b03d5e9ae 7,46-51,167-177,182
+docs/deployment.md
+  s_79c9ef7a230eaf::t_11594bed049255 46-47
+docs/superpowers/plans/2026-11-25-statusgrid-implementation.md
+  s_79c9ef7a230eaf::t_122c5b03d5e9ae 554,572
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "64614a0667fcfb0391f7dca79967f910f86f55b9",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
