@@ -6,9 +6,9 @@
 
 ## 当前阶段
 
-正在执行首批编码任务 1～3：工程契约、13 家注册表、HTTP 传输、隔离浏览器池、可复现探测，以及 Cloudflare、GitHub、Claude、OpenAI、Moonshot 的通用采集。
+任务 1～3 已完成并通过独立审查：工程契约、13 家注册表、HTTP 传输、隔离浏览器池、可复现探测，以及首批 Statuspage 通用采集。任务 4 的 DeepSeek、GCP、Apple 中国、Azure、AWS 中国适配器正在修复独立审查发现的问题。
 
-当前尚无前端页面、持久历史、公共 JSON / Feed、自动调度或部署。其余 8 家保留在注册表中，未实现适配器时明确返回 `not_connected`。
+正在按已批准计划连续完成全部代码。腾讯云、阿里云、百度云与 OpenAI 新来源适配、持久历史、公共 JSON / Feed、前端、自动调度和发布验收仍在后续任务中；当前尚无可用前端，也未部署。未实现适配器明确返回 `not_connected`，未通过语义验收的能力单独记录。
 
 采集失败、未知状态和实时覆盖不足不会变成“正常”。缺少可信历史的首次失败显示无数据；后续失败保留上次可信内容，同时标记数据受阻。
 
@@ -23,7 +23,7 @@ npm run lint
 npm run test:unit
 ```
 
-浏览器池按需启动，普通 HTTP 采集无需浏览器。浏览器测试目前使用本机安装的 macOS Google Chrome；目标 Runner 验证属于后续阶段。
+浏览器池按需启动，普通 HTTP 采集无需浏览器。采集 CLI 可通过 `STATUSGRID_BROWSER_EXECUTABLE` 选择本机浏览器，未指定时使用 Playwright Chromium。浏览器测试的跨平台配置和目标 Runner 验证仍属于后续验收。
 
 ## 数据源探测
 
