@@ -272,6 +272,7 @@ interface Incident {
   startTimeBasis:
     | 'source_started_at'
     | 'source_created_at'
+    | 'source_published_at'
     | 'source_reopened_at'
     | 'first_observed';
   resolvedAt: string | null;
@@ -308,6 +309,8 @@ interface SourceIncident extends Omit<
 `origin=observed` 与 `isSynthetic=true` 必须一致。合成事件的 `sourceUrl` 指向官方状态页，不能伪造具体故障详情 URL。
 
 缺少可靠的官方结束时间时，`resolvedAt` 和 `durationMinutes` 保持 `null`。上游明确表示已恢复但未提供结束时间，可将 `state=resolved`，同时提示“结束时间未提供”，不能自动用抓取时间充当官方时间。
+
+只有公开发布时间的来源使用 `source_published_at`，不将 RSS 发布时间冒充实际故障开始时间。按发布或创建时间定位的事件仍可进入历史库，但缺少可靠故障起止时，不计入官方已报告影响时长。
 
 未来维护窗口 `state=scheduled` 不使当前服务进入维护；只有当前进行中的维护才参与当前状态。建议事件不计入活跃故障总数。
 
