@@ -1,0 +1,25 @@
+tests/collector/azure.test.ts
+  s_79c9ef7a230eaf::t_5a917aed6a9f73 8,14-16,18-51
+src/collector/adapters/azure.ts
+  s_79c9ef7a230eaf::t_6c2a848129737f 75,78-84,92
+docs/superpowers/specs/2026-11-25-statusgrid-data-contracts.md
+  s_79c9ef7a230eaf::t_5a917aed6a9f73 38-43
+docs/acceptance-report.md
+  s_79c9ef7a230eaf::t_f83b8fa5b4aca1 7,40-48,150,161
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "350421a1a976dba743c8cb228a590f283c3b2415",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
