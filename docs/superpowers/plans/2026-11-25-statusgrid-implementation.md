@@ -311,6 +311,8 @@ it('故障期间采集失败不会伪造恢复', () => {
 
 ## Task 7：JSON、搜索索引、Feed 与发布目录
 
+状态：已实现，独立审查后的修复包含 XML 文本类型、空归档索引未知时间、上游历史矛盾时间隔离，以及 AWS 中国未提供地域的目录项保留。2026-11-26 本机全厂商采集→状态→公共导出成功，13 家均 fresh；live 目录校验 100 个文件通过，摘要 4,738 B Gzip。主干全量验证至时间隔离修复为 248 项通过，后续 AWS 定向验证 35 项通过；不将此单轮结果计为 G3。
+
 **Files**
 
 - Create: `src/collector/export/{json,search,feeds,manifest,validate}.ts`。
@@ -327,12 +329,12 @@ it('故障期间采集失败不会伪造恢复', () => {
 
 **Steps**
 
-- [ ] 先写 API 契约校验、摘要体积、跨文件 snapshotId 一致性、缺厂商详情、无效归档索引和 fixture 正式发布拒绝测试。
-- [ ] 写 RSS / Atom 用例：XML 转义、事件触发 / 升级 / 恢复、普通文案更新不新增条目、重试不重复通知。
-- [ ] 写热版本保留、不可变归档 / 索引、按引用清理及旧版本 404 重新定位的发布数据测试。
-- [ ] 运行 `npm run test:unit -- tests/collector/export.test.ts tests/collector/feeds.test.ts tests/collector/release.test.ts` 并观察失败。
-- [ ] 实现所有公共路径、版本化热数据、归档 revision 和全组件搜索索引。
-- [ ] 在临时目录完整生成一次数据，验证 JSON、XML、路径引用、Gzip 后体积和 live 标识。
+- [x] 先写 API 契约校验、摘要体积、跨文件 snapshotId 一致性、缺厂商详情、无效归档索引和 fixture 正式发布拒绝测试。
+- [x] 写 RSS / Atom 用例：XML 转义、事件触发 / 升级 / 恢复、普通文案更新不新增条目、重试不重复通知。
+- [x] 写热版本保留、不可变归档 / 索引、按引用清理及旧版本 404 重新定位的发布数据测试。
+- [x] 运行 `npm run test:unit -- tests/collector/export.test.ts tests/collector/feeds.test.ts tests/collector/release.test.ts` 并观察失败。
+- [x] 实现所有公共路径、版本化热数据、归档 revision 和全组件搜索索引。
+- [x] 在临时目录完整生成一次数据，验证 JSON、XML、路径引用、Gzip 后体积和 live 标识。
 
 **验收**：JSON / Feed 可独立消费；相同事件不刷屏；没有无提示跨版本拼接；摘要不超过 40 KiB Gzip。
 
