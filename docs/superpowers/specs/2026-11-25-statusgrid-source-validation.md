@@ -172,4 +172,6 @@ OpenAI 的当前页面使用 Next Flight。解析只解码 JSON 字面量，不�
 
 Azure 的空 RSS 仍不是正常证据。官方页面的当前影响区和服务地域矩阵都需要结构及状态校验；仅找到一个正常单元格不足以覆盖其余单元格。RSS 发布时间不自动等于故障开始或结束时间。
 
+继续检查已保存的 DeepSeek 首页后发现，实时摘要之外的独立 Flight 记录还包含 `{changes, month}`，带有原生 `start_at_seconds`、`close_at_seconds`、`updates` 和组件变更。不能因为 Atom 缺少开始时间就断定该站没有可靠历史。官方前端源码同时确认：事件 `status` 表示生命周期，`affected_components[].status` 表示当前影响等级；两者必须分开解析。原始页面及 `deepseek-assets/decoded-history.json` 提供回放依据，非空实时场景由明确标注的构造测试覆盖。
+
 对应证据目录包括 `gcp-browser/`、`2026-11-26T02-50-07-088Z/aws-services/`、`2026-11-26T02-50-07-092Z/aws-history/`、`2026-11-25T16-18-28-330Z/tencent-current/`、`2026-11-25T16-36-46-239Z/aliyun-browser/`、`baidu-region-interaction/` 和 `openai-browser/`。完整本地采集结果与 G0～G2 判定在对应任务验收后补充；G3 继续等待目标 Runner。
