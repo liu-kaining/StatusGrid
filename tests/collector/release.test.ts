@@ -270,5 +270,5 @@ describe('release staging and runtime validation', () => {
     expect(await readFile(join(dir, versions[2]!.archiveIndex.months[0]!.path.slice(1)), 'utf8')).toContain('third');
     await expect(readFile(join(dir, versions[1]!.manifest.paths.archiveIndex.slice(1)))).rejects.toMatchObject({ code: 'ENOENT' });
     expect((await validateRelease(dir, { providerIds: ['github'] })).valid).toBe(true);
-  });
+  }, 15_000); // 16 real staged releases exercise retention, not a five-second latency budget.
 });
