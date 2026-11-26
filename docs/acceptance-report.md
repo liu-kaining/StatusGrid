@@ -96,6 +96,8 @@ npm run release:check -- --dir dist --require-live
 
 生产浏览器截图保留在 `.statusgrid/acceptance/screenshots/`：`live-{1440|390}.png`、`live-light-{width}.png`、`live-azure-{width}.png`、`live-hover-{width}.png`、`live-day-{width}.png`、`live-day-light-{width}.png`。独立空壳截图为 `empty-{width}-{cold|warm}.png`，性能采样截图为 `live-{width}-{cold|warm}.png`。自查阅览桌面暗色矩阵／悬浮和手机浅色每日页，内容、覆盖说明和边缘布局正常。
 
+复审补验于 `13:47:43–13:47:44Z` 读取同一未修改真实快照，已自然过期；两视口 **2/2，4.9s**。加强后的断言从独立版本化事件文件取得期望，明确验证 hover 和每日页都展示 1 条实际 Codex 事件及完整标题；空事件渲染的负向注入使两处断言分别失败，去除注入后通过，页面／网络错误仍为零。补验截图在 `screenshots/fix1/`。早期补验复用了部分根目录 PNG 路径，使这些截图更新为自然过期状态；最初 fresh 日志和冷／热性能 JSON 仍保留，不以改写时间或重新采集重建截图。
+
 对同一真实生产 `dist`，Vite preview 的本机回环地址、Chromium 159、1440×1050／390×1050、无 CPU／网络限速，每视口新 context 的一次冷导航与同 context 再导航测得：
 
 | 页面／视口 | 冷 LCP ms | 热 LCP ms | 冷 DOMContentLoaded ms | 冷资源传输字节 |

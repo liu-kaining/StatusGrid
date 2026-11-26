@@ -96,7 +96,7 @@ npm run release:check -- --dir .statusgrid/dry-release --require-live
 
 1. 用 `ps`／`lsof` 确认没有采集器／发布进程正在使用该目标；检查锁和同级候选的确切路径、修改时间、marker。锁没有可依赖的 PID 所有权记录，仅凭“锁很旧”不能删除。
 2. 将锁移动到明确命名的隔离位置，例如 `mv .statusgrid/state.lock .statusgrid/state.lock-quarantine-20261126`，且仅在确认无写入者后执行。保留其内容，不使用递归通配删除。
-3. 从候选或日备份复制到新的恢复根；归档先 `tar -tzf <备份>` 检查条目无绝对路径、`..` 或链接，再 `mkdir .statusgrid/restored-20261126` 并解压到该隔离目录。不在原状态上解压。对来源不明归档先在受限环境检查。
+3. 从候选或日备份复制到新的恢复根；归档先 `LC_ALL=C tar -tvzf <备份>`，逐项检查完整路径、类型和链接目标。普通 `-tzf` 只列名称，不能据此排除链接。只接受预期的普通文件（`-`）和目录（`d`）；符号链接、硬链接及其他特殊类型一律拒绝（详细列表会显示相应类型及 `->`／`link to` 等目标信息），同时拒绝绝对路径、`..` 路径段和异常／无法判读的条目。检查通过后再 `mkdir .statusgrid/restored-20261126`，用 `tar -xzf <备份> -C .statusgrid/restored-20261126` 解压到该隔离目录，不在原状态上解压。对来源不明归档先在受限环境检查；详细列表不代替受限环境和解压后的完整校验。
 4. 把上述 `loadState` 示例中的路径替换为恢复根，执行完整只读校验；再用它运行 `prepareRelease`，对新公共目录执行 `release:check --require-live`。不存在／latest=null 不是成功恢复。
 5. 校验通过后，把受损原目录改名隔离，再把已验证副本移动到目标；保留备份与隔离副本直到复核新一轮采集及 Feed／episode／账本。恢复旧快照可能丢失备份之后的观测，不能承诺 RPO=0。
 

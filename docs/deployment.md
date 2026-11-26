@@ -45,7 +45,7 @@ retry 重新读取最新 data 和已校验 gh-pages 壳，不调用上游、不�
 
 ## CNAME、DNS 与 TLS
 
-仓库当前强校验 `public/CNAME` 为 `grid.thetamind.ai`，构建后带入站点。管理员先在 Pages 配置同一自定义域名并按 GitHub 的域名验证提示完成所有权验证，再在 DNS 管理商为 `grid` 配置指向 `<owner>.github.io` 的 CNAME，目标不要写仓库路径。这个项目按域名根路径构建；未配置自定义域名时，项目站点的 `/repository/` 子路径不能直接当作正式配置。
+仓库当前强校验 `public/CNAME` 为 `grid.thetamind.ai`，构建后带入站点，作为 StatusGrid 发布目录的域名一致性产物。**使用 GitHub Actions 发布时，Pages 自身忽略该 CNAME 文件；它不会配置或更改 Pages 的自定义域名与路由。** 管理员必须在 Pages 设置中配置同一自定义域名，并按 GitHub 的域名验证提示完成所有权验证，再在 DNS 管理商为 `grid` 配置指向 `<owner>.github.io` 的 CNAME，目标不要写仓库路径。这个项目按域名根路径构建；未配置自定义域名时，项目站点的 `/repository/` 子路径不能直接当作正式配置。官方说明见 [发布源配置](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) 与 [自定义域名排障](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)。
 
 等待 DNS 检查与证书签发完成，启用 Enforce HTTPS，核对浏览器证书、HTTPS 重定向和 CNAME 保留。不要提前假定证书已签发或为了演练改真实 DNS。更换域名涉及 CNAME、壳校验、Feed 链接生成及测试，需一并审查，不能只改 DNS。
 
