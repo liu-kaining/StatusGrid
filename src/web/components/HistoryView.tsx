@@ -6,6 +6,7 @@ import { statusLabels } from '../data/queries.js';
 import type { FaultSeverity, HistoryRange, ViewState } from '../state/types.js';
 import { IncidentTimeline } from './IncidentTimeline.js';
 import { StateNotice } from './StateNotice.js';
+import { SelectField } from './SelectField.js';
 
 export function HistoryView({ summary, state, change, refresh }: {
   summary: Summary; state: ViewState; change: (patch: Partial<ViewState>) => void; refresh: () => Promise<void>;
@@ -32,13 +33,17 @@ export function HistoryView({ summary, state, change, refresh }: {
   return <section className="history-view">
     <div className="section-heading"><div><span className="eyebrow">INCIDENT VAULT / 事件档案</span><h2>每一次异常，都有迹可循<span className="heading-period">.</span></h2></div><span className="mono muted">{incidents?.length ?? '—'} EVENTS</span></div>
     <div className="history-filters">
-      <label>时间范围<select aria-label="历史时间范围" value={state.range} onChange={(event) => change({ range: event.target.value as HistoryRange })}>
-        <option value="7d">近 7 天</option><option value="30d">近 30 天</option><option value="90d">近 90 天</option><option value="month">按月归档</option></select></label>
+      <SelectField label="历史时间范围" caption="时间范围" value={state.range} onChange={(value) => change({ range: value as HistoryRange })}
+        options={[{ value: '7d', label: '近 7 天' }, { value: '30d', label: '近 30 天' }, { value: '90d', label: '近 90 天' }, { value: 'month', label: '按月归档' }]} />
       {state.range === 'month' && <label>归档月份<input type="month" aria-label="归档月份" value={state.month || summary.generatedAt.slice(0, 7)} onChange={(event) => change({ month: event.target.value })} /></label>}
-      <label>厂商<select aria-label="历史厂商" value={state.providers.length === 1 ? state.providers[0] : ''} onChange={(event) => change({ providers: event.target.value ? [event.target.value] : [] })}>
-        <option value="">{state.providers.length > 1 ? `已选 ${state.providers.length} 个厂商` : '全部厂商'}</option>{summary.providers.map(({ id, name }) => <option key={id} value={id}>{name}</option>)}</select></label>
-      <label>严重度<select aria-label="严重度" value={state.severity.length === 1 ? state.severity[0] : ''} onChange={(event) => change({ severity: event.target.value ? [event.target.value as FaultSeverity] : [] })}>
-        <option value="">{state.severity.length > 1 ? `已选 ${state.severity.length} 个级别` : '全部级别 / 含维护与建议'}</option>{faultSeverities.map((severity) => <option key={severity} value={severity}>{statusLabels[severity]}</option>)}</select></label>
+      <SelectField label="历史厂商" caption="厂商" value={state.providers.length > 1 ? '__multiple__' : state.providers[0] ?? ''}
+        selectionLabel={state.providers.length > 1 ? `已选 ${state.providers.length} 个厂商` : undefined}
+        onChange={(value) => change({ providers: value ? [value] : [] })}
+        options={[{ value: '', label: '全部厂商' }, ...summary.providers.map(({ id, name }) => ({ value: id, label: name }))]} />
+      <SelectField label="严重度" value={state.severity.length > 1 ? '__multiple__' : state.severity[0] ?? ''}
+        selectionLabel={state.severity.length > 1 ? `已选 ${state.severity.length} 个级别` : undefined}
+        onChange={(value) => change({ severity: value ? [value as FaultSeverity] : [] })}
+        options={[{ value: '', label: '全部级别 / 含维护与建议' }, ...faultSeverities.map((severity) => ({ value: severity, label: statusLabels[severity] }))]} />
     </div>
     <p className="history-caption">官方故障、维护与建议分别标注。观测事件使用估计时间；未完结事件跨月持续可见。</p>
     {error ? <StateNotice title="历史加载失败" tone="error" retry={() => setAttempt((value) => value + 1)}>{error}</StateNotice>

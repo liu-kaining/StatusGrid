@@ -62,10 +62,11 @@ input[type='checkbox'] { accent-color: var(--good); width: 13px; height: 13px; }
 .card-signal b { color: var(--signal); font-size: 11px; font-weight: 400; }
 .card-signal p { color: var(--muted); font-size: 11px; margin-top: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .health-track { height: 22px; display: grid; grid-template-columns: repeat(30, minmax(0, 1fr)); gap: 3px; }
-.track-day { height: 22px; min-width: 0; border-radius: 1px; position: relative; }
-.day-0 { background: var(--good); } .day-1 { background: var(--maintenance); } .day-2 { background: var(--warning); } .day-3, .day-4 { background: var(--bad); }
-.day-9 { background: var(--subtle); border: 1px solid var(--border); }
-.has-unknown { background-image: repeating-linear-gradient(-55deg, transparent, transparent 2px, var(--bg) 2px, var(--bg) 3px); }
+.track-day { height: 22px; min-width: 0; border-radius: 1px; position: relative; overflow: hidden; }
+.day-0 { background: var(--track-good); } .day-1 { background: var(--track-maintenance); }
+.day-2 { background: var(--track-degraded); } .day-3 { background: var(--track-partial); } .day-4 { background: var(--track-major); }
+.day-9 { background: var(--track-unknown); border: 1px solid var(--border); }
+.has-unknown::after { content: ''; position: absolute; inset: auto 0 0; height: 4px; border-top: 1px solid color-mix(in srgb, var(--bg) 35%, transparent); background: repeating-linear-gradient(-50deg, transparent, transparent 2px, color-mix(in srgb, var(--bg) 70%, transparent) 2px, color-mix(in srgb, var(--bg) 70%, transparent) 3px); }
 .track-axis { display: flex; justify-content: space-between; font-size: 7px; letter-spacing: .6px; color: var(--dim); margin-top: 7px; }
 .card-footer { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-top: 16px; border-top: 1px solid var(--border-soft); padding: 12px 0; }
 .card-footer time { color: var(--dim); font-size: 9px; }
@@ -75,7 +76,8 @@ input[type='checkbox'] { accent-color: var(--good); width: 13px; height: 13px; }
 .card-footer button span { margin-left: 6px; color: var(--signal); }
 .track-legend { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; font-size: 8px; color: var(--muted); padding: 5px 0 0; }
 .track-legend > span { display: flex; align-items: center; gap: 6px; } .track-legend > span:last-child { margin-left: auto; }
-.track-legend i { width: 8px; height: 8px; display: inline-block; }
+.track-legend i { width: 8px; height: 8px; display: inline-block; position: relative; overflow: hidden; }
+.track-legend .has-unknown::after { height: 3px; }
 .data-access p { font-size: 13px; margin-top: 4px; } .data-access small { display: block; font: 8px var(--mono); color: var(--dim); margin-top: 5px; }
 .data-links { display: flex; gap: 8px; flex-wrap: wrap; }
 .data-links a { padding: 7px 10px; border: 1px solid var(--border); color: var(--muted); font: 9px var(--mono); }
@@ -114,8 +116,21 @@ th, td { padding: 8px 6px; border-bottom: 1px solid var(--border-soft); text-ali
 th { color: var(--muted); font-weight: 400; }
 .history-view { margin-top: 32px; }
 .history-filters { display: flex; flex-wrap: wrap; gap: 12px; border: 1px solid var(--border); padding: 18px; background: var(--panel); }
-.history-filters label { flex: 1; min-width: 130px; font-size: 10px; color: var(--muted); }
-.history-filters select, .history-filters input { width: 100%; height: 36px; padding: 5px 9px; background: var(--bg); border: 1px solid var(--border); color: var(--text); display: block; font-size: 11px; margin-top: 6px; }
+.history-filters > label, .history-filters > .select-field { flex: 1; min-width: 130px; font-size: 10px; color: var(--muted); }
+.history-filters input { width: 100%; height: 36px; padding: 5px 9px; background: var(--bg); border: 1px solid var(--border); color: var(--text); display: block; font-size: 11px; margin-top: 6px; }
+.select-field { min-width: 0; position: relative; }
+.select-field > label { display: block; font-size: 10px; color: var(--muted); }
+.select-field > button { width: 100%; height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid var(--border); background: var(--bg); padding: 5px 10px; margin-top: 6px; text-align: left; font-size: 11px; }
+.select-field > button > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.select-field > button:hover { background: var(--panel-hover); }
+.select-field > button[aria-expanded='true'] { border-color: var(--focus); background: var(--panel); }
+.select-chevron { color: var(--muted); flex-shrink: 0; font: 14px var(--mono); line-height: 1; }
+.select-field > button[aria-expanded='true'] .select-chevron { transform: rotate(180deg); }
+.select-menu { position: absolute; top: calc(100% + 5px); left: 0; z-index: 10; width: 100%; max-height: min(280px, 40dvh); overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--border); border-radius: 3px; padding: 4px; background: var(--panel); box-shadow: 0 8px 24px var(--shadow); scrollbar-width: thin; scrollbar-color: var(--border) var(--panel); }
+.select-menu [role='option'] { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 34px; padding: 8px; cursor: pointer; border-radius: 2px; color: var(--text); line-height: 1.5; overflow-wrap: anywhere; font-size: 11px; }
+.select-menu [role='option'][aria-selected='true'] { color: var(--focus); }
+.select-menu [role='option'][data-active='true'] { background: var(--panel-hover); box-shadow: inset 2px 0 var(--focus); }
+.select-check { min-width: 12px; color: var(--focus); font-family: var(--mono); }
 .history-caption { font-size: 11px; color: var(--muted); margin: 12px 0 24px; }
 .timeline-day { font: 11px var(--mono); display: flex; gap: 8px; color: var(--muted); margin: 24px 0 12px; }
 .timeline-day small { font-size: 8px; color: var(--dim); }
@@ -147,6 +162,6 @@ th { color: var(--muted); font-weight: 400; }
   .track-legend > span:last-child { margin: 4px 0 0; font: 9px var(--sans); }
   .state-notice { padding: 18px 14px; gap: 10px; } .notice-title { font-size: 13px; }
   .detail-section .incident { padding: 16px 12px; } .detail-section .incident h3 { font-size: 14px; }
-  .history-filters { padding: 12px; gap: 14px 10px; } .history-filters label { flex-basis: calc(50% - 10px); min-width: 110px; }
+  .history-filters { padding: 12px; gap: 14px 10px; } .history-filters > label, .history-filters > .select-field { flex-basis: calc(50% - 10px); min-width: 110px; }
   .history-view > .section-heading { align-items: flex-end; } .history-view > .section-heading > .mono { white-space: nowrap; font-size: 9px; }
 }

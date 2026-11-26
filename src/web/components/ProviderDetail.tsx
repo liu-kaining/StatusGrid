@@ -57,7 +57,7 @@ export function ProviderDetail({ provider, detail, error, close, retry, restoreF
             {detail.provider.status === 'stale' && <StateNotice title="采集受阻 · 服务状态不可验证" tone="warning">{detail.provider.collection.message ?? '当前没有新鲜可信的数据，不代表厂商服务中断。'}</StateNotice>}
             {detail.warnings.length > 0 && <div className="detail-warnings">{detail.warnings.map((warning, index) => <p key={index}>△ {warning}</p>)}</div>}
             <section className="detail-section"><h3>近 30 天 <span>DAILY SIGNAL</span></h3><HealthTrack provider={detail.provider} generatedAt={detail.generatedAt} />
-              <p className="muted small">斜纹包含未观测分钟；未知时段不计为正常。轨迹按快照 UTC 日期对齐。</p>
+              <p className="muted small">底部纹理标记未观测分钟；未知时段不计为正常。轨迹按快照 UTC 日期对齐。</p>
               <details className="daily-history"><summary>每日覆盖与影响分钟</summary><div className="table-scroll"><table><thead><tr><th>日期 UTC</th><th>已观测</th><th>未知</th><th>官方影响</th><th>观测影响</th></tr></thead><tbody>
                 {[...detail.dailyHistory30d].reverse().map((day) => <tr key={day.date}><th>{day.date}</th><td>{Math.round(day.observedCoverageMinutes)}</td><td>{Math.round(day.unknownMinutes)}</td>
                   <td>{day.reportedImpactMinutes === null ? '—' : Math.round(day.reportedImpactMinutes)}</td><td>{day.observedImpactMinutes === null ? '—' : `≈ ${Math.round(day.observedImpactMinutes)}`}</td></tr>)}

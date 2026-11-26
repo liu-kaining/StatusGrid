@@ -7,6 +7,8 @@
   --good: #83d8ae; --good-bg: #153127; --warning: #e6bd79; --warning-bg: #352d20;
   --bad: #f08b80; --bad-bg: #382624; --maintenance: #95b9e3; --maintenance-bg: #243040;
   --unknown: #a5a9ae; --focus: #b3d7e8; --shadow: #0008;
+  --track-good: #83cda6; --track-maintenance: #8daed3; --track-degraded: #d48b80;
+  --track-partial: #df7167; --track-major: #e85c54; --track-unknown: #2a343b;
   --sans: 'IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
 }
@@ -17,6 +19,8 @@
   --good: #21784f; --good-bg: #deeee2; --warning: #906113; --warning-bg: #f5ead5;
   --bad: #b13a2e; --bad-bg: #f7e4dd; --maintenance: #416797; --maintenance-bg: #e4ebf4;
   --unknown: #646961; --focus: #245d77; --shadow: #10201933;
+  --track-good: #4e9872; --track-maintenance: #6c8fb9; --track-degraded: #c8675b;
+  --track-partial: #bd4a40; --track-major: #ae322b; --track-unknown: #dce2de;
 }
 * { box-sizing: border-box; }
 html { min-width: 320px; scroll-behavior: smooth; background: var(--bg); }
