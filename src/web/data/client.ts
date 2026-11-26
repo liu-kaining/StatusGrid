@@ -14,6 +14,9 @@ export function createDataClient(options: { fetcher?: typeof fetch; baseUrl?: st
   const base = options.baseUrl ?? '';
   let latest: Manifest | null = null;
   const manifests = new Map<string, Manifest>();
+  const dayHistory = new Map<string, {
+    controller: AbortController; promise: Promise<Incident[]>; consumers: number; settled: boolean;
+  }>();
   async function read<T>(path: string, schema: z.ZodType<T>, signal: AbortSignal): Promise<T> {
     signal.throwIfAborted();
     const response = await fetcher(`${base}${path}`, { signal, cache: path === '/api/v1/manifest.json' ? 'no-cache' : 'default' });
@@ -118,7 +121,55 @@ export function createDataClient(options: { fetcher?: typeof fetch; baseUrl?: st
       });
     });
   }
-  return { loadSnapshot, loadProvider, loadSearch, loadHistory,
+  function loadDayHistory(snapshotId: string, signal: AbortSignal): Promise<Incident[]> {
+    if (signal.aborted) return Promise.reject(signal.reason);
+    let entry = dayHistory.get(snapshotId);
+    if (!entry) {
+      const controller = new AbortController();
+      const owned = { controller, promise: Promise.resolve([] as Incident[]), consumers: 0, settled: false };
+      owned.promise = loadHistory({ range: '30d', snapshotId }, controller.signal).then((events) => {
+        owned.settled = true;
+        return events;
+      }, (error: unknown) => {
+        owned.settled = true;
+        if (dayHistory.get(snapshotId) === owned) dayHistory.delete(snapshotId);
+        throw error;
+      });
+      dayHistory.set(snapshotId, owned);
+      entry = owned;
+      while (dayHistory.size > 2) {
+        const oldest = dayHistory.keys().next().value!;
+        dayHistory.get(oldest)!.controller.abort();
+        dayHistory.delete(oldest);
+      }
+    } else {
+      dayHistory.delete(snapshotId); dayHistory.set(snapshotId, entry);
+    }
+    const shared = entry;
+    shared.consumers++;
+    return new Promise((resolve, reject) => {
+      let done = false;
+      const finish = (action: () => void) => {
+        if (done) return;
+        done = true;
+        signal.removeEventListener('abort', cancel);
+        shared.consumers--;
+        if (!shared.consumers && !shared.settled) {
+          // Allow a new owner in the same navigation turn to keep the in-flight read.
+          queueMicrotask(() => {
+            if (shared.consumers || shared.settled) return;
+            if (dayHistory.get(snapshotId) === shared) dayHistory.delete(snapshotId);
+            shared.controller.abort();
+          });
+        }
+        action();
+      };
+      const cancel = () => finish(() => reject(signal.reason));
+      signal.addEventListener('abort', cancel, { once: true });
+      shared.promise.then((events) => finish(() => resolve(events)), (reason: unknown) => finish(() => reject(reason)));
+    });
+  }
+  return { loadSnapshot, loadProvider, loadSearch, loadHistory, loadDayHistory,
     getManifest: (snapshotId?: string) => snapshotId ? manifests.get(snapshotId) : latest };
 }
 export const dataClient = createDataClient();

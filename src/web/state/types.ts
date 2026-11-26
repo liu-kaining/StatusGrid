@@ -3,7 +3,8 @@ import type { Category, Incident } from '../../shared/contracts.js';
 export type HistoryRange = '7d' | '30d' | '90d' | 'month';
 export type FaultSeverity = Exclude<Incident['severity'], null | 'maintenance'>;
 export interface ViewState {
-  view: 'grid' | 'incidents';
+  view: 'grid' | 'incidents' | 'day';
+  date: string;
   category: Category | '';
   query: string;
   onlyAbnormal: boolean;

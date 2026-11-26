@@ -68,6 +68,38 @@ input[type='checkbox'] { accent-color: var(--good); width: 13px; height: 13px; }
 .day-9 { background: var(--track-unknown); border: 1px solid var(--border); }
 .has-unknown::after { content: ''; position: absolute; inset: auto 0 0; height: 4px; border-top: 1px solid color-mix(in srgb, var(--bg) 35%, transparent); background: repeating-linear-gradient(-50deg, transparent, transparent 2px, color-mix(in srgb, var(--bg) 70%, transparent) 2px, color-mix(in srgb, var(--bg) 70%, transparent) 3px); }
 .track-axis { display: flex; justify-content: space-between; font-size: 7px; letter-spacing: .6px; color: var(--dim); margin-top: 7px; }
+.track-day:hover, .track-day:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; z-index: 1; }
+.day-popover { position: fixed; z-index: 50; width: 320px; max-width: calc(100vw - 16px); max-height: calc(100dvh - 16px); overflow-y: auto; padding: 16px; border: 1px solid var(--border); background: var(--panel); box-shadow: 0 12px 36px var(--shadow); font-size: 11px; }
+.day-popover-heading { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.day-popover-heading b { font-size: 14px; font-weight: 500; }
+.day-popover-heading span { color: var(--dim); font: 8px var(--mono); padding-top: 4px; }
+.day-popover p { line-height: 1.7; overflow-wrap: anywhere; }
+.day-popover-count { margin-top: 12px; color: var(--muted); }
+.day-popover ul { margin: 6px 0 0; padding-left: 15px; line-height: 1.7; overflow-wrap: anywhere; }
+.day-popover-warning { color: var(--warning); margin-top: 12px; }
+.day-popover-footer { border-top: 1px solid var(--border-soft); padding-top: 10px; margin-top: 12px; color: var(--muted); font-size: 10px; }
+.day-back { display: inline-block; font-size: 12px; color: var(--muted); padding: 8px 0; margin-bottom: 22px; }
+.day-back::before { content: '←'; margin-right: 10px; color: var(--good); }
+.day-title-date { display: block; font: 18px var(--mono); color: var(--muted); margin-top: 10px; letter-spacing: 0; }
+.day-snapshot { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 10px; color: var(--muted); margin: 0 0 20px; }
+.day-view > .fixture-banner { margin-bottom: 18px; }
+.day-summary { display: flex; align-items: center; gap: 14px 20px; flex-wrap: wrap; border-block: 1px solid var(--border); padding: 18px 0; font-size: 11px; color: var(--muted); }
+.day-summary > a { margin-left: auto; }
+.day-status { display: inline-flex; align-items: center; gap: 8px; background: none; color: var(--text); font-size: 14px; border: 0; }
+.day-status::before { content: ''; width: 8px; height: 20px; background: var(--track-unknown); }
+.day-status.day-0::before { background: var(--track-good); } .day-status.day-1::before { background: var(--track-maintenance); }
+.day-status.day-2::before { background: var(--track-degraded); } .day-status.day-3::before { background: var(--track-partial); } .day-status.day-4::before { background: var(--track-major); }
+.day-metrics { margin: 24px 0 14px; border: 1px solid var(--border); background: var(--panel); }
+.day-metrics > div { padding: 18px 20px; border-right: 1px solid var(--border-soft); min-width: 0; }
+.day-metrics > div:last-child { border-right: 0; } .day-metrics dt { font-size: 11px; color: var(--muted); }
+.day-metrics dd { font: 18px var(--mono); margin: 10px 0 0; overflow-wrap: anywhere; }
+.day-events { border-top: 1px solid var(--border); margin-top: 32px; padding-top: 26px; }
+.day-events .section-heading h2 { font-size: 19px; } .day-events .section-heading > span { font-size: 10px; }
+.day-impact { padding: 16px 20px; border-left: 2px solid var(--border); background: var(--panel); overflow-wrap: anywhere; }
+.day-impact h3 { font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+.day-impact p { color: var(--muted); font-size: 11px; margin-top: 5px; }
+.day-impact small { display: block; color: var(--dim); font-size: 10px; margin-top: 10px; }
+.day-archive { display: block; margin-top: 12px; color: var(--text); }
 .card-footer { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-top: 16px; border-top: 1px solid var(--border-soft); padding: 12px 0; }
 .card-footer time { color: var(--dim); font-size: 9px; }
 .card-footer > div { display: flex; align-items: center; gap: 15px; }
@@ -164,4 +196,6 @@ th { color: var(--muted); font-weight: 400; }
   .detail-section .incident { padding: 16px 12px; } .detail-section .incident h3 { font-size: 14px; }
   .history-filters { padding: 12px; gap: 14px 10px; } .history-filters > label, .history-filters > .select-field { flex-basis: calc(50% - 10px); min-width: 110px; }
   .history-view > .section-heading { align-items: flex-end; } .history-view > .section-heading > .mono { white-space: nowrap; font-size: 9px; }
+  .day-metrics > div { padding: 16px 12px; } .day-metrics dd { font-size: 15px; }
+  .day-summary { gap: 12px; }
 }

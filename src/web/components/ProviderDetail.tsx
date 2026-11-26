@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import type { Manifest, ProviderDetail as Detail, ProviderSummary } from '../../shared/contracts.js';
 import { ageLabel, statusLabels, statusSymbols, timeLabel } from '../data/queries.js';
 import { DataAccess } from './DataAccess.js';
-import { HealthTrack } from './HealthTrack.js';
+import { HealthTrack, type DayNavigation } from './HealthTrack.js';
 import { IncidentTimeline } from './IncidentTimeline.js';
 import { StateNotice } from './StateNotice.js';
 
-export function ProviderDetail({ provider, detail, error, close, retry, restoreFocus, manifest, snapshotExpired, now }: {
+export function ProviderDetail({ provider, detail, error, close, retry, restoreFocus, manifest, snapshotExpired, now, ...dayNavigation }: {
   provider?: ProviderSummary; detail: Detail | null; error: string; close: () => void; retry: () => void;
   restoreFocus: () => void; manifest?: Manifest | null; snapshotExpired: boolean; now: number;
-}) {
+} & DayNavigation) {
   const panel = useRef<HTMLDivElement>(null);
   const closeRef = useRef(close); closeRef.current = close;
   const restoreRef = useRef(restoreFocus); restoreRef.current = restoreFocus;
@@ -20,9 +20,9 @@ export function ProviderDetail({ provider, detail, error, close, retry, restoreF
     document.body.style.overflow = 'hidden';
     panel.current?.querySelector<HTMLButtonElement>('button')?.focus();
     const handleKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') { event.preventDefault(); closeRef.current(); }
+      if (event.key === 'Escape' && !event.defaultPrevented) { event.preventDefault(); closeRef.current(); }
       if (event.key !== 'Tab') return;
-      const focusable = [...panel.current?.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], input, select, summary, [tabindex="0"]') ?? []]
+      const focusable = [...panel.current?.querySelectorAll<HTMLElement>('button:not(:disabled), a[href]:not([tabindex="-1"]), input, select, summary, [tabindex="0"]') ?? []]
         .filter((element) => element.getClientRects().length > 0);
       const first = focusable[0]; const last = focusable.at(-1);
       if (event.shiftKey && (document.activeElement === first || document.activeElement === panel.current)) { event.preventDefault(); last?.focus(); }
@@ -56,7 +56,7 @@ export function ProviderDetail({ provider, detail, error, close, retry, restoreF
             {snapshotExpired && <StateNotice title="详情快照已过期 · 当前状态不可验证" tone="warning">数据年龄 {ageLabel(detail.generatedAt, now)}。上次可信状态：{detail.provider.reportedStatus ? statusLabels[detail.provider.reportedStatus] : '未知'}。以下组件与事件仅供历史参考。</StateNotice>}
             {detail.provider.status === 'stale' && <StateNotice title="采集受阻 · 服务状态不可验证" tone="warning">{detail.provider.collection.message ?? '当前没有新鲜可信的数据，不代表厂商服务中断。'}</StateNotice>}
             {detail.warnings.length > 0 && <div className="detail-warnings">{detail.warnings.map((warning, index) => <p key={index}>△ {warning}</p>)}</div>}
-            <section className="detail-section"><h3>近 30 天 <span>DAILY SIGNAL</span></h3><HealthTrack provider={detail.provider} generatedAt={detail.generatedAt} />
+            <section className="detail-section"><h3>近 30 天 <span>DAILY SIGNAL</span></h3><HealthTrack provider={detail.provider} generatedAt={detail.generatedAt} {...dayNavigation} />
               <p className="muted small">底部纹理标记未观测分钟；未知时段不计为正常。轨迹按快照 UTC 日期对齐。</p>
               <details className="daily-history"><summary>每日覆盖与影响分钟</summary><div className="table-scroll"><table><thead><tr><th>日期 UTC</th><th>已观测</th><th>未知</th><th>官方影响</th><th>观测影响</th></tr></thead><tbody>
                 {[...detail.dailyHistory30d].reverse().map((day) => <tr key={day.date}><th>{day.date}</th><td>{Math.round(day.observedCoverageMinutes)}</td><td>{Math.round(day.unknownMinutes)}</td>

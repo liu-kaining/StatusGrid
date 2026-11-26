@@ -15,7 +15,8 @@ it('keeps exact UTC dates and observed/unknown minutes for full, partial-abnorma
   expect(markup).toContain('2026-10-30 UTC · 性能下降 · 已观测 900 分钟 / 未知 540 分钟');
   expect(markup).toContain('2026-11-02 UTC · 数据不足 · 已观测 0 分钟 / 未知 1440 分钟');
   expect(markup).toContain('底部纹理表示存在未观测时间');
-  expect((markup.match(/title=/g) ?? [])).toHaveLength(30);
+  expect((markup.match(/href=/g) ?? [])).toHaveLength(30);
+  expect((markup.match(/tabindex="0"/g) ?? [])).toHaveLength(1);
 });
 
 it('never describes an unknown track as healthy', () => {

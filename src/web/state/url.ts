@@ -1,5 +1,6 @@
 import type { Category } from '../../shared/contracts.js';
 import type { FaultSeverity, ViewState } from './types.js';
+import { isCalendarDate } from '../data/day.js';
 
 const categories = ['ai', 'cloud-cn', 'cloud-global', 'infra'];
 export const faultSeverities: FaultSeverity[] = ['degraded', 'partial_outage', 'major_outage'];
@@ -12,7 +13,8 @@ export function parseViewState(search: string): ViewState {
   const month = params.get('month') ?? '';
   const severities = (params.get('severity') ?? '').split(',');
   return {
-    view: params.get('view') === 'incidents' ? 'incidents' : 'grid',
+    view: params.get('view') === 'day' ? 'day' : params.get('view') === 'incidents' ? 'incidents' : 'grid',
+    date: isCalendarDate(params.get('date') ?? '') ? params.get('date')! : '',
     category: categories.includes(category) ? category as Category : '',
     query: (params.get('q') ?? '').trim().slice(0, 200),
     onlyAbnormal: params.get('only_abnormal') === '1',
@@ -31,6 +33,7 @@ export function serializeViewState(state: ViewState): string {
   if (state.query.trim()) params.set('q', state.query.trim());
   if (state.onlyAbnormal) params.set('only_abnormal', '1');
   if (state.provider) params.set('provider', state.provider);
+  if (isCalendarDate(state.date)) params.set('date', state.date);
   if (state.range !== '30d') params.set('range', state.range);
   if (state.month) params.set('month', state.month);
   if (state.severity.length) params.set('severity', state.severity.join(','));

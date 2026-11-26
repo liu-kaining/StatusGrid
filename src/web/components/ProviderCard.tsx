@@ -1,10 +1,10 @@
 import type { ProviderSummary } from '../../shared/contracts.js';
 import { categoryLabels, statusLabels, statusSymbols, timeLabel } from '../data/queries.js';
-import { HealthTrack } from './HealthTrack.js';
+import { HealthTrack, type DayNavigation } from './HealthTrack.js';
 
-export function ProviderCard({ provider, generatedAt, open, snapshotExpired }: {
+export function ProviderCard({ provider, generatedAt, open, snapshotExpired, ...dayNavigation }: {
   provider: ProviderSummary; generatedAt: string; snapshotExpired: boolean; open: (id: string, trigger: HTMLButtonElement) => void;
-}) {
+} & DayNavigation) {
   const displayStatus = snapshotExpired ? 'stale' : provider.status;
   const label = snapshotExpired ? '快照过期' : statusLabels[provider.status];
   return <article className={`provider-card status-${displayStatus}`} data-testid="provider-card" aria-label={`${provider.name} · ${label}`}>
@@ -16,7 +16,7 @@ export function ProviderCard({ provider, generatedAt, open, snapshotExpired }: {
         : <><b>{provider.componentSummary.abnormal ? `${provider.componentSummary.abnormal} 个异常组件` : provider.status === 'maintenance' ? '维护进行中' : '官方未报告异常'}</b>
           <p>{provider.activeIncidents[0]?.title ?? (provider.componentSummary.abnormalNames.join(' / ') || (provider.coverage.currentState === 'partial' ? '仅代表配置覆盖范围内的公开信号' : `${provider.componentSummary.total} 个组件 · 官方公开状态`))}</p></>}
     </div>
-    <HealthTrack provider={provider} generatedAt={generatedAt} />
+    <HealthTrack provider={provider} generatedAt={generatedAt} {...dayNavigation} />
     <div className="card-footer"><time dateTime={provider.collection.lastSuccessAt ?? undefined} title={timeLabel(provider.collection.lastSuccessAt)}>
       {provider.collection.lastSuccessAt ? `${provider.collection.lastSuccessAt.slice(11, 19)} UTC` : 'NO TRUSTED DATA'}</time>
       <div><a href={provider.officialStatusUrl} target="_blank" rel="noopener noreferrer" aria-label={`${provider.name} 官方状态`}>官方状态 ↗</a>
