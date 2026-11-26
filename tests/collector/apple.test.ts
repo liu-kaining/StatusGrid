@@ -7,6 +7,13 @@ import { parseApple } from '../../src/collector/adapters/apple.js';
 const config = parseRegistry(registry).find(({ id }) => id === 'apple-cn')!;
 const now = '2026-11-25T16:20:00Z';
 describe('Apple system status', () => {
+  it('rejects reversed resolved event intervals in the common source factory', () => {
+    const reversed = { ...sample, services: [{ ...sample.services[1]!, events: [{
+      ...sample.services[1]!.events[0]!, eventStatus: 'resolved', epochEndDate: 1795629500000,
+    }] }] };
+    expect(() => parseApple(config, JSON.stringify(reversed), now))
+      .toThrowError(expect.objectContaining({ reason: 'invalid_payload' }));
+  });
   it('parses JSON and one anchored JSONP wrapper with active events', () => {
     const result = parseApple(config, JSON.stringify(sample), now);
     expect(result.components).toHaveLength(2);

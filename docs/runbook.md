@@ -75,6 +75,14 @@ npx tsx -e 'import {loadState} from "./src/collector/storage/load.ts"; loadState
 
 缺失的生成根允许首次初始化；已存在的空目录、损坏分片、额外文件、软链接、高版本 schema、统计／归档／账本不一致均拒绝覆盖。不要预先 `mkdir .statusgrid/state`。任意源码目录也不能当作生成根。
 
+生成根 marker 的 `derivedRollupRevision` 缺失或1表示旧派生日统计，2表示修正后的算法；
+分片与公共 `schemaVersion` 继续为1.0。读取旧根会先按旧算法完整核验所有分片和统计，
+再仅在内存重算日统计；不会改写根、事件、身份或通知账本，下次正常保存才写2。
+未知 revision 或损坏旧统计仍拒绝，不要删除 marker 或清空状态绕过检查。
+若重算改变了已发布快照的内容，同ID frontend/retry 会因不可变路径碰撞拒绝；
+先让正常 sync 创建新快照再发布，旧版本继续保留。不要删 public 或覆写旧版本。
+未部署项目可照常先建壳、首次采集及发布。
+
 ## 本地完整发布演练
 
 先 `npm run build` 得到独立无数据前端壳，再在新目录组合已有状态。该命令不采集、不访问 Git 远端：

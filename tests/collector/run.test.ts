@@ -14,7 +14,8 @@ import { TransportError } from '../../src/collector/errors.js';
 import { createHttpClient } from '../../src/collector/http.js';
 import type { CollectionContext } from '../../src/collector/types.js';
 import type { ProviderConfig } from '../../src/shared/contracts.js';
-import { time } from '../helpers/history.js';
+import { time, run as fixtureRun, source } from '../helpers/history.js';
+import { validateAdapterResult } from '../../src/collector/storage/validate.js';
 import { buildPublicArtifacts } from '../../src/collector/export/json.js';
 import { writePublicArtifacts } from '../../src/collector/export/manifest.js';
 import { validateRelease } from '../../src/collector/export/validate.js';
@@ -43,6 +44,19 @@ function context(at: string, componentStatus = 'operational', failed = false): C
 }
 
 describe('production collection and persistence boundary', () => {
+  it.each(['provider', 'component', 'duplicate', 'incident', 'current', 'timestamp', 'lifecycle'])(
+    'rejects malformed %s candidate before trust', (kind) => {
+      const candidate = structuredClone(fixtureRun(time(0), 'degraded', [source()]).providers[0]!.result!);
+      if (kind === 'provider') candidate.providerId = 'gcp';
+      if (kind === 'component') candidate.components[0]!.id = 'gcp:api';
+      if (kind === 'duplicate') candidate.components.push(candidate.components[0]!);
+      if (kind === 'incident') candidate.incidents[0]!.sourceIdentity = 'gcp:native';
+      if (kind === 'current') candidate.evidence.currentIncidentIds = ['github:absent'];
+      if (kind === 'timestamp') candidate.sourceUpdatedAt = 'not-a-time';
+      if (kind === 'lifecycle') candidate.incidents[0]!.resolvedAt = '2026-11-25T11:00:00Z';
+      expect(() => validateAdapterResult(candidate, 'github')).toThrowError(expect.objectContaining({ reason: 'invalid_payload' }));
+    },
+  );
   it('rejects invalid closure rereads without advancing the stored legacy observation bound', async () => {
     const root = await mkdtemp(join(tmpdir(), 'statusgrid-closure-evidence-test-'));
     temporary.push(root);

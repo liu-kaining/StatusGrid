@@ -16,6 +16,9 @@ import { backupState } from '../../scripts/backup-state.js';
 import { runWorkflowRelease } from '../../scripts/workflow-release.js';
 import { verifyDeployment } from '../../scripts/verify-deployment.js';
 import { withHttpServer } from '../helpers/http-server.js';
+import { buildPublicArtifacts } from '../../src/collector/export/json.js';
+import { writePublicArtifacts } from '../../src/collector/export/manifest.js';
+import { inventory } from '../../src/collector/storage/directory.js';
 
 const exec = promisify(execFile);
 const roots: string[] = [];
@@ -47,6 +50,51 @@ async function repository() {
 }
 
 describe('validated release assembly', () => {
+  it('preserves affected immutable legacy publications until the next collection creates a new snapshot', async () => {
+    const { directory, shell, state: stateDir, site } = await setup();
+    let state = emptyState();
+    for (const [minute, status] of [[0, 'degraded'], [5, 'maintenance'], [10, 'degraded'], [15, 'operational']] as const) {
+      state = advance(state, run(time(minute), status));
+    }
+    await stageState(state, stateDir);
+    const markerPath = join(stateDir, '.statusgrid-state.json');
+    const marker = JSON.parse(await readFile(markerPath, 'utf8'));
+    delete marker.derivedRollupRevision;
+    await writeFile(markerPath, JSON.stringify(marker));
+    const statsPath = join(stateDir, 'rollup/daily-stats-90d.json');
+    const stats = JSON.parse(await readFile(statsPath, 'utf8'));
+    stats.providers.github.at(-1).observedImpactMinutes = 15;
+    await writeFile(statsPath, JSON.stringify(stats));
+    await prepareRelease(shell, join(directory, 'absent'), site, options);
+    // Literal algorithm-1 fixture: published fault minutes included five minutes of maintenance.
+    const legacy = buildPublicArtifacts(state.latest!, state);
+    legacy.details.github!.dailyHistory30d.at(-1)!.observedImpactMinutes = 15;
+    await writePublicArtifacts(legacy, site);
+    await writeFile(join(site, '.statusgrid-release.json'), JSON.stringify({
+      kind: 'statusgrid-release', schemaVersion: '1.0', mode: 'live', snapshotId: time(15),
+      sourceSha: null, frontendFingerprint: null,
+    }));
+    expect((await validatePreparedRelease(site, options)).valid).toBe(true);
+    const bytes = async () => Object.fromEntries(await Promise.all((await inventory(site))
+      .map(async (path) => [path, await readFile(join(site, path), 'utf8')])));
+    const original = await bytes();
+    const loaded = await loadState(stateDir);
+    expect(loaded.dailyStats.github?.at(-1)?.observedImpactMinutes).toBe(10);
+    await expect(writePublicArtifacts(buildPublicArtifacts(loaded.latest!, loaded), site)).rejects.toThrow(/immutable|collision/i);
+    await expect(prepareRelease(site, stateDir, join(directory, 'same-id'), options)).rejects.toThrow(/immutable|collision/i);
+    expect(await bytes()).toEqual(original);
+    const next = advance(loaded, run(time(20), 'operational'));
+    await stageState(next, stateDir);
+    const destination = join(directory, 'next-snapshot');
+    expect((await prepareRelease(site, stateDir, destination, options)).valid).toBe(true);
+    const oldPath = legacy.manifest.paths.providers.github!.slice(1);
+    expect(await readFile(join(destination, oldPath), 'utf8')).toBe(original[oldPath]);
+    expect(JSON.parse(original[oldPath]!).dailyHistory30d.at(-1).observedImpactMinutes).toBe(15);
+    const current = JSON.parse(await readFile(join(destination, 'api/v1/providers/github.json'), 'utf8'));
+    expect(current.snapshotId).toBe(time(20));
+    expect(current.dailyHistory30d.at(-1).observedImpactMinutes).toBe(10);
+    expect(await bytes()).toEqual(original);
+  });
   it('exports valid missing-source freshness without inventing green status', async () => {
     const { shell, state, site } = await setup();
     expect((await prepareRelease(shell, state, site, options)).valid).toBe(true);
