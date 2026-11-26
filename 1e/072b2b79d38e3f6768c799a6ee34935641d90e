@@ -1,0 +1,31 @@
+src/shared/public-schemas.ts
+  s_79c9ef7a230eaf::t_5514d270f69f71 84
+src/shared/contracts.ts
+  s_79c9ef7a230eaf::t_5514d270f69f71 362-366
+src/collector/export/json.ts
+  s_79c9ef7a230eaf::t_5514d270f69f71 115
+src/collector/export/validate.ts
+  s_79c9ef7a230eaf::t_637b0cb390ef5c 55
+  s_79c9ef7a230eaf::t_5514d270f69f71 157
+tests/collector/release.test.ts
+  s_79c9ef7a230eaf::t_f36b3af3d336b0 25-40
+  s_79c9ef7a230eaf::t_71e4c53952dfa6 41-58
+tests/collector/export.test.ts
+  s_79c9ef7a230eaf::t_f36b3af3d336b0 3,8-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1e072b2b79d38e3f6768c799a6ee34935641d90e",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
