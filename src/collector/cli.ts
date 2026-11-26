@@ -1,11 +1,15 @@
-import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import registryFile from '../../registry/providers.json';
 import { DEFAULT_INTERVAL_MINUTES, COLLECTION_INTERVAL_MINUTES } from '../shared/contracts.js';
 import { parseRegistry } from '../shared/schemas.js';
 import { createHttpClient } from './http.js';
 import { createBrowserPool } from './browser.js';
 import { collectProviders } from './run.js';
+
+const registry = parseRegistry(registryFile);
+const providerIds = new Set(registry.map(({ id }) => id));
 
 export interface CollectArgs {
   providers: string[];
@@ -30,7 +34,7 @@ export function parseCollectArgs(argv: string[]): CollectArgs {
     if (flag === '--providers') {
       options.providers = value.split(',').map((id) => id.trim());
       if (!options.providers.length || new Set(options.providers).size !== options.providers.length
-        || options.providers.some((id) => !['cloudflare', 'github', 'claude', 'openai', 'moonshot'].includes(id))) {
+        || options.providers.some((id) => !providerIds.has(id))) {
         throw new Error(`Unknown provider or duplicate provider in: ${value}`);
       }
     } else if (flag === '--report') {
@@ -50,14 +54,15 @@ export function parseCollectArgs(argv: string[]): CollectArgs {
 
 export async function main(argv: string[]): Promise<void> {
   const options = parseCollectArgs(argv);
-  const raw = JSON.parse(await readFile(resolve('registry/providers.json'), 'utf8')) as unknown;
-  const registry = parseRegistry(raw);
   const configs = options.providers.map((id) => {
     const provider = registry.find((entry) => entry.id === id);
     if (!provider) throw new Error(`Unknown registry provider: ${id}`);
     return provider;
   });
-  const browser = createBrowserPool({ timeoutMs: 60_000 });
+  const browser = createBrowserPool({
+    timeoutMs: 60_000,
+    ...(process.env.STATUSGRID_BROWSER_EXECUTABLE ? { executablePath: process.env.STATUSGRID_BROWSER_EXECUTABLE } : {}),
+  });
   const controller = new AbortController();
   try {
     const run = await collectProviders(configs, new Map(), {

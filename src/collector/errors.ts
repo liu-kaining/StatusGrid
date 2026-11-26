@@ -1,5 +1,12 @@
 import type { FailureReason } from '../shared/contracts.js';
 
+export class AdapterError extends Error {
+  constructor(public readonly reason: FailureReason, message: string, options?: ErrorOptions) {
+    super(message, options);
+    this.name = 'AdapterError';
+  }
+}
+
 export type TransportErrorKind = Extract<FailureReason, 'timeout' | 'http_error' | 'blocked' | 'invalid_payload'> | 'cancelled';
 
 export class TransportError extends Error {

@@ -1,8 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { COLLECTION_INTERVAL_MINUTES } from '../shared/contracts.js';
 import type { CollectionState, FailureReason, ProviderConfig } from '../shared/contracts.js';
-import { TransportError } from './errors.js';
-import { AdapterError } from './adapters/statuspage.js';
+import { AdapterError, TransportError } from './errors.js';
 import { createAdapter } from './adapters/index.js';
 import type { CollectionContext, CollectionRun, ProviderCollection } from './types.js';
 
@@ -48,9 +47,9 @@ async function collectOne(
   let reason: FailureReason | null = null;
   let message: string | null = null;
   try {
-    if (!config.enabled || config.adapter.type !== 'statuspage-v2') {
+    if (!config.enabled) {
       reason = 'not_connected';
-      message = `Adapter ${config.adapter.type} is not connected`;
+      message = `Provider ${config.id} is disabled`;
     } else {
       result = await withinBudget(
         (providerSignal) => createAdapter(config).collect(config, {

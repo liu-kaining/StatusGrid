@@ -3,14 +3,7 @@ import type {
   IncidentState, ProviderConfig, ServiceStatus, SourceIncident,
 } from '../../shared/contracts.js';
 import { STATUS_SEVERITY } from '../../shared/status.js';
-import { TransportError } from '../errors.js';
-
-export class AdapterError extends Error {
-  constructor(public readonly reason: FailureReason, message: string, options?: ErrorOptions) {
-    super(message, options);
-    this.name = 'AdapterError';
-  }
-}
+import { AdapterError, TransportError } from '../errors.js';
 
 type JsonObject = Record<string, unknown>;
 

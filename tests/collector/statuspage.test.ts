@@ -251,11 +251,11 @@ describe('collection boundary', () => {
   });
 
   it('isolates failed provider and rejects unknown adapters without creating results', async () => {
-    const run = await collectProviders([config('github'), config('deepseek')], new Map(), context(github));
+    const run = await collectProviders([config('github'), config('tencent-cloud')], new Map(), context(github));
     expect(run.providers.map(({ collection, result }) => [collection.freshness, result?.providerId ?? null]))
       .toEqual([['fresh', 'github'], ['missing', null]]);
     expect(run.providers[1]?.collection.reason).toBe('not_connected');
-    expect(() => createAdapter(config('deepseek'))).toThrow(/adapter/i);
+    expect(() => createAdapter(config('tencent-cloud'))).toThrow(/adapter/i);
   });
 
   it('only accepts shared five/ten minute collection intervals', async () => {

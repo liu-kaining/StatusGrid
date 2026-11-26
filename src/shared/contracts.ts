@@ -125,6 +125,7 @@ export interface Incident {
   startTimeBasis:
     | 'source_started_at'
     | 'source_created_at'
+    | 'source_published_at'
     | 'source_reopened_at'
     | 'first_observed';
   resolvedAt: string | null;

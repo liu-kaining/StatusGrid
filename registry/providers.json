@@ -163,7 +163,7 @@
       "retries": 2,
       "requiredRegions": [],
       "componentGroups": [],
-      "browserFallback": false
+      "browserFallback": true
     }
   },
   {
@@ -224,7 +224,9 @@
     "adapter": {
       "type": "aws-cn-health",
       "endpoints": {
-        "current": "https://health.amazonaws.cn/public/currentevents"
+        "current": "https://health.amazonaws.cn/public/currentevents",
+        "services": "https://servicedata-cn-north-1-prod.s3.cn-north-1.amazonaws.com.cn/services.json",
+        "events": "https://health.amazonaws.cn/public/events"
       },
       "timeoutMs": 15000,
       "retries": 2,
