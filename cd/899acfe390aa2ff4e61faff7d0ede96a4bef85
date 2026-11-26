@@ -1,0 +1,30 @@
+tests/collector/aws-cn.test.ts
+  s_79c9ef7a230eaf::t_4f5a933b72ed17 129-147
+src/collector/adapters/deepseek.ts
+  s_79c9ef7a230eaf::t_c23ead5587e5dd 64-66,79-81,93,100-104,133-135,143,173-174,178-179,221-222
+src/collector/adapters/aws-cn.ts
+  s_79c9ef7a230eaf::t_af32e310e7f5b6 1,23,95-108,111,113,116-117,125,149
+tests/collector/deepseek.test.ts
+  s_79c9ef7a230eaf::t_b79c8ff70f437a 17-18,67-93,98-108
+  s_79c9ef7a230eaf::t_a5a2ab10b2ffc3 94-97
+tests/collector/azure.test.ts
+  s_79c9ef7a230eaf::t_b79c8ff70f437a 76-87
+src/collector/adapters/azure.ts
+  s_79c9ef7a230eaf::t_c23ead5587e5dd 109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "cd899acfe390aa2ff4e61faff7d0ede96a4bef85",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
