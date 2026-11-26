@@ -84,16 +84,16 @@
     "displayOrder": 4,
     "enabled": true,
     "adapter": {
-      "type": "statuspage-v2",
+      "type": "incident-io",
       "endpoints": {
-        "summary": "https://status.openai.com/api/v2/summary.json",
-        "incidents": "https://status.openai.com/api/v2/incidents.json"
+        "page": "https://status.openai.com/"
       },
+      "sourcePageId": "01JMDK9XYNY6RXSED6SDWW50WY",
       "timeoutMs": 8000,
       "retries": 2,
       "requiredRegions": [],
       "componentGroups": [],
-      "browserFallback": false
+      "browserFallback": true
     }
   },
   {
@@ -252,9 +252,9 @@
       },
       "timeoutMs": 15000,
       "retries": 2,
-      "requiredRegions": [],
+      "requiredRegions": ["ap-shanghai", "ap-beijing"],
       "componentGroups": [],
-      "browserFallback": true
+      "browserFallback": false
     }
   },
   {
@@ -274,7 +274,7 @@
       },
       "timeoutMs": 15000,
       "retries": 2,
-      "requiredRegions": [],
+      "requiredRegions": ["cn-shanghai"],
       "componentGroups": [],
       "browserFallback": true
     }
@@ -296,7 +296,7 @@
       },
       "timeoutMs": 15000,
       "retries": 2,
-      "requiredRegions": [],
+      "requiredRegions": ["华北-北京", "华东-上海"],
       "componentGroups": [],
       "browserFallback": true
     }

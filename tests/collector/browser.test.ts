@@ -6,6 +6,92 @@ import { withHttpServer } from '../helpers/http-server.js';
 const servers: Array<{ close: () => Promise<void> }> = [];
 afterEach(async () => Promise.all(servers.splice(0).map((server) => server.close())));
 
+it('waits for a UI-triggered response with the required public request scope', async () => {
+  const local = await withHttpServer((request, response) => {
+    if (request.url === '/query') {
+      let body = '';
+      request.on('data', (part) => { body += String(part); });
+      request.on('end', () => {
+        response.writeHead(200, { 'content-type': 'application/json' });
+        response.end(JSON.stringify({ region: JSON.parse(body).region }));
+      });
+    } else {
+      response.writeHead(200, { 'content-type': 'text/html' });
+      response.end(`<button onclick='setTimeout(() => fetch("/query", {method:"POST",
+        body:JSON.stringify({region:"Shanghai", privateValue:"never expose"})}), 120)'>Shanghai</button>
+        <script>fetch("/query", {method:"POST",body:JSON.stringify({region:"Beijing"})})</script>`);
+    }
+  });
+  servers.push(local);
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 5000 });
+  try {
+    const responses = await pool.collect('scope', local.url, new AbortController().signal,
+      (url) => url === `${local.url}/query`, {
+        requestScopeFields: ['region'],
+        steps: [{ clickText: 'Shanghai', waitFor: { url: `${local.url}/query`, requestFields: { region: 'Shanghai' } } }],
+      });
+    expect(responses).toMatchObject([
+      { body: '{"region":"Beijing"}', requestScope: { region: 'Beijing' } },
+      { body: '{"region":"Shanghai"}', requestScope: { region: 'Shanghai' } },
+    ]);
+    expect(JSON.stringify(responses)).not.toContain('privateValue');
+  } finally { await pool.close(); }
+}, 10000);
+
+it('times out when a UI response arrives for a different required region', async () => {
+  const local = await withHttpServer((request, response) => {
+    if (request.url === '/query') {
+      response.writeHead(200, { 'content-type': 'application/json' });
+      response.end('{}');
+    } else {
+      response.end('<button onclick=\'fetch("/query",{method:"POST",body:JSON.stringify({region:"wrong"})})\'>Shanghai</button>');
+    }
+  });
+  servers.push(local);
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 1500 });
+  try {
+    await expect(pool.collect('scope', local.url, new AbortController().signal,
+      (url) => url.endsWith('/query'), {
+        steps: [{ clickText: 'Shanghai', waitFor: { url: `${local.url}/query`, requestFields: { region: 'Shanghai' } } }],
+      })).rejects.toMatchObject({ kind: 'timeout' });
+  } finally { await pool.close(); }
+}, 10000);
+
+it('waits for both catalog and event responses when a region click returns events first', async () => {
+  const local = await withHttpServer((request, response) => {
+    if (request.url === '/catalog' || request.url === '/events') {
+      setTimeout(() => {
+        response.writeHead(200, { 'content-type': 'application/json' });
+        response.end(request.url === '/catalog' ? '["Cloud server"]' : '[]');
+      }, request.url === '/catalog' ? 250 : 10);
+    } else {
+      response.writeHead(200, { 'content-type': 'text/html' });
+      response.end('<button onclick=\'fetch("/catalog");fetch("/events")\'>Shanghai</button>');
+    }
+  });
+  servers.push(local);
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 5000 });
+  try {
+    const responses = await pool.collect('scope', local.url, new AbortController().signal,
+      (url) => url.endsWith('/catalog') || url.endsWith('/events'), {
+        steps: [{ clickText: 'Shanghai', waitFor: [
+          { url: `${local.url}/events` }, { url: `${local.url}/catalog` },
+        ] }],
+      });
+    expect(responses.map(({ body }) => body).sort()).toEqual(['["Cloud server"]', '[]']);
+  } finally { await pool.close(); }
+}, 10000);
+
+it('reports a safe browser network error code without copying the navigation URL or page content', async () => {
+  const local = await withHttpServer((request) => { request.socket.destroy(); });
+  servers.push(local);
+  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 5000 });
+  try {
+    await expect(pool.collect('network', `${local.url}/?private=never-log`, new AbortController().signal, () => false))
+      .rejects.toMatchObject({ kind: 'http_error', message: 'Browser collection failed for network (ERR_EMPTY_RESPONSE)' });
+  } finally { await pool.close(); }
+}, 10000);
+
 it('starts lazily and isolates cookies between parallel collection tasks', async () => {
   const local = await withHttpServer((request, response) => {
     if (request.url?.startsWith('/api')) {

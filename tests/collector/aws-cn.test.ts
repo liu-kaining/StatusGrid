@@ -50,6 +50,17 @@ describe('AWS China current events', () => {
     expect(result.coverage.currentState).toBe('complete');
     expect(result.evidence.requiredChecks.map(({ name }) => name)).toEqual(['currentevents_shape', 'services_region_catalog']);
   });
+  it('preserves deduplicated catalog identities, names, regions and null component health for search', () => {
+    const result = parseAwsChina(config, observed, now, [...catalog,
+      { ...catalog[0]!, event_type_code: 'AWS_ACM_INFORMATION' },
+    ]);
+    expect(result.components.map(({ id, name, region, reportedStatus }) => ({ id, name, region, reportedStatus }))).toEqual([
+      { id: 'aws-cn:certificatemanager-cn-north-1', name: 'Amazon Certificate Manager', region: 'cn-north-1', reportedStatus: null },
+      { id: 'aws-cn:certificatemanager-cn-northwest-1', name: 'Amazon Certificate Manager', region: 'cn-northwest-1', reportedStatus: null },
+      { id: 'aws-cn:multipleservices-cn-north-1', name: 'Multiple services', region: 'cn-north-1', reportedStatus: null },
+    ]);
+    expect(result.incidents[0]!.affectedComponentIds).toEqual(['aws-cn:multipleservices-cn-north-1']);
+  });
   it('fails closed when the catalog misses a required region', () => {
     expect(() => parseAwsChina(config, [], now, catalog.slice(0, 1)))
       .toThrowError(expect.objectContaining({ reason: 'coverage_incomplete' }));

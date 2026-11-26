@@ -1,0 +1,7 @@
+{
+  "provenance": "Minimal Beijing public browser response shape transcribed from 2026-11-25 capture; Shanghai same schema observed via ordinary UI click. Active variants are constructed.",
+  "regions": {"code":0,"msg":"区域信息获取成功","data":"[\"华北-北京\",\"华东-上海\"]"},
+  "products": {"code":0,"msg":"产品列表信息获取成功","data":["云服务器"]},
+  "current": {"code":0,"msg":"事件信息获取成功","data":{"event_ok":1,"event_error":0,"event_info":0,"event":[{"region":"华北-北京","product":"云服务器","2026-11-25":{"status":"ok","title":"","s_time":"","e_time":"","s_msg":"","e_msg":""},"nowtime":{"status":"ok","title":"","s_time":"","e_time":"","s_msg":"","e_msg":""}}]}},
+  "banner": {"code":0,"data":{"switch":"off","content":"An old restored incident; not current"}}
+}

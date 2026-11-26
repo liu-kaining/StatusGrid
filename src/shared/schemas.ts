@@ -26,10 +26,11 @@ export const providerConfigSchema: z.ZodType<ProviderConfig> = z.strictObject({
   enabled: z.boolean(),
   adapter: z.strictObject({
     type: z.enum([
-      'statuspage-v2', 'deepseek', 'google-cloud-json', 'apple-status',
+      'statuspage-v2', 'incident-io', 'deepseek', 'google-cloud-json', 'apple-status',
       'azure-status', 'aws-cn-health', 'tencent-cloud', 'aliyun', 'baidu-cloud',
     ]),
     endpoints: z.record(nonempty, httpsUrl),
+    sourcePageId: nonempty.optional(),
     timeoutMs: z.number().int().positive(),
     retries: z.number().int().nonnegative(),
     requiredRegions: z.array(nonempty),
@@ -51,6 +52,16 @@ export const registrySchema = z.array(providerConfigSchema).superRefine((provide
       });
     }
     ids.add(provider.id);
+
+    if (['aliyun', 'tencent-cloud', 'baidu-cloud'].includes(provider.adapter.type)
+      && !provider.adapter.requiredRegions.length) {
+      context.addIssue({ code: 'custom', path: [index, 'adapter', 'requiredRegions'],
+        message: 'Public regional source requires an explicit nonempty region scope' });
+    }
+    if (provider.adapter.type === 'incident-io' && !provider.adapter.sourcePageId) {
+      context.addIssue({ code: 'custom', path: [index, 'adapter', 'sourcePageId'],
+        message: 'incident.io requires a pinned official page identity' });
+    }
 
     const regions = new Set<string>();
     for (const [regionIndex, region] of provider.adapter.requiredRegions.entries()) {

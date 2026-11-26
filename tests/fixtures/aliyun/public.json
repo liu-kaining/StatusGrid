@@ -1,0 +1,7 @@
+{
+  "provenance": "Minimal success envelopes transcribed from ordinary browser capture 2026-11-25; one product subset; sparse maps semantics characterized from official frontend re()/nowHasEvent.",
+  "regions": {"success":true,"code":200,"data":[{"zone":{"zoneId":"asia-pacific-china","zoneName":"亚太-中国内地"},"regionList":[{"regionId":"cn-shanghai","regionName":"华东2（上海）"},{"regionId":"cn-beijing","regionName":"华北2（北京）"}]}]},
+  "products": {"success":true,"code":200,"data":[{"type":{"typeId":"computing","typeName":"计算"},"productList":[{"productId":"ecs","productName":"云服务器 ECS"}]}]},
+  "current": {"success":true,"code":200,"data":[{"eventDetails":{},"productStatus":{}}]},
+  "active": {"success":true,"code":200,"data":[]}
+}

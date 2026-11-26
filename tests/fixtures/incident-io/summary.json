@@ -1,0 +1,33 @@
+{
+  "id":"01JMDK9XYNY6RXSED6SDWW50WY",
+  "name":"OpenAI",
+  "public_url":"https://status.openai.com",
+  "components":[
+    {"id":"01JMXBNJXG1S2D9V65P1ZZTD94","name":"Login","status_page_id":"01JMDK9XYNY6RXSED6SDWW50WY"},
+    {"id":"01JSM5RTJWHRWDTS6Q604VEW3B","name":"Login","status_page_id":"01JMDK9XYNY6RXSED6SDWW50WY"},
+    {"id":"01JVCV8YSWZFRSM1G5CVP253SK","name":"Codex Web","status_page_id":"01JMDK9XYNY6RXSED6SDWW50WY"}
+  ],
+  "structure":{"status_page_id":"01JMDK9XYNY6RXSED6SDWW50WY","items":[
+    {"group":{"id":"01K5H8S53SY1KMS4GQMNMZXTR1","name":"ChatGPT","components":[{"component_id":"01JMXBNJXG1S2D9V65P1ZZTD94"}]}},
+    {"group":{"id":"01K5H8S53SY1KMS4GQMNMQM1K5","name":"APIs","components":[{"component_id":"01JSM5RTJWHRWDTS6Q604VEW3B"}]}},
+    {"group":{"id":"01KMKF9EBTCD8BN9PG8DJZXRSQ","name":"Codex","components":[{"component_id":"01JVCV8YSWZFRSM1G5CVP253SK"}]}}
+  ]},
+  "affected_components":[{"component_id":"01JVCV8YSWZFRSM1G5CVP253SK","current_status":"$undefined","status":"degraded_performance"}],
+  "ongoing_incidents":[{
+    "id":"01M89RGC3STKK2MT53TXHFMY4H","type":"incident","status":"monitoring","status_page_id":"01JMDK9XYNY6RXSED6SDWW50WY",
+    "published_at":"2026-11-25T16:27:02.136Z",
+    "name":"Elevated errors with Codex GitHub reviews and pull request merges",
+    "affected_components":[{"component_id":"01JVCV8YSWZFRSM1G5CVP253SK","current_status":"degraded_performance","status":"degraded_performance"}],
+    "component_impacts":[{"component_id":"01JVCV8YSWZFRSM1G5CVP253SK","start_at":"2026-11-25T16:27:02.136Z","end_at":"$undefined","status":"degraded_performance"}],
+    "status_summaries":[
+      {"start_at":"2026-11-25T16:27:02.136Z","end_at":"2026-11-25T16:58:51.832Z","worst_component_status":"full_outage"},
+      {"start_at":"2026-11-25T16:58:51.832Z","end_at":"$undefined","worst_component_status":"degraded_performance"}
+    ],
+    "updates":[
+      {"id":"01M89RGC3SAF0CJ495G7GXMV8Q","published_at":"2026-11-25T16:27:02.136Z","to_status":"identified","message_string":"Some Codex users may not receive automated reviews on GitHub pull requests or may encounter errors when merging pull requests from Codex."},
+      {"id":"01M89TAN16YY6103ERER7Z8976","published_at":"2026-11-25T16:58:51.832Z","to_status":"monitoring","message_string":"We are monitoring Codex automated pull request reviews and merge operations to confirm recovery and stability."}
+    ],
+    "write_up_url":"$undefined"
+  }],
+  "scheduled_maintenances":[]
+}

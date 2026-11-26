@@ -15,7 +15,17 @@ import { parseCollectArgs } from '../../src/collector/cli.js';
 import type { AdapterContext, ProviderConfig } from '../../src/shared/contracts.js';
 
 const configs = parseRegistry(registry);
-const config = (id: string): ProviderConfig => configs.find((provider) => provider.id === id)!;
+// Retain the sampled legacy OpenAI payload as a compatibility-parser regression.
+// Production OpenAI dispatch is covered separately by incident-io.test.ts.
+const config = (id: string): ProviderConfig => {
+  const provider = configs.find((provider) => provider.id === id)!;
+  return id !== 'openai' ? provider : { ...provider, adapter: { ...provider.adapter,
+    type: 'statuspage-v2', browserFallback: false, endpoints: {
+      summary: 'https://status.openai.com/api/v2/summary.json',
+      incidents: 'https://status.openai.com/api/v2/incidents.json',
+    },
+  } };
+};
 const now = '2026-11-25T14:20:00.000Z';
 const active = (summary: { incidents: unknown[] }) => ({ incidents: summary.incidents });
 
@@ -251,11 +261,14 @@ describe('collection boundary', () => {
   });
 
   it('isolates failed provider and rejects unknown adapters without creating results', async () => {
-    const run = await collectProviders([config('github'), config('tencent-cloud')], new Map(), context(github));
+    const unknown = { ...config('tencent-cloud'), adapter: { ...config('tencent-cloud').adapter,
+      type: 'future-adapter' as ProviderConfig['adapter']['type'],
+    } };
+    const run = await collectProviders([config('github'), unknown], new Map(), context(github));
     expect(run.providers.map(({ collection, result }) => [collection.freshness, result?.providerId ?? null]))
       .toEqual([['fresh', 'github'], ['missing', null]]);
     expect(run.providers[1]?.collection.reason).toBe('not_connected');
-    expect(() => createAdapter(config('tencent-cloud'))).toThrow(/adapter/i);
+    expect(() => createAdapter(unknown)).toThrow(/adapter/i);
   });
 
   it('only accepts shared five/ten minute collection intervals', async () => {

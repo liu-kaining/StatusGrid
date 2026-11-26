@@ -1,0 +1,6 @@
+{
+  "provenance": "Minimal public API shapes transcribed from 2026-11-25 Tencent Shanghai sample; one-product subset, active variants constructed by tests.",
+  "regions": {"Response":{"Data":{"AreaDetailList":[{"RegionList":[{"RegionId":"ap-shanghai","RegionName":"上海"},{"RegionId":"ap-beijing","RegionName":"北京"}]}]}}},
+  "products": {"Response":{"Data":{"List":[{"ProductId":"cvm","ProductName":"云服务器"}]}}},
+  "current": {"Response":{"Data":{"Summary":{"NormalCount":1,"NotifyCount":0,"AbnormalCount":0},"CategoryList":[{"CategoryName":"计算","ProductList":[{"ProductId":"cvm","ProductName":"云服务器","CurrentStatus":"NORMAL","CurrentEvent":null,"EventListGroupByZoneAndDate":[]}]}]}}}
+}

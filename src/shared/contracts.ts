@@ -57,6 +57,7 @@ export interface ProviderConfig {
   adapter: {
     type:
       | 'statuspage-v2'
+      | 'incident-io'
       | 'deepseek'
       | 'google-cloud-json'
       | 'apple-status'
@@ -66,6 +67,7 @@ export interface ProviderConfig {
       | 'aliyun'
       | 'baidu-cloud';
     endpoints: Record<string, string>;
+    sourcePageId?: string;
     timeoutMs: number;
     retries: number;
     requiredRegions: string[];
@@ -194,8 +196,26 @@ export interface BrowserPool {
     url: string,
     signal: AbortSignal,
     responseMatcher: (url: string) => boolean,
-  ): Promise<Array<{ url: string; status: number; body: string }>>;
+    options?: BrowserCollectionOptions,
+  ): Promise<BrowserResponse[]>;
   close(): Promise<void>;
+}
+
+export interface BrowserResponse {
+  url: string;
+  status: number;
+  body: string;
+  /** Only explicitly selected public query fields; never headers or entire request bodies. */
+  requestScope?: Record<string, string>;
+}
+
+export interface BrowserCollectionOptions {
+  requestScopeFields?: string[];
+  steps?: Array<{
+    clickText: string;
+    waitFor: { url: string; requestFields?: Record<string, string> }
+      | Array<{ url: string; requestFields?: Record<string, string> }>;
+  }>;
 }
 
 export interface AdapterContext {

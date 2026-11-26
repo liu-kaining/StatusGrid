@@ -1,4 +1,4 @@
-import type { Adapter, AdapterResult, ProviderConfig, SourceIncident } from '../../shared/contracts.js';
+import type { Adapter, AdapterResult, Component, ProviderConfig, SourceIncident } from '../../shared/contracts.js';
 import { AdapterError, TransportError } from '../errors.js';
 import { coverage, epoch, incident, record, rows, text, worse } from './common.js';
 import type { ServiceStatus } from '../../shared/contracts.js';
@@ -13,6 +13,20 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
     if (!config.adapter.requiredRegions.every((region) => catalogRegions.has(region))) {
       throw new AdapterError('coverage_incomplete', 'AWS China catalog does not cover required regions');
     }
+  }
+  const componentsById = new Map<string, Component>();
+  for (const rawService of serviceRows ?? []) {
+    const service = record(rawService, 'AWS China catalog service');
+    const upstreamId = text(service.service, 'AWS China catalog service identity');
+    const component: Component = {
+      id: `${config.id}:${upstreamId}`, upstreamId, name: text(service.service_name, 'AWS China catalog service name'),
+      region: text(service.region_id, 'AWS China catalog region'), groupId: null, aliases: [], reportedStatus: null,
+    };
+    const previous = componentsById.get(component.id);
+    if (previous && (previous.name !== component.name || previous.region !== component.region)) {
+      throw new AdapterError('coverage_incomplete', 'AWS China catalog service identity conflicts');
+    }
+    componentsById.set(component.id, component);
   }
   let reportedStatus: ServiceStatus = 'operational';
   const currentIds: string[] = [];
@@ -86,6 +100,9 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
     return incident(config, now, id, updates[0]!.summary, startedAt, updatedAt, {
       state: resolved ? 'resolved' : 'investigating',
       resolvedAt, affectedRegions: [region],
+      affectedComponentIds: [...componentsById.values()].filter((component) =>
+        component.region === region && component.upstreamId!.replace(/[^a-z0-9]/gi, '').toLowerCase()
+          === `${service}${region}`.replace(/[^a-z0-9]/gi, '').toLowerCase()).map(({ id }) => id),
       severity: index < events.length && !resolved && latest === 2 ? 'degraded'
         : index < events.length && !resolved && latest === 3 ? 'partial_outage' : null,
       sourceSeverity: typeCode, severityBasis: 'unknown',
@@ -107,7 +124,7 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
     historyError = error instanceof AdapterError ? error.reason : 'invalid_payload';
   }
   return {
-    providerId: config.id, reportedStatus: serviceRows ? reportedStatus : null, components: [],
+    providerId: config.id, reportedStatus: serviceRows ? reportedStatus : null, components: [...componentsById.values()],
     incidents: [...new Map([...historical, ...parsed].map((entry) => [entry.sourceIdentity, entry])).values()],
     coverage: {
       ...coverage(config, 'events_only', historyPayload == null || historyError ? 'none' : 'native',

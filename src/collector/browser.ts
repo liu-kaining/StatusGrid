@@ -1,5 +1,5 @@
-import { chromium, type Browser, type BrowserContext } from 'playwright';
-import type { BrowserPool } from '../shared/contracts.js';
+import { chromium, type Browser, type BrowserContext, type Request } from 'playwright';
+import type { BrowserPool, BrowserResponse } from '../shared/contracts.js';
 import { TransportError } from './errors.js';
 import { decodeBody } from './http.js';
 
@@ -86,7 +86,7 @@ export function createBrowserPool(options: BrowserOptions): ManagedBrowserPool {
 
   return {
     isStarted: () => browserPromise !== null,
-    async collect(providerId, url, signal, responseMatcher) {
+    async collect(providerId, url, signal, responseMatcher, collectionOptions) {
       if (closed) throw new TransportError('cancelled', 'Browser pool closed');
       const controller = new AbortController();
       let rejectAbort!: (error: TransportError) => void;
@@ -123,7 +123,16 @@ export function createBrowserPool(options: BrowserOptions): ManagedBrowserPool {
           contextPromise = browser.newContext();
           context = await withinBudget(contextPromise);
           const page = await withinBudget(context.newPage());
-          const responses: Array<Promise<{ url: string; status: number; body: string }>> = [];
+          const publicFields = (request: Request, names: string[]): Record<string, string> => {
+            let body: unknown;
+            try { body = request.postDataJSON() as unknown; } catch { return {}; }
+            if (!body || typeof body !== 'object' || Array.isArray(body)) return {};
+            return Object.fromEntries(names.flatMap((name) => {
+              const value = (body as Record<string, unknown>)[name];
+              return typeof value === 'string' ? [[name, value]] : [];
+            }));
+          };
+          const responses: Array<Promise<BrowserResponse>> = [];
           page.on('response', (response) => {
             if (responseMatcher(response.url())) {
               const bodyPromise = response.body().then((bytes) => ({
@@ -136,18 +145,39 @@ export function createBrowserPool(options: BrowserOptions): ManagedBrowserPool {
                     ? response.headers()['content-type'] ?? null
                     : 'text/plain;charset=utf-8',
                 ),
+                ...(collectionOptions?.requestScopeFields ? {
+                  requestScope: publicFields(response.request(), collectionOptions.requestScopeFields),
+                } : {}),
               }));
               void bodyPromise.catch(() => {});
               responses.push(bodyPromise);
             }
           });
           await withinBudget(page.goto(url, { waitUntil: 'networkidle' }));
+          for (const step of collectionOptions?.steps ?? []) {
+            const requirements = Array.isArray(step.waitFor) ? step.waitFor : [step.waitFor];
+            const responses = requirements.map((requirement) => {
+              const expected = requirement.requestFields ?? {};
+              const response = page.waitForResponse((candidate) => {
+                if (candidate.url() !== requirement.url) return false;
+                const actual = publicFields(candidate.request(), Object.keys(expected));
+                return Object.entries(expected).every(([key, value]) => actual[key] === value);
+              }, { timeout: options.timeoutMs });
+              void response.catch(() => {});
+              return response;
+            });
+            const completed = Promise.all(responses);
+            void completed.catch(() => {});
+            await withinBudget(page.getByText(step.clickText, { exact: true }).click());
+            await withinBudget(completed);
+          }
           return await withinBudget(Promise.all(responses));
         } catch (error) {
           if (signal.aborted || closed) throw new TransportError('cancelled', `Browser collection cancelled for ${providerId}`);
           if (controller.signal.aborted) throw new TransportError('timeout', `Browser collection timed out for ${providerId}`);
           if (error instanceof TransportError) throw error;
-          throw new TransportError('http_error', `Browser collection failed for ${providerId}`);
+          const networkCode = error instanceof Error ? /net::(ERR_[A-Z_]+)/.exec(error.message)?.[1] : undefined;
+          throw new TransportError('http_error', `Browser collection failed for ${providerId}${networkCode ? ` (${networkCode})` : ''}`);
         } finally {
           try {
             if (context) {
