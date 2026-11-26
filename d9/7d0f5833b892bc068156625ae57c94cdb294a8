@@ -1,0 +1,76 @@
+src/web/components/ProviderDetail.tsx
+  s_79c9ef7a230eaf::t_7e12407f652a29 5,9,12,23,25,59
+src/web/state/types.ts
+  s_79c9ef7a230eaf::t_1bc174ea12a24e 6-7
+tests/web/queries.test.ts
+  s_79c9ef7a230eaf::t_be822de282fb25 52-99
+  s_79c9ef7a230eaf::t_4001b2ef63cc0d 100-101,113-115,117-118,120-123
+  s_79c9ef7a230eaf::t_1bc174ea12a24e 22-51
+  s_79c9ef7a230eaf::t_a606198c7ed1bb 102-112,116,119
+src/web/data/client.ts
+  s_79c9ef7a230eaf::t_64ce667de3a232 158-163
+  s_79c9ef7a230eaf::t_abd75b291147b4 17-19,124-157,164-172
+tests/e2e/day.spec.ts
+  s_79c9ef7a230eaf::t_a27457965f40bc 144-155
+  s_79c9ef7a230eaf::t_890538e2d2316f 1,4-16,18-40,46-60
+  s_79c9ef7a230eaf::t_b54f8eff76a0c4 68-71
+  s_79c9ef7a230eaf::t_3f69ae20d82761 254-255,263-264
+  s_79c9ef7a230eaf::t_09e6c747589f87 156-179
+  s_79c9ef7a230eaf::t_34dce1b4e07142 134-143
+  s_79c9ef7a230eaf::t_777289917faffd 2-3,17,61-67,72-133,210-253,256-262,265-270
+  s_79c9ef7a230eaf::t_f2adcb1e196166 41-45
+  s_79c9ef7a230eaf::t_fee3cf0fd1b538 180-209
+src/web/components/DayPopover.tsx
+  s_79c9ef7a230eaf::t_2e2c024219333f 1-6,8,10-27,29-38
+  s_79c9ef7a230eaf::t_64ce667de3a232 7,9,28
+src/web/styles/layout.css
+  s_79c9ef7a230eaf::t_50d1f50015e37f 28-29,53-58
+tests/web/health-track.test.ts
+  s_79c9ef7a230eaf::t_890538e2d2316f 18-19
+src/web/data/use-day-history.ts
+  s_79c9ef7a230eaf::t_2e2c024219333f 1-20
+src/web/styles/components.css
+  s_79c9ef7a230eaf::t_50d1f50015e37f 71,73-83,86-102
+  s_79c9ef7a230eaf::t_fee3cf0fd1b538 199-200
+  s_79c9ef7a230eaf::t_64ce667de3a232 72
+  s_79c9ef7a230eaf::t_09e6c747589f87 84-85
+tests/web/url.test.ts
+  s_79c9ef7a230eaf::t_d9f36636fa13cc 9,13-17
+  s_79c9ef7a230eaf::t_9cb98558498b15 18-19
+src/web/components/HealthTrack.tsx
+  s_79c9ef7a230eaf::t_64ce667de3a232 2,20-23,40,48-49,62
+  s_79c9ef7a230eaf::t_2e2c024219333f 4-6,8-19,34-39,43-47,50-58,60-61,63
+  s_79c9ef7a230eaf::t_fee3cf0fd1b538 24-33
+tests/web/day.test.ts
+  s_79c9ef7a230eaf::t_d9f36636fa13cc 1-24,26-31
+  s_79c9ef7a230eaf::t_be822de282fb25 25
+src/web/components/DayView.tsx
+  s_79c9ef7a230eaf::t_09e6c747589f87 40-41
+  s_79c9ef7a230eaf::t_7e12407f652a29 1-39,42-84
+src/web/data/day.ts
+  s_79c9ef7a230eaf::t_a401f38b61d79b 22
+  s_79c9ef7a230eaf::t_1bc174ea12a24e 1-21,23-24
+src/web/state/url.ts
+  s_79c9ef7a230eaf::t_1bc174ea12a24e 3,16-17,36
+src/web/components/ProviderCard.tsx
+  s_79c9ef7a230eaf::t_7e12407f652a29 3,5,7,19
+src/web/App.tsx
+  s_79c9ef7a230eaf::t_50d1f50015e37f 16,35,51-55,57-63,118-119,140,142,145,154,158-161,168-169
+  s_79c9ef7a230eaf::t_09e6c747589f87 56,64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d97d0f5833b892bc068156625ae57c94cdb294a8",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
