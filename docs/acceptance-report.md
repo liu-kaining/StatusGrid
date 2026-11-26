@@ -4,7 +4,7 @@
 
 | 阶段 | 结论 |
 | --- | --- |
-| 本地实现与验证 | 两套真实 Node 运行时：最终源码336单元全量＋1发布兼容定向补验、38浏览器、类型／lint／构建／空壳通过；首次安装与真实采集、发布和恢复证据保留如下 |
+| 本地实现与验证 | 两套真实 Node 运行时：先前336单元全量＋1发布兼容＋2Azure回归覆盖共339用例；最新Azure／runner26项和类型／lint通过，先前38浏览器／构建／空壳证据保留；主控在合入main后执行最终全量单元 |
 | 目标部署 | 未验收：尚无目标 Actions／Pages／DNS／TLS／缓存／CORS 证据 |
 | 运行观察 | 未通过 G3：没有每家连续 12 轮、跨度至少 55 分钟的目标 Runner 定时成功证据 |
 
@@ -36,6 +36,15 @@ Playwright 配置清除子进程继承的 NO_COLOR，与其 FORCE_COLOR 保持�
 共337个单元用例均有通过证据。补验未修改生产源码，未重复无变化的全量套件。
 最终类型、lint、构建、完整空态壳均通过；136模块，JS368.71kB／gzip111.78kB，
 HTML和CSS体积不变。日志在 `.statusgrid/acceptance/final-fix/`，原记录完整保留。
+
+同一审查席位后续确认Azure可选RSS转换仍有一处边界遗漏：解析XML后的事件
+工厂校验在catch外，合法XML中带凭据的HTTPS链接会使有效实时矩阵失败。
+11月27日有界补正将解析、转换及工厂校验纳入同一history边界，失败丢弃整批
+可选事件并返回historyError=invalid_payload；实时矩阵保持operational/complete，
+runner实际返回fresh/partial。新增2回归先RED（2失败／10通过），再在Node22／24
+分别Azure＋runner26/26通过（977ms／941ms），类型／lint／diff通过。
+总用例数现为339（先前337＋新增2），不是声称最新339全量已重跑；
+本次未重跑浏览器／上游采集，最终全量单元由主控在合入main后执行。
 
 四项回归覆盖：多来源持久采集使用本地HTTP服务验证畸形GCP仅自身
 missing/stale且保留可信旧值，GitHub仍更新／持久化／公共校验成功；
@@ -138,7 +147,7 @@ npm run release:check -- --dir dist --require-live
 
 自动检查不能覆盖屏幕阅读器、人类认知可用性、全键盘所有组合或全部 WCAG 项。尚无真机辅助技术审计。无 CPU／网络限速、本机 Chromium 的少量冷／热样本仅用于定位，LCP<1s 是受控优化目标，不承诺全球网络性能。
 
-## 实施中确认的七项决策
+## 实施中确认的八项决策
 
 | 决策 | 依据 | 若判断错误的成本 |
 | --- | --- | --- |
@@ -149,6 +158,7 @@ npm run release:check -- --dir dist --require-live
 | 公共冷索引 generatedAt 为内容 watermark，可 null | 不变冷内容需稳定字节，空索引不能伪造 epoch | 客户端必须支持 null；旧未发布预览需重生，内部状态分片保持原兼容 |
 | Header 文件保持接口，App 既有 callback 负责每日页返回／清除 provider/date | 交互需要导航行为，不需要第三个顶层标签；已有类型回调可满足 | 每日页无独立顶层 tab；未来 Header 修改需保留 App callback 契约并跑导航测试 |
 | 生成根增加derivedRollupRevision；缺失=1，新写=2，先完整核验旧数学／分片再内存迁移dailyStats | 修正故障分钟与闭合日成员不能把合法旧根误判损坏；事件、身份、账本及公共schema1.0保持 | 维护两种已知派生模式与兼容fixture；旧不可变发布保留旧计算，若重算有差异frontend/retry需先正常sync新快照，禁止删旧public或覆写路径 |
+| 最终修正波次允许一次有界Azure可选历史边界补正，由同一审查席位定向确认 | 审查具体复现原finding1尚未完成，独立有效的实时矩阵必须在可选转换失败后继续可用 | 单波次停止预算的一次小例外，增加focused测试／审查时间；不扩大产品范围、来源采集、迁移设计或远端权限 |
 
 ## 剩余验收与清理边界
 

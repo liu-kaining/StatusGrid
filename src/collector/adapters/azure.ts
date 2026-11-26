@@ -72,23 +72,24 @@ export function parseAzure(config: ProviderConfig, feed: string | null, html: st
     || (!emptyImpact && reportedStatus === 'operational')) {
     throw new AdapterError('coverage_incomplete', 'Azure current impact cannot be reconciled with matrix');
   }
-  let entries: ReturnType<typeof parseFeed> = [];
+  let incidents: AdapterResult['incidents'] = [];
   let historyError: AdapterResult['evidence']['historyError'] = null;
   if (feed !== null) {
-    try { entries = parseFeed(feed, 'rss'); }
+    try {
+      incidents = parseFeed(feed, 'rss').map((entry) => incident(config, now, entry.id, entry.title, entry.updatedAt, entry.updatedAt, {
+        state: 'unknown', startTimeBasis: 'source_published_at', severity: null,
+        sourceUrl: entry.url ?? config.officialStatusUrl,
+        // RSS publication time is a bound on the entry, not the beginning or end of an outage.
+      }));
+    }
     catch { historyError = 'invalid_payload'; }
   }
-  const incidents = entries.map((entry) => incident(config, now, entry.id, entry.title, entry.updatedAt, entry.updatedAt, {
-    state: 'unknown', startTimeBasis: 'source_published_at', severity: null,
-    sourceUrl: entry.url ?? config.officialStatusUrl,
-    // RSS publication time is a bound on the entry, not the beginning or end of an outage.
-  }));
   const output = result(config, now, 'operational', ['current_impact', 'service_region_matrix'],
     coverage(config, 'filtered', 'none', 'Matrix Warning/Critical severity is derived; native current incident lifecycle unsupported, RSS entries retain publication timestamps, not incident start/end'),
     { incidents, components, reportedStatus });
   output.evidence.historyError = historyError;
   if (!emptyImpact) output.evidence.warnings.push('Azure native current incident rows are unparsed; current severity derives from validated service-region matrix');
-  if (entries.length) output.evidence.warnings.push('RSS timestamps are publication times; incident start/end and resolution remain unverified');
+  if (incidents.length) output.evidence.warnings.push('RSS timestamps are publication times; incident start/end and resolution remain unverified');
   return output;
 }
 
