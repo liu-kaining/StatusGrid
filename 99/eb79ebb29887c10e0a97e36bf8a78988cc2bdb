@@ -1,0 +1,54 @@
+tests/collector/browser.test.ts
+  s_79c9ef7a230eaf::t_86eedf1639a95f 27,52,74,89,109,131,158,179,196,214,229,260,291,314,346,383
+  s_79c9ef7a230eaf::t_e154b3982f1707 5
+playwright.config.ts
+  s_79c9ef7a230eaf::t_e154b3982f1707 4-7
+  s_79c9ef7a230eaf::t_2e9a938c953c62 17
+docs/acceptance-report.md
+  s_79c9ef7a230eaf::t_1efe9b0ca33330 72,74,95-108
+  s_79c9ef7a230eaf::t_92b423c3aa9699 1-71,73,75-94,109-127
+docs/superpowers/plans/2026-11-25-statusgrid-implementation.md
+  s_79c9ef7a230eaf::t_c31f168517c054 18,65,559
+  s_79c9ef7a230eaf::t_c3627eb0359bf9 392-393,410-418,480,495,507,511,514,528,535,538,541,546
+  s_79c9ef7a230eaf::t_1efe9b0ca33330 570
+  s_79c9ef7a230eaf::t_92b423c3aa9699 425-426,554,565-566,569,571
+  s_79c9ef7a230eaf::t_989c8426b2a96c 555
+docs/superpowers/specs/2026-11-25-statusgrid-source-validation.md
+  s_79c9ef7a230eaf::t_1efe9b0ca33330 229
+  s_79c9ef7a230eaf::t_92b423c3aa9699 224-228,230-231
+.github/workflows/ci.yml
+  s_79c9ef7a230eaf::t_e154b3982f1707 12-15,20
+docs/api.md
+  s_79c9ef7a230eaf::t_131be11092c7c0 1-23,25-56
+  s_79c9ef7a230eaf::t_fff421e441d6b1 24
+docs/adding-providers.md
+  s_79c9ef7a230eaf::t_fff421e441d6b1 1-28
+tests/e2e/live.spec.ts
+  s_79c9ef7a230eaf::t_2e9a938c953c62 4,8-12,27-28,35-39,53-60,89
+  s_79c9ef7a230eaf::t_cd04a857f60f71 34,90,92
+  s_79c9ef7a230eaf::t_b310b535a6bb22 71-88
+README.md
+  s_79c9ef7a230eaf::t_131be11092c7c0 3,5,7,9,11,16,18-19,22,24,26,28,30,33-40,43-48,50
+docs/runbook.md
+  s_79c9ef7a230eaf::t_131be11092c7c0 1-109
+docs/deployment.md
+  s_79c9ef7a230eaf::t_fff421e441d6b1 1-2,4-15,17-63
+  s_79c9ef7a230eaf::t_653bf4c2f85616 3
+  s_79c9ef7a230eaf::t_c36691939851db 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "99eb79ebb29887c10e0a97e36bf8a78988cc2bdb",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
