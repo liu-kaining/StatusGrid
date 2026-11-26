@@ -1,0 +1,27 @@
+tests/collector/export.test.ts
+  s_79c9ef7a230eaf::t_244c0da63761f5 6-10,13-30
+tests/collector/aws-cn.test.ts
+  s_79c9ef7a230eaf::t_244c0da63761f5 9,16-46
+src/collector/adapters/aws-cn.ts
+  s_79c9ef7a230eaf::t_3c5a8d008bd1e0 23-24
+tests/fixtures/aws-cn/services-unscoped.json
+  s_79c9ef7a230eaf::t_244c0da63761f5 1-19
+tests/fixtures/aws-cn/provenance.md
+  s_79c9ef7a230eaf::t_244c0da63761f5 1-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e6eae4673ee55c5990655dce34b74b1a92cff600",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
