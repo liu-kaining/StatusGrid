@@ -1,0 +1,98 @@
+tests/fixtures/incident-io/provenance.md
+  s_79c9ef7a230eaf::t_8ee5f292361ad9 5,9-16
+  s_79c9ef7a230eaf::t_ee309b55f59275 1-4,6-8
+src/shared/contracts.ts
+  s_79c9ef7a230eaf::t_07402b584d6519 199-200,204-215,218-219
+  s_79c9ef7a230eaf::t_732810f9f97249 216-217
+  s_79c9ef7a230eaf::t_dd3401a407cab2 60,70
+  s_79c9ef7a230eaf::t_badbff047193c7 220
+tests/fixtures/baidu/public.json
+  s_79c9ef7a230eaf::t_1faf8140236aef 1-7
+tests/fixtures/aliyun/public.json
+  s_79c9ef7a230eaf::t_1faf8140236aef 1-7
+tests/collector/aliyun.test.ts
+  s_79c9ef7a230eaf::t_1faf8140236aef 1-66
+  s_79c9ef7a230eaf::t_522911098fd3a6 67-78
+  s_79c9ef7a230eaf::t_bd5e7543e99539 79-85
+tests/collector/tencent.test.ts
+  s_79c9ef7a230eaf::t_2e46102d3b4101 57-58,60-62,71-72,74-76
+  s_79c9ef7a230eaf::t_522911098fd3a6 70,73,77-81
+  s_79c9ef7a230eaf::t_1faf8140236aef 1-56,59,63-69
+src/collector/browser.ts
+  s_79c9ef7a230eaf::t_732810f9f97249 158-170,172
+  s_79c9ef7a230eaf::t_07402b584d6519 1-2,89,126-135,148-150,157,171,173
+  s_79c9ef7a230eaf::t_859c5758677258 179-180
+src/collector/adapters/baidu.ts
+  s_79c9ef7a230eaf::t_732810f9f97249 22-25
+  s_79c9ef7a230eaf::t_d7b6d626646935 39,50,97
+  s_79c9ef7a230eaf::t_49ceae36078703 1-7,9-21,26-38,40-49,51-67,69-78,81-96,98-105
+  s_79c9ef7a230eaf::t_954624517d0229 8,68,79-80
+tests/collector/aws-cn.test.ts
+  s_79c9ef7a230eaf::t_522911098fd3a6 53-63
+src/collector/adapters/aliyun.ts
+  s_79c9ef7a230eaf::t_49ceae36078703 1-38,40-100,102-120,123-125,128-160,162-163,165-167
+  s_79c9ef7a230eaf::t_732810f9f97249 39,161,164
+  s_79c9ef7a230eaf::t_954624517d0229 101,121-122,126-127
+tests/collector/incident-io.test.ts
+  s_79c9ef7a230eaf::t_8ee5f292361ad9 82-86,92-95,100-109
+  s_79c9ef7a230eaf::t_bd5e7543e99539 111-116
+  s_79c9ef7a230eaf::t_ee309b55f59275 1-34,36-81,87-91,96-99,110
+  s_79c9ef7a230eaf::t_7e003d574267e2 35
+tests/shared/source-scope.test.ts
+  s_79c9ef7a230eaf::t_522911098fd3a6 1-16
+src/collector/adapters/incident-io.ts
+  s_79c9ef7a230eaf::t_dd3401a407cab2 1-4,6-8,10,13-14,17,20-142,145-169,172,183-186,188-194,198-243
+  s_79c9ef7a230eaf::t_720646e227a564 9,11-12,15-16,18-19,170-171,174-182,195-196
+  s_79c9ef7a230eaf::t_954624517d0229 5
+  s_79c9ef7a230eaf::t_d7b6d626646935 197
+  s_79c9ef7a230eaf::t_732810f9f97249 143-144,173,187
+src/collector/adapters/regional.ts
+  s_79c9ef7a230eaf::t_94bc22c1dbc77c 1-61
+src/collector/adapters/aws-cn.ts
+  s_79c9ef7a230eaf::t_954624517d0229 1,17-30,103-105,127
+tests/collector/baidu.test.ts
+  s_79c9ef7a230eaf::t_2e46102d3b4101 44,46-48,52,59-62
+  s_79c9ef7a230eaf::t_7e003d574267e2 67-74
+  s_79c9ef7a230eaf::t_522911098fd3a6 58,63-66
+  s_79c9ef7a230eaf::t_1faf8140236aef 1-43,45,49-51,53-57
+tests/collector/browser.test.ts
+  s_79c9ef7a230eaf::t_a64264d08abbd3 85-94
+  s_79c9ef7a230eaf::t_5ee568684e1283 9-59
+  s_79c9ef7a230eaf::t_bd5e7543e99539 60-84
+src/collector/adapters/tencent.ts
+  s_79c9ef7a230eaf::t_49ceae36078703 5,84
+  s_79c9ef7a230eaf::t_954624517d0229 15,79,83,92-93,106
+  s_79c9ef7a230eaf::t_94bc22c1dbc77c 1-4,6-14,16-78,80-82,85-91,94-105,107-111
+tests/collector/statuspage.test.ts
+  s_79c9ef7a230eaf::t_09e951375f8bec 264-267,271
+  s_79c9ef7a230eaf::t_2e46102d3b4101 18-28
+tests/fixtures/incident-io/summary.json
+  s_79c9ef7a230eaf::t_8ee5f292361ad9 23
+  s_79c9ef7a230eaf::t_ee309b55f59275 1-22,24-33
+tests/fixtures/tencent/public.json
+  s_79c9ef7a230eaf::t_1faf8140236aef 1-6
+src/shared/schemas.ts
+  s_79c9ef7a230eaf::t_dd3401a407cab2 29,33
+  s_79c9ef7a230eaf::t_954624517d0229 56-65
+registry/providers.json
+  s_79c9ef7a230eaf::t_954624517d0229 87,89,91,96,255,257,277,299
+src/collector/adapters/index.ts
+  s_79c9ef7a230eaf::t_49ceae36078703 9-11,21-23
+  s_79c9ef7a230eaf::t_dd3401a407cab2 12,24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b68fdea0bd36fc7df4b1b35ce7bf0256b31896ab",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
