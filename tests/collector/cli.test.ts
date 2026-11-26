@@ -6,6 +6,7 @@ import registry from '../../registry/providers.json';
 import { parseCollectArgs, main } from '../../src/collector/cli.js';
 import { loadState } from '../../src/collector/storage/load.js';
 import type { CollectionContext } from '../../src/collector/types.js';
+import { validateRelease } from '../../src/collector/export/validate.js';
 
 const temporary: string[] = [];
 afterEach(async () => {
@@ -26,17 +27,34 @@ async function root() {
 }
 
 describe('explicit persistent and read-only diagnostic CLI modes', () => {
-  it('selects all enabled providers and rejects subset persistence or unimplemented public output', () => {
+  it('selects all enabled providers and requires persistent full scope for public output', () => {
     const parsed = parseCollectArgs(['--state-dir', '.statusgrid/state']);
     expect(parsed.providers).toEqual(registry.filter(({ enabled }) => enabled).map(({ id }) => id));
     expect(parsed.providers).toHaveLength(13);
     expect(parsed.stateDir).toBe('.statusgrid/state');
     expect(() => parseCollectArgs(['--providers', 'github', '--state-dir', '.statusgrid/state'])).toThrow(/providers|subset/i);
-    expect(() => parseCollectArgs(['--state-dir', '.statusgrid/state', '--output-dir', 'public'])).toThrow(/output.*not.*implemented/i);
+    expect(parseCollectArgs(['--state-dir', '.statusgrid/state', '--output-dir', 'public']).outputDir).toBe('public');
+    expect(() => parseCollectArgs(['--output-dir', 'public'])).toThrow(/persistent|state-dir/i);
+    expect(() => parseCollectArgs(['--providers', 'github', '--output-dir', 'public'])).toThrow(/providers|persistent|scope/i);
+    expect(() => parseCollectArgs(['--state-dir', '.statusgrid/state', '--output-dir', '.statusgrid/state/export'])).toThrow(/overlap/i);
     expect(() => parseCollectArgs(['--state-dir', '.statusgrid/state', '--report', '.statusgrid/state/state/latest.json']))
       .toThrow(/report.*state|overlap/i);
   });
 
+  it('exports a real full persistent initialized-no-data live release through --output-dir', async () => {
+    const dir = await root();
+    await main(['--state-dir', join(dir, 'state'), '--output-dir', join(dir, 'public'),
+      '--report', join(dir, 'report.json')], context());
+    expect(process.exitCode).toBe(0);
+    const report = await validateRelease(join(dir, 'public'), { requireLive: true });
+    expect(report.valid).toBe(true);
+    expect(report.errors).toEqual([]);
+    expect(report.snapshotId).toBe((await loadState(join(dir, 'state'))).latest?.snapshotId);
+    const summary = JSON.parse(await readFile(join(dir, 'public/api/v1/summary.json'), 'utf8'));
+    expect(summary.providers).toHaveLength(13);
+    expect(summary.globalSummary.overallStatus).toBe('stale');
+    expect(summary.providers.every((provider: { reportedStatus: unknown }) => provider.reportedStatus === null)).toBe(true);
+  });
   it('actually persists a full valid stale run and exits zero so public export can proceed', async () => {
     const dir = await root();
     await main(['--state-dir', join(dir, 'generated'), '--report', join(dir, 'report.json')], context());

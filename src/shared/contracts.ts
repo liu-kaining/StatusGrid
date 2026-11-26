@@ -253,6 +253,7 @@ export interface ProviderSummary {
     affectedRegions: string[];
   };
   dailyTrack30d: string;
+  dailyCoverage30d: Array<{ observedCoverageMinutes: number; unknownMinutes: number }>;
   activeIncidents: Array<{
     id: string;
     title: string;
@@ -341,3 +342,22 @@ export interface SearchIndex extends Envelope {
     incidentTitles: string[];
   }>;
 }
+
+export interface RecentIncidents extends Envelope {
+  incidents: Incident[];
+}
+
+export interface CollectorHealth extends Envelope {
+  runId: string;
+  durationMs: number;
+  latestPublishedSnapshotId: string;
+  providers: Array<{
+    providerId: string;
+    sourceType: ProviderConfig['adapter']['type'];
+    collection: CollectionState;
+  }>;
+}
+
+/** Public immutable cold objects carry provenance independently of a hot snapshot. */
+export type PublicArchiveIndex = ArchiveIndex & { dataMode: Envelope['dataMode'] };
+export type PublicIncidentArchive = IncidentArchive & { dataMode: Envelope['dataMode'] };

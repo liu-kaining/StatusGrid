@@ -2,61 +2,23 @@ import { z } from 'zod';
 import type { PersistedState } from '../types.js';
 import { isClosed } from '../events/normalize.js';
 import { buildDailyStats } from './rollup.js';
+import {
+  text, instant, nullableTime, https, version, providerId, status, reason, strings,
+  sourceFields, incidentSchema, componentSchema as component, coverageSchema, collectionSchema,
+  dailyStatSchema as dailyStat,
+} from '../../shared/entity-schemas.js';
+export { version, incidentSchema, collectionSchema } from '../../shared/entity-schemas.js';
 
-const text = z.string().min(1);
-const instant = z.string().refine((value) => value.endsWith('Z') && Number.isFinite(Date.parse(value)), 'Invalid UTC timestamp');
-const nullableTime = instant.nullable();
-const https = z.url().refine((value) => {
-  const url = new URL(value);
-  return url.protocol === 'https:' && !url.username && !url.password;
-}, 'Invalid HTTPS URL');
-export const version = z.literal('1.0');
-const providerId = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-const status = z.enum(['operational', 'maintenance', 'degraded', 'partial_outage', 'major_outage']);
-const phase = z.enum(['investigating', 'identified', 'monitoring', 'resolved', 'scheduled', 'in_progress', 'completed', 'unknown']);
-const reason = z.enum(['not_connected', 'timeout', 'http_error', 'blocked', 'invalid_payload', 'unknown_status', 'coverage_incomplete', 'overdue']);
-const number = z.number().finite().nonnegative();
-const strings = z.array(text);
-const update = z.strictObject({ id: text, phase, body: z.string(), timestamp: instant });
-const sourceFields = {
-  sourceIdentity: text, providerId, upstreamId: text.nullable(),
-  kind: z.enum(['incident', 'maintenance', 'advisory']), title: text,
-  severity: z.enum(['maintenance', 'degraded', 'partial_outage', 'major_outage']).nullable(),
-  sourceSeverity: z.string().nullable(), severityBasis: z.enum(['source', 'component', 'derived', 'unknown']),
-  state: phase, affectedComponentIds: strings, affectedRegions: strings, startedAt: instant,
-  startTimeBasis: z.enum(['source_started_at', 'source_created_at', 'source_published_at', 'source_reopened_at', 'first_observed']),
-  resolvedAt: nullableTime, resolvedTimeBasis: z.enum(['source', 'first_observed']).nullable(),
-  lastObservedAt: instant, updatedAt: instant, durationMinutes: number.nullable(),
-  sourceUrl: https, postmortemUrl: https.nullable(), updates: z.array(update),
-};
-export const incidentSchema = z.strictObject({
-  ...sourceFields, id: text, episode: z.number().int().positive(),
-  origin: z.enum(['official', 'observed']), isSynthetic: z.boolean(), supersededBy: text.nullable(),
-});
 const sourceIncident = z.strictObject({ ...sourceFields, origin: z.literal('official'), isSynthetic: z.literal(false) });
-const component = z.strictObject({
-  id: text, upstreamId: text.nullable(), groupId: text.nullable(), name: text, aliases: strings,
-  region: text.nullable(), reportedStatus: status.nullable(), displayCollapsed: z.boolean().optional(),
-});
 const adapterResult = z.strictObject({
   providerId, reportedStatus: status.nullable(), components: z.array(component), incidents: z.array(sourceIncident),
   sourceUpdatedAt: nullableTime,
-  coverage: z.strictObject({
-    basis: z.literal('official_public'), regions: strings, componentScope: z.enum(['full', 'filtered', 'events_only']),
-    currentState: z.enum(['complete', 'partial', 'unavailable']), history: z.enum(['native', 'observed', 'mixed', 'none']),
-    observedSince: nullableTime, nativeHistoryEarliestAt: nullableTime, limitation: z.string().nullable(),
-  }),
+  coverage: coverageSchema,
   evidence: z.strictObject({
     requiredChecks: z.array(z.strictObject({ name: text, passed: z.boolean(), checkedAt: instant })),
     historyCompleteThrough: nullableTime, historyError: reason.nullable().optional(),
     currentIncidentIds: strings.optional(), warnings: z.array(z.string()),
   }),
-});
-export const collectionSchema = z.strictObject({
-  outcome: z.enum(['success', 'partial', 'failure', 'not_connected']),
-  freshness: z.enum(['fresh', 'stale', 'missing']), reason: reason.nullable(), message: z.string().nullable(),
-  lastCheckedAt: nullableTime, lastSuccessAt: nullableTime, sourceUpdatedAt: nullableTime,
-  durationMs: number.nullable(), consecutiveFailures: z.number().int().nonnegative(),
 });
 export const providerSchema = z.strictObject({
   providerId, officialStatusUrl: https.optional(), result: adapterResult.nullable(),
@@ -76,11 +38,6 @@ const milestone = z.strictObject({
 export const ledgerSchema = z.strictObject({ milestones: z.array(milestone), aliases: z.record(text, text) });
 const observation = z.strictObject({
   at: instant, through: instant, intervalMinutes: z.union([z.literal(5), z.literal(10)]), status: status.nullable(),
-});
-const dailyStat = z.strictObject({
-  date: z.iso.date(), worstStatus: status.nullable(), incidentCount: z.number().int().nonnegative(),
-  reportedImpactMinutes: number.max(1440).nullable(), observedImpactMinutes: number.max(1440).nullable(),
-  observedCoverageMinutes: number.max(1440), unknownMinutes: number.max(1440), hasEstimatedTimes: z.boolean(),
 });
 export const identitiesSchema = z.record(text, identity);
 export const observationsSchema = z.record(providerId, z.array(observation));

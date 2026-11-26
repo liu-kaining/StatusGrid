@@ -37,6 +37,9 @@ const operational: ProviderSummary = {
     affectedRegions: [],
   },
   dailyTrack30d: '999999999999999999999999999999',
+  dailyCoverage30d: Array.from({ length: 30 }, (_, index) => ({
+    observedCoverageMinutes: 0, unknownMinutes: index === 29 ? 720 : 1440,
+  })),
   activeIncidents: [],
 };
 

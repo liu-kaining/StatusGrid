@@ -8,6 +8,8 @@ import { createHttpClient } from './http.js';
 import { createBrowserPool } from './browser.js';
 import { collectProviders, runPersistentCollection } from './run.js';
 import type { CollectionContext } from './types.js';
+import { buildPublicArtifacts } from './export/json.js';
+import { writePublicArtifacts } from './export/manifest.js';
 
 const registry = parseRegistry(registryFile);
 const providerIds = new Set(registry.map(({ id }) => id));
@@ -17,6 +19,7 @@ export interface CollectArgs {
   report: string;
   intervalMinutes: 5 | 10;
   stateDir?: string;
+  outputDir?: string;
 }
 
 export function parseCollectArgs(argv: string[]): CollectArgs {
@@ -44,7 +47,7 @@ export function parseCollectArgs(argv: string[]): CollectArgs {
     } else if (flag === '--state-dir') {
       options.stateDir = value;
     } else if (flag === '--output-dir') {
-      throw new Error('Public --output-dir behavior is not implemented yet');
+      options.outputDir = value;
     } else if (flag === '--interval') {
       const interval = Number(value);
       if (!COLLECTION_INTERVAL_MINUTES.some((allowed) => allowed === interval)) {
@@ -57,6 +60,18 @@ export function parseCollectArgs(argv: string[]): CollectArgs {
   }
   if (options.stateDir && seen.has('--providers')) {
     throw new Error('--providers diagnostics cannot be combined with --state-dir persistence (subset snapshots are unsafe)');
+  }
+  if (options.outputDir && (!options.stateDir || seen.has('--providers'))) {
+    throw new Error('Public output requires persistent full-provider mode with --state-dir');
+  }
+  const overlaps = (a: string, b: string) => resolve(a) === resolve(b)
+    || resolve(a).startsWith(`${resolve(b)}${sep}`) || resolve(b).startsWith(`${resolve(a)}${sep}`);
+  if (options.outputDir && options.stateDir && overlaps(options.outputDir, options.stateDir)) {
+    throw new Error('Public output and state directories must not overlap');
+  }
+  if (options.outputDir && (resolve(options.report) === resolve(options.outputDir)
+    || resolve(options.report).startsWith(`${resolve(options.outputDir)}${sep}`))) {
+    throw new Error('Report path must not overlap public output');
   }
   if (options.stateDir && (resolve(options.report) === resolve(options.stateDir)
     || resolve(options.report).startsWith(`${resolve(options.stateDir)}${sep}`))) {
@@ -89,9 +104,11 @@ export async function main(argv: string[], suppliedContext?: CollectionContext):
       }),
       browser,
     };
-    const run = options.stateDir
-      ? (await runPersistentCollection(configs, context, resolve(options.stateDir))).run
-      : await collectProviders(configs, new Map(), context);
+    const persistent = options.stateDir ? await runPersistentCollection(configs, context, resolve(options.stateDir)) : null;
+    const run = persistent?.run ?? await collectProviders(configs, new Map(), context);
+    if (options.outputDir && persistent) {
+      await writePublicArtifacts(buildPublicArtifacts(run, persistent.state), resolve(options.outputDir));
+    }
     const report = resolve(options.report);
     await mkdir(dirname(report), { recursive: true });
     await writeFile(report, `${JSON.stringify(run, null, 2)}\n`, 'utf8');
