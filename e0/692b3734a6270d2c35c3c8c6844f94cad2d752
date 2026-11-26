@@ -1,0 +1,40 @@
+src/web/components/HistoryView.tsx
+  s_79c9ef7a230eaf::t_a2b68656c8f671 39,43
+  s_79c9ef7a230eaf::t_cdd91a19e7bb5d 9,36-37,40-42,44-46
+src/web/components/SelectField.tsx
+  s_79c9ef7a230eaf::t_a06ce802c110bb 19
+  s_79c9ef7a230eaf::t_cdd91a19e7bb5d 1-18,20-67
+src/web/styles/tokens.css
+  s_79c9ef7a230eaf::t_cdd91a19e7bb5d 10-11,22-23
+tests/e2e/history.spec.ts
+  s_79c9ef7a230eaf::t_c165d0b9f3e4e0 62,64-83
+  s_79c9ef7a230eaf::t_d3d597f8c692b0 7-8,14-15,19-20,24-61
+  s_79c9ef7a230eaf::t_1e682aa072925e 63
+tests/web/health-track.test.ts
+  s_79c9ef7a230eaf::t_108928d9febba6 1-28
+src/web/components/HealthTrack.tsx
+  s_79c9ef7a230eaf::t_cdd91a19e7bb5d 6
+tests/e2e/ui-feedback.spec.ts
+  s_79c9ef7a230eaf::t_108928d9febba6 1-39,41-66
+  s_79c9ef7a230eaf::t_c165d0b9f3e4e0 40
+src/web/components/ProviderDetail.tsx
+  s_79c9ef7a230eaf::t_cdd91a19e7bb5d 60
+src/web/styles/components.css
+  s_79c9ef7a230eaf::t_cdd91a19e7bb5d 65-69,79-80,119-133,165
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e0692b3734a6270d2c35c3c8c6844f94cad2d752",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
