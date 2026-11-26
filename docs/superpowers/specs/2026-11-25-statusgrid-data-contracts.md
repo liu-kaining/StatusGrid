@@ -242,6 +242,7 @@ interface Adapter {
 ```typescript
 interface ProviderCollection {
   providerId: string;
+  officialStatusUrl?: string;
   result: AdapterResult | null;
   lastTrustedResult: AdapterResult | null;
   collection: CollectionState;
@@ -258,7 +259,11 @@ interface CollectionRun {
 
 `result` 只保存本轮通过完整实时检查的结果；失败时为 `null`。`lastTrustedResult` 用于保留上次可信服务信息，不能改变本轮受阻的新鲜度。首次失败没有可信历史时为 `null`。
 
-`collectProviders(configs, previous, context)` 中的 `previous` 为 `ReadonlyMap<string, ProviderCollection>`；`context` 提供当前时钟、共享 HTTP / browser、全局取消信号和目标周期。Task 3 的 CLI 可输出本轮报告，Task 6 再连接持久化目录。
+`collectProviders(configs, previous, context)` 中的 `previous` 为 `ReadonlyMap<string, ProviderCollection>`；`context` 提供当前时钟、共享 HTTP / browser、全局取消信号和目标周期。CLI 可输出本轮报告；持久化由下述入口负责。
+
+`officialStatusUrl` 由注册表传入，供没有原生事件链接的观测事件使用。`context.clock` 可注入 UTC 时钟和单调计时器；开始、完成与各厂商的尝试时间分开记录，不将固定的运行开始时间当成所有请求的完成时间。
+
+持久化入口为 `runPersistentCollection(configs, context, directory)`，返回 `{kind: 'valid', run, state, hasProviderFailures}`。有效的厂商失败结果保留 `stale` 并正常持久化；存储或协议错误抛出，不替换已有状态。持久模式采集全部启用厂商，不能用单厂商诊断结果替换完整快照。
 
 ## 5. 事件
 
@@ -540,6 +545,7 @@ state/collector-health.json             连续失败计数、最后尝试和成�
 state/open-incidents.json               全部未结束事件；不受滚动窗口淘汰
 state/incident-identities.json          上游身份、最新 episode、结束边界及归并别名
 state/notification-ledger.json          已生成的生命周期里程碑与别名
+state/observations.json                 带周期的观测片段；保留失败与断档边界
 providers/{id}.json                     上次可信组件、事件与数据来源
 rollup/daily-stats-90d.json              90 天日统计
 incidents/recent-30d.json                与近 30 天重叠的已知事件，加全部活跃事件
@@ -548,6 +554,8 @@ incidents/archive/{YYYY-MM}.json         按开始月份分片，可被迟到更
 ```
 
 所有状态先写临时 staging 目录，校验成功后再替换本地输出。只允许操作明确的生成目录，不清理仓库根目录或未声明文件。
+
+观测片段保存起点、最后一次相容观测时间、该片段的目标周期与状态。相容样本可以合并，但周期切换、状态变化、失败及超出外推上限的断档必须保留边界。日统计窗口为 90 个 UTC 日期；边界处保留计算覆盖所需的前驱片段，全部活跃事件及其原始月份不随该窗口淘汰。
 
 重跑相同输入应在事件集合、里程碑、统计和归档内容上幂等；运行时间和健康耗时允许变化。读取到更高 schema 主版本时停止写入，不自动降级。
 
