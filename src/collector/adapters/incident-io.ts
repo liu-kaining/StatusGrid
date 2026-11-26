@@ -167,11 +167,13 @@ export function parseIncidentIo(config: ProviderConfig, html: string, now: strin
     let startTimeBasis: SourceIncident['startTimeBasis'] = impacts.length ? 'source_started_at' : 'source_published_at';
     let current = expectedKind === 'incident';
     let resolvedAt: string | null = null;
+    const activeImpacts = impacts.filter(({ start, end }) => Date.parse(start) <= Date.parse(now)
+      && (end === null || Date.parse(end) > Date.parse(now)));
     if (expectedKind === 'maintenance') {
       requireCoverage(impacts.length, 'incident.io maintenance has no source component impact schedule');
       startedAt = impacts.reduce((min, impact) => impact.start < min ? impact.start : min, impacts[0]!.start);
       startTimeBasis = 'source_started_at';
-      current = state === 'in_progress' && Date.parse(startedAt) <= Date.parse(now);
+      current = state === 'in_progress';
       if (state === 'completed') {
         requireCoverage(impacts.every(({ start, end }) => Date.parse(start) <= Date.parse(now)
           && (end === null || Date.parse(end) <= Date.parse(now))),
@@ -182,8 +184,6 @@ export function parseIncidentIo(config: ProviderConfig, html: string, now: strin
             'incident.io completed maintenance ends after its latest published update');
         }
       }
-      const activeImpacts = impacts.filter(({ start, end }) => Date.parse(start) <= Date.parse(now)
-        && (end === null || Date.parse(end) > Date.parse(now)));
       if (current) {
         requireCoverage(activeImpacts.length, 'incident.io in-progress maintenance has no current source impact interval');
         activeImpacts.forEach(({ componentId, status }) => {
@@ -195,7 +195,7 @@ export function parseIncidentIo(config: ProviderConfig, html: string, now: strin
     let impact: ServiceStatus = 'operational';
     for (const componentId of affectedIds) impact = worse(impact, byId.get(componentId)!.reportedStatus!);
     if (current && expectedKind === 'incident') {
-      for (const native of impacts.filter(({ start, end }) => Date.parse(start) <= Date.parse(now) && end === null)) {
+      for (const native of activeImpacts) {
         requireCoverage(byId.get(native.componentId)!.reportedStatus === native.status,
           'incident.io current component impact disagrees with authoritative summary');
       }

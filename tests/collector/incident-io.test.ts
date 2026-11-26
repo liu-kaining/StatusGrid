@@ -98,6 +98,24 @@ it('keeps constructed future maintenance separate from current impact and applie
   expect(output.reportedStatus).toBe('maintenance');
   expect(output.components[2]!.reportedStatus).toBe('maintenance');
 });
+it.each([
+  ['future-only', '2026-11-26T10:00:00Z', '2026-11-26T11:00:00Z'],
+  ['ended exactly now', '2026-11-25T16:00:00Z', '2026-11-25T17:00:00Z'],
+  ['ended before now', '2026-11-25T16:00:00Z', '2026-11-25T16:30:00Z'],
+])('rejects in-progress maintenance without a current source interval: %s', async (_label, startAt, endAt) => {
+  const maintenance = { ...structuredClone(summary.ongoing_incidents[0]!), id: 'constructed-inconsistent-maintenance',
+    type: 'maintenance', status: 'maintenance_in_progress',
+    affected_components: [{ component_id: '01JVCV8YSWZFRSM1G5CVP253SK', current_status: 'under_maintenance', status: 'under_maintenance' }],
+    component_impacts: [{ component_id: '01JVCV8YSWZFRSM1G5CVP253SK',
+      start_at: startAt, end_at: endAt, status: 'under_maintenance' }],
+    status_summaries: [{ start_at: startAt, end_at: endAt, worst_component_status: 'under_maintenance' }],
+    updates: [{ id: 'start-update', published_at: '2026-11-25T16:00:00Z',
+      to_status: 'maintenance_in_progress', message_string: 'Maintenance in progress' }],
+  };
+  await expect(createAdapter(config).collect(config, context(page({
+    ...summary, affected_components: [], ongoing_incidents: [], scheduled_maintenances: [maintenance],
+  })))).rejects.toMatchObject({ reason: 'coverage_incomplete' });
+});
 it('maps the source full_outage enum to major_outage and retains the native severity', async () => {
   const payload = structuredClone(summary);
   payload.affected_components[0]!.status = 'full_outage';
@@ -113,6 +131,31 @@ it('rejects a future-dated component impact from establishing current severity',
   payload.ongoing_incidents[0]!.component_impacts[0]!.start_at = '2026-11-25T17:00:01Z';
   await expect(createAdapter(config).collect(config, context(page(payload))))
     .rejects.toMatchObject({ reason: 'coverage_incomplete' });
+});
+it('rejects a finite-ending current incident interval that conflicts with the sparse summary', async () => {
+  const payload = structuredClone(summary);
+  payload.affected_components = [];
+  payload.ongoing_incidents[0]!.component_impacts[0]!.end_at = '2026-11-25T18:00:00Z';
+  await expect(createAdapter(config).collect(config, context(page(payload))))
+    .rejects.toMatchObject({ reason: 'coverage_incomplete' });
+});
+it('accepts a finite-ending current incident interval consistent with the sparse summary', async () => {
+  const payload = structuredClone(summary);
+  payload.ongoing_incidents[0]!.component_impacts[0]!.end_at = '2026-11-25T18:00:00Z';
+  const output = await createAdapter(config).collect(config, context(page(payload)));
+  expect(output.reportedStatus).toBe('degraded');
+  expect(output.evidence.currentIncidentIds).toEqual(['openai:01M89RGC3STKK2MT53TXHFMY4H']);
+});
+it.each([
+  '2026-11-25T17:00:00Z',
+  '2026-11-25T16:30:00Z',
+])('does not reconcile an incident impact ending at %s as current', async (endAt) => {
+  const payload = structuredClone(summary);
+  payload.affected_components = [];
+  payload.ongoing_incidents[0]!.component_impacts[0]!.end_at = endAt;
+  const output = await createAdapter(config).collect(config, context(page(payload)));
+  expect(output.reportedStatus).toBe('operational');
+  expect(output.components[2]!.reportedStatus).toBe('operational');
 });
 it.each([
   ['2026-11-25T16:30:00Z', '2026-11-25T16:30:00.000Z'],
