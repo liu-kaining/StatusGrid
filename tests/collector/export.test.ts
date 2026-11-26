@@ -3,8 +3,31 @@ import { buildPublicArtifacts } from '../../src/collector/export/json.js';
 import { summarySchema, providerDetailSchema, archiveIndexSchema } from '../../src/shared/public-schemas.js';
 import { emptyState } from '../../src/collector/events/reconcile.js';
 import { advance, run, source, time } from '../helpers/history.js';
+import registry from '../../registry/providers.json';
+import awsCatalog from '../fixtures/aws-cn/services.json';
+import awsUnscopedCatalog from '../fixtures/aws-cn/services-unscoped.json';
+import { parseRegistry } from '../../src/shared/schemas.js';
+import { parseAwsChina } from '../../src/collector/adapters/aws-cn.js';
 
 describe('public JSON and search', () => {
+  it('exports and indexes AWS catalog services with unspecified geography as null components', () => {
+    const config = parseRegistry(registry).find(({ id }) => id === 'aws-cn')!;
+    const result = parseAwsChina(config, [], time(0), [...awsCatalog, ...awsUnscopedCatalog]);
+    const collection = run(time(0), 'operational');
+    collection.providers[0] = { ...collection.providers[0]!, providerId: 'aws-cn',
+      officialStatusUrl: config.officialStatusUrl, result, lastTrustedResult: result };
+    const output = buildPublicArtifacts(collection, advance(emptyState(), collection));
+    const detail = providerDetailSchema.parse(output.details['aws-cn']);
+    const components = detail.componentGroups.flatMap(({ components }) => components);
+    expect(components).toHaveLength(5);
+    expect(components.find(({ id }) => id === 'aws-cn:health')?.region).toBeNull();
+    expect(components.find(({ id }) => id === 'aws-cn:iam')?.region).toBeNull();
+    expect(output.search.providers[0]?.components).toContain('Amazon Health');
+    expect(output.search.providers[0]?.components).toContain('Amazon Identity and Access Management');
+    expect(output.search.providers[0]?.regions).toEqual(['cn-north-1', 'cn-northwest-1']);
+    expect(output.summary.providers[0]?.componentSummary.total).toBe(5);
+  });
+
   it('uses null for an empty immutable index watermark and keeps it stable across snapshots', () => {
     const firstRun = run(time(0), 'operational');
     const firstState = advance(emptyState(), firstRun);

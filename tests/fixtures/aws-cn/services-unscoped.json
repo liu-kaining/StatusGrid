@@ -1,0 +1,19 @@
+[
+  {
+    "service": "health",
+    "service_name": "Amazon Health",
+    "event_type_code": "AWS_HEALTH_OPERATIONAL_ISSUE",
+    "locale": ["CN"],
+    "region_name": null,
+    "launch_date": 1593388800
+  },
+  {
+    "service": "iam",
+    "service_name": "Amazon Identity and Access Management",
+    "event_type_code": "AWS_IAM_OPERATIONAL_ISSUE",
+    "locale": ["CN"],
+    "region_name": null,
+    "launch_date": 1576713600,
+    "short_name": "Amazon IAM"
+  }
+]

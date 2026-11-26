@@ -6,12 +6,44 @@ import { parseAwsChina } from '../../src/collector/adapters/aws-cn.js';
 import { decodeBody } from '../../src/collector/http.js';
 import observed from '../fixtures/aws-cn/observed-event.json';
 import catalog from '../fixtures/aws-cn/services.json';
+import unscopedCatalog from '../fixtures/aws-cn/services-unscoped.json';
 import { awsChinaAdapter } from '../../src/collector/adapters/aws-cn.js';
 import { TransportError } from '../../src/collector/errors.js';
 
 const config = parseRegistry(registry).find(({ id }) => id === 'aws-cn')!;
 const now = '2026-11-25T16:20:00Z';
 describe('AWS China current events', () => {
+  it('preserves catalog services with omitted region IDs as null without inventing geography', () => {
+    const result = parseAwsChina(config, [], now, [...catalog, ...unscopedCatalog]);
+    expect(result.components).toHaveLength(5);
+    expect(result.components.slice(-2).map(({ id, name, region, reportedStatus }) => ({ id, name, region, reportedStatus })))
+      .toEqual([
+        { id: 'aws-cn:health', name: 'Amazon Health', region: null, reportedStatus: null },
+        { id: 'aws-cn:iam', name: 'Amazon Identity and Access Management', region: null, reportedStatus: null },
+      ]);
+    expect(result.coverage.currentState).toBe('complete');
+    expect(result.coverage.regions).toEqual(['cn-north-1', 'cn-northwest-1']);
+    expect(result.reportedStatus).toBe('operational');
+  });
+
+  it.each([null, '', ' ', 42, {}, ['cn-north-1'], undefined])(
+    'rejects malformed explicitly supplied catalog region_id %j', (region) => {
+      expect(() => parseAwsChina(config, [], now, [...catalog, { ...unscopedCatalog[0], region_id: region }]))
+        .toThrowError(expect.objectContaining({ reason: 'invalid_payload' }));
+    },
+  );
+
+  it('requires both explicit China-region catalog scopes even with unscoped services', () => {
+    expect(() => parseAwsChina(config, [], now, [catalog[0], ...unscopedCatalog]))
+      .toThrowError(expect.objectContaining({ reason: 'coverage_incomplete' }));
+  });
+
+  it('does not turn unscoped catalog entries into accepted global current-event scope', () => {
+    const event = { ...observed[0]!, service: 'health', region: 'global', typeCode: 'AWS_HEALTH_OPERATIONAL_ISSUE' };
+    expect(() => parseAwsChina(config, [event], now, [...catalog, ...unscopedCatalog]))
+      .toThrowError(expect.objectContaining({ reason: 'coverage_incomplete' }));
+  });
+
   it.each(['utf-8', 'utf-16le', 'utf-16be'])('accepts verified empty events in %s', (encoding) => {
     const bytes = encoding === 'utf-16be' ? Uint8Array.from([0xfe, 0xff, 0, 91, 0, 93]) : Buffer.from('[]', encoding as BufferEncoding);
     const text = decodeBody(bytes, `application/json;charset=${encoding}`);

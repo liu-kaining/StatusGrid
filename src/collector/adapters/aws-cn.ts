@@ -20,7 +20,8 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
     const upstreamId = text(service.service, 'AWS China catalog service identity');
     const component: Component = {
       id: `${config.id}:${upstreamId}`, upstreamId, name: text(service.service_name, 'AWS China catalog service name'),
-      region: text(service.region_id, 'AWS China catalog region'), groupId: null, aliases: [], reportedStatus: null,
+      region: Object.hasOwn(service, 'region_id') ? text(service.region_id, 'AWS China catalog region') : null,
+      groupId: null, aliases: [], reportedStatus: null,
     };
     const previous = componentsById.get(component.id);
     if (previous && (previous.name !== component.name || previous.region !== component.region)) {
