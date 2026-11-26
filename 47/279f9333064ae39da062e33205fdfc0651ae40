@@ -1,0 +1,25 @@
+tests/collector/run.test.ts
+  s_79c9ef7a230eaf::t_67eda1f6f6f02a 14-16,42-70
+tests/collector/statuspage.test.ts
+  s_79c9ef7a230eaf::t_67eda1f6f6f02a 31-37,40-73
+tests/collector/release.test.ts
+  s_79c9ef7a230eaf::t_00231b379055e5 253
+src/collector/adapters/statuspage.ts
+  s_79c9ef7a230eaf::t_db8efdc9c7143b 94-96,122
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "47279f9333064ae39da062e33205fdfc0651ae40",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
