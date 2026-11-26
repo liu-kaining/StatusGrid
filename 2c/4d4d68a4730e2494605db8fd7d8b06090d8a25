@@ -1,0 +1,56 @@
+src/collector/adapters/google-cloud.ts
+  s_79c9ef7a230eaf::t_f7faeae3336d17 25-29,69
+tests/fixtures/deepseek/page.txt
+  s_79c9ef7a230eaf::t_04306169133c96 1
+tests/collector/gcp.test.ts
+  s_79c9ef7a230eaf::t_d79fccbfaf59b3 19-22
+src/collector/adapters/azure.ts
+  s_79c9ef7a230eaf::t_a60763231f3cf9 2-4,12-15,18,27-73,87-88,90,101,104-106,108-110
+  s_79c9ef7a230eaf::t_ff219cf0f4023d 19-26
+tests/fixtures/deepseek/history.json
+  s_79c9ef7a230eaf::t_d79fccbfaf59b3 1
+src/collector/adapters/aws-cn.ts
+  s_79c9ef7a230eaf::t_049f4a65bc005b 19-27
+  s_79c9ef7a230eaf::t_4e1cf3fb82d86d 2,75,78-83,85,88-89,92,94-95,103,133,136-138,140-142
+tests/collector/aws-cn.test.ts
+  s_79c9ef7a230eaf::t_d79fccbfaf59b3 9-10,81-89,100-102,105-128
+  s_79c9ef7a230eaf::t_c46624af811800 90-99
+  s_79c9ef7a230eaf::t_e5f6df84e8f2bf 59
+  s_79c9ef7a230eaf::t_9293d57d1a01e8 103-104
+tests/collector/deepseek.test.ts
+  s_79c9ef7a230eaf::t_9293d57d1a01e8 68
+  s_79c9ef7a230eaf::t_4d58fb4f3bf8e7 41
+  s_79c9ef7a230eaf::t_04306169133c96 66,71-76
+  s_79c9ef7a230eaf::t_d3d8db6c76bf43 86-91,105
+  s_79c9ef7a230eaf::t_d1092c5e116036 78-85
+  s_79c9ef7a230eaf::t_d79fccbfaf59b3 8-10,15-16,42-65,67,77,92-104
+tests/collector/azure.test.ts
+  s_79c9ef7a230eaf::t_d79fccbfaf59b3 6-7,34-38,44-52,61-74
+  s_79c9ef7a230eaf::t_a60763231f3cf9 55
+  s_79c9ef7a230eaf::t_418004b43b1df3 53-54,56-60,75
+  s_79c9ef7a230eaf::t_9bdf4e8bf529bf 39-43
+src/collector/adapters/deepseek.ts
+  s_79c9ef7a230eaf::t_b6fc77bf6f8d59 195,204
+  s_79c9ef7a230eaf::t_8e08c8e1d2e317 106
+  s_79c9ef7a230eaf::t_9c55d80ec82f4d 1-3,6-21,29,35-61
+  s_79c9ef7a230eaf::t_39c613236f4345 63-105,107-113,115-117,119-121,123-133,137,139-141,159-193,201-203,205-208,210,220,223-225,227-229
+  s_79c9ef7a230eaf::t_cfc86109d6fa5b 62
+tests/fixtures/azure/page.html
+  s_79c9ef7a230eaf::t_9bdf4e8bf529bf 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2c4d4d68a4730e2494605db8fd7d8b06090d8a25",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
