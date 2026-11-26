@@ -1,0 +1,139 @@
+src/web/components/ProviderCard.tsx
+  s_79c9ef7a230eaf::t_f237f60d824636 5-6,8-10,12,14-16
+  s_79c9ef7a230eaf::t_31220865a6bf47 17
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-4,7,11,13,18-26
+src/web/styles/tokens.css
+  s_79c9ef7a230eaf::t_31220865a6bf47 1-46
+tests/helpers/browser-executable.ts
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-9
+tests/web/queries.test.ts
+  s_79c9ef7a230eaf::t_b8b6173ac09057 87-95
+  s_79c9ef7a230eaf::t_1a90261f553922 1-3,7-54,60-86,103
+  s_79c9ef7a230eaf::t_83d1e046155871 4-6,55-59
+  s_79c9ef7a230eaf::t_a6e3eee860d147 96-102
+tests/web/url.test.ts
+  s_79c9ef7a230eaf::t_1a90261f553922 1-19
+.gitignore
+  s_79c9ef7a230eaf::t_87f1da511de9c3 7-9
+package.json
+  s_79c9ef7a230eaf::t_87f1da511de9c3 10-14
+tests/e2e/grid.spec.ts
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-20,25-37
+  s_79c9ef7a230eaf::t_d12adef27e4d32 21-24
+src/web/vite-env.d.ts
+  s_79c9ef7a230eaf::t_286d1bde29f8f5 1
+src/web/components/IncidentTimeline.tsx
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-30
+tests/web/freshness.test.ts
+  s_79c9ef7a230eaf::t_1a90261f553922 1-18
+tests/helpers/web-fixture.ts
+  s_79c9ef7a230eaf::t_1a90261f553922 1-30,32-48
+  s_79c9ef7a230eaf::t_286d1bde29f8f5 31
+src/web/state/url.ts
+  s_79c9ef7a230eaf::t_d507c69b07e10e 1-40
+src/web/components/DataAccess.tsx
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-13
+src/web/App.tsx
+  s_79c9ef7a230eaf::t_31220865a6bf47 1-3,5-19,21-113,116,121-123,125-132,134-136,138-146,148,150-152
+  s_79c9ef7a230eaf::t_286d1bde29f8f5 147
+  s_79c9ef7a230eaf::t_87f1da511de9c3 20,153
+  s_79c9ef7a230eaf::t_f237f60d824636 4,114-115,117-120,133,137,149
+  s_79c9ef7a230eaf::t_605bd30a6d17a8 124
+public/favicon.svg
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1
+src/web/components/Overview.tsx
+  s_79c9ef7a230eaf::t_f237f60d824636 10
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-9,11-30
+tsconfig.json
+  s_79c9ef7a230eaf::t_87f1da511de9c3 7,16
+src/web/styles/layout.css
+  s_79c9ef7a230eaf::t_31220865a6bf47 1-51
+src/web/components/HealthTrack.tsx
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-13
+src/web/data/queries.ts
+  s_79c9ef7a230eaf::t_f237f60d824636 5,14-15,19,24-25
+  s_79c9ef7a230eaf::t_d507c69b07e10e 1-4,6-12,16-18,20-23,26-50
+  s_79c9ef7a230eaf::t_46c35d8dcc93df 13
+tests/e2e/details.spec.ts
+  s_79c9ef7a230eaf::t_01a1af11073a5d 44-45,47,49,51-55,57
+  s_79c9ef7a230eaf::t_27f2f8d95b9456 48,50,56
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-9,11-17,24-29,31-39,58
+  s_79c9ef7a230eaf::t_a8fb4006d175d0 10,40-43,46
+  s_79c9ef7a230eaf::t_286d1bde29f8f5 18-23,30
+tests/e2e/live.spec.ts
+  s_79c9ef7a230eaf::t_5188a8e60aff4d 1-21,24-34,39-40,46,48-54,56-62
+  s_79c9ef7a230eaf::t_e0457eb3eb8889 36,55
+  s_79c9ef7a230eaf::t_c43a92386b80df 35,37-38,41-42,47
+  s_79c9ef7a230eaf::t_daa27c80c9fd5f 22-23,43-45
+src/web/components/ProviderDetail.tsx
+  s_79c9ef7a230eaf::t_31220865a6bf47 38-42
+  s_79c9ef7a230eaf::t_daa27c80c9fd5f 74-75
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-2,4-8,10,12-37,47-52,54-55,57-69,71-73,78-88
+  s_79c9ef7a230eaf::t_f237f60d824636 3,9,11,43-46,53,56,70,76-77
+tests/e2e/history.spec.ts
+  s_79c9ef7a230eaf::t_605bd30a6d17a8 5
+  s_79c9ef7a230eaf::t_286d1bde29f8f5 11
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-4,6-10,12-19
+src/web/state/theme.ts
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-19
+index.html
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-15
+tests/web/filters.test.ts
+  s_79c9ef7a230eaf::t_1a90261f553922 1-15
+  s_79c9ef7a230eaf::t_83d1e046155871 16-23
+src/web/main.tsx
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-4
+tests/e2e/accessibility.spec.ts
+  s_79c9ef7a230eaf::t_c43a92386b80df 34
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-23,27-29,31-33,35-39
+  s_79c9ef7a230eaf::t_286d1bde29f8f5 24-25
+  s_79c9ef7a230eaf::t_605bd30a6d17a8 26,30
+tests/e2e/errors.spec.ts
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-41
+  s_79c9ef7a230eaf::t_a6e3eee860d147 42-64
+src/web/components/Filters.tsx
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-21
+src/web/components/Header.tsx
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-13,15-18
+  s_79c9ef7a230eaf::t_286d1bde29f8f5 14
+scripts/preview-fixture.ts
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-7
+playwright.config.ts
+  s_79c9ef7a230eaf::t_87f1da511de9c3 1-5,8-9,11,14-15
+  s_79c9ef7a230eaf::t_5188a8e60aff4d 6-7,12-13
+  s_79c9ef7a230eaf::t_286d1bde29f8f5 10
+src/web/styles/components.css
+  s_79c9ef7a230eaf::t_31220865a6bf47 1-50,52-152
+  s_79c9ef7a230eaf::t_bdd36797f39bed 51
+src/web/components/HistoryView.tsx
+  s_79c9ef7a230eaf::t_31220865a6bf47 1-49
+src/web/state/types.ts
+  s_79c9ef7a230eaf::t_0254cd71a0976d 17-18
+  s_79c9ef7a230eaf::t_d507c69b07e10e 1-16,19-23
+vite.config.ts
+  s_79c9ef7a230eaf::t_87f1da511de9c3 2-3,5-25
+src/web/data/client.ts
+  s_79c9ef7a230eaf::t_0254cd71a0976d 89-90
+  s_79c9ef7a230eaf::t_94517027149b8c 82
+  s_79c9ef7a230eaf::t_d507c69b07e10e 1-81,83-88,91-125
+src/web/components/StateNotice.tsx
+  s_79c9ef7a230eaf::t_0254cd71a0976d 1-11
+package-lock.json
+  s_79c9ef7a230eaf::t_e8c5e739083bd5 13-14,19,21-22,800-815,1150-1169,1755-1761,3095-3115,3167-3172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "58e04bffbcac4aabd24e1d1db88244ef3f66b689",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
