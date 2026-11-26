@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;550;600;650&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #111519; --panel: #181e23; --panel-hover: #1d252b; --subtle: #141a1f;
+  --border: #303b43; --border-soft: #263139; --text: #e2e8ec; --muted: #99a8b3; --dim: #788996;
+  --good: #83d8ae; --good-bg: #153127; --warning: #e6bd79; --warning-bg: #352d20;
+  --bad: #f08b80; --bad-bg: #382624; --maintenance: #95b9e3; --maintenance-bg: #243040;
+  --unknown: #a5a9ae; --focus: #b3d7e8; --shadow: #0008;
+  --sans: 'IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #eef0ec; --panel: #fafbf8; --panel-hover: #f1f4ee; --subtle: #e8ece6;
+  --border: #bbc6c0; --border-soft: #d4dcd5; --text: #1f302c; --muted: #53695f; --dim: #5d7066;
+  --good: #21784f; --good-bg: #deeee2; --warning: #906113; --warning-bg: #f5ead5;
+  --bad: #b13a2e; --bad-bg: #f7e4dd; --maintenance: #416797; --maintenance-bg: #e4ebf4;
+  --unknown: #646961; --focus: #245d77; --shadow: #10201933;
+}
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; background: var(--bg); }
+body { margin: 0; font: 14px/1.55 var(--sans); color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+button, input, select { font: inherit; }
+button, a, input, select, summary { -webkit-tap-highlight-color: transparent; }
+button { color: inherit; cursor: pointer; }
+button:disabled { cursor: wait; opacity: .6; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--focus); }
+button, input, select { border-radius: 3px; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+h1, h2, h3, p { margin: 0; }
+button { background: none; border: 0; }
+::selection { color: var(--bg); background: var(--focus); }
+.mono, time, .eyebrow, .provider-code, .track-axis, .matrix-caption, .track-legend { font-family: var(--mono); }
+.eyebrow { color: var(--muted); font-size: 10px; letter-spacing: 1.5px; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.warning { color: var(--warning); }
+.heading-period { color: var(--good); }
+.status-operational { --signal: var(--good); --signal-bg: var(--good-bg); }
+.status-maintenance { --signal: var(--maintenance); --signal-bg: var(--maintenance-bg); }
+.status-degraded { --signal: var(--warning); --signal-bg: var(--warning-bg); }
+.status-partial_outage, .status-major_outage { --signal: var(--bad); --signal-bg: var(--bad-bg); }
+.status-stale { --signal: var(--unknown); --signal-bg: var(--subtle); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }

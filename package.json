@@ -7,6 +7,11 @@
     "node": "^22.12.0 || >=24.0.0"
   },
   "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "preview:fixture": "tsx scripts/preview-fixture.ts && STATUSGRID_DATA_DIR=.statusgrid/task8-fixture/public vite --host 127.0.0.1 --port 5173",
+    "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test:unit": "vitest run",
@@ -17,16 +22,21 @@
   "dependencies": {
     "cheerio": "1.2.0",
     "fast-xml-parser": "5.12.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "zod": "4.6.7"
   },
   "devDependencies": {
     "@eslint/js": "9.39.5",
+    "@playwright/test": "1.65.1",
     "@types/node": "22.20.7",
+    "@types/react": "19.3.3",
+    "@types/react-dom": "19.3.0",
     "eslint": "9.39.5",
     "playwright": "1.65.1",
+    "tsx": "4.23.15",
     "typescript": "6.0.3",
     "typescript-eslint": "8.74.0",
-    "tsx": "4.23.15",
     "vite": "8.3.8",
     "vitest": "5.1.2"
   }

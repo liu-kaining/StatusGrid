@@ -4,4 +4,7 @@ coverage/
 .statusgrid/
 public/api/
 public/feed/
+public/.statusgrid-public.json
+test-results/
+playwright-report/
 *.tsbuildinfo
