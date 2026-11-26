@@ -11,6 +11,9 @@ import { TransportError } from '../../src/collector/errors.js';
 import type { CollectionContext } from '../../src/collector/types.js';
 import type { ProviderConfig } from '../../src/shared/contracts.js';
 import { time } from '../helpers/history.js';
+import { buildPublicArtifacts } from '../../src/collector/export/json.js';
+import { writePublicArtifacts } from '../../src/collector/export/manifest.js';
+import { validateRelease } from '../../src/collector/export/validate.js';
 
 const configs = parseRegistry(registry);
 const config = configs.find(({ id }) => id === 'github')!;
@@ -36,6 +39,35 @@ function context(at: string, componentStatus = 'operational', failed = false): C
 }
 
 describe('production collection and persistence boundary', () => {
+  it('persists and exports verified current data despite impossible optional historical intervals', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'statusgrid-bad-history-test-'));
+    temporary.push(root);
+    const ctx = context(time(0));
+    const original = ctx.http.getJson;
+    ctx.http.getJson = async (url, signal) => url.includes('incidents.json') ? { incidents: [{
+      id: '6yk962mhlr3h', name: '[Retroactive] Actions workflow run logs delayed', status: 'resolved', impact: 'minor',
+      created_at: '2026-10-13T20:30:00.000Z', started_at: '2026-10-14T00:12:44.500Z',
+      resolved_at: '2026-10-13T20:30:00.000Z', updated_at: '2026-10-14T00:13:11.803Z',
+    }] } : original(url, signal);
+    const result = await runPersistentCollection([config], ctx, join(root, 'state'));
+    expect(result.run.providers[0]?.collection).toMatchObject({ freshness: 'fresh', outcome: 'partial' });
+    expect(result.run.providers[0]?.result?.evidence.historyError).toBe('invalid_payload');
+    expect(result.state.incidents).toEqual([]);
+    expect(await loadState(join(root, 'state'))).toEqual(result.state);
+    const output = buildPublicArtifacts(result.run, result.state);
+    await writePublicArtifacts(output, join(root, 'public'));
+    expect((await validateRelease(join(root, 'public'), { providerIds: ['github'], requireLive: true })).valid).toBe(true);
+    // The same malformed row in a required endpoint must fail honestly and retain prior trusted data.
+    const badCurrent = context(time(5));
+    badCurrent.http.getJson = async (url, signal) => url.includes('unresolved.json')
+      ? ctx.http.getJson(config.adapter.endpoints.incidents!, signal) : original(url, signal);
+    const failed = await runPersistentCollection([config], badCurrent, join(root, 'state'));
+    expect(failed.run.providers[0]?.collection).toMatchObject({ freshness: 'stale', outcome: 'failure', reason: 'invalid_payload' });
+    expect(failed.run.providers[0]?.result).toBeNull();
+    expect(failed.run.providers[0]?.lastTrustedResult?.reportedStatus).toBe('operational');
+    expect(await loadState(join(root, 'state'))).toEqual(failed.state);
+  });
+
   it('uses an observation-anchored clock and captures actual completion independently of start', async () => {
     let at = time(0);
     let tick = 0;

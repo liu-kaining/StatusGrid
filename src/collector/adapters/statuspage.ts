@@ -91,6 +91,9 @@ function parseIncident(raw: unknown, config: ProviderConfig, now: string, warnin
   const resolved = optionalIso(value.resolved_at, 'incident.resolved_at');
   const updated = iso(value.updated_at, 'incident.updated_at');
   const startAt = started ?? created;
+  if (resolved && Date.parse(resolved) < Date.parse(startAt)) {
+    throw new AdapterError('invalid_payload', `Incident ${upstreamId} resolved_at precedes its source start`);
+  }
   const rawComponents = value.components == null ? [] : list(value.components, 'incident.components');
   const affectedComponentIds = rawComponents.map((entry) => `${config.id}:${text(object(entry, 'incident.component').id, 'incident.component.id')}`);
   const rawUpdates = value.incident_updates == null ? [] : list(value.incident_updates, 'incident.incident_updates');
@@ -116,7 +119,7 @@ function parseIncident(raw: unknown, config: ProviderConfig, now: string, warnin
     startedAt: startAt, startTimeBasis: started ? 'source_started_at' : 'source_created_at',
     resolvedAt: resolved, resolvedTimeBasis: resolved ? 'source' : null,
     lastObservedAt: now, updatedAt: updated,
-    durationMinutes: resolved ? Math.max(0, (Date.parse(resolved) - Date.parse(startAt)) / 60_000) : null,
+    durationMinutes: resolved ? (Date.parse(resolved) - Date.parse(startAt)) / 60_000 : null,
     sourceUrl, postmortemUrl, updates,
   };
 }

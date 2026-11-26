@@ -250,7 +250,7 @@ describe('release staging and runtime validation', () => {
     expect(latest.snapshotId).toBe('2026-11-25T03:12:00.000Z');
     expect(await readFile(join(dir, latest.paths.summary.slice(1)), 'utf8')).toContain(latest.snapshotId);
     expect((await validateRelease(dir, { providerIds: ['github'], requireLive: true })).valid).toBe(true);
-  });
+  }, 15_000); // 27 real staged releases validate reference closure; this is not a five-second latency gate.
 
   it('keeps the latest two unique month revisions even after their hot references expire', async () => {
     const dir = await root();

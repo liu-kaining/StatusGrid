@@ -28,8 +28,49 @@ const config = (id: string): ProviderConfig => {
 };
 const now = '2026-11-25T14:20:00.000Z';
 const active = (summary: { incidents: unknown[] }) => ({ incidents: summary.incidents });
+const impossibleInterval = {
+  id: '6yk962mhlr3h', name: '[Retroactive] Actions workflow run logs delayed',
+  status: 'resolved', impact: 'minor',
+  created_at: '2026-10-13T20:30:00.000Z', started_at: '2026-10-14T00:12:44.500Z',
+  resolved_at: '2026-10-13T20:30:00.000Z', updated_at: '2026-10-14T00:13:11.803Z',
+  incident_updates: [],
+};
 
 describe('Statuspage parser', () => {
+  it('isolates impossible optional historical intervals while preserving verified current events', () => {
+    const result = parseStatuspage(config('cloudflare'), cloudflare, active(cloudflare),
+      { incidents: [impossibleInterval] }, now);
+    expect(result.reportedStatus).toBe('degraded');
+    expect(result.coverage.currentState).toBe('complete');
+    expect(result.coverage.history).toBe('none');
+    expect(result.evidence.historyError).toBe('invalid_payload');
+    expect(result.evidence.warnings).toContain('Historical backfill invalid (invalid_payload)');
+    expect(result.incidents.map(({ sourceIdentity }) => sourceIdentity)).toEqual(['cloudflare:0ocqieaifg7h']);
+    expect(result.evidence.currentIncidentIds).toEqual(['cloudflare:0ocqieaifg7h']);
+  });
+
+  it.each([
+    impossibleInterval,
+    { ...impossibleInterval, started_at: null, created_at: '2026-10-14T00:12:44.500Z' },
+  ])('rejects impossible required current intervals using the effective source start', (incident) => {
+    expect(() => parseStatuspage(config('github'), github, { incidents: [incident] }, null, now))
+      .toThrowError(expect.objectContaining({ reason: 'invalid_payload' }));
+  });
+
+  it('accepts a true zero-length interval and a retroactive start before publication without changing timestamps', () => {
+    const instantaneous = { ...impossibleInterval, started_at: '2026-10-13T20:30:00.000Z' };
+    const retroactive = { ...impossibleInterval, id: 'retroactive-valid',
+      created_at: '2026-10-14T00:12:44.500Z', started_at: '2026-10-13T20:00:00.000Z' };
+    const result = parseStatuspage(config('github'), github, active(github),
+      { incidents: [instantaneous, retroactive] }, now);
+    expect(result.evidence.historyError).toBeNull();
+    expect(result.incidents.map(({ startedAt, resolvedAt, durationMinutes }) => ({ startedAt, resolvedAt, durationMinutes })))
+      .toEqual([
+        { startedAt: '2026-10-13T20:30:00.000Z', resolvedAt: '2026-10-13T20:30:00.000Z', durationMinutes: 0 },
+        { startedAt: '2026-10-13T20:00:00.000Z', resolvedAt: '2026-10-13T20:30:00.000Z', durationMinutes: 30 },
+      ]);
+  });
+
   it.each([
     ['cloudflare', cloudflare, 'degraded', 1],
     ['github', github, 'operational', 0],
