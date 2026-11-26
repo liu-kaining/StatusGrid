@@ -1,0 +1,26 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run typecheck && npm run lint && npm run test:unit
+      - run: npm run build
+      - run: npx tsx scripts/workflow-release.ts check
+      - run: npm run test:e2e
+      - name: Failure summary
+        if: failure()
+        run: echo 'CI failed. Inspect the failed check and test logs before publishing.' >> "$GITHUB_STEP_SUMMARY"

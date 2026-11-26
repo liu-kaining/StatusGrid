@@ -1,0 +1,45 @@
+name: Frontend release
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: statusgrid-release
+  cancel-in-progress: false
+  queue: max
+jobs:
+  inputs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      changed: ${{ steps.inputs.outputs.changed }}
+      fingerprint: ${{ steps.inputs.outputs.fingerprint }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      # One canonical path set in release-policy.ts controls both build triggering and identity.
+      - id: inputs
+        run: npx tsx scripts/workflow-release.ts gate
+      - if: failure()
+        run: echo 'Frontend input check failed; no shell was published.' >> "$GITHUB_STEP_SUMMARY"
+  publish:
+    needs: inputs
+    if: needs.inputs.outputs.changed == 'true'
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml
+    with:
+      mode: frontend
+      source-sha: ${{ github.sha }}
+      fingerprint: ${{ needs.inputs.outputs.fingerprint }}
