@@ -1,0 +1,26 @@
+docs/acceptance-report.md
+  s_79c9ef7a230eaf::t_3ed1d7f36b2948 99-100
+docs/deployment.md
+  s_79c9ef7a230eaf::t_e9505e936ec2e1 48
+docs/runbook.md
+  s_79c9ef7a230eaf::t_e9505e936ec2e1 99
+tests/e2e/live.spec.ts
+  s_79c9ef7a230eaf::t_4f9d44c0e0fd0f 52
+  s_79c9ef7a230eaf::t_e9505e936ec2e1 4,12-24,89-93,101-105,112-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "aa1dc0ec3d516173dedfebff9b860f2d3c2ee4a5",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
