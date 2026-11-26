@@ -1,0 +1,22 @@
+tests/collector/probe.test.ts
+  s_79c9ef7a230eaf::t_858dc0cdd9306f 6,12-15,17-21,38
+docs/deployment.md
+  s_79c9ef7a230eaf::t_13f067ea02c0dc 21
+  s_79c9ef7a230eaf::t_842bae4aba4697 14-20,22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ce2606e8417be2cbae9f83751fbe6149e4334130",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
