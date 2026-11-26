@@ -1,0 +1,124 @@
+tests/fixtures/deepseek/page.txt
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1
+tests/collector/statuspage.test.ts
+  s_79c9ef7a230eaf::t_98369479a6e1ad 254,258
+tests/fixtures/aws-cn/services.json
+  s_79c9ef7a230eaf::t_8cf6b62847099c 1
+tests/fixtures/gcp/products.json
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1
+src/collector/adapters/aws-cn.ts
+  s_79c9ef7a230eaf::t_63cf97ccfa0822 110
+  s_79c9ef7a230eaf::t_5504f072b03370 15,21-24,34-59,64-69,75,78-88
+  s_79c9ef7a230eaf::t_8105a05adfe525 11-12,25-33,70-73
+  s_79c9ef7a230eaf::t_29a735bfa0e9b4 62
+  s_79c9ef7a230eaf::t_9562b12a42539c 1-8,89-109,111-127
+  s_79c9ef7a230eaf::t_2d693634bdc15f 9-10
+  s_79c9ef7a230eaf::t_0e20b5e7f9a658 13-14
+  s_79c9ef7a230eaf::t_b22461c1446da3 16-20
+  s_79c9ef7a230eaf::t_6967fc406e82bd 60-61
+  s_79c9ef7a230eaf::t_5872a7725837bd 63
+  s_79c9ef7a230eaf::t_dcd0e62d81468d 74
+  s_79c9ef7a230eaf::t_5294574e4c1be0 76-77
+tests/fixtures/azure/page.html
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1
+src/collector/adapters/common.ts
+  s_79c9ef7a230eaf::t_5130abf6b3461c 1-71
+src/shared/contracts.ts
+  s_79c9ef7a230eaf::t_32dd892f4892d0 128
+tests/fixtures/gcp/incidents.json
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1-19
+src/collector/adapters/azure.ts
+  s_79c9ef7a230eaf::t_63cf97ccfa0822 41
+  s_79c9ef7a230eaf::t_32dd892f4892d0 31
+  s_79c9ef7a230eaf::t_8d021ec74d7590 1-18,22-30,32-40,42-55
+  s_79c9ef7a230eaf::t_2d6cd52b21c930 19-21
+src/collector/run.ts
+  s_79c9ef7a230eaf::t_98369479a6e1ad 4,50,52
+tests/collector/aws-cn.test.ts
+  s_79c9ef7a230eaf::t_5504f072b03370 35-36
+  s_79c9ef7a230eaf::t_ba58ebf48aebdb 23-24
+  s_79c9ef7a230eaf::t_bf622b6f3c814b 7,27-34,37-39
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1-6,9-13,16,19-22,25-26,40-41,54,79
+  s_79c9ef7a230eaf::t_63cf97ccfa0822 14-15,42
+  s_79c9ef7a230eaf::t_15c5ab9cfdf3b9 55-62
+  s_79c9ef7a230eaf::t_a113df68c90848 63-78
+  s_79c9ef7a230eaf::t_b4c9e06bce5cce 8,44-53
+  s_79c9ef7a230eaf::t_9562b12a42539c 17-18,43
+src/collector/adapters/deepseek.ts
+  s_79c9ef7a230eaf::t_d37c8fa22ba686 9,11-28
+  s_79c9ef7a230eaf::t_655144f86a5f85 2,4-8,10,29-30,32-35,39-53,55-61,63-82
+  s_79c9ef7a230eaf::t_63cf97ccfa0822 31
+  s_79c9ef7a230eaf::t_c1190f84633905 36-38
+  s_79c9ef7a230eaf::t_27aad3966c85a7 1
+  s_79c9ef7a230eaf::t_409f82710e8389 3,54,62
+tests/collector/apple.test.ts
+  s_79c9ef7a230eaf::t_33bf706acc6c49 33-38
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1-32,39
+tests/fixtures/aws-cn/observed-event.json
+  s_79c9ef7a230eaf::t_bf622b6f3c814b 1
+src/collector/adapters/index.ts
+  s_79c9ef7a230eaf::t_98369479a6e1ad 2,4-8,12-17
+tests/fixtures/azure/feed.xml
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1
+src/collector/adapters/apple.ts
+  s_79c9ef7a230eaf::t_5fe6af7ad02560 22-25,30,33,47
+  s_79c9ef7a230eaf::t_6eff79cbc91b3e 2-15,17-21,26-29,31-32,34-46,48-82
+  s_79c9ef7a230eaf::t_e1ecd75c7d9d4b 1
+  s_79c9ef7a230eaf::t_63cf97ccfa0822 16
+src/collector/adapters/google-cloud.ts
+  s_79c9ef7a230eaf::t_63cf97ccfa0822 15
+  s_79c9ef7a230eaf::t_b32d2aabffc89d 3-4,74-82,86-93
+  s_79c9ef7a230eaf::t_5b265f98045d6f 1-2,5-14,16-73,83-85
+src/collector/adapters/statuspage.ts
+  s_79c9ef7a230eaf::t_5130abf6b3461c 6
+src/collector/errors.ts
+  s_79c9ef7a230eaf::t_5130abf6b3461c 3-9
+package.json
+  s_79c9ef7a230eaf::t_d7b4e812f1abcd 17-18
+tests/collector/deepseek.test.ts
+  s_79c9ef7a230eaf::t_7df726d045d552 21-23
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1-5,8-13,16-20,24-27,29-31,51-52
+  s_79c9ef7a230eaf::t_c1190f84633905 28
+  s_79c9ef7a230eaf::t_63cf97ccfa0822 14-15
+  s_79c9ef7a230eaf::t_614aa89a7708a3 33-37
+  s_79c9ef7a230eaf::t_b9f4cda97e1299 6-7,32,38-50
+src/collector/cli.ts
+  s_79c9ef7a230eaf::t_212cbd300e05fd 62-64
+  s_79c9ef7a230eaf::t_98369479a6e1ad 1,4,11-13,37
+  s_79c9ef7a230eaf::t_5839f1de3653b9 65
+tests/fixtures/apple/current.json
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1
+tests/collector/gcp.test.ts
+  s_79c9ef7a230eaf::t_ac871707068c26 7-8,33-49
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1-6,9-32,50-51
+tests/fixtures/aws-cn/empty.json
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1
+src/collector/adapters/feed.ts
+  s_79c9ef7a230eaf::t_5130abf6b3461c 1-50
+tests/collector/azure.test.ts
+  s_79c9ef7a230eaf::t_6b61029a3d4576 28-29
+  s_79c9ef7a230eaf::t_7a2425b85c2206 1-19,21-26,32
+  s_79c9ef7a230eaf::t_12414fbcb9ab55 27,30-31
+  s_79c9ef7a230eaf::t_5e874eeb22ba82 20
+registry/providers.json
+  s_79c9ef7a230eaf::t_d7b4e812f1abcd 227-229
+  s_79c9ef7a230eaf::t_7162cc11b04b21 166
+package-lock.json
+  s_79c9ef7a230eaf::t_524eba326a1584 11-12,773-784,1512-1523,1548-1553,1602-1643,1686-1713,1749-1828,2087-2125,2246-2288,2349-2360,2776-2787,2865-2913,2924-2938,3092-3097,3164-3178,3320-3328,3507-3528,3568-3582
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "762625d51c9f52d6a8c0f4858214b60dc8f78abf",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
