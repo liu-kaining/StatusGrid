@@ -1,0 +1,21 @@
+src/collector/adapters/incident-io.ts
+  s_79c9ef7a230eaf::t_eefd23313f5d35 125,169,175-184,204
+tests/collector/incident-io.test.ts
+  s_79c9ef7a230eaf::t_97fccf25741e6c 117-141
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b6edcf6a2b6df900e4f03880e9071f877a43cc8d",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
