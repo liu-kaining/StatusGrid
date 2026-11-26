@@ -5,6 +5,33 @@
 
 配套文档：[总体设计](2026-11-25-statusgrid-design.md)、[开发计划](../plans/2026-11-25-statusgrid-implementation.md)。
 
+## 2026-11-26 最终可靠性修正设计
+
+本轮限定四项缺陷与派生数据兼容，不新增依赖、产品能力或官方时间字段。
+在每来源异常边界内复用实体结构及生命周期语义校验，再授予可信状态；
+通用官方事件工厂和 Statuspage 事件解析也复用该校验，使可选历史错误仅记
+`historyError=invalid_payload`，实时错误独立降为 missing/stale 并保留可信旧值。
+配置的 Statuspage 排除说明组件后须有非空服务目录，无固定数量要求。
+
+closed 且 resolvedAt=null 的事件按共享、浏览器安全纯函数计算成员区间：
+优先有效 resolved/completed update，之后使用有效 source updatedAt 作为已关闭
+的上界；这些是闭合证据上界，不是精确恢复时间，不写回 resolvedAt、duration
+或时间 basis。日统计、每日事件、历史窗口共用该解释。只有既有 legacy 记录缺
+有效来源证据时只读使用原存储 lastObservedAt 上界；新候选若无位于
+[startedAt,lastObservedAt] 内的 closed update 或 source updatedAt，须在来源／
+可选历史边界拒绝 invalid_payload，拒绝的重复采集不能推进旧上界。不改写
+lastObservedAt 为首次关闭时间，不用新快照时间把已关闭事件当作持续故障。
+observed fault 分钟仅交集同来源非维护异常采样，排除正常、维护和失败空档；
+maintenance 生命周期仍只在可信 operational 观察后合成恢复。
+
+第七项实施决策：仅生成根 `.statusgrid-state.json` 增加
+`derivedRollupRevision`（缺失=1，新写入=2）；分片及公共 schemaVersion 仍为1.0。
+读取按已知1/2模式先验证实体、精确分片、daily数学，拒绝未知版本和任何损坏；
+旧根验证完毕后仅在内存按2重算 dailyStats，读操作不落盘、不改变事件/身份/
+通知账本，下次正常 staged save 写2。共享参数化边界保留旧计算，不复制整套实现。
+成本：维护两种已知派生模式与兼容 fixture；已发布不可变快照仍保留旧计算，
+客户端刷新到新发布后才得到修正。原六项裁决及来源验收限制继续有效。
+
 ## 1. 通用规则
 
 - 时间统一为 ISO 8601 UTC 字符串，输出使用 `Z`；日分片以 UTC 日历划分。

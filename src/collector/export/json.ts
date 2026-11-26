@@ -4,6 +4,7 @@ import type {
 } from '../../shared/contracts.js';
 import { parseRegistry } from '../../shared/schemas.js';
 import { incidentSchema } from '../../shared/entity-schemas.js';
+import { incidentEndBound } from '../../shared/incident-time.js';
 import { publicStatus, STATUS_SEVERITY, summarizeProviders } from '../../shared/status.js';
 import type { CollectionRun, PersistedState, ProviderCollection } from '../types.js';
 import { buildDailyStats } from '../storage/rollup.js';
@@ -64,7 +65,8 @@ export function buildPublicArtifacts(
   }).sort((a, b) => a.displayOrder - b.displayOrder);
   const recentCutoff = Date.parse(run.completedAt) - 30 * 86_400_000;
   const recentIncidents = state.incidents.filter((incident) => !incident.supersededBy
-    && (state.openIncidents.some(({ id }) => id === incident.id) || Date.parse(incident.resolvedAt ?? incident.lastObservedAt) >= recentCutoff));
+    && (state.openIncidents.some(({ id }) => id === incident.id)
+      || incidentEndBound(incident, incident.lastObservedAt) >= recentCutoff));
   const details: Record<string, ProviderDetail> = {};
   for (const config of selected) {
     const provider = run.providers.find(({ providerId }) => providerId === config.id)!;

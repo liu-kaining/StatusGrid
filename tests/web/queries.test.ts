@@ -19,6 +19,18 @@ const fetcher: typeof fetch = async (input, init) => {
 beforeEach(() => { files = structuredClone(fixture.files); requested = []; });
 
 describe('versioned browser client', () => {
+  it('filters closed unknown-end records by closure evidence in historical windows', async () => {
+    const event = { ...fixture.recent.incidents[0]!, state: 'resolved', resolvedAt: null,
+      resolvedTimeBasis: null, durationMinutes: null, startedAt: '2026-11-10T12:00:00Z',
+      updatedAt: '2026-11-18T12:00:00Z', lastObservedAt: fixture.summary.generatedAt, updates: [] };
+    files[fixture.manifest.paths.recentIncidents.slice(1)] = { ...fixture.recent, incidents: [event] };
+    for (const month of fixture.archiveIndex.months) {
+      files[month.path.slice(1)] = { ...files[month.path.slice(1)] as object, incidents: [] };
+    }
+    const client = createDataClient({ fetcher });
+    expect(await client.loadHistory({ range: '7d' }, signal())).toEqual([]);
+    expect((await client.loadHistory({ range: '30d' }, signal())).map(({ id }) => id)).toContain(event.id);
+  });
   it('shares a day request without letting one consumer cancel another and caches its result', async () => {
     const client = createDataClient({ fetcher });
     await client.loadSnapshot(signal());

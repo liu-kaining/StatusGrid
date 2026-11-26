@@ -1,13 +1,17 @@
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { createServer } from 'node:http';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import registry from '../../registry/providers.json';
 import github from '../fixtures/statuspage/github/summary.json';
+import gcpIncidents from '../fixtures/gcp/incidents.json';
+import gcpProducts from '../fixtures/gcp/products.json';
 import { parseRegistry } from '../../src/shared/schemas.js';
 import { collectProviders, runPersistentCollection } from '../../src/collector/run.js';
 import { loadState } from '../../src/collector/storage/load.js';
 import { TransportError } from '../../src/collector/errors.js';
+import { createHttpClient } from '../../src/collector/http.js';
 import type { CollectionContext } from '../../src/collector/types.js';
 import type { ProviderConfig } from '../../src/shared/contracts.js';
 import { time } from '../helpers/history.js';
@@ -39,6 +43,100 @@ function context(at: string, componentStatus = 'operational', failed = false): C
 }
 
 describe('production collection and persistence boundary', () => {
+  it('rejects invalid closure rereads without advancing the stored legacy observation bound', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'statusgrid-closure-evidence-test-'));
+    temporary.push(root);
+    const dir = join(root, 'state');
+    const row = { id: 'closed-unknown', name: 'Resolved issue', status: 'resolved', impact: 'minor',
+      started_at: '2026-11-20T12:00:00Z', created_at: '2026-11-20T12:00:00Z',
+      resolved_at: null, updated_at: '2026-11-20T13:00:00Z' };
+    for (const minute of [0, 5, 10]) {
+      const ctx = context(time(minute));
+      const original = ctx.http.getJson;
+      ctx.http.getJson = async (url, signal) => url.includes('incidents.json')
+        ? { incidents: [{ ...row, updated_at: minute === 0 ? row.updated_at : '2026-11-19T12:00:00Z' }] }
+        : original(url, signal);
+      const result = await runPersistentCollection([config], ctx, dir);
+      expect(result.state.incidents[0]).toMatchObject({
+        resolvedAt: null, resolvedTimeBasis: null, durationMinutes: null, lastObservedAt: time(0),
+      });
+      if (minute > 0) expect(result.run.providers[0]?.collection).toMatchObject({ freshness: 'fresh', outcome: 'partial' });
+      expect(result.state.dailyStats.github?.at(-1)?.incidentCount).toBe(0);
+    }
+  });
+  it('isolates malformed GCP lifecycle with local HTTP fixtures while healthy GitHub persists and exports', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'statusgrid-isolation-test-'));
+    temporary.push(root);
+    let invalid = false;
+    let changed = false;
+    const gcp = configs.find(({ id }) => id === 'gcp')!;
+    const payloads = () => new Map<string, unknown>([
+      [gcp.adapter.endpoints.products!, gcpProducts],
+      [gcp.adapter.endpoints.incidents!, invalid ? [{ ...gcpIncidents[0], begin: time(0), end: '2026-11-25T11:00:00Z' }] : []],
+      [config.adapter.endpoints.summary!, { ...github, components: github.components.map((component) =>
+        ({ ...component, status: changed ? 'degraded_performance' : 'operational' })) }],
+      [config.adapter.endpoints.active!, { incidents: [] }],
+      [config.adapter.endpoints.incidents!, { incidents: [] }],
+    ]);
+    const server = createServer((request, response) => {
+      const upstream = new URL(request.url!, 'http://fixture').searchParams.get('upstream')!;
+      response.setHeader('content-type', 'application/json');
+      response.end(JSON.stringify(payloads().get(upstream)));
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address() as { port: number };
+    const transport = createHttpClient({ timeoutMs: 2000, retries: 0 });
+    try {
+      const ctx = (at: string) => {
+        const value = context(at);
+        value.http.getJson = (url, signal) =>
+          transport.getJson(`http://127.0.0.1:${address.port}/?upstream=${encodeURIComponent(url)}`, signal);
+        return value;
+      };
+      const dir = join(root, 'state');
+      const first = await runPersistentCollection([config, gcp], ctx(time(0)), dir);
+      const trusted = first.run.providers.find(({ providerId }) => providerId === 'gcp')!.result;
+      invalid = true;
+      changed = true;
+      const second = await runPersistentCollection([config, gcp], ctx(time(5)), dir);
+      expect(second.run.providers.find(({ providerId }) => providerId === 'gcp')).toMatchObject({
+        result: null, lastTrustedResult: trusted,
+        collection: { freshness: 'stale', reason: 'invalid_payload', outcome: 'failure' },
+      });
+      expect(second.run.providers.find(({ providerId }) => providerId === 'github')?.result?.reportedStatus).toBe('degraded');
+      expect(await loadState(dir)).toEqual(second.state);
+      await writePublicArtifacts(buildPublicArtifacts(second.run, second.state), join(root, 'public'));
+      const release = await validateRelease(join(root, 'public'), { providerIds: ['github', 'gcp'], requireLive: true });
+      expect(release.errors).toEqual([]);
+      expect(release.valid).toBe(true);
+      const missing = await runPersistentCollection([config, gcp], ctx(time(10)), join(root, 'new'));
+      expect(missing.run.providers.find(({ providerId }) => providerId === 'gcp')?.collection)
+        .toMatchObject({ freshness: 'missing', reason: 'invalid_payload' });
+    } finally {
+      server.closeAllConnections();
+      await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+    }
+  });
+
+  it('treats an empty Statuspage directory as first missing and later stale without dropping trusted state', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'statusgrid-empty-directory-test-'));
+    temporary.push(root);
+    const badContext = (at: string) => {
+      const ctx = context(at);
+      const get = ctx.http.getJson;
+      ctx.http.getJson = async (url, signal) => url.includes('summary.json') ? { ...github, components: [] } : get(url, signal);
+      return ctx;
+    };
+    const dir = join(root, 'state');
+    const first = await runPersistentCollection([config], badContext(time(0)), dir);
+    expect(first.run.providers[0]?.collection).toMatchObject({ freshness: 'missing', reason: 'coverage_incomplete' });
+    await runPersistentCollection([config], context(time(5)), dir);
+    const last = await runPersistentCollection([config], badContext(time(10)), dir);
+    expect(last.run.providers[0]?.collection).toMatchObject({ freshness: 'stale', reason: 'coverage_incomplete' });
+    expect(last.run.providers[0]?.lastTrustedResult?.coverage.observedSince).toBe(time(5));
+    expect(last.run.providers[0]?.lastTrustedResult?.reportedStatus).toBe('operational');
+    expect(await loadState(dir)).toEqual(last.state);
+  });
   it('persists and exports verified current data despite impossible optional historical intervals', async () => {
     const root = await mkdtemp(join(tmpdir(), 'statusgrid-bad-history-test-'));
     temporary.push(root);

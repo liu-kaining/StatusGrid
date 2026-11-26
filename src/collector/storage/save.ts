@@ -30,7 +30,7 @@ export async function stageState(
       await writeFile(path, `${JSON.stringify(content, null, 2)}\n`, { flag: 'wx' });
     }
     await writeFile(join(staging, MARKER), `${JSON.stringify({
-      kind: 'statusgrid-generated-state', schemaVersion: '1.0', files: Object.keys(shards).sort(),
+      kind: 'statusgrid-generated-state', schemaVersion: '1.0', derivedRollupRevision: 2, files: Object.keys(shards).sort(),
     }, null, 2)}\n`, { flag: 'wx' });
     await loadState(staging);
     const previous = `${staging}.previous`;

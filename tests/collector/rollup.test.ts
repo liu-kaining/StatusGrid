@@ -4,6 +4,44 @@ import { applyCollection, emptyState } from '../../src/collector/events/reconcil
 import { source, run, time } from '../helpers/history.js';
 
 describe('UTC daily historical rollups', () => {
+  it.each([5, 10] as const)('counts only fault observations through maintenance and failure at %imin cadence', (intervalMinutes) => {
+    let state = emptyState();
+    for (const [index, status] of ['degraded', 'maintenance', 'degraded', null, 'degraded', 'operational'].entries()) {
+      state = applyCollection(state, { ...run(time(index * intervalMinutes), status as 'degraded' | 'maintenance' | 'operational' | null), intervalMinutes });
+      if (index === 2) expect(state.openIncidents.map(({ kind }) => kind).sort()).toEqual(['incident', 'maintenance']);
+    }
+    expect(state.dailyStats.github?.at(-1)).toMatchObject({
+      observedImpactMinutes: intervalMinutes * 3, observedCoverageMinutes: intervalMinutes * 4,
+    });
+    expect(state.incidents.filter(({ kind }) => kind === 'maintenance')).toHaveLength(1);
+    expect(state.openIncidents).toHaveLength(0);
+    expect(state.incidents.every(({ resolvedAt }) => resolvedAt === time(intervalMinutes * 5))).toBe(true);
+  });
+
+  it('splits fault-only evidence across UTC midnight without recovering during maintenance', () => {
+    let state = emptyState();
+    for (const [at, status] of [
+      ['2026-11-24T23:40:00Z', 'degraded'], ['2026-11-24T23:50:00Z', 'maintenance'],
+      ['2026-11-25T00:00:00Z', 'degraded'], ['2026-11-25T00:10:00Z', 'operational'],
+    ] as const) state = applyCollection(state, { ...run(at, status), intervalMinutes: 10 });
+    expect(state.dailyStats.github?.at(-2)).toMatchObject({ date: '2026-11-24', observedImpactMinutes: 10, observedCoverageMinutes: 20 });
+    expect(state.dailyStats.github?.at(-1)).toMatchObject({ date: '2026-11-25', observedImpactMinutes: 10, observedCoverageMinutes: 10 });
+    expect(state.incidents.every(({ resolvedAt }) => resolvedAt === '2026-11-25T00:10:00Z')).toBe(true);
+  });
+
+  it('does not extend closed unknown-end impact across historical re-reads', () => {
+    const closed = source({ startedAt: '2026-11-20T12:00:00.000Z', updatedAt: '2026-11-20T13:00:00.000Z',
+      state: 'resolved', resolvedAt: null, resolvedTimeBasis: null });
+    let state = applyCollection(emptyState(), run(time(0), 'operational', [closed], []));
+    state = applyCollection(state, run('2026-11-26T12:00:00.000Z', 'operational', [closed], []));
+    expect(state.dailyStats.github?.find(({ date }) => date === '2026-11-20')).toMatchObject({
+      incidentCount: 1, worstStatus: 'degraded', reportedImpactMinutes: null, hasEstimatedTimes: true,
+    });
+    for (const date of ['2026-11-24', '2026-11-25', '2026-11-26']) {
+      expect(state.dailyStats.github?.find((day) => day.date === date)?.incidentCount).toBe(0);
+    }
+    expect(state.incidents[0]).toMatchObject({ resolvedAt: null, resolvedTimeBasis: null, durationMinutes: null });
+  });
   it.each([[time(0), 720], ['2026-11-25T00:00:00.000Z', 0]] as const)(
     'records an anomaly observed at cutoff %s without inventing elapsed impact', (at, unknownMinutes) => {
     const state = applyCollection(emptyState(), run(at, 'degraded'));

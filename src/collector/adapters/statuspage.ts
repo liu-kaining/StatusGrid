@@ -4,6 +4,7 @@ import type {
 } from '../../shared/contracts.js';
 import { STATUS_SEVERITY } from '../../shared/status.js';
 import { AdapterError, TransportError } from '../errors.js';
+import { validateSourceIncident } from '../storage/validate.js';
 
 type JsonObject = Record<string, unknown>;
 
@@ -110,7 +111,7 @@ function parseIncident(raw: unknown, config: ProviderConfig, now: string, warnin
     ? value.shortlink : config.officialStatusUrl;
   const postmortemUrl = typeof value.postmortem_url === 'string' && /^https:\/\//.test(value.postmortem_url)
     ? value.postmortem_url : null;
-  return {
+  return validateSourceIncident({
     sourceIdentity: `${config.id}:${upstreamId}`, providerId: config.id, upstreamId,
     kind, title: text(value.name, 'incident.name'), severity, sourceSeverity,
     severityBasis: severity === null ? 'unknown' : 'source',
@@ -121,7 +122,7 @@ function parseIncident(raw: unknown, config: ProviderConfig, now: string, warnin
     lastObservedAt: now, updatedAt: updated,
     durationMinutes: resolved ? (Date.parse(resolved) - Date.parse(startAt)) / 60_000 : null,
     sourceUrl, postmortemUrl, updates,
-  };
+  });
 }
 
 export function parseStatuspage(
@@ -156,6 +157,7 @@ export function parseStatuspage(
   }
   const excluded = new Set(config.adapter.componentDisplay?.excludeIds ?? []);
   const components = allComponents.filter((component) => !excluded.has(component.upstreamId!));
+  if (!components.length) throw new AdapterError('coverage_incomplete', 'Effective service directory is empty');
   if (config.adapter.endpoints.active && activePayload == null) {
     throw new AdapterError('coverage_incomplete', 'Independent active incident response is unavailable');
   }

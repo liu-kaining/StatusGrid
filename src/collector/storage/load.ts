@@ -4,6 +4,7 @@ import { z } from 'zod';
 import type { PersistedState } from '../types.js';
 import { emptyState } from '../events/reconcile.js';
 import { buildShards } from './archive.js';
+import { buildDailyStats } from './rollup.js';
 import { absent, inventory, MARKER, markerSchema, readJson, safeDirectory } from './directory.js';
 import { assertEqual, dailyStatsSchema, identitiesSchema, incidentSchema, ledgerSchema, observationsSchema, runSchema, validateState, version } from './validate.js';
 
@@ -48,12 +49,18 @@ export async function loadUnlockedState(directory: string): Promise<PersistedSta
       return archive.incidents;
     });
   incidents.sort((a, b) => a.sourceIdentity.localeCompare(b.sourceIdentity) || a.episode - b.episode);
+  const revision = marker.derivedRollupRevision ?? 1;
   const state = validateState({
     schemaVersion: '1.0', latest: latest.run, incidents, openIncidents: open.incidents, identities: identities.identities,
     ledger: { milestones: ledger.milestones, aliases: ledger.aliases }, observations: observations.providers, dailyStats: stats.providers,
-  });
+  }, revision);
   const expected = buildShards(state);
   assertEqual(Object.keys(shards).sort(), Object.keys(expected).sort(), 'required shards');
   for (const [file, content] of Object.entries(expected)) assertEqual(shards[file], content, file);
+  if (revision === 1 && state.latest) {
+    for (const provider of Object.keys(state.observations)) {
+      state.dailyStats[provider] = buildDailyStats(state, state.latest.completedAt, state.latest.intervalMinutes, provider);
+    }
+  }
   return state;
 }

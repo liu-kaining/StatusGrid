@@ -10,6 +10,17 @@ import { parseRegistry } from '../../src/shared/schemas.js';
 import { parseAwsChina } from '../../src/collector/adapters/aws-cn.js';
 
 describe('public JSON and search', () => {
+  it('does not publish reread closed unknown-end records as recent or active incidents', () => {
+    const old = source({ startedAt: '2026-10-01T12:00:00Z', updatedAt: '2026-10-02T12:00:00Z',
+      state: 'resolved', resolvedAt: null, resolvedTimeBasis: null });
+    const collection = run(time(0), 'operational', [old], []);
+    const output = buildPublicArtifacts(collection, advance(emptyState(), collection));
+    expect(output.recent.incidents).toEqual([]);
+    expect(output.summary.providers[0]?.activeIncidents).toEqual([]);
+    expect(output.details.github?.recentIncidents).toEqual([]);
+    expect(output.summary.providers[0]?.dailyTrack30d).toBe('9'.repeat(30));
+    expect(output.archives[0]?.incidents[0]).toMatchObject({ resolvedAt: null, resolvedTimeBasis: null, durationMinutes: null });
+  });
   it('exports and indexes AWS catalog services with unspecified geography as null components', () => {
     const config = parseRegistry(registry).find(({ id }) => id === 'aws-cn')!;
     const result = parseAwsChina(config, [], time(0), [...awsCatalog, ...awsUnscopedCatalog]);

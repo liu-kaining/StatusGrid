@@ -6,6 +6,7 @@ import { z } from 'zod';
 export const MARKER = '.statusgrid-state.json';
 export const markerSchema = z.strictObject({
   kind: z.literal('statusgrid-generated-state'), schemaVersion: z.literal('1.0'),
+  derivedRollupRevision: z.union([z.literal(1), z.literal(2)]).optional(),
   files: z.array(z.string().regex(/^(state|providers|rollup|incidents)\/[a-zA-Z0-9/.-]+\.json$/)),
 });
 export const absent = (error: unknown) => (error as NodeJS.ErrnoException).code === 'ENOENT';

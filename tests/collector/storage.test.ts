@@ -16,6 +16,83 @@ async function directory() {
 }
 
 describe('generated persisted state transaction', () => {
+  it('validates legacy math and exact shards before read-only in-memory migration and next staged save', async () => {
+    const dir = await directory();
+    let state = emptyState();
+    for (const [minute, status] of [[0, 'degraded'], [5, 'maintenance'], [10, 'degraded'], [15, 'operational']] as const) {
+      state = applyCollection(state, run(time(minute), status));
+    }
+    await stageState(state, dir);
+    const markerPath = join(dir, '.statusgrid-state.json');
+    const marker = JSON.parse(await readFile(markerPath, 'utf8'));
+    expect(marker.derivedRollupRevision).toBe(2);
+    delete marker.derivedRollupRevision;
+    await writeFile(markerPath, JSON.stringify(marker));
+    const statsPath = join(dir, 'rollup/daily-stats-90d.json');
+    const legacy = JSON.parse(await readFile(statsPath, 'utf8'));
+    legacy.providers.github.at(-1).observedImpactMinutes = 15;
+    await writeFile(statsPath, JSON.stringify(legacy));
+    const before = await readFile(statsPath, 'utf8');
+    const loaded = await loadState(dir);
+    expect(loaded.dailyStats.github?.at(-1)?.observedImpactMinutes).toBe(10);
+    expect(loaded.incidents).toEqual(state.incidents);
+    expect(loaded.identities).toEqual(state.identities);
+    expect(loaded.ledger).toEqual(state.ledger);
+    expect(await readFile(statsPath, 'utf8')).toBe(before);
+    expect(JSON.parse(await readFile(markerPath, 'utf8')).derivedRollupRevision).toBeUndefined();
+    await stageState(loaded, dir);
+    expect(JSON.parse(await readFile(markerPath, 'utf8')).derivedRollupRevision).toBe(2);
+    expect(await loadState(dir)).toEqual(loaded);
+  });
+
+  it.each([1, 2, 99])('rejects corrupt or unknown derived revision %i without replacement', async (revision) => {
+    const dir = await directory();
+    const state = applyCollection(emptyState(), run(time(0), 'operational'));
+    await stageState(state, dir);
+    const path = join(dir, '.statusgrid-state.json');
+    const marker = JSON.parse(await readFile(path, 'utf8'));
+    marker.derivedRollupRevision = revision;
+    await writeFile(path, JSON.stringify(marker));
+    const statsPath = join(dir, 'rollup/daily-stats-90d.json');
+    const stats = JSON.parse(await readFile(statsPath, 'utf8'));
+    stats.providers.github.at(-1).unknownMinutes = 1;
+    await writeFile(statsPath, JSON.stringify(stats));
+    await expect(loadState(dir)).rejects.toThrow();
+    await expect(stageState(state, dir)).rejects.toThrow();
+    expect(await readFile(path, 'utf8')).toBe(JSON.stringify(marker));
+    expect(await readFile(statsPath, 'utf8')).toBe(JSON.stringify(stats));
+  });
+
+  it('migrates legacy unknown-end daily membership without changing its archived evidence', async () => {
+    const dir = await directory();
+    const closed = source({ startedAt: '2026-11-20T12:00:00Z', updatedAt: '2026-11-20T13:00:00Z',
+      state: 'resolved', resolvedAt: null, resolvedTimeBasis: null });
+    const state = applyCollection(emptyState(), run(time(0), 'operational', [closed], []));
+    await stageState(state, dir);
+    const markerPath = join(dir, '.statusgrid-state.json');
+    const marker = JSON.parse(await readFile(markerPath, 'utf8'));
+    delete marker.derivedRollupRevision;
+    await writeFile(markerPath, JSON.stringify(marker));
+    const path = join(dir, 'rollup/daily-stats-90d.json');
+    const stats = JSON.parse(await readFile(path, 'utf8'));
+    for (const day of stats.providers.github) {
+      if (day.date >= '2026-11-20') Object.assign(day, { incidentCount: 1, worstStatus: 'degraded', hasEstimatedTimes: true });
+    }
+    await writeFile(path, JSON.stringify(stats));
+    const archivePath = join(dir, 'incidents/archive/2026-11.json');
+    const before = await readFile(archivePath, 'utf8');
+    const loaded = await loadState(dir);
+    expect(loaded.dailyStats.github?.at(-1)).toMatchObject({ incidentCount: 0, worstStatus: 'operational' });
+    expect(loaded.dailyStats.github?.find(({ date }) => date === '2026-11-24')).toMatchObject({ incidentCount: 0, worstStatus: null });
+    expect(await readFile(archivePath, 'utf8')).toBe(before);
+    expect(loaded.incidents).toEqual(state.incidents);
+    // A structurally valid but inconsistent legacy provider shard must still fail.
+    const providerPath = join(dir, 'providers/github.json');
+    const provider = JSON.parse(await readFile(providerPath, 'utf8'));
+    provider.provider.collection.durationMs = 123;
+    await writeFile(providerPath, JSON.stringify(provider));
+    await expect(loadState(dir)).rejects.toThrow(/inconsistent|github/i);
+  });
   it('distinguishes a missing state from corruption and refuses arbitrary non-generated directories', async () => {
     const dir = await directory();
     expect(await loadState(dir)).toEqual(emptyState());

@@ -3,6 +3,7 @@ import type { Envelope, Incident, Manifest, ProviderDetail, SearchIndex, Summary
 import { archiveIndexSchema, archiveSchema, manifestSchema, providerDetailSchema, recentSchema, searchSchema, summarySchema } from '../../shared/public-schemas.js';
 import type { HistoryFilters } from '../state/types.js';
 import { deduplicateIncidents } from './queries.js';
+import { incidentEndBound } from '../../shared/incident-time.js';
 
 export class SnapshotChangedError extends Error {
   constructor() { super('快照已更新，请刷新以读取同一版本的数据。'); this.name = 'SnapshotChangedError'; }
@@ -115,7 +116,7 @@ export function createDataClient(options: { fetcher?: typeof fetch; baseUrl?: st
         return archive.incidents;
       }));
       return deduplicateIncidents([...recent.incidents, ...archives.flat()]).filter((incident) => {
-        const overlaps = Date.parse(incident.startedAt) < end && (!incident.resolvedAt || Date.parse(incident.resolvedAt) >= start);
+        const overlaps = Date.parse(incident.startedAt) < end && incidentEndBound(incident, manifest.generatedAt) >= start;
         return overlaps && (!filters.providers?.length || filters.providers.includes(incident.providerId))
           && (!filters.severity?.length || (incident.severity !== null && incident.severity !== 'maintenance' && filters.severity.includes(incident.severity)));
       });

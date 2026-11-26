@@ -1,5 +1,6 @@
 import type { Incident } from '../../shared/contracts.js';
 import { deduplicateIncidents } from './queries.js';
+import { incidentEndBound } from '../../shared/incident-time.js';
 
 export function isCalendarDate(value: string): boolean {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -16,7 +17,7 @@ export function incidentsForDay(incidents: Incident[], providerId: string, date:
   return deduplicateIncidents(incidents).filter((incident) => {
     if (incident.providerId !== providerId) return false;
     const from = Date.parse(incident.startedAt);
-    const to = incident.resolvedAt ? Date.parse(incident.resolvedAt) : observed;
+    const to = incidentEndBound(incident, generatedAt);
     if (from > observed) return false;
     if (incident.resolvedAt && from === to) return from >= start && from < start + 86_400_000;
     return from < end && to > start;

@@ -7,6 +7,7 @@ import type { CollectionContext, CollectionRun, PersistedState, ProviderCollecti
 import { applyCollection } from './events/reconcile.js';
 import { loadState } from './storage/load.js';
 import { stageState } from './storage/save.js';
+import { validateAdapterResult } from './storage/validate.js';
 
 export async function runPersistentCollection(
   configs: ProviderConfig[], context: CollectionContext, directory: string,
@@ -77,9 +78,7 @@ async function collectOne(
           signal: providerSignal,
         }), signal, PROVIDER_BUDGET_MS,
       );
-      if (result.coverage.currentState !== 'complete' || !result.evidence.requiredChecks.every(({ passed }) => passed)) {
-        throw new AdapterError('coverage_incomplete', 'Current source coverage is incomplete');
-      }
+      result = validateAdapterResult(result, config.id);
       result.coverage.observedSince = previousTrusted?.coverage.observedSince ?? observedAt;
     }
   } catch (error) {

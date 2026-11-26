@@ -37,6 +37,39 @@ const impossibleInterval = {
 };
 
 describe('Statuspage parser', () => {
+  it('rejects empty effective service directories including fully excluded scopes', () => {
+    for (const components of [[], github.components.filter(({ id }) =>
+      config('github').adapter.componentDisplay?.excludeIds.includes(id))]) {
+      expect(() => parseStatuspage(config('github'), { ...github, components }, { incidents: [] }, null, now))
+        .toThrowError(expect.objectContaining({ reason: 'coverage_incomplete' }));
+    }
+  });
+
+  it('isolates schema-invalid optional historical events from verified realtime', () => {
+    const bad = { ...impossibleInterval, started_at: '2026-10-13T20:00:00Z', shortlink: 'https://user:password@example.com/incident' };
+    const result = parseStatuspage(config('github'), github, { incidents: [] }, { incidents: [bad] }, now);
+    expect(result.evidence.historyError).toBe('invalid_payload');
+    expect(result.incidents).toEqual([]);
+    expect(result.reportedStatus).toBe('operational');
+  });
+
+  it('rejects unknown-end closures without a truthful bound while accepting explicit closure updates', () => {
+    const bad = { ...impossibleInterval, started_at: '2026-11-20T12:00:00Z',
+      resolved_at: null, updated_at: '2026-11-19T12:00:00Z' };
+    for (const updated_at of ['2026-11-19T12:00:00Z', '2026-11-28T12:00:00Z']) {
+      const row = { ...bad, updated_at };
+      const output = parseStatuspage(config('github'), github, { incidents: [] }, { incidents: [row] }, now);
+      expect(output.evidence.historyError).toBe('invalid_payload');
+      expect(output.incidents).toEqual([]);
+      expect(() => parseStatuspage(config('github'), github, { incidents: [row] }, null, now))
+        .toThrowError(expect.objectContaining({ reason: 'invalid_payload' }));
+    }
+    const withClosure = { ...bad, updated_at: '2026-11-28T12:00:00Z', incident_updates: [
+      { id: 'closed', status: 'resolved', body: 'Restored', display_at: '2026-11-20T13:00:00Z' },
+    ] };
+    expect(parseStatuspage(config('github'), github, { incidents: [] }, { incidents: [withClosure] }, now)
+      .evidence.historyError).toBeNull();
+  });
   it('isolates impossible optional historical intervals while preserving verified current events', () => {
     const result = parseStatuspage(config('cloudflare'), cloudflare, active(cloudflare),
       { incidents: [impossibleInterval] }, now);
@@ -145,7 +178,9 @@ describe('Statuspage parser', () => {
   });
 
   it('retains scheduled_maintenances separately from incidents without degrading future work', () => {
-    const summary = { ...cloudflare, status: { indicator: 'none' }, components: [], incidents: [], scheduled_maintenances: [cloudflareMaintenance] };
+    const summary = { ...cloudflare, status: { indicator: 'none' },
+      components: cloudflare.components.map((component) => ({ ...component, status: 'operational' })),
+      incidents: [], scheduled_maintenances: [cloudflareMaintenance] };
     const result = parseStatuspage(config('cloudflare'), summary, { incidents: [] }, null, now);
     expect(result.reportedStatus).toBe('operational');
     expect(result.incidents).toHaveLength(1);
@@ -170,7 +205,8 @@ describe('Statuspage parser', () => {
       started_at: '2026-11-25T10:00:00.000Z',
     };
     const summary = {
-      ...cloudflare, status: { indicator: 'none' }, components: [], incidents: [],
+      ...cloudflare, status: { indicator: 'none' },
+      components: cloudflare.components.map((component) => ({ ...component, status: 'operational' })), incidents: [],
       scheduled_maintenances: [current, completed],
     };
     const result = parseStatuspage(config('cloudflare'), summary, { incidents: [] }, null, now);

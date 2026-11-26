@@ -1,6 +1,7 @@
 import type { AdapterResult, IncidentState, ProviderConfig, ServiceStatus, SourceIncident } from '../../shared/contracts.js';
 import { STATUS_SEVERITY } from '../../shared/status.js';
 import { AdapterError } from '../errors.js';
+import { validateSourceIncident } from '../storage/validate.js';
 
 export function record(raw: unknown, label: string): Record<string, unknown> {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new AdapterError('invalid_payload', `${label} must be an object`);
@@ -39,7 +40,7 @@ export function incident(
   startedAt: string, updatedAt: string, fields: Partial<SourceIncident>,
 ): SourceIncident {
   const resolved = fields.resolvedAt ?? null;
-  return {
+  return validateSourceIncident({
     sourceIdentity: `${config.id}:${upstreamId}`, providerId: config.id, upstreamId, title,
     kind: 'incident', severity: null, sourceSeverity: null, severityBasis: 'unknown',
     state: 'unknown' as IncidentState, origin: 'official', isSynthetic: false,
@@ -47,7 +48,7 @@ export function incident(
     resolvedAt: resolved, resolvedTimeBasis: resolved ? 'source' : null, lastObservedAt: now, updatedAt,
     durationMinutes: resolved ? Math.max(0, (Date.parse(resolved) - Date.parse(startedAt)) / 60_000) : null,
     sourceUrl: config.officialStatusUrl, postmortemUrl: null, updates: [], ...fields,
-  };
+  });
 }
 export function result(
   config: ProviderConfig, now: string, reportedStatus: ServiceStatus,

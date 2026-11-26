@@ -1,7 +1,10 @@
 import { z } from 'zod';
 import type { PersistedState } from '../types.js';
 import { isClosed } from '../events/normalize.js';
-import { buildDailyStats } from './rollup.js';
+import { buildDailyStats, type DerivedRollupRevision } from './rollup.js';
+import { AdapterError } from '../errors.js';
+import type { AdapterResult, SourceIncident } from '../../shared/contracts.js';
+import { sourceClosureBound } from '../../shared/incident-time.js';
 import {
   text, instant, nullableTime, https, version, providerId, status, reason, strings,
   sourceFields, incidentSchema, componentSchema as component, coverageSchema, collectionSchema,
@@ -20,6 +23,61 @@ const adapterResult = z.strictObject({
     currentIncidentIds: strings.optional(), warnings: z.array(z.string()),
   }),
 });
+
+function assertSourceLifecycle(incident: SourceIncident): void {
+  if (!incident.sourceIdentity.startsWith(`${incident.providerId}:`)
+    || (incident.upstreamId !== null && incident.sourceIdentity !== `${incident.providerId}:${incident.upstreamId}`)
+    || (incident.resolvedAt !== null && Date.parse(incident.resolvedAt) < Date.parse(incident.startedAt))
+    || (incident.resolvedAt === null && incident.durationMinutes !== null)
+    || (isClosed(incident) && incident.resolvedAt === null && sourceClosureBound(incident) === null)
+    || incident.affectedComponentIds.some((id) => !id.startsWith(`${incident.providerId}:`))) {
+    throw new Error(`Invalid source incident lifecycle or identity: ${incident.sourceIdentity}`);
+  }
+}
+
+export function validateSourceIncident(input: unknown): SourceIncident {
+  try {
+    const incident = sourceIncident.parse(input);
+    assertSourceLifecycle(incident);
+    return incident;
+  } catch (error) {
+    throw new AdapterError('invalid_payload', 'Invalid source incident', { cause: error });
+  }
+}
+
+/** Validate before a provider candidate enters persistent trusted state. */
+export function validateAdapterResult(input: unknown, expectedProviderId: string): AdapterResult {
+  try {
+    const result = adapterResult.parse(input);
+    if (result.providerId !== expectedProviderId) throw new Error('Provider identity mismatch');
+    const identities = new Set<string>();
+    for (const incident of result.incidents) {
+      assertSourceLifecycle(incident);
+      if (incident.providerId !== expectedProviderId || identities.has(incident.sourceIdentity)) {
+        throw new Error('Invalid or duplicate source incident identity');
+      }
+      identities.add(incident.sourceIdentity);
+    }
+    const components = new Set<string>();
+    for (const component of result.components) {
+      if (!component.id.startsWith(`${expectedProviderId}:`) || components.has(component.id)) {
+        throw new Error('Invalid or duplicate component identity');
+      }
+      components.add(component.id);
+    }
+    if (result.evidence.currentIncidentIds?.some((id) => !identities.has(id))) {
+      throw new Error('Current incident identity is missing');
+    }
+    if (result.coverage.currentState !== 'complete' || !result.evidence.requiredChecks.length
+      || !result.evidence.requiredChecks.every(({ passed }) => passed)) {
+      throw new AdapterError('coverage_incomplete', 'Current source coverage is incomplete');
+    }
+    return result;
+  } catch (error) {
+    if (error instanceof AdapterError) throw error;
+    throw new AdapterError('invalid_payload', 'Invalid provider candidate', { cause: error });
+  }
+}
 export const providerSchema = z.strictObject({
   providerId, officialStatusUrl: https.optional(), result: adapterResult.nullable(),
   lastTrustedResult: adapterResult.nullable(), collection: collectionSchema,
@@ -52,7 +110,7 @@ export function assertEqual(actual: unknown, expected: unknown, label: string): 
   if (JSON.stringify(actual) !== JSON.stringify(expected)) throw new Error(`Corrupt inconsistent state: ${label}`);
 }
 
-export function validateState(input: unknown): PersistedState {
+export function validateState(input: unknown, revision: DerivedRollupRevision = 2): PersistedState {
   const state = persistedStateSchema.parse(input);
   const ids = new Set<string>();
   for (const incident of state.incidents) {
@@ -114,7 +172,7 @@ export function validateState(input: unknown): PersistedState {
     }
     assertEqual(Object.keys(state.dailyStats).sort(), Object.keys(state.observations).sort(), 'rollup provider coverage');
     for (const provider of Object.keys(state.observations)) {
-      assertEqual(state.dailyStats[provider], buildDailyStats(state, state.latest.completedAt, state.latest.intervalMinutes, provider), 'rollup statistics');
+      assertEqual(state.dailyStats[provider], buildDailyStats(state, state.latest.completedAt, state.latest.intervalMinutes, provider, revision), 'rollup statistics');
     }
   }
   return state;

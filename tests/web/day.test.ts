@@ -8,6 +8,21 @@ it('validates actual UTC calendar days including leap years', () => {
   for (const value of ['2028-02-29', '2026-11-26', '2026-12-31']) expect(isCalendarDate(value)).toBe(true);
 });
 
+it('uses closed update evidence before later source metadata and never extends a closed unknown end on reread', () => {
+  const base = webFixture().recent.incidents[0]!;
+  const event: Incident = { ...base, providerId: 'openai', startedAt: '2026-11-20T23:50:00Z',
+    state: 'resolved', resolvedAt: null, resolvedTimeBasis: null, durationMinutes: null,
+    updatedAt: '2026-11-25T12:00:00Z', lastObservedAt: '2026-11-26T12:00:00Z',
+    updates: [{ id: 'closed', phase: 'resolved', body: 'Recovered', timestamp: '2026-11-21T00:05:00Z' }] };
+  expect(incidentsForDay([event], 'openai', '2026-11-20', event.lastObservedAt)).toHaveLength(1);
+  expect(incidentsForDay([event], 'openai', '2026-11-21', event.lastObservedAt)).toHaveLength(1);
+  for (const date of ['2026-11-24', '2026-11-25', '2026-11-26']) {
+    expect(incidentsForDay([event], 'openai', date, event.lastObservedAt)).toEqual([]);
+  }
+  expect(incidentsForDay([{ ...event, updates: [], updatedAt: '2026-11-20T23:55:00Z' }],
+    'openai', '2026-11-21', event.lastObservedAt)).toEqual([]);
+});
+
 it('uses half-open UTC day intersections, point events, observation bounds and deduplication', () => {
   const base = webFixture().recent.incidents[0]!;
   const event = (id: string, startedAt: string, resolvedAt: string | null, patch: Partial<Incident> = {}): Incident =>
