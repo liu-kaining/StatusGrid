@@ -1,6 +1,114 @@
 import { expect, test } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import type { Manifest } from '../../src/shared/contracts.js';
+
+for (const entry of ['day', 'hover'] as const) {
+  test(`${entry} recovers a retired history snapshot through app refresh without a poll or reload`, async ({ page, request }) => {
+    const previous: Manifest = await (await request.get('/api/v1/manifest.json')).json();
+    const date = previous.generatedAt.slice(0, 10);
+    const nextAt = new Date(Math.min(Date.parse(previous.generatedAt) + 60_000, Date.parse(`${date}T23:59:59.999Z`))).toISOString();
+    const elapsedMinutes = (Date.parse(nextAt) - Date.parse(previous.generatedAt)) / 60_000;
+    const nextId = `${previous.snapshotId}-recovery`;
+    const relocate = (path: string) => path.replace(`/snapshots/${previous.snapshotId}/`, `/snapshots/${nextId}/`);
+    const next: Manifest = { ...previous, snapshotId: nextId, generatedAt: nextAt, paths: {
+      ...previous.paths, summary: relocate(previous.paths.summary), search: relocate(previous.paths.search),
+      recentIncidents: relocate(previous.paths.recentIncidents), health: relocate(previous.paths.health),
+      providers: Object.fromEntries(Object.entries(previous.paths.providers).map(([id, path]) => [id, relocate(path)])),
+    } };
+    const nextFiles: Record<string, unknown> = {};
+    for (const path of [previous.paths.summary, previous.paths.search, previous.paths.recentIncidents, previous.paths.providers.openai!]) {
+      const value = await (await request.get(path)).json();
+      value.snapshotId = nextId; value.generatedAt = nextAt;
+      const providers = path === previous.paths.summary ? value.providers : path === previous.paths.providers.openai ? [value.provider] : [];
+      for (const provider of providers) {
+        provider.dailyCoverage30d[29].unknownMinutes += elapsedMinutes;
+        if (elapsedMinutes && provider.dailyTrack30d.endsWith('0')) provider.dailyTrack30d = `${provider.dailyTrack30d.slice(0, 29)}9`;
+      }
+      if (value.dailyHistory30d) value.dailyHistory30d[29].unknownMinutes += elapsedMinutes;
+      if (path === previous.paths.recentIncidents) {
+        const event = value.incidents.find((item: { providerId: string; resolvedAt: string | null }) => item.providerId === 'openai' && !item.resolvedAt);
+        event.title = 'Fixture newly published daily incident'; event.updatedAt = nextAt;
+      }
+      nextFiles[relocate(path)] = value; // Explicit versioned publication fixture, isolated from local data.
+    }
+    let published = false;
+    let release!: () => void;
+    const gate = new Promise<void>((resolveGate) => { release = resolveGate; });
+    let retiredReads = 0;
+    let oldDetails = 0;
+    let navigations = 0;
+    page.on('framenavigated', (frame) => { if (frame === page.mainFrame()) navigations++; });
+    await page.clock.install({ time: new Date(previous.generatedAt) });
+    await page.clock.pauseAt(new Date(Date.parse(previous.generatedAt) + 10_000));
+    await page.route('**/api/v1/**', async (route) => {
+      const path = new URL(route.request().url()).pathname;
+      if (path === previous.paths.recentIncidents) {
+        retiredReads++;
+        await gate;
+        await route.fulfill({ status: 404, body: 'Explicit fixture: retired snapshot history' });
+      } else if (published && path === '/api/v1/manifest.json') {
+        await route.fulfill({ json: next });
+      } else if (path === previous.paths.providers.openai) {
+        oldDetails++;
+        await route.continue(); // Its independent snapshot recovery must not mask the history bug.
+      } else if (published && nextFiles[path] !== undefined) {
+        await route.fulfill({ json: nextFiles[path] });
+      } else await route.continue();
+    });
+    await page.goto(entry === 'day' ? `/?view=day&provider=openai&date=${date}&q=API` : '/?q=OpenAI');
+    if (entry === 'day') {
+      await expect(page.getByRole('heading', { level: 1 })).toContainText('OpenAI');
+      await expect.poll(() => oldDetails).toBe(1);
+    } else {
+      await expect(page.getByTestId('provider-card')).toHaveCount(1);
+      published = true;
+      await page.getByRole('link', { name: new RegExp(`OpenAI.*${date}`) }).hover();
+      await expect(page.getByRole('tooltip')).toContainText('正在加载已记录事件');
+    }
+    await expect.poll(() => retiredReads).toBe(1);
+    published = true;
+    release();
+    if (entry === 'day') {
+      await expect(page.getByTestId('incident')).toContainText('Fixture newly published daily incident');
+      await expect(page.locator('.day-snapshot time')).toHaveAttribute('datetime', nextAt);
+    } else {
+      await expect(page.getByRole('tooltip')).toContainText('Fixture newly published daily incident');
+      await expect(page.locator('.snapshot-meta time')).toHaveAttribute('datetime', nextAt);
+    }
+    await expect(page.getByRole('link', { name: 'Snapshot JSON ↗' })).toHaveAttribute('href', next.paths.summary);
+    await expect(page.getByText('每日事件加载失败', { exact: true })).toHaveCount(0);
+    expect(retiredReads).toBe(1);
+    expect(navigations).toBe(1);
+    expect(await page.evaluate(() => Date.now())).toBe(Date.parse(previous.generatedAt) + 10_000);
+    await expect(page).toHaveURL(entry === 'day' ? /view=day.*q=API/ : /q=OpenAI/);
+  });
+}
+
+test('daily header navigation clears provider and date and leaves grid and history operable', async ({ page, request }) => {
+  const manifest = await (await request.get('/api/v1/manifest.json')).json();
+  const date = manifest.generatedAt.slice(0, 10);
+  await page.goto(`/?view=day&provider=openai&date=${date}&q=OpenAI&cat=ai`);
+  await expect(page.getByTestId('incident')).toHaveCount(1);
+  await page.getByRole('button', { name: /Incident Vault/ }).click();
+  await expect(page).toHaveURL(/view=incidents/);
+  await expect(page).not.toHaveURL(/provider=|date=/);
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.locator('[inert]')).toHaveCount(0);
+  await expect(page.getByRole('combobox', { name: '历史时间范围' })).toBeEnabled();
+  await page.getByRole('button', { name: /Live Grid/ }).click();
+  await expect(page.getByRole('searchbox')).toHaveValue('OpenAI');
+  await expect(page.getByTestId('provider-card')).toHaveCount(1);
+  await page.getByRole('link', { name: new RegExp(`OpenAI.*${date}`) }).click();
+  await expect(page).toHaveURL(/view=day/);
+  await page.getByRole('button', { name: /Live Grid/ }).click();
+  await expect(page).not.toHaveURL(/view=day|provider=|date=/);
+  await expect(page.locator('[inert]')).toHaveCount(0);
+  await page.getByRole('button', { name: '查看 OpenAI 详情' }).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.getByRole('button', { name: '关闭详情' }).click();
+  await expect(page.getByRole('searchbox')).toBeEnabled();
+});
 
 test('hover lazily loads actual day events, follows a shareable link, and restores grid context', async ({ page, request }) => {
   const manifest = await (await request.get('/api/v1/manifest.json')).json();

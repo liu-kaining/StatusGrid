@@ -4,13 +4,14 @@ import type { ProviderSummary } from '../../shared/contracts.js';
 import { incidentsForDay } from '../data/day.js';
 import { useDayHistory } from '../data/use-day-history.js';
 
-export function DayPopover({ id, anchor, provider, date, label, snapshotId, generatedAt, keepOpen, closeSoon }: {
+export function DayPopover({ id, anchor, provider, date, label, snapshotId, generatedAt, keepOpen, closeSoon, refreshSnapshot }: {
   id: string; anchor: HTMLElement; provider: ProviderSummary; date: string; label: string; snapshotId: string; generatedAt: string;
   keepOpen: () => void; closeSoon: () => void;
+  refreshSnapshot?: () => Promise<void>;
 }) {
   const panel = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ left: 8, top: 8 });
-  const history = useDayHistory(snapshotId);
+  const history = useDayHistory(snapshotId, true, refreshSnapshot);
   const events = history.incidents === null ? null : incidentsForDay(history.incidents, provider.id, date, generatedAt);
   useLayoutEffect(() => {
     const place = () => {

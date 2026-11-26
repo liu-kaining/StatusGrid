@@ -151,13 +151,13 @@ export function App() {
           {groups.map((group) => group.values.length > 0 && <section className={`matrix-section matrix-${group.key}`} key={group.key} aria-labelledby={`group-${group.key}`}>
             <div className="matrix-group-heading"><h2 id={`group-${group.key}`}>{group.title}<span>{group.values.length.toString().padStart(2, '0')}</span></h2><span>{group.label}</span></div>
             <div className="provider-grid">{group.values.map((provider) => <ProviderCard key={provider.id} provider={provider} generatedAt={summary.generatedAt} snapshotExpired={snapshotExpired}
-              snapshotId={summary.snapshotId} viewState={state} openDay={openDay}
+              snapshotId={summary.snapshotId} viewState={state} openDay={openDay} refreshSnapshot={refresh}
               open={(id, trigger) => { detailTrigger.current = trigger; change({ provider: id }); }} />)}</div>
           </section>)}
           <div className="track-legend"><span><i className="day-0" />正常</span><span><i className="day-1" />维护</span><span><i className="day-2" />性能下降</span><span><i className="day-4" />服务中断</span><span><i className="day-9 has-unknown" />未知 / 部分未观测</span><span>30 天 UTC 轨迹 · 悬停查看覆盖分钟</span></div>
         </> : state.view === 'day' ? <DayView summary={summary} state={state}
           detail={detail?.snapshotId === summary.snapshotId && detail.provider.id === state.provider ? detail : null}
-          detailError={detailError} retryDetail={() => setDetailAttempt((value) => value + 1)} change={change} snapshotExpired={snapshotExpired} now={now} />
+          detailError={detailError} retryDetail={() => setDetailAttempt((value) => value + 1)} change={change} snapshotExpired={snapshotExpired} now={now} refresh={refresh} />
           : <HistoryView summary={summary} state={state} change={change} refresh={refresh} />}
       </> : <div className="initial-state"><span className="eyebrow">STATUSGRID / PUBLIC SIGNALS</span><h1>服务状态观测台<span className="heading-period">.</span></h1>
         {refreshing ? <StateNotice title="正在读取已发布快照…" /> : <StateNotice title="尚无可用快照" tone="warning" retry={() => void refresh()}>请先运行采集与公开数据导出，再重新检查。{refreshError}</StateNotice>}</div>}
@@ -166,7 +166,7 @@ export function App() {
     </main>
     </div>
     {state.view !== 'day' && state.provider && summary && <ProviderDetail key={state.provider} provider={summary.providers.find(({ id }) => id === state.provider)}
-      snapshotId={summary.snapshotId} viewState={state} openDay={openDay}
+      snapshotId={summary.snapshotId} viewState={state} openDay={openDay} refreshSnapshot={refresh}
       detail={detail?.snapshotId === summary.snapshotId && detail.provider.id === state.provider ? detail : null} error={detailError} snapshotExpired={snapshotExpired} now={now}
       close={() => change({ provider: '' })} retry={() => setDetailAttempt((value) => value + 1)} manifest={manifest}
       restoreFocus={() => { const trigger = detailTrigger.current; if (trigger?.isConnected) trigger.focus(); else searchInput.current?.focus(); }} />}

@@ -10,8 +10,9 @@ export interface DayNavigation {
   snapshotId?: string;
   viewState?: ViewState;
   openDay?: (provider: string, date: string) => void;
+  refreshSnapshot?: () => Promise<void>;
 }
-export function HealthTrack({ provider, generatedAt, snapshotId = '', viewState, openDay }: {
+export function HealthTrack({ provider, generatedAt, snapshotId = '', viewState, openDay, refreshSnapshot }: {
   provider: ProviderSummary; generatedAt: string;
 } & DayNavigation) {
   const [active, setActive] = useState(29);
@@ -59,6 +60,6 @@ export function HealthTrack({ provider, generatedAt, snapshotId = '', viewState,
     })}
   </div><div className="track-axis"><span>30 DAYS AGO</span><span>UTC · TODAY</span></div>
     {hover && <DayPopover id={id} anchor={hover.anchor} provider={provider} date={trackDate(generatedAt, hover.index)}
-      label={labelAt(hover.index)} snapshotId={snapshotId} generatedAt={generatedAt} keepOpen={keepOpen} closeSoon={closeSoon} />}
+      label={labelAt(hover.index)} snapshotId={snapshotId} generatedAt={generatedAt} keepOpen={keepOpen} closeSoon={closeSoon} refreshSnapshot={refreshSnapshot} />}
   </div>;
 }

@@ -443,8 +443,11 @@ Task 9 之后、Task 10 之前。本项是完整的一条前端交互链，统�
 - Update `src/web/components/HealthTrack.tsx`：语义链接、键盘导航及悬浮入口。
 - Create `src/web/components/DayPopover.tsx`：窗口内定位及有限内容展示。
 - Create `src/web/components/DayView.tsx`：完整每日聚合页、统计及事件列表。
-- Update `src/web/{App.tsx,components/ProviderCard.tsx,components/ProviderDetail.tsx,components/Header.tsx}`：
+- Update `src/web/{App.tsx,components/ProviderCard.tsx,components/ProviderDetail.tsx}`：
   接入共享数据与路由、清理过时模态状态、返回与焦点。
+- `components/Header.tsx` 沿用既有矩阵／历史导航和回调接口；
+  `App.tsx` 在回调中清理 `provider`、`date`。每日页通过轨迹深链和返回入口进入，
+  不新增顶栏页签，也不为满足文件清单制造无行为的 Header 改动。
 - Update `src/web/styles/{components,layout}.css`：主题一致、响应式交互样式。
 - Test `tests/web/{day,url,queries,health-track}.test.ts`、
   `tests/e2e/day.spec.ts`；必要时扩展现有明确标记的测试场景。
@@ -523,6 +526,8 @@ await expect(page.getByRole('heading', { level: 1 })).toContainText('OpenAI');
   聚合页显示精确日统计、相关事件、影响范围和既有安全时间线。
   日期窗口以快照 UTC 日为准；错误／窗外日期／未知厂商有明确提示。
   页面导航与模态条件分开，关闭旧抽屉不会遮住日聚合页。
+  `SnapshotChangedError` 必须触发 App 的快照刷新；事件重试不能仅重复请求
+  已被发布流程移除的旧快照，悬浮与每日页均保持同版本校验。
 - [ ] 用已有样式 token 实现明暗主题。浮层定位避开边缘和裁切，
   轨迹保留文字状态与覆盖细纹；键盘每条轨迹一个 Tab 入口，
   左右／Home／End 移动，Enter 导航，Escape 关闭悬浮层。

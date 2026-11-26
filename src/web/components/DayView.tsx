@@ -10,15 +10,16 @@ import { IncidentTimeline } from './IncidentTimeline.js';
 import { StateNotice } from './StateNotice.js';
 
 const minutes = (value: number | null) => value === null ? '暂无可信统计' : `${Math.round(value)} 分钟`;
-export function DayView({ summary, state, detail, detailError, retryDetail, change, snapshotExpired, now }: {
+export function DayView({ summary, state, detail, detailError, retryDetail, change, snapshotExpired, now, refresh }: {
   summary: Summary; state: ViewState; detail: ProviderDetail | null; detailError: string; retryDetail: () => void;
   change: (patch: Partial<ViewState>) => void; snapshotExpired: boolean; now: number;
+  refresh: () => Promise<void>;
 }) {
   const heading = useRef<HTMLHeadingElement>(null);
   const provider = summary.providers.find(({ id }) => id === state.provider);
   const validDate = isCalendarDate(state.date);
   const inWindow = validDate && state.date >= trackDate(summary.generatedAt, 0) && state.date <= trackDate(summary.generatedAt, 29);
-  const history = useDayHistory(summary.snapshotId, Boolean(provider && inWindow));
+  const history = useDayHistory(summary.snapshotId, Boolean(provider && inWindow), refresh);
   const events = history.incidents === null ? null : incidentsForDay(history.incidents, state.provider, state.date, summary.generatedAt);
   const day = detail?.dailyHistory30d.find(({ date }) => date === state.date);
   const index = inWindow ? Math.round((Date.parse(`${state.date}T00:00:00Z`) - Date.parse(`${trackDate(summary.generatedAt, 0)}T00:00:00Z`)) / 86_400_000) : -1;
@@ -68,7 +69,7 @@ export function DayView({ summary, state, detail, detailError, retryDetail, chan
                 : <p className="history-caption">影响分钟来自当日日统计，跨日事件不累计完整持续时长。{day.hasEstimatedTimes && '本日包含估计时间。'} 日统计记录 {day.incidentCount} 条；以下列表按 UTC 日区间关联所有事件类型。</p>}
           <section className="day-events" aria-label="当天相关事件">
             <div className="section-heading"><h2>当天相关事件</h2><span className="mono muted">{events?.length ?? '—'} EVENTS</span></div>
-            {history.error ? <StateNotice title="每日事件加载失败" tone="error" retry={history.retry}>{history.error}</StateNotice>
+            {history.error ? <StateNotice title="每日事件加载失败" tone="error" retry={history.retry}>{history.error.message}</StateNotice>
               : events === null ? <StateNotice title="正在加载已记录事件…" />
                 : !events.length ? <StateNotice title="暂无已记录事件">{['2', '3', '4'].includes(provider.dailyTrack30d[index]!) ? '轨迹记录了异常，但事件详情有限。' : ''}空记录不能证明当日正常，请同时参考覆盖分钟。</StateNotice>
                   : <>

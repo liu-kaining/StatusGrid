@@ -50,6 +50,27 @@ describe('versioned browser client', () => {
     expect(events.find(({ resolvedAt }) => !resolvedAt)?.lastObservedAt).toBe(fixture.summary.generatedAt);
   });
 
+  it('preserves snapshot-change errors for shared day callers and loads only the refreshed publication', async () => {
+    const client = createDataClient({ fetcher });
+    await client.loadSnapshot(signal());
+    delete files[fixture.manifest.paths.recentIncidents.slice(1)];
+    const next = webFixture('2026-11-26T08:05:00.000Z');
+    next.recent.incidents.find(({ providerId, resolvedAt }) => providerId === 'openai' && !resolvedAt)!.title = 'New publication event';
+    Object.assign(files, next.files);
+    const results = await Promise.allSettled([
+      client.loadDayHistory(fixture.summary.snapshotId, signal()),
+      client.loadDayHistory(fixture.summary.snapshotId, signal()),
+    ]);
+    for (const result of results) {
+      expect(result.status).toBe('rejected');
+      if (result.status === 'rejected') expect(result.reason).toBeInstanceOf(SnapshotChangedError);
+    }
+    const summary = await client.loadSnapshot(signal());
+    const events = await client.loadDayHistory(summary.snapshotId, signal());
+    expect(summary.snapshotId).toBe(next.summary.snapshotId);
+    expect(events.find(({ title }) => title === 'New publication event')?.lastObservedAt).toBe('2026-11-26T08:05:00.000Z');
+  });
+
   it('retains cross-month cold events through the versioned archive index', async () => {
     const month = fixture.archiveIndex.months[0]!;
     // Explicit cold-only fixture: an October event restored in the November track window.
