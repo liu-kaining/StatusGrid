@@ -2,6 +2,7 @@ import { afterEach, expect, it, vi } from 'vitest';
 import { chromium } from 'playwright';
 import { createBrowserPool } from '../../src/collector/browser.js';
 import { withHttpServer } from '../helpers/http-server.js';
+import { browserExecutable } from '../helpers/browser-executable.js';
 
 const servers: Array<{ close: () => Promise<void> }> = [];
 afterEach(async () => Promise.all(servers.splice(0).map((server) => server.close())));
@@ -23,7 +24,7 @@ it('waits for a UI-triggered response with the required public request scope', a
     }
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 5000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 5000 });
   try {
     const responses = await pool.collect('scope', local.url, new AbortController().signal,
       (url) => url === `${local.url}/query`, {
@@ -48,7 +49,7 @@ it('times out when a UI response arrives for a different required region', async
     }
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 1500 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 1500 });
   try {
     await expect(pool.collect('scope', local.url, new AbortController().signal,
       (url) => url.endsWith('/query'), {
@@ -70,7 +71,7 @@ it('waits for both catalog and event responses when a region click returns event
     }
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 5000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 5000 });
   try {
     const responses = await pool.collect('scope', local.url, new AbortController().signal,
       (url) => url.endsWith('/catalog') || url.endsWith('/events'), {
@@ -85,7 +86,7 @@ it('waits for both catalog and event responses when a region click returns event
 it('reports a safe browser network error code without copying the navigation URL or page content', async () => {
   const local = await withHttpServer((request) => { request.socket.destroy(); });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 5000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 5000 });
   try {
     await expect(pool.collect('network', `${local.url}/?private=never-log`, new AbortController().signal, () => false))
       .rejects.toMatchObject({ kind: 'http_error', message: 'Browser collection failed for network (ERR_EMPTY_RESPONSE)' });
@@ -105,7 +106,7 @@ it('starts lazily and isolates cookies between parallel collection tasks', async
     }
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 15000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 15000 });
   expect(pool.isStarted()).toBe(false);
   try {
     const [first, second] = await Promise.all([
@@ -127,7 +128,7 @@ it('cancels a browser task and closes cleanly', async () => {
     response.end('<script>fetch("/api")</script>');
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 5000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 5000 });
   const controller = new AbortController();
   controller.abort();
   await expect(pool.collect('cancelled', local.url, controller.signal, () => true))
@@ -154,7 +155,7 @@ it('keeps at most two browser tasks active', async () => {
     }
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 15000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 15000 });
   try {
     await Promise.all([1, 2, 3].map((index) =>
       pool.collect(String(index), `${local.url}/?task=${index}`, new AbortController().signal, (url) => url.endsWith('/api'))));
@@ -175,7 +176,7 @@ it('decodes matched browser responses using their BOM and charset', async () => 
     }
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 15000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 15000 });
   try {
     const responses = await pool.collect('aws-cn', local.url, new AbortController().signal, (url) => url.endsWith('/api'));
     expect(responses).toMatchObject([{ status: 200, body: '[]' }]);
@@ -192,7 +193,7 @@ it('interrupts an active navigation on external cancellation', async () => {
     }, 3000);
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 15000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 15000 });
   try {
     const controller = new AbortController();
     const task = pool.collect('cancelled', local.url, controller.signal, () => false);
@@ -210,7 +211,7 @@ it('honors cancellation immediately after admission, before browser startup', as
     response.end('unexpected');
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 2000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 2000 });
   try {
     const controller = new AbortController();
     const task = pool.collect('immediate', local.url, controller.signal, () => false);
@@ -225,7 +226,7 @@ it('honors cancellation immediately after admission, before browser startup', as
 it('applies one deadline to startup, queued admission, navigation, and cleanup', async () => {
   const local = await withHttpServer(() => {});
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 750 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 750 });
   try {
     const start = performance.now();
     const results = await Promise.allSettled([1, 2, 3].map((index) =>
@@ -256,7 +257,7 @@ it('does not admit a replacement while a cancelled context still owns a live req
     });
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 6000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 6000 });
   const firstController = new AbortController();
   const secondController = new AbortController();
   const thirdController = new AbortController();
@@ -287,7 +288,7 @@ it('closes the actual Chrome connections before pool.close resolves', async () =
     response.once('close', () => { live--; });
   });
   servers.push(local);
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 2500 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 2500 });
   const controller = new AbortController();
   const task = pool.collect('open', local.url, controller.signal, () => false);
   try {
@@ -310,7 +311,7 @@ it('characterizes context closure during a stalled navigation', async () => {
     response.once('close', () => { live--; });
   });
   servers.push(local);
-  const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+  const browser = await chromium.launch({ executablePath: browserExecutable() });
   const context = await browser.newContext();
   try {
     const page = await context.newPage();
@@ -342,7 +343,7 @@ it('does not report shutdown complete while the real browser close is pending', 
     });
     return browser;
   });
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 2000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 2000 });
   try {
     await pool.collect('ready', local.url, new AbortController().signal, () => false);
     let settled = false;
@@ -379,7 +380,7 @@ it('stops admission and reports failed context disposal after browser shutdown',
     });
     return browser;
   });
-  const pool = createBrowserPool({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', timeoutMs: 2000 });
+  const pool = createBrowserPool({ executablePath: browserExecutable(), timeoutMs: 2000 });
   const controller = new AbortController();
   try {
     const first = pool.collect('one', local.url, controller.signal, () => false);

@@ -1,27 +1,38 @@
 # StatusGrid
 
-面向资深 SRE、架构师的免费云与 AI 基础设施状态工具。聚合官方公开状态，保留服务状态、采集健康度和事件来源，帮助排查上游影响。
+面向 SRE 和架构师的免费云与 AI 基础设施状态工具。聚合 13 家官方公开状态，提供实时矩阵、组件／地域搜索、厂商详情、UTC 每日轨迹与聚合页、历史事件库，以及 JSON / RSS / Atom。
 
-目标覆盖 13 家厂商，默认采集周期 5 分钟，可配置为 10 分钟。目标域名为 `grid.thetamind.ai`；当前处于本地开发阶段。
+服务状态和采集健康分开表达：采集失败保留上次可信内容并标记受阻；没有可信数据时显示无数据。历史缺失不补绿，采样统计不是厂商 SLA。国内云范围限定为腾讯云北京／上海、阿里云上海、百度云北京／上海。
 
-## 当前阶段
+本地功能、发布链路和验收工具已实现；目标域名为 `grid.thetamind.ai`，尚未执行正式部署和目标 Runner 连续观察。实际验证、来源限制和未满足项见 [验收报告](docs/acceptance-report.md)。
 
-任务 1～8 已完成本地实现与独立审查：13 家真实采集、事件状态与公共数据链，以及矩阵、搜索、厂商详情、历史库、深浅主题和移动端页面。OpenAI 使用官方 incident.io 页面，不再依赖缺少完整当前状态的旧兼容接口。
+## 从新克隆启动真实数据
 
-2026-11-26 本机完整采集、持久化和导出已通过，单轮 13 家实时数据均可信；公共发布目录校验通过，摘要为 4,738 B Gzip，低于 40 KiB 预算。GitHub 官方历史中的矛盾时间被隔离为历史补全失败，不影响已验证当前状态。这些是本地证据，不能替代目标 Runner 稳定性验收。
-
-前端可以本地使用，自动调度和发布验收继续开发中，尚未部署。具体来源能力与限制见来源验证记录。
-
-国内云首版显式覆盖腾讯云北京 / 上海、阿里云上海、百度云北京 / 上海。完整采集仅指配置地域，每个必需地域均须通过校验。OpenAI 本地采集出现过间歇传输失败；Azure 原生事件生命周期仍未确认，当前影响取自已校验的服务地域矩阵。
-
-采集失败、未知状态和实时覆盖不足不会变成“正常”。缺少可信历史的首次失败显示无数据；后续失败保留上次可信内容，同时标记数据受阻。
-
-## 本地开发
-
-使用 Node.js 22.12 以上的 22 系列或 Node 24 以上；本机验证环境为 Node 22.23.0。
+使用 Node 22（至少 22.12）或 Node 24；CI 检查两者，生产工作流使用 24。
 
 ```sh
 npm ci
+npx playwright install chromium
+# Linux CI／服务器还需要系统依赖：npx playwright install --with-deps chromium
+npm run collect -- --state-dir .statusgrid/state --output-dir public --report .statusgrid/run.json
+npm run release:check -- --dir public --require-live
+npm run dev -- --port 5174
+```
+
+打开 `http://127.0.0.1:5174`。采集运行一轮；Vite 和页面轮询不调度上游采集。下一次刷新上游需重新执行采集命令，或使用 [运行手册](docs/runbook.md) 中的显式本地循环。
+
+只看已存在的发布目录可用 `STATUSGRID_DATA_DIR=.statusgrid/local/public npm run dev -- --port 5174`，不会改写数据时间。浏览器默认使用 Playwright Chromium，采集和测试均支持 `STATUSGRID_BROWSER_EXECUTABLE` 指定已安装浏览器；测试在 macOS 还可选择标准安装的 Chrome。
+
+`npm run preview:fixture` 是独立演示预览（5173），有明确 fixture 标识，不代表真实状态，不能用于正式发布。未采集时 `npm run dev` 展示无数据页面。
+
+## 使用与维护
+
+页面每 60 秒检查已发布数据；手动刷新也只重新读取快照。5 分钟目标周期下，10／15 分钟分别提示延迟／过期；10 分钟周期对应 20／30 分钟。日轨迹按快照 UTC 日期锚定，悬停／聚焦展示覆盖与事件摘要，点击／Enter／触屏进入可分享每日页。过期快照保留历史，但不能验证当前服务。
+
+```sh
+# 只读来源诊断，不写持久状态
+npm run collect -- --providers github,openai --report .statusgrid/diagnostic.json
+# 工程验证；先安装 Chromium
 npm run typecheck
 npm run lint
 npm run test:unit
@@ -29,66 +40,11 @@ npm run build
 npm run test:e2e
 ```
 
-浏览器池按需启动，普通 HTTP 采集无需浏览器。采集 CLI 可通过 `STATUSGRID_BROWSER_EXECUTABLE` 选择本机浏览器，未指定时使用 Playwright Chromium。浏览器测试的跨平台配置和目标 Runner 验证仍属于后续验收。
+- [运行手册：采集、调试、备份和恢复](docs/runbook.md)
+- [GitHub Actions / Pages 部署与上线验收](docs/deployment.md)
+- [公共 API、版本与 Feed](docs/api.md)
+- [新增来源与 G0～G3 门槛](docs/adding-providers.md)
+- [本地验收、决策及剩余门槛](docs/acceptance-report.md)
+- [总体设计](docs/superpowers/specs/2026-11-25-statusgrid-design.md)、[数据契约](docs/superpowers/specs/2026-11-25-statusgrid-data-contracts.md)、[来源验证](docs/superpowers/specs/2026-11-25-statusgrid-source-validation.md)、[每日下钻设计](docs/superpowers/specs/2026-11-26-statusgrid-day-drilldown.md)、[开发计划](docs/superpowers/plans/2026-11-25-statusgrid-implementation.md)
 
-本地启动真实数据界面：
-
-```sh
-npx playwright install chromium
-npm run collect -- --state-dir .statusgrid/state --output-dir public --report .statusgrid/run.json
-npm run dev
-```
-
-采集命令运行一轮。页面每 60 秒检查已发布数据，手动刷新不会触发源站采集；超过两 / 三个采集周期分别提示延迟 / 过期。没有数据时显示空态，过期卡片和组件显示中性历史状态。事件时间分别标注官方来源和本站观测依据。
-
-独立演示预览使用 `npm run preview:fixture`，所有演示数据带 fixture 标识且生成在被忽略目录中。只读查看其他本地发布目录可用 `STATUSGRID_DATA_DIR=<目录> npm run dev`，不会修改其中的快照时间。
-
-## 数据源探测
-
-运行指定来源的单轮只读诊断：
-
-```sh
-npm run collect -- --providers cloudflare,github,claude,openai,moonshot --report .statusgrid/collection-run.json
-```
-
-添加 `--interval 10` 可将报告中的目标周期改为 10 分钟。命令运行一轮；自动调度在后续工作流中实现。每家失败独立记录，任一家未取得完整实时结果时诊断命令退出 `1`。OpenAI 通过官方 incident.io 页面的完整当前组件、事件和维护结构进行校验；覆盖不足时显示 `coverage_incomplete`。
-
-单独保存原始传输证据：
-
-```sh
-npm run probe -- --provider aws-cn --output .statusgrid/probes
-```
-
-探测按注册表请求公开来源，保存原始响应、SHA-256、编码、采样时间和运行环境；请求失败时退出非零。HTTP 成功只证明传输可达，不证明业务状态或覆盖范围已验证。
-
-`.statusgrid/` 是被 Git 忽略的本地生成目录。原始响应在提交为 fixture 前需要复查，不能将本地探测产物当成正式部署数据。
-
-## 持久化采集
-
-```sh
-npm run collect -- --state-dir .statusgrid/state --report .statusgrid/run.json
-```
-
-该模式采集全部启用厂商，拒绝与 `--providers` 合用。厂商采集失败保留上次可信状态及未结束事件，并标记 `stale`；首次失败保持无数据。有效的持久化运行退出 `0`，配置、存储或契约错误退出 `2`，不能一概忽略非零退出。
-
-`--state-dir` 指向独立生成根目录，其下包含 `state/`、`providers/`、`rollup/` 和 `incidents/`；因此最新快照位于 `.statusgrid/state/state/latest.json`。损坏分片、未知版本、未声明文件和并发覆盖会被拒绝，不作为首次初始化。不要把源码目录或探测目录作为生成根目录。
-
-重复运行不重复事件和通知里程碑。官方事件不会仅因离开有限列表就被判恢复；观测故障仅在完整成功的范围恢复后关闭。日统计区分官方影响、观测影响和未知覆盖，不将采样结果视为厂商 SLA。
-
-公共数据导出及独立校验：
-
-```sh
-npm run collect -- --state-dir .statusgrid/state --output-dir public --report .statusgrid/run.json
-npm run release:check -- --dir public --require-live
-```
-
-导出只能与全厂商持久模式合用，不能发布单厂商诊断结果。输出包含版本化热数据、不可变归档及 JSON / RSS / Atom；保留前端静态资源。`--require-live` 拒绝任何含 fixture 标识的文件。当前采集 CLI 先持久化内部状态再导出，公共导出失败时可能保留上一版公共 manifest；后续自动发布流程将在隔离 staging 中完成整个校验后才写远端。
-
-## 设计与开发顺序
-
-- [总体设计](docs/superpowers/specs/2026-11-25-statusgrid-design.md)
-- [数据契约](docs/superpowers/specs/2026-11-25-statusgrid-data-contracts.md)
-- [来源验证与接入门槛](docs/superpowers/specs/2026-11-25-statusgrid-source-validation.md)
-- [开发计划与任务状态](docs/superpowers/plans/2026-11-25-statusgrid-implementation.md)
-
-本地结构与语义验证通过后再做目标 Runner 观察；5 分钟是目标采集间隔，实际来源延迟、调度延迟和页面可见延迟分别记录。
+`.statusgrid/`、`dist/`、公共生成数据和测试输出被 Git 忽略；源码、注册表、测试 fixture 和正式文档属于交付内容。不要把演示数据或探测抓包提交成生产数据。

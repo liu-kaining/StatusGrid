@@ -221,3 +221,11 @@ Task 5 本地实现、独立审查及修复复审通过。默认公开通道不�
 - AWS 中国官方服务目录实际为 253 项，其中北京 121 项、宁夏 118 项，另 14 项未提供 `region_id` 且 `region_name=null`。目录组件保留全部条目，未提供地域用 `null`，不能推断为全球范围。已提供的地域仍需合法，北京和宁夏仍独立校验。新增 Amazon Health / IAM 精简原始 fixture 及来源记录，未知事件形态继续失败关闭。
 
 本轮真实状态为 Cloudflare 局部中断、Claude 严重中断、OpenAI 降级，其余来源未报告异常。该描述仅对应上述采样时刻，不代表后续当前状态。
+
+## 14. 最终本地验收（2026-11-26）
+
+最终证据独立保存于 `.statusgrid/acceptance/`，逐源组件数、耗时、门槛与限制已持久记录到 [正式验收报告](../../acceptance-report.md)，不依赖旧 task 抓包或计划 scratch 留存。
+
+Node 24.22.3 和 Playwright 受管 Chromium 实际执行全厂商生产 CLI：第一轮 `2026-11-26T13:20:53.920Z–13:21:32.764Z`，12 fresh、OpenAI 首次 missing/http_error；第二轮完整复采 `13:21:58.775Z–13:22:05.455Z` 同一轮 13 fresh。分别保留 `run.json` 与 `run-retry.json`，不抹去失败、不拼接结果。最后快照 `d0550c51-885c-48a5-9df1-5394cb21ffed`，真实公开目录校验 73 公共数据文件（54 JSON＋19 XML）、摘要 4,619 B gzip，版本、归档和 Feed 均有效。
+
+GitHub 仍为实时 fresh／outcome partial，历史 invalid_payload 隔离。Azure 当前矩阵实际 7,902 项，原生事件生命周期仍未确认，不能宣称其全能力 G2 已通过。其余来源 G2 仅对配置范围和明确验证能力成立；全部 G3 仍待目标 Runner 连续定时验收。两轮本机手动运行没有调度延迟证据，不计为稳定接入。
