@@ -1,0 +1,24 @@
+tests/web/incident-provenance.test.ts
+  s_79c9ef7a230eaf::t_93e81afd247a44 1-12,14-17,19-45
+  s_79c9ef7a230eaf::t_8d2235d51e9aaa 13,18
+tests/e2e/history.spec.ts
+  s_79c9ef7a230eaf::t_93e81afd247a44 20-40
+src/web/components/IncidentTimeline.tsx
+  s_79c9ef7a230eaf::t_8d2235d51e9aaa 7-13,24,26-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ccada5995734d26208f0184d743f3919d0caae02",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
