@@ -1,0 +1,45 @@
+docs/api.md
+  s_79c9ef7a230eaf::t_33144d9fd5b3aa 56
+  s_79c9ef7a230eaf::t_3d4b25d694f13f 3
+docs/deployment.md
+  s_79c9ef7a230eaf::t_25c0b915120220 3,19-21,27,38-47
+docs/adding-providers.md
+  s_79c9ef7a230eaf::t_3d4b25d694f13f 26
+  s_79c9ef7a230eaf::t_cecea1e541c5ff 28
+docs/runbook.md
+  s_79c9ef7a230eaf::t_25c0b915120220 5-20,127
+tests/e2e/ui-feedback.spec.ts
+  s_79c9ef7a230eaf::t_25c0b915120220 19
+.gitignore
+  s_79c9ef7a230eaf::t_3d4b25d694f13f 5-10
+README.md
+  s_79c9ef7a230eaf::t_25c0b915120220 46
+  s_79c9ef7a230eaf::t_3d4b25d694f13f 3,5,7,9,11,20,22,24,26-30,32-45,47-48,58-59,61
+  s_79c9ef7a230eaf::t_26505e3db62b29 63
+scripts/preview-fixture.ts
+  s_79c9ef7a230eaf::t_25c0b915120220 5
+tests/e2e/accessibility.spec.ts
+  s_79c9ef7a230eaf::t_25c0b915120220 24
+package.json
+  s_79c9ef7a230eaf::t_25c0b915120220 13
+playwright.config.ts
+  s_79c9ef7a230eaf::t_25c0b915120220 14
+tests/e2e/day.spec.ts
+  s_79c9ef7a230eaf::t_25c0b915120220 364
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b709df83950da9f45ba0e759592cb0bb014b69f1",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
