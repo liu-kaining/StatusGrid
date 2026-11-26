@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest';
 import registry from '../../registry/providers.json';
 import { parseRegistry } from '../../src/shared/schemas.js';
 import { parseAzure } from '../../src/collector/adapters/azure.js';
+import { azureAdapter } from '../../src/collector/adapters/azure.js';
+import { TransportError } from '../../src/collector/errors.js';
 
 const config = parseRegistry(registry).find(({ id }) => id === 'azure')!;
 const now = '2026-11-25T16:20:00Z';
@@ -28,5 +30,47 @@ describe('Azure', () => {
     expect(() => parseAzure(config, feed, page.replace('</tbody></table></html>',
       '<tr><td>Storage</td><td class="status-cell"><span data-label="Degraded">Degraded</span></td></tr></tbody></table></html>'), now))
       .toThrowError(expect.objectContaining({ reason: 'coverage_incomplete' }));
+  });
+  it('does not silently omit a malformed status cell beside a valid one', () => {
+    const malformed = page.replace('</tr></tbody></table></html>', '<td class="status-cell"><span>Degraded</span></td></tr></tbody></table></html>');
+    expect(() => parseAzure(config, feed, malformed, now))
+      .toThrowError(expect.objectContaining({ reason: 'coverage_incomplete' }));
+  });
+  it('rejects a zone advertised in navigation without a corresponding matrix table', () => {
+    const absentZone = page.replace('</ul>', '<li class="zone" data-zone-name="europe"></li></ul>');
+    expect(() => parseAzure(config, null, absentZone, now))
+      .toThrowError(expect.objectContaining({ reason: 'coverage_incomplete' }));
+  });
+  it('reads a complete warning matrix as derived current service impact, with no invented native incident', () => {
+    const warning = page.replace('data-label="Good">Good', 'data-label="Warning">Warning');
+    const result = parseAzure(config, null, warning, now);
+    expect(result.reportedStatus).toBe('degraded');
+    expect(result.components).toContainEqual(expect.objectContaining({
+      name: 'Compute', region: 'East US', reportedStatus: 'degraded',
+    }));
+    expect(result.incidents).toEqual([]);
+  });
+  it('keeps matrix impact even when current-impact rows have unrecognized incident details', () => {
+    const warning = page.replace('data-label="Good">Good', 'data-label="Critical">Critical')
+      .replace('There are currently no active events.', 'Current service alert').replace('class="bg-green"', '');
+    const result = parseAzure(config, null, warning, now);
+    expect(result.reportedStatus).toBe('major_outage');
+    expect(result.incidents).toEqual([]);
+    expect(result.coverage.limitation).toContain('native current incident');
+  });
+  it('preserves typed history transport failure while keeping current page fresh', async () => {
+    const result = await azureAdapter.collect(config, {
+      now, signal: new AbortController().signal,
+      http: {
+        getText: async (url) => {
+          if (url === config.adapter.endpoints.page) return page;
+          throw new TransportError('timeout', 'RSS timeout');
+        },
+        getJson: async () => { throw new Error('unexpected'); },
+        getResponse: async () => { throw new Error('unexpected'); },
+      }, browser: { collect: async () => [], close: async () => {} },
+    });
+    expect(result.evidence.historyError).toBe('timeout');
+    expect(result.reportedStatus).toBe('operational');
   });
 });

@@ -1,5 +1,5 @@
 import type { Adapter, AdapterResult, ProviderConfig } from '../../shared/contracts.js';
-import { AdapterError } from '../errors.js';
+import { AdapterError, TransportError } from '../errors.js';
 import { coverage, epoch, incident, record, rows, text, worse } from './common.js';
 import type { ServiceStatus } from '../../shared/contracts.js';
 
@@ -16,7 +16,15 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
   }
   let reportedStatus: ServiceStatus = 'operational';
   const currentIds: string[] = [];
-  const sourceHistory = historyPayload == null ? [] : rows(historyPayload, 'AWS China history events');
+  const currentKeys = new Set(events.map((raw) => {
+    const event = record(raw, 'AWS China current event');
+    return JSON.stringify([event.service, event.region, event.startTime, event.typeCode]);
+  }));
+  const sourceHistory = (historyPayload == null ? [] : rows(historyPayload, 'AWS China history events'))
+    .filter((raw) => {
+      const event = record(raw, 'AWS China historical event');
+      return !currentKeys.has(JSON.stringify([event.service, event.region, event.startTime, event.typeCode]));
+    });
   const parsed = [...events, ...sourceHistory].map((raw, index) => {
     const event = record(raw, 'AWS China event');
     const service = text(event.service, 'AWS China service');
@@ -64,23 +72,27 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
         summary: text(update.summary, 'AWS China update summary'),
         status: update.status as number,
       };
-    });
+    }).sort((a, b) => a.timestamp.localeCompare(b.timestamp));
     if (!updates.length) throw new AdapterError('coverage_incomplete', 'AWS China event has no update log');
     const id = `${service}:${region}:${start}:${typeCode}`;
-    if (index < events.length && !resolvedAt) {
+    const latest = updates[updates.length - 1]!.status;
+    if (resolvedAt && latest !== 0) {
+      throw new AdapterError('coverage_incomplete', 'AWS China endTime conflicts with latest update lifecycle');
+    }
+    const resolved = resolvedAt !== null || latest === 0;
+    if (index < events.length && !resolved) {
       currentIds.push(`${config.id}:${id}`);
-      const current = updates[updates.length - 1]!.status;
-      if (current === 1 || current === 0) {
+      if (latest === 1) {
         throw new AdapterError('coverage_incomplete', 'AWS China informational/active lifecycle does not establish outage severity');
       }
-      if (current === 2) reportedStatus = worse(reportedStatus, 'degraded');
-      if (current === 3) reportedStatus = worse(reportedStatus, 'partial_outage');
+      if (latest === 2) reportedStatus = worse(reportedStatus, 'degraded');
+      if (latest === 3) reportedStatus = worse(reportedStatus, 'partial_outage');
     }
     return incident(config, now, id, updates[0]!.summary, startedAt, updatedAt, {
-      state: resolvedAt ? 'resolved' : 'investigating',
+      state: resolved ? 'resolved' : 'investigating',
       resolvedAt, affectedRegions: [region],
-      severity: index < events.length && !resolvedAt && updates.at(-1)!.status === 2 ? 'degraded'
-        : index < events.length && !resolvedAt && updates.at(-1)!.status === 3 ? 'partial_outage' : null,
+      severity: index < events.length && !resolved && latest === 2 ? 'degraded'
+        : index < events.length && !resolved && latest === 3 ? 'partial_outage' : null,
       sourceSeverity: typeCode, severityBasis: 'unknown',
       updates: updates.map(({ id: updateId, phase, body, timestamp: time }) =>
         ({ id: updateId, phase, body, timestamp: time })),
@@ -88,7 +100,7 @@ export function parseAwsChina(config: ProviderConfig, payload: unknown, now: str
   });
   return {
     providerId: config.id, reportedStatus: serviceRows ? reportedStatus : null, components: [],
-    incidents: [...new Map(parsed.map((entry) => [entry.sourceIdentity, entry])).values()],
+    incidents: [...new Map(parsed.reverse().map((entry) => [entry.sourceIdentity, entry])).values()],
     coverage: {
       ...coverage(config, 'events_only', historyPayload == null ? 'none' : 'native',
         'AWS China public events; service catalog verifies China-region scope, finite history not exhaustive'),
@@ -118,10 +130,15 @@ export const awsChinaAdapter: Adapter = {
       context.http.getJson(url, context.signal), context.http.getJson(catalogUrl, context.signal),
     ]);
     let history: unknown = null;
+    let historyError: AdapterResult['evidence']['historyError'] = null;
     if (config.adapter.endpoints.events) {
       try { history = await context.http.getJson(config.adapter.endpoints.events, context.signal); }
-      catch { /* Historical window is optional after current and catalog are verified. */ }
+      catch (error) {
+        historyError = error instanceof TransportError ? error.kind === 'cancelled' ? 'timeout' : error.kind : 'invalid_payload';
+      }
     }
-    return parseAwsChina(config, current, context.now, services, history);
+    const output = parseAwsChina(config, current, context.now, services, history);
+    output.evidence.historyError = historyError;
+    return output;
   },
 };

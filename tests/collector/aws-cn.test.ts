@@ -6,6 +6,8 @@ import { parseAwsChina } from '../../src/collector/adapters/aws-cn.js';
 import { decodeBody } from '../../src/collector/http.js';
 import observed from '../fixtures/aws-cn/observed-event.json';
 import catalog from '../fixtures/aws-cn/services.json';
+import { awsChinaAdapter } from '../../src/collector/adapters/aws-cn.js';
+import { TransportError } from '../../src/collector/errors.js';
 
 const config = parseRegistry(registry).find(({ id }) => id === 'aws-cn')!;
 const now = '2026-11-25T16:20:00Z';
@@ -54,7 +56,7 @@ describe('AWS China current events', () => {
   });
   it('accepts null message on observed AWS history update without losing event identity', () => {
     const event = { ...observed[0]!, metadata: {
-      EVENT_LOG: JSON.stringify([{ summary: 'Update', message: null, status: 2, timestamp: 1795021514 }]),
+      EVENT_LOG: JSON.stringify([{ summary: 'Update', message: null, status: 0, timestamp: 1795021514 }]),
     } };
     const result = parseAwsChina(config, [], now, catalog, [event]);
     expect(result.incidents[0]?.updates[0]?.body).toBe('');
@@ -75,5 +77,53 @@ describe('AWS China current events', () => {
     } };
     expect(() => parseAwsChina(config, [unknown], now, catalog))
       .toThrowError(expect.objectContaining({ reason: 'coverage_incomplete' }));
+  });
+  it('retains current evidence when an older history copy shares the same identity', () => {
+    const active = { ...observed[0]!, endTime: null, metadata: {
+      EVENT_LOG: JSON.stringify([{ summary: 'Elevated errors', message: 'Service impact', status: 2, timestamp: 1795019767 }]),
+    } };
+    const result = parseAwsChina(config, [active], now, catalog, observed);
+    expect(result.incidents).toHaveLength(1);
+    expect(result.incidents[0]).toMatchObject({ state: 'investigating', resolvedAt: null });
+    expect(result.evidence.currentIncidentIds).toEqual([result.incidents[0]?.sourceIdentity]);
+  });
+  it('ignores an older duplicate history payload whose event log is malformed', () => {
+    const active = { ...observed[0]!, endTime: null, metadata: {
+      EVENT_LOG: JSON.stringify([{ summary: 'Elevated errors', message: 'Service impact', status: 2, timestamp: 1795019767 }]),
+    } };
+    const older = { ...observed[0]!, metadata: { EVENT_LOG: 'not JSON' } };
+    const result = parseAwsChina(config, [active], now, catalog, [older]);
+    expect(result.reportedStatus).toBe('degraded');
+    expect(result.incidents).toHaveLength(1);
+    expect(result.incidents[0]?.state).toBe('investigating');
+  });
+  it('honors the latest explicit resolved update even without an end time', () => {
+    const active = { ...observed[0]!, endTime: null, metadata: {
+      EVENT_LOG: JSON.stringify([
+        { summary: 'Resolved', message: 'Recovered', status: 0, timestamp: 1795019867 },
+        { summary: 'Elevated errors', message: 'Service impact', status: 2, timestamp: 1795019767 },
+      ]),
+    } };
+    const result = parseAwsChina(config, [active], now, catalog);
+    expect(result.incidents[0]).toMatchObject({ state: 'resolved', resolvedAt: null });
+    expect(result.evidence.currentIncidentIds).toEqual([]);
+    expect(result.reportedStatus).toBe('operational');
+  });
+  it('marks optional history network failures separately from validated current coverage', async () => {
+    const result = await awsChinaAdapter.collect(config, {
+      now, signal: new AbortController().signal,
+      http: {
+        getJson: async (url) => {
+          if (url === config.adapter.endpoints.current) return [];
+          if (url === config.adapter.endpoints.services) return catalog;
+          throw new TransportError('timeout', 'history timeout');
+        },
+        getText: async () => { throw new Error('unexpected'); },
+        getResponse: async () => { throw new Error('unexpected'); },
+      },
+      browser: { collect: async () => [], close: async () => {} },
+    });
+    expect(result.reportedStatus).toBe('operational');
+    expect(result.evidence.historyError).toBe('timeout');
   });
 });

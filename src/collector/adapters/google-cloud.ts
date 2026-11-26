@@ -22,6 +22,11 @@ export function parseGoogleCloud(config: ProviderConfig, incidentsPayload: unkno
     const entry = record(raw, 'product');
     return [text(entry.id, 'product.id'), text(entry.title, 'product.title')] as const;
   }));
+  if (productNames.size !== products.length) throw new AdapterError('coverage_incomplete', 'Google Cloud product IDs duplicated');
+  const components = [...productNames].map(([upstreamId, name]) => ({
+    id: `${config.id}:${upstreamId}`, upstreamId, name, groupId: null,
+    aliases: [], region: null, reportedStatus: null,
+  }));
   const incidents = rows(incidentsPayload, 'incidents');
   let reportedStatus: ServiceStatus = 'operational';
   const currentIds: string[] = [];
@@ -61,7 +66,7 @@ export function parseGoogleCloud(config: ProviderConfig, incidentsPayload: unkno
   const output = result(config, now, reportedStatus, ['incidents', 'products'],
     { ...coverage(config, 'events_only', 'native', 'Finite incidents endpoint; currently affected and previously affected regions are distinct'),
       nativeHistoryEarliestAt: earliest },
-    { incidents: normalized });
+    { incidents: normalized, components });
   output.evidence.currentIncidentIds = currentIds;
   return output;
 }

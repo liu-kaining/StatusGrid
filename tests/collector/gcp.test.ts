@@ -16,6 +16,10 @@ describe('GCP incidents', () => {
     expect(result.incidents[0]).toMatchObject({ startedAt: '2026-11-25T10:00:00.000Z', resolvedAt: null, affectedRegions: ['us-central1'], state: 'investigating' });
     expect(result.incidents[1]).toMatchObject({ resolvedAt: '2026-11-24T11:00:00.000Z', state: 'resolved', affectedRegions: ['us-west1'] });
     expect(result.evidence.currentIncidentIds).toEqual(['gcp:issue-1']);
+    expect(result.components).toContainEqual(expect.objectContaining({
+      id: 'gcp:compute', name: 'Compute Engine', reportedStatus: null,
+    }));
+    expect(result.incidents[0]?.affectedComponentIds).toEqual(['gcp:compute']);
   });
   it('fails without product dictionary instead of mislabeling products', () => {
     expect(() => parseGoogleCloud(config, incidents, null, now))
