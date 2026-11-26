@@ -43,6 +43,8 @@ retry 重新读取最新 data 和已校验 gh-pages 壳，不调用上游、不�
 
 前端任务发布前比较 main 的前端输入指纹：文档提交不使有效壳过期，更新前端输入则放弃旧任务。发布收据同时保留源码 SHA 和输入指纹。故障恢复／备份还原细节见 [运行手册](runbook.md)，线上还原应经过分支审查和 CAS 检查。
 
+已有旧发布升级统计算法时，读取会先验证旧状态，再仅在内存重算派生统计。如果重算改变了同一快照的内容，frontend／retry 会报 `Immutable snapshot/revision collision` 并保留旧发布。此时先执行正常 sync 创建新快照，再运行 frontend／retry；旧不可变版本继续保留。不要删除 data／公共目录或覆盖旧路径来绕过校验。首次无数据部署仍按前述顺序进行。
+
 ## CNAME、DNS 与 TLS
 
 仓库当前强校验 `public/CNAME` 为 `grid.thetamind.ai`，构建后带入站点，作为 StatusGrid 发布目录的域名一致性产物。**使用 GitHub Actions 发布时，Pages 自身忽略该 CNAME 文件；它不会配置或更改 Pages 的自定义域名与路由。** 管理员必须在 Pages 设置中配置同一自定义域名，并按 GitHub 的域名验证提示完成所有权验证，再在 DNS 管理商为 `grid` 配置指向 `<owner>.github.io` 的 CNAME，目标不要写仓库路径。这个项目按域名根路径构建；未配置自定义域名时，项目站点的 `/repository/` 子路径不能直接当作正式配置。官方说明见 [发布源配置](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) 与 [自定义域名排障](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)。
