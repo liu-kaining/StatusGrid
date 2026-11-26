@@ -1,0 +1,20 @@
+docs/superpowers/specs/2026-11-25-statusgrid-data-contracts.md
+  s_79c9ef7a230eaf::t_0b14df9584b1fe 275,313
+  s_79c9ef7a230eaf::t_a33ac33883f235 314
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d67761e099b0dd64e13be489ce3852da35066280",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
