@@ -1,6 +1,6 @@
 import type { SourceIncident } from '../../shared/contracts.js';
 import type { CollectionRun, PersistedState, ReconcileResult } from '../types.js';
-import { coversScope, isClosed, normalizeIncident, overlaps } from './normalize.js';
+import { coversScope, isClosed, isCurrentNativeFault, normalizeIncident, overlaps } from './normalize.js';
 import { recordMilestones } from './milestones.js';
 import { reconcileSynthetic } from './synthetic.js';
 import { buildDailyStats, historyBoundary } from '../storage/rollup.js';
@@ -75,8 +75,10 @@ export function reconcileIncidents(
   }
   // Alias before synthesizing or notifying so one fault has one notification identity.
   for (const observed of incidents.filter((incident) => incident.isSynthetic && !incident.supersededBy)) {
+    const result = collection.providers.find(({ providerId }) => providerId === observed.providerId)?.result;
     const official = incidents.find((incident) => incident.origin === 'official' && coversScope(incident, observed)
-      && overlaps(observed, incident) && incident.kind !== 'advisory');
+      && overlaps(observed, incident) && incident.kind !== 'advisory' && incident.severity !== null
+      && (isClosed(observed) || Boolean(result && isCurrentNativeFault(incident, result))));
     if (!official) continue;
     observed.supersededBy = official.id;
     ledger.aliases[official.id] ??= ledger.aliases[observed.id] ?? observed.id;
@@ -96,7 +98,10 @@ export function reconcileIncidents(
     const current = incident.origin === 'observed' || Boolean(
       provider?.result?.evidence.currentIncidentIds?.includes(incident.sourceIdentity),
     );
-    recordMilestones(ledger, before.get(incident.id), incident, now, current);
+    const alias = ledger.aliases[incident.id];
+    const previousIncident = alias && alias !== previous.ledger.aliases[incident.id]
+      ? before.get(alias) ?? before.get(incident.id) : before.get(incident.id);
+    recordMilestones(ledger, previousIncident, incident, now, current);
   }
   incidents.sort((a, b) => a.sourceIdentity.localeCompare(b.sourceIdentity) || a.episode - b.episode);
   return { incidents, openIncidents: incidents.filter((incident) => !isClosed(incident) && !incident.supersededBy),

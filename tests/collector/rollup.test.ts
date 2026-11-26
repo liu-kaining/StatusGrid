@@ -4,13 +4,33 @@ import { applyCollection, emptyState } from '../../src/collector/events/reconcil
 import { source, run, time } from '../helpers/history.js';
 
 describe('UTC daily historical rollups', () => {
-  it('records an anomaly observed at the statistical cutoff without inventing elapsed impact', () => {
-    const state = applyCollection(emptyState(), run(time(0), 'degraded'));
+  it.each([[time(0), 720], ['2026-11-25T00:00:00.000Z', 0]] as const)(
+    'records an anomaly observed at cutoff %s without inventing elapsed impact', (at, unknownMinutes) => {
+    const state = applyCollection(emptyState(), run(at, 'degraded'));
     expect(state.dailyStats.github?.at(-1)).toMatchObject({
       worstStatus: 'degraded', incidentCount: 1, observedImpactMinutes: null,
-      observedCoverageMinutes: 0, unknownMinutes: 720,
+      observedCoverageMinutes: 0, unknownMinutes,
     });
   });
+  it('excludes incidents and observation coverage ending exactly at the next UTC day boundary', () => {
+    const midnight = '2026-11-25T00:00:00.000Z';
+    let state = applyCollection(emptyState(), run('2026-11-24T23:50:00.000Z', 'degraded', [source({
+      startedAt: '2026-11-24T23:00:00.000Z', updatedAt: '2026-11-24T23:50:00.000Z',
+    })]));
+    state = applyCollection(state, run(midnight, 'operational', [source({
+      startedAt: '2026-11-24T23:00:00.000Z', state: 'resolved', resolvedAt: midnight,
+      resolvedTimeBasis: 'source', updatedAt: midnight,
+    })], []));
+    const days = buildDailyStats(state, '2026-11-25T00:05:00.000Z', 5, 'github');
+    expect(days.at(-2)).toMatchObject({
+      date: '2026-11-24', worstStatus: 'degraded', incidentCount: 1, reportedImpactMinutes: 60,
+    });
+    expect(days.at(-1)).toMatchObject({
+      date: '2026-11-25', worstStatus: 'operational', incidentCount: 0,
+      reportedImpactMinutes: null, observedCoverageMinutes: 5,
+    });
+  });
+
   it('unions official impact, excludes imprecise and unknown finish, and splits UTC midnight', () => {
     let state = emptyState();
     const closed = (id: string, start: string, end: string | null) => source({

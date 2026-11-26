@@ -50,10 +50,11 @@ export function buildDailyStats(state: PersistedState, now: string, intervalMinu
     const end = Math.min(until, start + DAY);
     const relevant = incidents.filter((incident) => incident.state !== 'scheduled'
       && Date.parse(incident.startedAt) <= end && Date.parse(incident.startedAt) < start + DAY
-      && Date.parse(incident.resolvedAt ?? incident.lastObservedAt) >= start);
+      && (Date.parse(incident.resolvedAt ?? incident.lastObservedAt) > start
+        || (incident.resolvedAt === null && Date.parse(incident.lastObservedAt) === until && until === start)));
     const statuses: ServiceStatus[] = [
       ...observations.filter((sample) => sample.status !== null && sample.start <= end
-        && sample.start < start + DAY && sample.end >= start)
+        && sample.start < start + DAY && (sample.end > start || sample.start === until))
         .map((sample) => sample.status!),
       ...relevant.flatMap(({ severity }) => severity ? [severity] : []),
     ];

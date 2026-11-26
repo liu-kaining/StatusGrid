@@ -1,11 +1,16 @@
 import { load } from 'cheerio';
-import type { Incident, SourceIncident } from '../../shared/contracts.js';
+import type { AdapterResult, Incident, SourceIncident } from '../../shared/contracts.js';
 
 export const isClosed = (incident: Pick<Incident, 'state'>) =>
   incident.state === 'resolved' || incident.state === 'completed';
 export const isActiveFault = (incident: Pick<Incident, 'state' | 'kind' | 'severity'>) =>
   !isClosed(incident) && incident.state !== 'scheduled'
   && incident.kind !== 'advisory' && incident.severity !== null;
+
+export function isCurrentNativeFault(incident: Incident, result: AdapterResult): boolean {
+  return incident.providerId === result.providerId && incident.origin === 'official'
+    && isActiveFault(incident) && Boolean(result.evidence.currentIncidentIds?.includes(incident.sourceIdentity));
+}
 
 export function normalizeIncident(source: SourceIncident, episode: number, now: string): Incident {
   return {

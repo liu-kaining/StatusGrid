@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { Incident, ServiceStatus } from '../../shared/contracts.js';
 import type { ProviderCollection } from '../types.js';
-import { coversScope, isActiveFault, isClosed } from './normalize.js';
+import { coversScope, isClosed, isCurrentNativeFault } from './normalize.js';
 
 export function reconcileSynthetic(
   incidents: Incident[], collection: ProviderCollection, now: string,
@@ -10,9 +10,7 @@ export function reconcileSynthetic(
   if (!result || collection.collection.freshness !== 'fresh'
     || result.coverage.currentState !== 'complete'
     || !result.evidence.requiredChecks.every(({ passed }) => passed)) return;
-  const native = incidents.filter((incident) => incident.providerId === result.providerId
-    && incident.origin === 'official' && isActiveFault(incident)
-    && result.evidence.currentIncidentIds?.includes(incident.sourceIdentity));
+  const native = incidents.filter((incident) => isCurrentNativeFault(incident, result));
   const scopes = result.components.filter(({ reportedStatus }) => reportedStatus && reportedStatus !== 'operational')
     .map((component) => ({ components: [component.id], regions: component.region ? [component.region] : [],
       status: component.reportedStatus!, title: component.name }));

@@ -64,6 +64,38 @@ describe('persisted lifecycle reconciliation', () => {
     expect(state.ledger.milestones.filter(({ kind }) => kind === 'triggered')).toHaveLength(1);
   });
 
+  it('keeps one observed availability fault across repeated null-severity native evidence', () => {
+    let state = advance(emptyState(), run(time(0), 'degraded'));
+    const observedId = state.incidents[0]!.id;
+    for (const minute of [5, 10, 15]) {
+      state = advance(state, run(time(minute), 'degraded', [
+        source({ severity: null, severityBasis: 'unknown', updatedAt: time(minute) }),
+      ]));
+      expect(state.incidents).toHaveLength(2);
+      expect(state.incidents.filter(({ isSynthetic }) => isSynthetic)).toHaveLength(1);
+      expect(state.incidents.find(({ id }) => id === observedId)?.supersededBy).toBeNull();
+      expect(state.ledger.aliases).toEqual({});
+      expect(state.ledger.milestones.map(({ id }) => id)).toEqual([`${observedId}:triggered`]);
+    }
+  });
+
+  it('preserves an escalation when verified current native impact replaces observed degradation', () => {
+    let state = advance(emptyState(), run(time(0), 'degraded'));
+    const observedId = state.incidents[0]!.id;
+    const native = source({
+      severity: 'major_outage', state: 'unknown', updatedAt: time(5),
+      updates: [{ id: 'official-escalation', phase: 'unknown', body: 'Major impact confirmed', timestamp: time(5) }],
+    });
+    state = advance(state, run(time(5), 'major_outage', [native]));
+    expect(state.openIncidents).toHaveLength(1);
+    expect(state.openIncidents[0]?.origin).toBe('official');
+    expect(state.ledger.milestones.map(({ id }) => id)).toEqual([
+      `${observedId}:triggered`, `${observedId}:escalated:official-escalation`,
+    ]);
+    state = advance(state, run(time(10), 'major_outage', [native]));
+    expect(state.ledger.milestones.map(({ kind }) => kind)).toEqual(['triggered', 'escalated']);
+  });
+
   it('does not turn advisories or finite historical candidates into availability faults', () => {
     const advisory = source({ kind: 'advisory', state: 'unknown', severity: null });
     const state = advance(emptyState(), run(time(10), 'operational', [advisory], [advisory.sourceIdentity]));
