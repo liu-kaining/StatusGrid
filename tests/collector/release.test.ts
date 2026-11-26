@@ -22,6 +22,40 @@ function artifacts(at = time(0), title = 'API issues') {
 }
 
 describe('release staging and runtime validation', () => {
+  it('validates an empty public index with a null watermark and rejects a fabricated epoch', async () => {
+    const dir = await root();
+    const collection = run(time(0), 'operational');
+    const output = buildPublicArtifacts(collection, advance(emptyState(), collection));
+    const emptyIndex = { ...output.archiveIndex, generatedAt: null };
+    for (const path of [output.manifest.paths.archiveIndex.slice(1), 'api/v1/incidents/archive/index.json']) {
+      output.files[path] = emptyIndex;
+    }
+    await writePublicArtifacts(output, dir);
+    expect((await validateRelease(dir, { providerIds: ['github'] })).valid).toBe(true);
+    for (const path of [output.manifest.paths.archiveIndex.slice(1), 'api/v1/incidents/archive/index.json']) {
+      await writeFile(join(dir, path), JSON.stringify({ ...emptyIndex, generatedAt: '1970-01-01T00:00:00.000Z' }));
+    }
+    expect((await validateRelease(dir, { providerIds: ['github'] })).valid).toBe(false);
+  });
+
+  it.each(['123', 'true'])('publishes update body %j as text in RSS and Atom', async (body) => {
+    const dir = await root();
+    const collection = run(time(0), 'degraded', [source({
+      updates: [{ id: 'text-update', phase: 'investigating', body, timestamp: time(0) }],
+    })]);
+    const output = buildPublicArtifacts(collection, advance(emptyState(), collection));
+    await writePublicArtifacts(output, dir);
+    const report = await validateRelease(dir, { providerIds: ['github'], requireLive: true });
+    expect(report.errors).toEqual([]);
+    expect(report.valid).toBe(true);
+    expect(report.files.find(({ path }) => path === 'feed/all.xml')?.parsed).toMatchObject({
+      rss: { channel: { item: { description: body } } },
+    });
+    expect(report.files.find(({ path }) => path === 'feed/atom.xml')?.parsed).toMatchObject({
+      feed: { entry: { content: { '#text': body } } },
+    });
+  });
+
   it('accepts the release check CLI contract and rejects unknown or incomplete flags', () => {
     expect(parseReleaseArgs(['--dir', 'dist', '--require-live'])).toEqual({ directory: 'dist', requireLive: true });
     expect(() => parseReleaseArgs(['--dir'])).toThrow();

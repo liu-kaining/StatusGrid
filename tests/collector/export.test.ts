@@ -1,10 +1,34 @@
 import { describe, expect, it } from 'vitest';
 import { buildPublicArtifacts } from '../../src/collector/export/json.js';
-import { summarySchema, providerDetailSchema } from '../../src/shared/public-schemas.js';
+import { summarySchema, providerDetailSchema, archiveIndexSchema } from '../../src/shared/public-schemas.js';
 import { emptyState } from '../../src/collector/events/reconcile.js';
 import { advance, run, source, time } from '../helpers/history.js';
 
 describe('public JSON and search', () => {
+  it('uses null for an empty immutable index watermark and keeps it stable across snapshots', () => {
+    const firstRun = run(time(0), 'operational');
+    const firstState = advance(emptyState(), firstRun);
+    const first = buildPublicArtifacts(firstRun, firstState);
+    const nextRun = run(time(5), 'operational');
+    const next = buildPublicArtifacts(nextRun, advance(firstState, nextRun));
+    expect(first.archiveIndex.generatedAt).toBeNull();
+    expect(archiveIndexSchema.parse(first.archiveIndex).generatedAt).toBeNull();
+    expect(next.archiveIndex).toEqual(first.archiveIndex);
+    expect(next.manifest.generatedAt).toBe(time(5));
+    expect(firstState.latest?.completedAt).toBe(time(0));
+  });
+
+  it('uses the newest referenced month watermark rather than the hot publication clock', () => {
+    const closed = source({ state: 'resolved', resolvedAt: time(5), resolvedTimeBasis: 'source', updatedAt: time(5) });
+    const oldRun = run(time(5), 'operational', [closed], []);
+    const state = advance(emptyState(), oldRun);
+    const current = run(time(10), 'operational');
+    const output = buildPublicArtifacts(current, advance(state, current));
+    expect(output.archiveIndex.generatedAt).toBe(time(5));
+    expect(output.manifest.generatedAt).toBe(time(10));
+    expect(output.archiveIndex.months).toHaveLength(1);
+  });
+
   it('publishes consistent envelopes, literal unknown days and independently consumable detail', () => {
     const collection = run(time(0), 'operational');
     const state = advance(emptyState(), collection);

@@ -112,7 +112,7 @@ export function buildPublicArtifacts(
   }));
   const archiveIndex: PublicArchiveIndex = { schemaVersion: '1.0', dataMode: envelope.dataMode,
     revision: revisionOf({ dataMode: envelope.dataMode, months }),
-    generatedAt: months.map(({ updatedAt }) => updatedAt).sort().at(-1) ?? '1970-01-01T00:00:00.000Z', months };
+    generatedAt: months.map(({ updatedAt }) => updatedAt).sort().at(-1) ?? null, months };
   const base = `/api/v1/snapshots/${run.snapshotId}`;
   const manifest: Manifest = { ...envelope, archiveIndexRevision: archiveIndex.revision, paths: {
     summary: `${base}/summary.json`, providers: Object.fromEntries(selected.map(({ id }) => [id, `${base}/providers/${id}.json`])),

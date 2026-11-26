@@ -81,7 +81,7 @@ export const healthSchema = z.strictObject({
       'aws-cn-health', 'tencent-cloud', 'aliyun', 'baidu-cloud']), collection: collectionSchema })),
 });
 export const archiveIndexSchema = z.strictObject({
-  schemaVersion: version, dataMode: modeSchema, revision: revisionSchema, generatedAt: instant,
+  schemaVersion: version, dataMode: modeSchema, revision: revisionSchema, generatedAt: nullableTime,
   months: z.array(z.strictObject({
     month: z.string().regex(/^\d{4}-(?:0[1-9]|1[0-2])$/), revision: revisionSchema, path: publicPathSchema,
     incidentCount: count, minStartedAt: nullableTime, maxResolvedAt: nullableTime, updatedAt: instant,

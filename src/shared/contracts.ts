@@ -359,5 +359,9 @@ export interface CollectorHealth extends Envelope {
 }
 
 /** Public immutable cold objects carry provenance independently of a hot snapshot. */
-export type PublicArchiveIndex = ArchiveIndex & { dataMode: Envelope['dataMode'] };
+export type PublicArchiveIndex = Omit<ArchiveIndex, 'generatedAt'> & {
+  dataMode: Envelope['dataMode'];
+  /** Content watermark: latest referenced month update, or null without months. */
+  generatedAt: string | null;
+};
 export type PublicIncidentArchive = IncidentArchive & { dataMode: Envelope['dataMode'] };

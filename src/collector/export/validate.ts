@@ -52,7 +52,7 @@ export async function validateRelease(directory: string, options: ReleaseOptions
           if (options.requireLive && mode !== 'live') fail(`Fixture artifact rejected: ${path}`);
         } else {
           if (XMLValidator.validate(body) !== true || /<!DOCTYPE|<!ENTITY/i.test(body)) throw new Error('Invalid feed XML');
-          parsed = new XMLParser({ ignoreAttributes: false }).parse(body);
+          parsed = new XMLParser({ ignoreAttributes: false, parseTagValue: false }).parse(body);
           const xml = z.record(z.string(), z.unknown()).parse(parsed);
           const root = z.record(z.string(), z.unknown()).parse(xml.rss ?? xml.feed);
           if (root['@_sg:schemaVersion'] !== '1.0' || !['live', 'fixture'].includes(String(root['@_sg:dataMode']))
@@ -154,7 +154,7 @@ export async function validateRelease(directory: string, options: ReleaseOptions
         const index = archiveIndexSchema.parse(value);
         equal(index.revision, revisionOf({ dataMode: index.dataMode, months: index.months }), 'index content revision');
         equal(index.generatedAt, index.months.map(({ updatedAt }) => updatedAt).sort().at(-1)
-          ?? '1970-01-01T00:00:00.000Z', 'index deterministic timestamp');
+          ?? null, 'index deterministic timestamp');
         if (new Set(index.months.map(({ month }) => month)).size !== index.months.length) throw new Error('Duplicate archive month');
         if (path.includes('/indexes/')) equal(path, `api/v1/incidents/archive/indexes/${index.revision}.json`, 'immutable index path');
         for (const month of index.months) {
