@@ -2,6 +2,12 @@ node_modules/
 dist/
 coverage/
 .statusgrid/
+.superpowers/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.har
 public/api/
 public/feed/
 public/.statusgrid-public.json

@@ -2,6 +2,22 @@
 
 安装和首次真实采集见 [README](../README.md)，线上入口及权限见 [部署手册](deployment.md)。所有示例从仓库根目录执行；`.statusgrid/state` 是内部生成根，`public` 是导出目标，二者不可重叠。报告也不能放进这两个目标内部。
 
+## 数据位置与保留策略
+
+线上不使用独立数据库。`main` 保存源码；`data` 分支保存完整采集状态，是下次采集与重试的输入；`gh-pages` 保存前端、公开 JSON／Feed 和发布收据，由 Actions 上传并部署。Runner 临时目录只处理当次任务，销毁后不会丢失已经写入分支的数据。本地状态与线上分支相互独立，`.statusgrid` 不提交。
+
+| 数据 | 保留方式 |
+| --- | --- |
+| 观测记录、日统计 | 按 UTC 日期滚动保留 90 天 |
+| 事件、身份映射、通知去重账本 | 持续保存；事件按开始月份归档，90 天不会删除这些历史 |
+| 公开快照 | 至少最近 12 份，并保留最近 60 分钟内全部快照 |
+| 公开月度版本 | 保留上述快照引用的版本，以及每个月最新两版 |
+| 状态备份 Artifact | 每天调度一次，保留 30 天；需检查任务确实生成了备份 |
+
+`data` 与 `gh-pages` 使用无父提交替换生成快照，写入前以读取时的 SHA 做 `force-with-lease` 检查，拒绝覆盖未知更新。这限制提交祖先链，不保证 GitHub 立即回收旧对象，也不限制事件历史的总量。两个分支和 Pages 部署不是同一事务：状态已保存、站点仍旧时，应使用 `retry`，不要删除状态。
+
+定期检查分支文件数、逻辑大小、事件月份数、最新备份时间和线上快照年龄。目前分支读取会将未压缩的 `git archive` 装入内存，缓冲上限为 128 MiB；任一分支树接近此值前需要调整读取方式或拆分归档，压缩备份较小不能排除这个限制。GitHub 分支与 Artifact 同属一个平台；需要独立灾备时，另存一份已验证备份到其他存储。
+
 ## 采集模式与退出码
 
 ```sh
@@ -108,7 +124,7 @@ npm run release:check -- --dir .statusgrid/dry-release --require-live
 4. 把上述 `loadState` 示例中的路径替换为恢复根，执行完整只读校验；再用它运行 `prepareRelease`，对新公共目录执行 `release:check --require-live`。不存在／latest=null 不是成功恢复。
 5. 校验通过后，把受损原目录改名隔离，再把已验证副本移动到目标；保留备份与隔离副本直到复核新一轮采集及 Feed／episode／账本。恢复旧快照可能丢失备份之后的观测，不能承诺 RPO=0。
 
-生成本地已校验备份：
+生成本地已校验备份前，停止使用该目录的写入器，或从隔离副本备份；备份脚本不会在整个打包期间锁住输入：
 
 ```sh
 npx tsx -e 'import {backupState} from "./scripts/backup-state.ts"; backupState(".statusgrid/state",".statusgrid/backups/state-20261126.tar.gz").catch(e=>{console.error(e);process.exitCode=2})'

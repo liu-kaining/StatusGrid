@@ -16,7 +16,7 @@ for (const width of [1440, 390]) {
       await page.waitForLoadState('networkidle');
       await expect(page.getByTestId('provider-card').first()).toBeVisible();
       await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
-      const output = resolve('.statusgrid/ui-feedback');
+      const output = resolve('.statusgrid/screenshots/controls');
       await mkdir(output, { recursive: true });
       const prefix = `${process.env.STATUSGRID_UI_URL ? 'live' : 'fixture'}-${theme}-${width}`;
       await page.screenshot({ path: `${output}/${prefix}-grid.png`, fullPage: true, animations: 'disabled' });

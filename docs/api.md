@@ -1,6 +1,6 @@
 # 公共 API 与订阅
 
-所有路径均是站点根目录下的静态只读文件，不需要认证。当前 API 版本 `1.0`；运行时定义见 `src/shared/contracts.ts`、`src/shared/public-schemas.ts`。未部署时没有可承诺的在线地址。客户端须检查 HTTP 状态、schema 和版本，不能把失败响应当作空事件。
+线上根地址为 `https://grid.thetamind.ai`，所有路径都是静态只读文件，不需要认证。当前 API 版本 `1.0`；运行时定义见 `src/shared/contracts.ts`、`src/shared/public-schemas.ts`。客户端须检查 HTTP 状态、schema 和版本，不能把失败响应当作空事件。
 
 | 路径 | 内容 |
 | --- | --- |
@@ -53,4 +53,4 @@
 
 Feed 条目 ID 按生命周期事件和 triggered／escalated／resolved 里程碑稳定生成；重开使用新 episode。普通文案更新不刷条目，重采集和相同状态重新发布不重复里程碑。观测事件被官方事件替代时保留别名关系。输出文本／XML 转义，客户端不要直接执行上游 HTML。
 
-缓存 TTL、查询参数缓存键、Date／Age／ETag 和跨域 CORS 需在目标域名实测；本地同源可读不能证明 CORS。外部消费者若浏览器跨域被拒，可使用服务端读取；不能宣称 GitHub Pages 可随意设置自定义响应头。测试步骤见 [部署验收](deployment.md)。
+缓存 TTL、查询参数缓存键、Date／Age／ETag 和跨域 CORS 需在目标域名实测；本地同源可读不能证明 CORS。外部消费者若浏览器跨域被拒，可使用服务端读取；不能宣称 GitHub Pages 可随意设置自定义响应头。部署配置与故障恢复见 [部署文档](deployment.md)。

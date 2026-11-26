@@ -1,38 +1,53 @@
 # StatusGrid
 
-面向 SRE 和架构师的免费云与 AI 基础设施状态工具。聚合 13 家官方公开状态，提供实时矩阵、组件／地域搜索、厂商详情、UTC 每日轨迹与聚合页、历史事件库，以及 JSON / RSS / Atom。
+面向 SRE 和架构师的免费基础设施状态看板，聚合 13 家云与 AI 服务的官方公开状态。
 
-服务状态和采集健康分开表达：采集失败保留上次可信内容并标记受阻；没有可信数据时显示无数据。历史缺失不补绿，采样统计不是厂商 SLA。国内云范围限定为腾讯云北京／上海、阿里云上海、百度云北京／上海。
+在线使用：**[grid.thetamind.ai](https://grid.thetamind.ai/)**
 
-本地功能、发布链路和验收工具已实现；目标域名为 `grid.thetamind.ai`，尚未执行正式部署和目标 Runner 连续观察。实际验证、来源限制和未满足项见 [验收报告](docs/acceptance-report.md)。
+支持状态矩阵、组件／地域搜索、厂商详情、30 日轨迹与每日聚合、历史事件，以及 JSON / RSS / Atom。采集失败或历史缺失会明确标识；采样统计不代表厂商 SLA。国内来源范围为 AWS 中国北京／宁夏、腾讯云北京／上海、阿里云上海、百度云北京／上海。
 
-## 从新克隆启动真实数据
+## 本地运行
 
-使用 Node 22（至少 22.12）或 Node 24；CI 检查两者，生产工作流使用 24。
+推荐 Node 24，也支持 Node 22.12 及以上的 22.x。
 
 ```sh
 npm ci
 npx playwright install chromium
-# Linux CI／服务器还需要系统依赖：npx playwright install --with-deps chromium
 npm run collect -- --state-dir .statusgrid/state --output-dir public --report .statusgrid/run.json
-npm run release:check -- --dir public --require-live
 npm run dev -- --port 5174
 ```
 
-打开 `http://127.0.0.1:5174`。采集运行一轮；Vite 和页面轮询不调度上游采集。下一次刷新上游需重新执行采集命令，或使用 [运行手册](docs/runbook.md) 中的显式本地循环。
+打开 `http://127.0.0.1:5174`。Linux 安装浏览器时使用 `npx playwright install --with-deps chromium`。可通过 `STATUSGRID_BROWSER_EXECUTABLE` 指定已有浏览器。
 
-只看已存在的发布目录可用 `STATUSGRID_DATA_DIR=.statusgrid/local/public npm run dev -- --port 5174`，不会改写数据时间。浏览器默认使用 Playwright Chromium，采集和测试均支持 `STATUSGRID_BROWSER_EXECUTABLE` 指定已安装浏览器；测试在 macOS 还可选择标准安装的 Chrome。
+`collect` 每次只采集一轮；本地持续采集见 [运行手册](docs/runbook.md)。页面刷新和 Vite 不会触发上游采集。`npm run preview:fixture` 可启动带演示标识的预览，供开发及浏览器测试使用。
 
-`npm run preview:fixture` 是独立演示预览（5173），有明确 fixture 标识，不代表真实状态，不能用于正式发布。未采集时 `npm run dev` 展示无数据页面。
+## 自动更新
 
-## 使用与维护
+- GitHub Actions 默认每 5 分钟调度一次：每小时第 02、07、12……57 分钟。
+- 仓库变量 `STATUSGRID_INTERVAL_MINUTES=10` 切换为第 02、12、22……52 分钟；手动运行的 interval 只影响当次。
+- 每轮读取持久状态，采集全部来源，校验并保存数据，再发布 Pages；定时采集复用已构建的前端。
+- 页面在前台每 60 秒检查新快照。没有更新时，5 分钟配置下在 10／15 分钟分别提示延迟／过期。
+- 每天 UTC 00:17（上海时间 08:17）调度状态备份，Artifact 保留 30 天。
 
-页面每 60 秒检查已发布数据；手动刷新也只重新读取快照。5 分钟目标周期下，10／15 分钟分别提示延迟／过期；10 分钟周期对应 20／30 分钟。日轨迹按快照 UTC 日期锚定，悬停／聚焦展示覆盖与事件摘要，点击／Enter／触屏进入可分享每日页。过期快照保留历史，但不能验证当前服务。
+GitHub 的定时事件可能延迟或漏发，5 分钟是目标周期。确认自动运行请查看 Actions 中 `event=schedule` 的记录；手动运行成功不能代替该检查。配置与故障处理见 [部署文档](docs/deployment.md)。
+
+## 数据存储
+
+使用 GitHub 分支和静态 JSON 文件持久化，无独立数据库：
+
+| 位置 | 内容 |
+| --- | --- |
+| `main` | 源码、工作流、注册表和必要测试 |
+| `data` | 采集状态、事件、观测记录、日统计和通知去重账本 |
+| `gh-pages` | 完整前端、公开 API 和 Feed；由 Actions 上传至 Pages |
+| 本地 `.statusgrid/state` | 本机采集状态，Git 忽略 |
+| Actions Artifact | 每日状态备份，保留 30 天 |
+
+Runner 的临时目录用于处理当次任务；下一轮从 `data` 恢复状态。观测与日统计保留滚动 90 天，事件按月持续归档，因此总存储会随历史增长。存储布局、保留策略与恢复步骤见 [运行手册](docs/runbook.md)。
+
+## 开发
 
 ```sh
-# 只读来源诊断，不写持久状态
-npm run collect -- --providers github,openai --report .statusgrid/diagnostic.json
-# 工程验证；先安装 Chromium
 npm run typecheck
 npm run lint
 npm run test:unit
@@ -40,11 +55,9 @@ npm run build
 npm run test:e2e
 ```
 
-- [运行手册：采集、调试、备份和恢复](docs/runbook.md)
-- [GitHub Actions / Pages 部署与上线验收](docs/deployment.md)
+- [运行、诊断、备份和恢复](docs/runbook.md)
+- [GitHub Actions / Pages 部署](docs/deployment.md)
 - [公共 API、版本与 Feed](docs/api.md)
-- [新增来源与 G0～G3 门槛](docs/adding-providers.md)
-- [本地验收、决策及剩余门槛](docs/acceptance-report.md)
-- [总体设计](docs/superpowers/specs/2026-11-25-statusgrid-design.md)、[数据契约](docs/superpowers/specs/2026-11-25-statusgrid-data-contracts.md)、[来源验证](docs/superpowers/specs/2026-11-25-statusgrid-source-validation.md)、[每日下钻设计](docs/superpowers/specs/2026-11-26-statusgrid-day-drilldown.md)、[开发计划](docs/superpowers/plans/2026-11-25-statusgrid-implementation.md)
+- [新增来源](docs/adding-providers.md)
 
-`.statusgrid/`、`dist/`、公共生成数据和测试输出被 Git 忽略；源码、注册表、测试 fixture 和正式文档属于交付内容。不要把演示数据或探测抓包提交成生产数据。
+历史设计、开发计划和旧验收材料保存在 `codex/archive-before-cleanup-20261127` 分支。

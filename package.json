@@ -10,7 +10,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "preview:fixture": "tsx scripts/preview-fixture.ts && STATUSGRID_DATA_DIR=.statusgrid/task8-fixture/public vite --host 127.0.0.1 --port 5173",
+    "preview:fixture": "tsx scripts/preview-fixture.ts && STATUSGRID_DATA_DIR=.statusgrid/fixture/public vite --host 127.0.0.1 --port 5173",
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",

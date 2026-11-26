@@ -361,7 +361,7 @@ for (const width of [1440, 390]) {
       expect(box!.y + box!.height).toBeLessThanOrEqual(1050);
       await tooltip.hover();
       await expect(tooltip).toBeVisible();
-      const output = resolve('.statusgrid/day-feedback');
+      const output = resolve('.statusgrid/screenshots/day');
       await mkdir(output, { recursive: true });
       await page.screenshot({ path: `${output}/fixture-${theme}-${width}-hover.png`, fullPage: true, animations: 'disabled' });
       await cell.click();

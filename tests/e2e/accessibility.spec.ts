@@ -21,7 +21,7 @@ for (const width of [1440, 390]) {
     await expect(page.getByRole('searchbox')).toHaveValue('');
     await page.getByRole('button', { name: '切换到浅色主题' }).click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
-    const output = resolve('.statusgrid/task8-screenshots');
+    const output = resolve('.statusgrid/screenshots/layout');
     await mkdir(output, { recursive: true });
     await page.screenshot({ path: `${output}/fixture-light-${width}.png`, fullPage: true, animations: 'disabled' });
     await page.reload();
