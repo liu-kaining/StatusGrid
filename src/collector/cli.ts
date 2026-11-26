@@ -1,12 +1,13 @@
 import { mkdir, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { dirname, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import registryFile from '../../registry/providers.json';
 import { DEFAULT_INTERVAL_MINUTES, COLLECTION_INTERVAL_MINUTES } from '../shared/contracts.js';
 import { parseRegistry } from '../shared/schemas.js';
 import { createHttpClient } from './http.js';
 import { createBrowserPool } from './browser.js';
-import { collectProviders } from './run.js';
+import { collectProviders, runPersistentCollection } from './run.js';
+import type { CollectionContext } from './types.js';
 
 const registry = parseRegistry(registryFile);
 const providerIds = new Set(registry.map(({ id }) => id));
@@ -15,11 +16,12 @@ export interface CollectArgs {
   providers: string[];
   report: string;
   intervalMinutes: 5 | 10;
+  stateDir?: string;
 }
 
 export function parseCollectArgs(argv: string[]): CollectArgs {
   const options: CollectArgs = {
-    providers: ['cloudflare', 'github', 'claude', 'openai', 'moonshot'],
+    providers: registry.filter(({ enabled }) => enabled).map(({ id }) => id),
     report: '.statusgrid/collection-run.json',
     intervalMinutes: DEFAULT_INTERVAL_MINUTES,
   };
@@ -28,7 +30,7 @@ export function parseCollectArgs(argv: string[]): CollectArgs {
     const flag = argv[index];
     const value = argv[index + 1];
     if (!flag || !value || !flag.startsWith('--') || seen.has(flag)) {
-      throw new Error('Expected unique --providers, --report or --interval flags with values');
+      throw new Error('Expected unique collection flags with nonempty values');
     }
     seen.add(flag);
     if (flag === '--providers') {
@@ -39,6 +41,10 @@ export function parseCollectArgs(argv: string[]): CollectArgs {
       }
     } else if (flag === '--report') {
       options.report = value;
+    } else if (flag === '--state-dir') {
+      options.stateDir = value;
+    } else if (flag === '--output-dir') {
+      throw new Error('Public --output-dir behavior is not implemented yet');
     } else if (flag === '--interval') {
       const interval = Number(value);
       if (!COLLECTION_INTERVAL_MINUTES.some((allowed) => allowed === interval)) {
@@ -49,23 +55,30 @@ export function parseCollectArgs(argv: string[]): CollectArgs {
       throw new Error(`Unknown collection flag: ${flag}`);
     }
   }
+  if (options.stateDir && seen.has('--providers')) {
+    throw new Error('--providers diagnostics cannot be combined with --state-dir persistence (subset snapshots are unsafe)');
+  }
+  if (options.stateDir && (resolve(options.report) === resolve(options.stateDir)
+    || resolve(options.report).startsWith(`${resolve(options.stateDir)}${sep}`))) {
+    throw new Error('Report path must not overlap the generated state directory');
+  }
   return options;
 }
 
-export async function main(argv: string[]): Promise<void> {
+export async function main(argv: string[], suppliedContext?: CollectionContext): Promise<void> {
   const options = parseCollectArgs(argv);
   const configs = options.providers.map((id) => {
     const provider = registry.find((entry) => entry.id === id);
     if (!provider) throw new Error(`Unknown registry provider: ${id}`);
     return provider;
   });
-  const browser = createBrowserPool({
+  const browser = suppliedContext?.browser ?? createBrowserPool({
     timeoutMs: 60_000,
     ...(process.env.STATUSGRID_BROWSER_EXECUTABLE ? { executablePath: process.env.STATUSGRID_BROWSER_EXECUTABLE } : {}),
   });
   const controller = new AbortController();
   try {
-    const run = await collectProviders(configs, new Map(), {
+    const context: CollectionContext = suppliedContext ? { ...suppliedContext, intervalMinutes: options.intervalMinutes } : {
       now: new Date().toISOString(),
       signal: controller.signal,
       intervalMinutes: options.intervalMinutes,
@@ -75,7 +88,10 @@ export async function main(argv: string[]): Promise<void> {
         totalBudgetMs: Math.min(50_000, config.adapter.timeoutMs * (config.adapter.retries + 1) + 4_000),
       }),
       browser,
-    });
+    };
+    const run = options.stateDir
+      ? (await runPersistentCollection(configs, context, resolve(options.stateDir))).run
+      : await collectProviders(configs, new Map(), context);
     const report = resolve(options.report);
     await mkdir(dirname(report), { recursive: true });
     await writeFile(report, `${JSON.stringify(run, null, 2)}\n`, 'utf8');
@@ -83,7 +99,8 @@ export async function main(argv: string[]): Promise<void> {
       console.log(`${provider.providerId}: ${provider.result?.reportedStatus ?? 'unavailable'} (${provider.collection.freshness}${provider.collection.reason ? `: ${provider.collection.reason}` : ''})`);
     }
     console.log(`Report: ${report} | interval: ${run.intervalMinutes} minutes (one collection run)`);
-    if (run.providers.some(({ collection }) => collection.freshness !== 'fresh')) process.exitCode = 1;
+    // Business source failures are valid persisted stale snapshots; infrastructure failures throw.
+    process.exitCode = !options.stateDir && run.providers.some(({ collection }) => collection.freshness !== 'fresh') ? 1 : 0;
   } finally {
     controller.abort();
     await browser.close();
@@ -93,6 +110,6 @@ export async function main(argv: string[]): Promise<void> {
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   main(process.argv.slice(2)).catch((error: unknown) => {
     console.error(error instanceof Error ? error.message : 'Collection failed');
-    process.exitCode = 1;
+    process.exitCode = 2;
   });
 }

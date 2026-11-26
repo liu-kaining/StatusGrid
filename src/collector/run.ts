@@ -3,7 +3,24 @@ import { COLLECTION_INTERVAL_MINUTES } from '../shared/contracts.js';
 import type { CollectionState, FailureReason, ProviderConfig } from '../shared/contracts.js';
 import { AdapterError, TransportError } from './errors.js';
 import { createAdapter } from './adapters/index.js';
-import type { CollectionContext, CollectionRun, ProviderCollection } from './types.js';
+import type { CollectionContext, CollectionRun, PersistedState, ProviderCollection } from './types.js';
+import { applyCollection } from './events/reconcile.js';
+import { loadState } from './storage/load.js';
+import { stageState } from './storage/save.js';
+
+export async function runPersistentCollection(
+  configs: ProviderConfig[], context: CollectionContext, directory: string,
+): Promise<{ kind: 'valid'; run: CollectionRun; state: PersistedState; hasProviderFailures: boolean }> {
+  const previous = await loadState(directory);
+  const selected = new Set(configs.map(({ id }) => id));
+  if (previous.latest?.providers.some(({ providerId }) => !selected.has(providerId))) {
+    throw new Error('Persistent collection cannot replace the previous provider scope with a subset');
+  }
+  const run = await collectProviders(configs, new Map(previous.latest?.providers.map((provider) => [provider.providerId, provider]) ?? []), context);
+  const state = applyCollection(previous, run);
+  await stageState(state, directory, { expectedSnapshotId: previous.latest?.snapshotId ?? null });
+  return { kind: 'valid', run, state, hasProviderFailures: run.providers.some(({ collection }) => collection.freshness !== 'fresh') };
+}
 
 const PROVIDER_BUDGET_MS = 60_000;
 const RUN_BUDGET_MS = 120_000;
@@ -40,9 +57,10 @@ async function collectOne(
   config: ProviderConfig, previous: ProviderCollection | undefined, context: CollectionContext,
   signal: AbortSignal,
 ): Promise<ProviderCollection> {
-  const start = Date.now();
+  const clock = context.clock!;
+  const start = clock.monotonic();
   const previousTrusted = previous?.lastTrustedResult ?? previous?.result ?? null;
-  const checkedAt = new Date().toISOString();
+  const observedAt = clock.now();
   let result: ProviderCollection['result'] = null;
   let reason: FailureReason | null = null;
   let message: string | null = null;
@@ -54,19 +72,22 @@ async function collectOne(
       result = await withinBudget(
         (providerSignal) => createAdapter(config).collect(config, {
           ...context,
+          now: observedAt,
           http: context.httpForProvider?.(config) ?? context.http,
           signal: providerSignal,
         }), signal, PROVIDER_BUDGET_MS,
       );
-      if (result.coverage.currentState !== 'complete') {
+      if (result.coverage.currentState !== 'complete' || !result.evidence.requiredChecks.every(({ passed }) => passed)) {
         throw new AdapterError('coverage_incomplete', 'Current source coverage is incomplete');
       }
+      result.coverage.observedSince = previousTrusted?.coverage.observedSince ?? observedAt;
     }
   } catch (error) {
     reason = reasonOf(error);
     message = error instanceof Error ? error.message : 'Collection failed';
     result = null;
   }
+  const checkedAt = clock.now();
   const freshness = result ? 'fresh' : previousTrusted ? 'stale' : 'missing';
   const collection: CollectionState = {
     outcome: result ? result.evidence.historyError ? 'partial' : 'success'
@@ -75,11 +96,11 @@ async function collectOne(
     lastCheckedAt: checkedAt,
     lastSuccessAt: result ? checkedAt : previous?.collection.lastSuccessAt ?? null,
     sourceUpdatedAt: result?.sourceUpdatedAt ?? previousTrusted?.sourceUpdatedAt ?? null,
-    durationMs: Date.now() - start,
+    durationMs: Math.max(0, clock.monotonic() - start),
     consecutiveFailures: result ? 0 : (previous?.collection.consecutiveFailures ?? 0) + 1,
   };
   return {
-    providerId: config.id, result,
+    providerId: config.id, officialStatusUrl: config.officialStatusUrl, result,
     lastTrustedResult: result ?? previousTrusted,
     collection,
   };
@@ -94,7 +115,15 @@ export async function collectProviders(
     throw new Error(`Invalid collection interval: ${context.intervalMinutes}`);
   }
   const intervalMinutes = context.intervalMinutes as CollectionRun['intervalMinutes'];
-  const startedAt = new Date().toISOString();
+  const base = Date.parse(context.now);
+  if (!Number.isFinite(base)) throw new Error('Invalid collection observation time');
+  const monotonicBase = performance.now();
+  const clock = context.clock ?? {
+    now: () => new Date(base + Math.max(0, performance.now() - monotonicBase)).toISOString(),
+    monotonic: () => performance.now(),
+  };
+  context = { ...context, clock };
+  const startedAt = clock.now();
   const controller = new AbortController();
   const cancel = () => controller.abort();
   context.signal.addEventListener('abort', cancel, { once: true });
@@ -114,5 +143,5 @@ export async function collectProviders(
     clearTimeout(timer);
     context.signal.removeEventListener('abort', cancel);
   }
-  return { snapshotId: randomUUID(), startedAt, completedAt: new Date().toISOString(), intervalMinutes, providers };
+  return { snapshotId: randomUUID(), startedAt, completedAt: clock.now(), intervalMinutes, providers };
 }
