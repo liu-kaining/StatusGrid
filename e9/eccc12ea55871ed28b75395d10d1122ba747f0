@@ -1,0 +1,70 @@
+src/web/data/client.ts
+  s_79c9ef7a230eaf::t_6babd043a0d743 6
+  s_79c9ef7a230eaf::t_9629b42ea884f7 119
+src/web/data/day.ts
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 3,20
+tests/collector/statuspage.test.ts
+  s_79c9ef7a230eaf::t_6babd043a0d743 181-183,208-209
+  s_79c9ef7a230eaf::t_8d7c8174fa0a03 40-54
+  s_79c9ef7a230eaf::t_cb7e082a7b723f 55-72
+src/collector/storage/rollup.ts
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 34,46,49-52,61-64
+  s_79c9ef7a230eaf::t_dfa7793eba5f3c 3,22-26,35
+src/collector/storage/directory.ts
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 9
+src/collector/adapters/common.ts
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 4,43,51
+src/collector/storage/validate.ts
+  s_79c9ef7a230eaf::t_8274595ecfb880 7,32
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 4-6,26-31,33-80,113,175
+src/collector/run.ts
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 10,81
+tests/collector/run.test.ts
+  s_79c9ef7a230eaf::t_73bcd2ebd41e40 4,8-9,67-87,89-91,94-139
+  s_79c9ef7a230eaf::t_97f88999b14c83 14,88,92-93
+  s_79c9ef7a230eaf::t_cb7e082a7b723f 46-66
+src/collector/storage/load.ts
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 7,52,56,60-64
+docs/superpowers/specs/2026-11-25-statusgrid-data-contracts.md
+  s_79c9ef7a230eaf::t_020229e72f847a 8-18,24-34
+  s_79c9ef7a230eaf::t_8274595ecfb880 19-23
+tests/web/queries.test.ts
+  s_79c9ef7a230eaf::t_8681293572f9d8 22-26,30-33
+  s_79c9ef7a230eaf::t_34a33d3ea6ab4a 27-29
+src/shared/incident-time.ts
+  s_79c9ef7a230eaf::t_dfa7793eba5f3c 1-2,15-16,18-21,24
+  s_79c9ef7a230eaf::t_8274595ecfb880 3-14,17,22-23
+src/collector/export/json.ts
+  s_79c9ef7a230eaf::t_6babd043a0d743 7,68
+  s_79c9ef7a230eaf::t_9629b42ea884f7 69
+src/collector/adapters/statuspage.ts
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 7,114,125,160
+src/collector/storage/save.ts
+  s_79c9ef7a230eaf::t_b4dc65895b7e0d 33
+tests/web/day.test.ts
+  s_79c9ef7a230eaf::t_8d7c8174fa0a03 11-25
+tests/collector/rollup.test.ts
+  s_79c9ef7a230eaf::t_8d7c8174fa0a03 7-10,12-18,30-44
+  s_79c9ef7a230eaf::t_8681293572f9d8 11,19-29
+tests/collector/storage.test.ts
+  s_79c9ef7a230eaf::t_0231a7203b3f2d 19-64
+  s_79c9ef7a230eaf::t_8681293572f9d8 65-95
+tests/collector/export.test.ts
+  s_79c9ef7a230eaf::t_8681293572f9d8 13-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e9eccc12ea55871ed28b75395d10d1122ba747f0",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
