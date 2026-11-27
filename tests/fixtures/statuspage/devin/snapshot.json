@@ -1,0 +1,45 @@
+{
+  "summary": {
+    "page": {"id":"6bjrw54df4rj","name":"Devin","url":"https://www.devinstatus.com","updated_at":"2026-11-27T06:28:41.936Z"},
+    "status": {"indicator":"none"},
+    "components": [
+      {"id":"d87cp5jknh1c","name":"Cloud Web Client","status":"operational","group":false,"group_id":null},
+      {"id":"y4zznb49vqqy","name":"Cloud Web Client (Enterprise)","status":"operational","group":false,"group_id":"92j5h0ttqxfb"},
+      {"id":"dcwvkrgpzxkl","name":"Desktop Agent (Fedstart)","status":"operational","group":false,"group_id":"9ydbk2b55pk1"},
+      {"id":"q72cy1kjpk4r","name":"Cloud Agent","status":"operational","group":false,"group_id":null},
+      {"id":"c20stk646s0v","name":"Cloud Agent (Enterprise)","status":"operational","group":false,"group_id":"92j5h0ttqxfb"},
+      {"id":"767fhhcg1xh6","name":"Enterprise Portal (Fedstart)","status":"operational","group":false,"group_id":"9ydbk2b55pk1"},
+      {"id":"h6z52njyz22z","name":"Desktop Agent","status":"operational","group":false,"group_id":null},
+      {"id":"n7v68h5h9010","name":"Desktop Agent (Enterprise)","status":"operational","group":false,"group_id":"92j5h0ttqxfb"},
+      {"id":"q604f8cp8q9q","name":"Desktop Tab (Fedstart)","status":"operational","group":false,"group_id":"9ydbk2b55pk1"},
+      {"id":"170m7l75sh6m","name":"Desktop Tab","status":"operational","group":false,"group_id":null},
+      {"id":"jmr17mx1kt4c","name":"Desktop Tab (Enterprise)","status":"operational","group":false,"group_id":"92j5h0ttqxfb"},
+      {"id":"hgmbfbs72ryp","name":"Integrations","status":"operational","group":false,"group_id":null},
+      {"id":"92j5h0ttqxfb","name":"Enterprise","status":"operational","group":true,"group_id":null},
+      {"id":"9ydbk2b55pk1","name":"Federal","status":"operational","group":true,"group_id":null}
+    ],
+    "incidents": [],
+    "scheduled_maintenances": []
+  },
+  "active": {"incidents":[]},
+  "history": {
+    "incidents": [{
+      "id":"hrnddcrr3fgr",
+      "name":"Elevated errors for Gemini models",
+      "status":"resolved",
+      "impact":"minor",
+      "created_at":"2026-11-16T00:28:15.919Z",
+      "updated_at":"2026-11-16T02:07:42.729Z",
+      "started_at":"2026-11-16T00:28:15.909Z",
+      "resolved_at":"2026-11-16T02:07:42.705Z",
+      "shortlink":"https://stspg.io/16qgrbhgmh4l",
+      "components":[{"id":"h6z52njyz22z"}],
+      "incident_updates":[
+        {"id":"y7wmyw8lbr6m","status":"resolved","body":"This incident is resolved. Requests to Gemini models have been successful since approximately 5:19 PM PST.","display_at":"2026-11-16T02:07:42.705Z"},
+        {"id":"4x5b4ftw93sn","status":"monitoring","body":"We are continuing to monitor for any further issues.","display_at":"2026-11-16T01:27:12.233Z"},
+        {"id":"70c7psgxl5hc","status":"monitoring","body":"Our upstream model provider restored access at approximately 5:19 PM PST. Requests to Gemini models are successful again. We are monitoring the results.","display_at":"2026-11-16T01:25:58.316Z"},
+        {"id":"y98hzm1x3z1n","status":"identified","body":"Since approximately 3:48 PM PST, most requests to Gemini models fail with an error. We identified an issue with our upstream model provider, and we are working with the provider to restore access. Other models are not affected. Please select a different model until we resolve this issue.","display_at":"2026-11-16T00:28:16.050Z"}
+      ]
+    }]
+  }
+}

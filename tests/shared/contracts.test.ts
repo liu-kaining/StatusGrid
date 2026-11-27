@@ -59,13 +59,38 @@ describe('parseRegistry', () => {
     expect(() => parseRegistry([{ ...validProvider, adapter }])).toThrow(/duplicate.*region/i);
   });
 
-  it('loads all 15 declared providers without implying adapter connectivity', () => {
+  it('loads all 20 declared providers without implying adapter connectivity', () => {
     const providers = parseRegistry(registry);
-    expect(providers).toHaveLength(15);
+    expect(providers).toHaveLength(20);
     expect(providers.map(({ id }) => id)).toEqual([
       'cloudflare', 'github', 'claude', 'openai', 'moonshot', 'deepseek', 'minimax', 'streamlake',
+      'xai', 'devin', 'opencode', 'factory', 'zed',
       'gcp', 'apple-cn', 'azure', 'aws-cn', 'tencent-cloud', 'aliyun', 'baidu-cloud',
     ]);
     expect(providers.every(({ enabled, adapter }) => enabled && Boolean(adapter.type))).toBe(true);
+  });
+
+  it.each(['xai', 'opencode', 'instatus'])('accepts the %s source protocol', (type) => {
+    const source = { ...validProvider, adapter: { ...validProvider.adapter, type, sourcePageId: 'verified-page-id' } };
+    expect(parseRegistry([source])).toEqual([source]);
+  });
+
+  it('requires a pinned Instatus page identity', () => {
+    expect(() => parseRegistry([{ ...validProvider, adapter: { ...validProvider.adapter, type: 'instatus' } }]))
+      .toThrow(/pinned.*page identity/i);
+  });
+
+  it.each([
+    ['devin', 'https://www.devinstatus.com'],
+    ['factory', 'https://status.factory.ai'],
+  ])('uses official structured Statuspage current and history endpoints for %s', (id, origin) => {
+    expect(parseRegistry(registry).find((source) => source.id === id)).toMatchObject({
+      enabled: true, category: 'ai', officialStatusUrl: `${origin}/`,
+      adapter: { type: 'statuspage-v2', browserFallback: false, endpoints: {
+        summary: `${origin}/api/v2/summary.json`,
+        active: `${origin}/api/v2/incidents/unresolved.json`,
+        incidents: `${origin}/api/v2/incidents.json`,
+      } },
+    });
   });
 });

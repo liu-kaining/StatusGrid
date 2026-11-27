@@ -1,0 +1,24 @@
+{
+  "url": "status.zed.dev",
+  "site": {
+    "id": "cltn6mqey3916b6oq33ekdu7m",
+    "status": "UP",
+    "mainStatus": "UP",
+    "name": {"default": "Zed"},
+    "customDomain": "status.zed.dev",
+    "components": [
+      {"id":"cmaw974wo0001xh7v9vfihlul","name":{"default":"Agent"},"status":"OPERATIONAL","isParent":false,"children":[]},
+      {"id":"cmu1vqlgs01oc1mmgrw9sy4u5","name":{"en":"Zed","default":"Zed"},"status":"OPERATIONAL","isParent":true,"children":[
+        {"id":"cmo7iw3xo001wu7nh2ba3nn1a","name":{"en":"Extension Registry","default":"Extension Registry"},"status":"OPERATIONAL","isParent":false,"children":[]},
+        {"id":"cm75bq8t9000rsdcb9bfls8wt","name":{"default":"Edit Prediction"},"status":"OPERATIONAL","isParent":false,"children":[]},
+        {"id":"cltn6mqhg3950b6oqc79rn3w2","name":{"default":"Collaboration"},"status":"OPERATIONAL","isParent":false,"children":[]}
+      ]},
+      {"id":"cmu1vrlrz01j21bmg0alng563","name":{"en":"Delta","default":"Delta"},"status":"OPERATIONAL","isParent":true,"children":[
+        {"id":"cmu1vrtvz01lq1flr9ot7rwe6","name":{"en":"Delta Cloud Services","default":"Delta Cloud Services"},"status":"OPERATIONAL","isParent":false,"children":[]}
+      ]}
+    ]
+  },
+  "activeIncidents": [],
+  "activeMaintenances": [],
+  "activeGenericNotices": []
+}

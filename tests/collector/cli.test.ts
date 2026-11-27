@@ -30,7 +30,7 @@ describe('explicit persistent and read-only diagnostic CLI modes', () => {
   it('selects all enabled providers and requires persistent full scope for public output', () => {
     const parsed = parseCollectArgs(['--state-dir', '.statusgrid/state']);
     expect(parsed.providers).toEqual(registry.filter(({ enabled }) => enabled).map(({ id }) => id));
-    expect(parsed.providers).toHaveLength(15);
+    expect(parsed.providers).toHaveLength(20);
     expect(parsed.stateDir).toBe('.statusgrid/state');
     expect(() => parseCollectArgs(['--providers', 'github', '--state-dir', '.statusgrid/state'])).toThrow(/providers|subset/i);
     expect(parseCollectArgs(['--state-dir', '.statusgrid/state', '--output-dir', 'public']).outputDir).toBe('public');
@@ -51,7 +51,7 @@ describe('explicit persistent and read-only diagnostic CLI modes', () => {
     expect(report.errors).toEqual([]);
     expect(report.snapshotId).toBe((await loadState(join(dir, 'state'))).latest?.snapshotId);
     const summary = JSON.parse(await readFile(join(dir, 'public/api/v1/summary.json'), 'utf8'));
-    expect(summary.providers).toHaveLength(15);
+    expect(summary.providers).toHaveLength(20);
     expect(summary.globalSummary.overallStatus).toBe('stale');
     expect(summary.providers.every((provider: { reportedStatus: unknown }) => provider.reportedStatus === null)).toBe(true);
   });
@@ -60,9 +60,9 @@ describe('explicit persistent and read-only diagnostic CLI modes', () => {
     await main(['--state-dir', join(dir, 'generated'), '--report', join(dir, 'report.json')], context());
     expect(process.exitCode).toBe(0);
     const state = await loadState(join(dir, 'generated'));
-    expect(state.latest?.providers).toHaveLength(15);
+    expect(state.latest?.providers).toHaveLength(20);
     expect(state.latest?.providers.every(({ collection }) => collection.freshness === 'missing')).toBe(true);
-    expect(JSON.parse(await readFile(join(dir, 'report.json'), 'utf8')).providers).toHaveLength(15);
+    expect(JSON.parse(await readFile(join(dir, 'report.json'), 'utf8')).providers).toHaveLength(20);
   });
 
   it('writes only a diagnostic report for selected providers and preserves failure exit one', async () => {

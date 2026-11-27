@@ -198,6 +198,144 @@
     }
   },
   {
+    "id": "xai",
+    "name": "xAI",
+    "category": "ai",
+    "aliases": ["Grok"],
+    "tags": ["ai"],
+    "officialStatusUrl": "https://status.x.ai/",
+    "officialHomeUrl": "https://x.ai/",
+    "displayOrder": 9,
+    "enabled": true,
+    "adapter": {
+      "type": "xai",
+      "endpoints": {
+        "status": "https://status.x.ai/api/status",
+        "active": "https://status.x.ai/api/incidents?status=active",
+        "history": "https://status.x.ai/api/incidents?status=resolved"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [
+        {"id": "cursor", "name": "Grok Build and Cursor", "upstreamIds": [], "namePatterns": []},
+        {"id": "grok-bot", "name": "Grok Bot", "upstreamIds": [], "namePatterns": []},
+        {"id": "grok", "name": "Grok", "upstreamIds": [], "namePatterns": []},
+        {"id": "api", "name": "Grok API", "upstreamIds": [], "namePatterns": []},
+        {"id": "origin", "name": "Origin", "upstreamIds": [], "namePatterns": []},
+        {"id": "accounts-and-billing", "name": "Accounts and Billing", "upstreamIds": [], "namePatterns": []},
+        {"id": "websites", "name": "Websites", "upstreamIds": [], "namePatterns": []},
+        {"id": "third-party-models", "name": "Third-party Model Providers", "upstreamIds": [], "namePatterns": []}
+      ],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "devin",
+    "name": "Devin",
+    "category": "ai",
+    "aliases": ["Cognition"],
+    "tags": ["ai", "developer"],
+    "officialStatusUrl": "https://www.devinstatus.com/",
+    "officialHomeUrl": "https://devin.ai/",
+    "displayOrder": 10,
+    "enabled": true,
+    "adapter": {
+      "type": "statuspage-v2",
+      "endpoints": {
+        "summary": "https://www.devinstatus.com/api/v2/summary.json",
+        "active": "https://www.devinstatus.com/api/v2/incidents/unresolved.json",
+        "incidents": "https://www.devinstatus.com/api/v2/incidents.json"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [
+        {"id": "92j5h0ttqxfb", "name": "Enterprise", "upstreamIds": [], "namePatterns": []},
+        {"id": "9ydbk2b55pk1", "name": "Federal", "upstreamIds": [], "namePatterns": []}
+      ],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "opencode",
+    "name": "OpenCode",
+    "category": "ai",
+    "aliases": [],
+    "tags": ["ai", "developer"],
+    "officialStatusUrl": "https://status.opencode.ai/",
+    "officialHomeUrl": "https://opencode.ai/",
+    "displayOrder": 11,
+    "enabled": true,
+    "adapter": {
+      "type": "opencode",
+      "endpoints": {
+        "status": "https://status.opencode.ai/api/status"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [
+        {"id": "console", "name": "Console", "upstreamIds": [], "namePatterns": []},
+        {"id": "inference", "name": "Inference", "upstreamIds": [], "namePatterns": []}
+      ],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "factory",
+    "name": "Factory",
+    "category": "ai",
+    "aliases": ["Droid"],
+    "tags": ["ai", "developer"],
+    "officialStatusUrl": "https://status.factory.ai/",
+    "officialHomeUrl": "https://factory.ai/",
+    "displayOrder": 12,
+    "enabled": true,
+    "adapter": {
+      "type": "statuspage-v2",
+      "endpoints": {
+        "summary": "https://status.factory.ai/api/v2/summary.json",
+        "active": "https://status.factory.ai/api/v2/incidents/unresolved.json",
+        "incidents": "https://status.factory.ai/api/v2/incidents.json"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [
+        {"id": "c9sjq8nsz2kq", "name": "Models", "upstreamIds": [], "namePatterns": []}
+      ],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "zed",
+    "name": "Zed",
+    "category": "ai",
+    "aliases": [],
+    "tags": ["ai", "developer"],
+    "officialStatusUrl": "https://status.zed.dev/",
+    "officialHomeUrl": "https://zed.dev/",
+    "displayOrder": 13,
+    "enabled": true,
+    "adapter": {
+      "type": "instatus",
+      "sourcePageId": "cltn6mqey3916b6oq33ekdu7m",
+      "endpoints": {
+        "page": "https://status.zed.dev/",
+        "history": "https://status.zed.dev/history"
+      },
+      "timeoutMs": 15000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [
+        {"id": "cmu1vqlgs01oc1mmgrw9sy4u5", "name": "Zed", "upstreamIds": [], "namePatterns": []},
+        {"id": "cmu1vrlrz01j21bmg0alng563", "name": "Delta", "upstreamIds": [], "namePatterns": []}
+      ],
+      "browserFallback": false
+    }
+  },
+  {
     "id": "gcp",
     "name": "Google Cloud",
     "category": "cloud-global",
@@ -205,7 +343,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://status.cloud.google.com/",
     "officialHomeUrl": "https://cloud.google.com/",
-    "displayOrder": 9,
+    "displayOrder": 14,
     "enabled": true,
     "adapter": {
       "type": "google-cloud-json",
@@ -228,7 +366,7 @@
     "tags": ["consumer"],
     "officialStatusUrl": "https://www.apple.com/cn/support/systemstatus/",
     "officialHomeUrl": "https://www.apple.com/cn/",
-    "displayOrder": 10,
+    "displayOrder": 15,
     "enabled": true,
     "adapter": {
       "type": "apple-status",
@@ -250,7 +388,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://azure.status.microsoft/en-us/status",
     "officialHomeUrl": "https://azure.microsoft.com/",
-    "displayOrder": 11,
+    "displayOrder": 16,
     "enabled": true,
     "adapter": {
       "type": "azure-status",
@@ -273,7 +411,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://health.amazonaws.cn/health/status",
     "officialHomeUrl": "https://www.amazonaws.cn/",
-    "displayOrder": 12,
+    "displayOrder": 17,
     "enabled": true,
     "adapter": {
       "type": "aws-cn-health",
@@ -297,7 +435,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://status.cloud.tencent.com/",
     "officialHomeUrl": "https://cloud.tencent.com/",
-    "displayOrder": 13,
+    "displayOrder": 18,
     "enabled": true,
     "adapter": {
       "type": "tencent-cloud",
@@ -319,7 +457,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://status.aliyun.com/",
     "officialHomeUrl": "https://www.aliyun.com/",
-    "displayOrder": 14,
+    "displayOrder": 19,
     "enabled": true,
     "adapter": {
       "type": "aliyun",
@@ -341,7 +479,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://cloud.baidu.com/status.html",
     "officialHomeUrl": "https://cloud.baidu.com/",
-    "displayOrder": 15,
+    "displayOrder": 20,
     "enabled": true,
     "adapter": {
       "type": "baidu-cloud",

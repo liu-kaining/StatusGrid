@@ -11,11 +11,17 @@ import { tencentAdapter } from './tencent.js';
 import { aliyunAdapter } from './aliyun.js';
 import { baiduAdapter } from './baidu.js';
 import { incidentIoAdapter } from './incident-io.js';
+import { xaiAdapter } from './xai.js';
+import { opencodeAdapter } from './opencode.js';
+import { instatusAdapter } from './instatus.js';
 
 export function createAdapter(config: ProviderConfig): Adapter {
   if (config.adapter.type === 'statuspage-v2') return statuspageAdapter;
   if (config.adapter.type === 'deepseek') return deepseekAdapter;
   if (config.adapter.type === 'flashduty') return flashdutyAdapter;
+  if (config.adapter.type === 'xai') return xaiAdapter;
+  if (config.adapter.type === 'opencode') return opencodeAdapter;
+  if (config.adapter.type === 'instatus') return instatusAdapter;
   if (config.adapter.type === 'google-cloud-json') return googleCloudAdapter;
   if (config.adapter.type === 'apple-status') return appleAdapter;
   if (config.adapter.type === 'azure-status') return azureAdapter;

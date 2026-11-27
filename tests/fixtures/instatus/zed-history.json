@@ -1,0 +1,29 @@
+{
+  "url": "status.zed.dev",
+  "site": {
+    "id": "cltn6mqey3916b6oq33ekdu7m",
+    "name": {"default":"Zed"},
+    "customDomain":"status.zed.dev"
+  },
+  "monthlyGroupedNotices": [
+    {"monthStr":"Sun Nov 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)","monthKey":1793491200000,"notices":[],"isLastPage":true},
+    {"monthStr":"Thu Oct 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)","monthKey":1790812800000,"notices":[
+      {
+        "id":"cmvtpvng601jl1mpbu4j9lh0g",
+        "name":{"en":"Some threads are failing to sync","default":"Some threads are failing to sync"},
+        "started":"2026-10-29T15:00:00.000Z",
+        "resolved":"2026-10-29T16:01:38.780Z",
+        "status":"RESOLVED",
+        "impact":"MAJOROUTAGE",
+        "updates":[
+          {"id":"cmvtpvnlc01ki1mpbtv684ask","message":{"default":"This incident has been resolved."},"status":"RESOLVED","started":"2026-10-29T15:15:27.385Z"},
+          {"id":"cmvtq13gx01kf0wqg1dwp87b2","message":{"default":"Although this affects only a small percentage of threads, it looks like about 1/6 users are affected. "},"status":"IDENTIFIED","started":"2026-10-29T15:51:42.539Z"},
+          {"id":"cmvtpvngg01jm1mpbcsg4iqga","message":{"default":"Due to the upstream Cloudflare DO outage, we're seeing some threads (about 1.5%) unable to sync with the cloud.   "},"status":"IDENTIFIED","started":"2026-10-29T15:00:00.000Z"},
+          {"id":"cmvtqdvkz01up0wph46yu5zmq","message":{"default":"Although Cloudflare's status page isn't green yet; our error rate has returned to normal."},"status":"RESOLVED","started":"2026-10-29T16:01:38.780Z"}
+        ],
+        "components":[{"id":"cmu1vrtvz01lq1flr9ot7rwe6","name":{"default":"Delta Cloud Services"},"status":"OPERATIONAL"}]
+      }
+    ],"isLastPage":true},
+    {"monthStr":"Tue Sep 01 2026 00:00:00 GMT+0000 (Coordinated Universal Time)","monthKey":1788220800000,"notices":[],"isLastPage":true}
+  ]
+}

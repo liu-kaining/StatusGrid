@@ -179,12 +179,20 @@ export function parseStatuspage(
     }
     return incident;
   });
-  let historical: SourceIncident[] = [];
+  const historical: SourceIncident[] = [];
   let historyError: FailureReason | null = null;
   if (historyPayload != null) {
     try {
-      historical = list(object(historyPayload, 'history').incidents, 'history.incidents')
-        .map((entry) => parseIncident(entry, config, now, warnings));
+      for (const entry of list(object(historyPayload, 'history').incidents, 'history.incidents')) {
+        try {
+          historical.push(parseIncident(entry, config, now, warnings));
+        } catch (error) {
+          if (!(error instanceof AdapterError)) throw error;
+          historyError ??= error.reason;
+          const warning = `Historical backfill invalid (${error.reason})`;
+          if (!warnings.includes(warning)) warnings.push(warning);
+        }
+      }
     } catch (error) {
       if (!(error instanceof AdapterError)) throw error;
       historyError = error.reason;
@@ -211,6 +219,7 @@ export function parseStatuspage(
   const earliest = historical.length
     ? historical.reduce((first, incident) => incident.startedAt < first ? incident.startedAt : first, historical[0]!.startedAt)
     : null;
+  const nativeHistory = historyPayload != null && (!historyError || historical.length > 0);
   return {
     providerId: config.id, reportedStatus,
     components: components.map((component) => ({
@@ -230,9 +239,11 @@ export function parseStatuspage(
     coverage: {
       basis: 'official_public', regions: config.adapter.requiredRegions,
       componentScope: excluded.size ? 'filtered' : 'full',
-      currentState: 'complete', history: historyPayload == null || historyError ? 'none' : 'native',
+      currentState: 'complete', history: nativeHistory ? 'native' : 'none',
       observedSince: null, nativeHistoryEarliestAt: earliest,
-      limitation: historyPayload == null || historyError ? 'Historical backfill unavailable' : 'Historical endpoint returns a finite recent window',
+      limitation: !nativeHistory ? 'Historical backfill unavailable'
+        : historyError ? 'Finite recent history; invalid source records were rejected'
+          : 'Historical endpoint returns a finite recent window',
     },
     sourceUpdatedAt,
     evidence: {

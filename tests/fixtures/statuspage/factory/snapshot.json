@@ -1,0 +1,45 @@
+{
+  "summary": {
+    "page":{"id":"jkt3k2chrl21","name":"Factory","url":"https://status.factory.ai","updated_at":"2026-11-27T06:28:33.232Z"},
+    "status":{"indicator":"none"},
+    "components":[
+      {"id":"kfqc4mfdkrqx","name":"api.factory.ai","status":"operational","group":false,"group_id":null},
+      {"id":"8j6062wq4cl6","name":"Anthropic","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"},
+      {"id":"m3m0vdtgtfwv","name":"Web App","status":"operational","group":false,"group_id":null},
+      {"id":"r06b64mgx3fx","name":"OpenAI","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"},
+      {"id":"06hkh9ffb4l2","name":"Gemini","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"},
+      {"id":"jfcmwr3grbyc","name":"CLI","status":"operational","group":false,"group_id":null},
+      {"id":"f1rrp7q0347f","name":"Nemotron","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"},
+      {"id":"z1frly8fm1l5","name":"Desktop","status":"operational","group":false,"group_id":null},
+      {"id":"jnvwmd4fv57n","name":"Droid Computers","status":"operational","group":false,"group_id":null},
+      {"id":"w5hflrhnd717","name":"Grok","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"},
+      {"id":"c9sjq8nsz2kq","name":"Models","status":"operational","group":true,"group_id":null},
+      {"id":"j10vb27rt143","name":"GLM","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"},
+      {"id":"2vqf4gx25mg5","name":"Kimi","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"},
+      {"id":"qzf53gldr8s5","name":"DeepSeek","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"},
+      {"id":"3rsz2xndmrhp","name":"MiniMax","status":"operational","group":false,"group_id":"c9sjq8nsz2kq"}
+    ],
+    "incidents":[],
+    "scheduled_maintenances":[]
+  },
+  "active":{"incidents":[]},
+  "history":{
+    "incidents":[{
+      "id":"1mt8tnvvm9mp",
+      "name":"Gemini Models Unavailable",
+      "status":"resolved",
+      "impact":"major",
+      "created_at":"2026-11-15T04:01:11.314Z",
+      "updated_at":"2026-11-16T19:52:19.602Z",
+      "started_at":"2026-11-15T04:01:11.303Z",
+      "resolved_at":"2026-11-16T19:52:19.574Z",
+      "shortlink":"https://stspg.io/w5nh5hg0vbpt",
+      "components":[{"id":"06hkh9ffb4l2"}],
+      "incident_updates":[
+        {"id":"9g80r4ynlhry","status":"resolved","body":"We have worked with the upstream provider to restore access to Gemini models","display_at":"2026-11-16T19:52:19.574Z"},
+        {"id":"g6crvkktqbx3","status":"investigating","body":"We are continuing to investigate this issue.","display_at":"2026-11-16T17:04:38.687Z"},
+        {"id":"ltzcf8m545p3","status":"investigating","body":"We are currently investigating an issue with Gemini models being unavailable.","display_at":"2026-11-15T04:01:11.420Z"}
+      ]
+    }]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "updatedAt": 1795765772498,
+  "since": 1792028534694,
+  "stale": false,
+  "status": "degraded",
+  "components": [
+    {"service":"console","status":"degraded","reason":"errors","since":1795619312497},
+    {"service":"logs","status":"operational","reason":"none","since":1794747511597},
+    {"service":"inference","status":"operational","reason":"none","since":1795619312497},
+    {"service":"go","status":"operational","reason":"none","since":1795730252497},
+    {"service":"payg","status":"degraded","reason":"latency","since":1795761032498},
+    {"service":"free","status":"operational","reason":"none","since":1795763972498}
+  ],
+  "incidents": [
+    {
+      "id":"console-1795207592485",
+      "event":"console-1795207592485",
+      "service":"console",
+      "startedAt":1795207592485,
+      "resolvedAt":null,
+      "status":"degraded",
+      "reason":"errors",
+      "models":[]
+    },
+    {
+      "id":"payg-1795756892498",
+      "event":"payg-1795756892498",
+      "service":"payg",
+      "startedAt":1795756892498,
+      "resolvedAt":null,
+      "status":"degraded",
+      "reason":"latency",
+      "models":[
+        {"id":"gemini-4-argon","reason":"latency"},
+        {"id":"gemini-4-carbon","reason":"latency"}
+      ]
+    },
+    {
+      "id":"free-1795763612498",
+      "event":"free-1795763612498",
+      "service":"free",
+      "startedAt":1795763612498,
+      "resolvedAt":1795763972498,
+      "status":"degraded",
+      "reason":"latency",
+      "models":[{"id":"nemotron-3.5-lightning-free","reason":"latency"}]
+    }
+  ],
+  "notes":[]
+}

@@ -1,0 +1,35 @@
+{
+  "incidents": [
+    {
+      "id": "ps_9c3a169909dde9f2",
+      "title": "Degraded Performance Grok Bot",
+      "status": "resolved",
+      "impact": "minor",
+      "started_at": "2026-11-26T10:44:55.000Z",
+      "updated_at": "2026-11-26T11:16:47.000Z",
+      "resolved_at": "2026-11-26T11:16:47.000Z",
+      "url": "https://status.x.ai/history?incident=grok-bot%2Fps_9c3a169909dde9f2",
+      "products": [{ "id": "grok-bot", "name": "Grok Bot" }],
+      "components": [{ "id": "grok-bot", "name": "Grok Bot" }],
+      "latest_update": {
+        "status": "resolved",
+        "body": "This incident has been resolved. Grok Bot chat threads, messages, and voice calls have returned to normal operation, and any requests that failed during the disruption can now be retried.",
+        "created_at": "2026-11-26T11:16:47.000Z"
+      },
+      "updates": [
+        {
+          "id": "evt_fad2e321-e9a6-4428-a15f-31e77eb243bb",
+          "status": "resolved",
+          "body": "This incident has been resolved. Grok Bot chat threads, messages, and voice calls have returned to normal operation, and any requests that failed during the disruption can now be retried.",
+          "created_at": "2026-11-26T11:16:47.000Z"
+        },
+        {
+          "id": "evt_ff0e3761-a9e1-466b-82fd-c4db3b5ac242",
+          "status": "investigating",
+          "body": "We are investigating a service degradation affecting Grok Bot.",
+          "created_at": "2026-11-26T10:44:55.000Z"
+        }
+      ]
+    }
+  ]
+}

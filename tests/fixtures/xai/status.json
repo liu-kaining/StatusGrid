@@ -1,0 +1,28 @@
+{
+  "updated_at": "2026-11-27T07:51:15.280Z",
+  "overall": { "status": "available" },
+  "products": [
+    {
+      "id": "grok-bot",
+      "name": "Grok Bot",
+      "status": "available",
+      "components": [{ "id": "grok-bot", "name": "Grok Bot", "status": "available" }]
+    },
+    {
+      "id": "grok",
+      "name": "Grok",
+      "status": "available",
+      "components": [{ "id": "grok-com", "name": "Grok: grok.com", "status": "available" }]
+    },
+    {
+      "id": "api",
+      "name": "Grok API",
+      "status": "available",
+      "components": [
+        { "id": "api-chat", "name": "Grok API: Chat", "status": "info" },
+        { "id": "api-global", "name": "Grok API: Chat (Global, api.x.ai)", "status": "info" },
+        { "id": "api-us", "name": "Grok API: Chat (US, us.api.x.ai)", "status": "available" }
+      ]
+    }
+  ]
+}
