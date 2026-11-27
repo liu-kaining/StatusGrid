@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 15
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://grid.thetamind.ai/
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -60,7 +60,7 @@ jobs:
       - name: Verify deployed shell and current live snapshot
         if: steps.release.outputs.publish == 'true'
         env:
-          DEPLOYMENT_URL: ${{ steps.deployment.outputs.page_url }}
+          DEPLOYMENT_URL: https://grid.thetamind.ai/
           RELEASE_SITE: ${{ steps.release.outputs.site }}
         run: npx tsx scripts/verify-deployment.ts
       - name: Failure and recovery summary

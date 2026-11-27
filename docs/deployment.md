@@ -18,6 +18,8 @@
 3. 手动运行 **Collect and maintain status**（`sync.yml`），`mode=sync`。它固定按 5 分钟周期记录统计元数据，读取最新分支，在隔离 staging 完成真实采集、归并、状态和公共校验，然后先更新 data、再更新 gh-pages，最后上传完整 Pages Artifact 并显式部署。没有 durable shell 的 sync／retry 会拒绝，先补 frontend。
 4. 查看发布 job 的部署 URL、验证步骤和 summary，再检查 `/api/v1/manifest.json` 的 `dataMode=live`、快照 ID、生成时间及 UI。看到空态页面表示前端已部署，真实采集完成后才有服务状态。
 
+工作流的发布入口和校验地址固定为 `https://grid.thetamind.ai/`，不直接使用 deploy-pages 可能返回的 HTTP 地址。发布校验为每次尝试附加唯一查询参数，并发送禁止复用缓存的请求头；仍要求 manifest 和 summary 严格匹配本轮发布收据。边缘传播最多等待 120 秒，超时会中止请求并失败，日志保留预期／实际快照 ID、URL 和缓存响应信息。该校验不清理 CDN，也不改变访客的缓存规则；不能把其他轮次的快照当作本轮成功。
+
 若 `configure-pages` 提示 `Get Pages site failed / Not Found`，检查 Pages 的 Source、管理员权限和组织策略。修正设置不会自动重跑失败任务，需手动再运行 Frontend release。只有测试或文档变化时，push 发布会因前端指纹未变而跳过；手动运行可用于初始化或恢复。
 
 所有生产入口共享 `statusgrid-release` 并发组，`cancel-in-progress: false, queue: max`；可复用 pages 工作流不重复持锁。等待后才读取分支。分支 CAS 冲突意味着远端发生了未知变化，保留证据并重新读取，不强推覆盖。
