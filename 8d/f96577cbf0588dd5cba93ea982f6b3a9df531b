@@ -1,0 +1,23 @@
+tests/collector/verify-deployment.test.ts
+  s_79c9ef7a230eaf::t_37afdaecf56111 65-69,74
+  s_79c9ef7a230eaf::t_e756290bbf4916 1-64,70-73,75-80
+scripts/verify-deployment.ts
+  s_79c9ef7a230eaf::t_7814ba598d9d6c 18-20
+  s_79c9ef7a230eaf::t_1f4299615bc5b2 8-16,23,28-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8df96577cbf0588dd5cba93ea982f6b3a9df531b",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
