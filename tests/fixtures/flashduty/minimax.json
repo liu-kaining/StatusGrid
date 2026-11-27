@@ -1,0 +1,56 @@
+{
+  "pageId": 7298961802939,
+  "initialData": {
+    "page": {
+      "page_id": 7298961802939,
+      "name": "MiniMax",
+      "custom_domain": "status.minimax.cn",
+      "components": [
+        {"component_id": "01M88QV58SMAA318DVA1HBG6Y8", "name": "文本模型"},
+        {"component_id": "01M88QV58TPECB40H48WHBVTTM", "name": "图片生成"},
+        {"component_id": "01M88QV58T3NDJ8FM1GKW8FXFA", "name": "Hailuo 系列", "section_id": "01M88QV2PB9WV1QPBNTTQZQH84"},
+        {"component_id": "01M88QV58T6S2FM4J6NV7RCC88", "name": "语音合成"},
+        {"component_id": "01M88QV58T8V7789S99D80DKRC", "name": "H3 系列", "section_id": "01M88QV2PB9WV1QPBNTTQZQH84"}
+      ]
+    },
+    "active_changes": []
+  },
+  "initialCalendarData": {
+    "month": {"year": 2026, "month": 11},
+    "changes": [
+      {
+        "change_id": 7307657128086,
+        "page_id": 7298961802939,
+        "type": "incident",
+        "title": "文本模型 错误率升高",
+        "status": "resolved",
+        "affected_components": [
+          {"component_id": "01M88QV58SMAA318DVA1HBG6Y8", "name": "文本模型", "status": "operational"}
+        ],
+        "start_at_seconds": 1795313400,
+        "close_at_seconds": 1795313460,
+        "is_retrospective": true,
+        "updates": [
+          {
+            "update_id": "01M8DSSTPHAMV6NJ8C3QPSMFBC",
+            "at_seconds": 1795313400,
+            "status": "investigating",
+            "description": "我们正在调查此问题。",
+            "component_changes": [
+              {"component_id": "01M88QV58SMAA318DVA1HBG6Y8", "component_name": "文本模型", "status": "partial_outage"}
+            ]
+          },
+          {
+            "update_id": "01M8DSSTPHAMV6NJ8C3R3D4RMV",
+            "at_seconds": 1795313460,
+            "status": "resolved",
+            "description": "该问题已解决。",
+            "component_changes": [
+              {"component_id": "01M88QV58SMAA318DVA1HBG6Y8", "component_name": "文本模型", "status": "operational"}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

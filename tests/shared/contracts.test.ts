@@ -59,11 +59,11 @@ describe('parseRegistry', () => {
     expect(() => parseRegistry([{ ...validProvider, adapter }])).toThrow(/duplicate.*region/i);
   });
 
-  it('loads all 13 declared providers without implying adapter connectivity', () => {
+  it('loads all 15 declared providers without implying adapter connectivity', () => {
     const providers = parseRegistry(registry);
-    expect(providers).toHaveLength(13);
+    expect(providers).toHaveLength(15);
     expect(providers.map(({ id }) => id)).toEqual([
-      'cloudflare', 'github', 'claude', 'openai', 'moonshot', 'deepseek',
+      'cloudflare', 'github', 'claude', 'openai', 'moonshot', 'deepseek', 'minimax', 'streamlake',
       'gcp', 'apple-cn', 'azure', 'aws-cn', 'tencent-cloud', 'aliyun', 'baidu-cloud',
     ]);
     expect(providers.every(({ enabled, adapter }) => enabled && Boolean(adapter.type))).toBe(true);

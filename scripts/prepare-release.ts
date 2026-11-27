@@ -4,7 +4,7 @@ import { z } from 'zod';
 import type { ReleaseOptions, ReleaseReport } from '../src/collector/export/types.js';
 import { buildPublicArtifacts } from '../src/collector/export/json.js';
 import { writePublicArtifacts } from '../src/collector/export/manifest.js';
-import { validateRelease } from '../src/collector/export/validate.js';
+import { validatePreviousRelease, validateRelease } from '../src/collector/export/validate.js';
 import { generatedPath, PUBLIC_MARKER } from '../src/collector/export/directory.js';
 import { inventory, safeDirectory } from '../src/collector/storage/directory.js';
 import { loadState } from '../src/collector/storage/load.js';
@@ -39,6 +39,14 @@ async function checkShell(directory: string): Promise<string[]> {
   return files;
 }
 export async function validatePreparedRelease(directory: string, options: ReleaseOptions = {}): Promise<ReleaseReport> {
+  return validatePreparedReleaseWith(directory, options, validateRelease);
+}
+export async function validatePreviousPreparedRelease(directory: string, options: ReleaseOptions = {}): Promise<ReleaseReport> {
+  return validatePreparedReleaseWith(directory, options, validatePreviousRelease);
+}
+async function validatePreparedReleaseWith(
+  directory: string, options: ReleaseOptions, validate: typeof validateRelease,
+): Promise<ReleaseReport> {
   const invalid = (message: string): ReleaseReport => ({
     valid: false, errors: [message], files: [], summaryGzipBytes: 0, snapshotId: null,
   });
@@ -52,7 +60,7 @@ export async function validatePreparedRelease(directory: string, options: Releas
       }
       return { valid: true, errors: [], files: [], summaryGzipBytes: 0, snapshotId: null };
     }
-    const report = await validateRelease(directory, { ...options, requireLive: true });
+    const report = await validate(directory, { ...options, requireLive: true });
     if (receipt.snapshotId !== report.snapshotId) { report.errors.push('Release receipt snapshot mismatch'); report.valid = false; }
     return report;
   } catch (error) { return invalid(error instanceof Error ? error.message : 'Invalid prepared release'); }
@@ -63,14 +71,14 @@ export async function prepareRelease(
   await safeDirectory(destination);
   const shellFiles = await checkShell(shellDir);
   if (shellFiles.includes(PUBLIC_MARKER)) {
-    const previous = await validateRelease(shellDir, { ...options, requireLive: true });
+    const previous = await validatePreviousRelease(shellDir, { ...options, requireLive: true });
     if (!previous.valid) throw new Error(`Invalid shell data: ${previous.errors.join('; ')}`);
   }
   const state = await loadState(stateDir);
   await mkdir(destination, { recursive: false });
   await cp(shellDir, destination, { recursive: true });
   if (options.previousReleaseDir && options.previousReleaseDir !== shellDir) {
-    const previous = await validatePreparedRelease(options.previousReleaseDir, options);
+    const previous = await validatePreviousPreparedRelease(options.previousReleaseDir, options);
     if (!previous.valid) throw new Error(`Invalid previous release: ${previous.errors.join('; ')}`);
     for (const path of await inventory(options.previousReleaseDir)) {
       if (path !== PUBLIC_MARKER && !generatedPath.safeParse(path).success) continue;

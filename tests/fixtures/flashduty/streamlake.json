@@ -1,0 +1,21 @@
+{
+  "pageId": 6794868175813,
+  "initialData": {
+    "page": {
+      "page_id": 6794868175813,
+      "name": "StreamLake",
+      "custom_domain": "status.streamlake.com",
+      "components": [
+        {"component_id": "01KZ3ABSP0PVBET4FP2TBEP7RW", "name": "官网首页服务"},
+        {"component_id": "01KZ3ABSP0Q2ZF5V52SNCBB6WK", "name": "万擎控制台服务"},
+        {"component_id": "01KZ3DT1GJS4XMFYFMDCGFJW92", "name": "KAT-Coder-Pro-V2.5 API服务"},
+        {"component_id": "01KZ3DT1GJ63FBECCH52KWJMTH", "name": "GLM-5.2 API服务"},
+        {"component_id": "01KZ3DT1GJ9R6WC00G1FJ4BE75", "name": "DeepSeek-V4-Pro API服务"},
+        {"component_id": "01KZ3DT1GJ4X5EBG2KEJPH47MM", "name": "开发机服务"}
+      ]
+    },
+    "active_changes": []
+  },
+  "initialDateView": "list",
+  "initialCalendarData": "$undefined"
+}

@@ -3,7 +3,7 @@ import { dirname, join } from 'node:path';
 import { archiveIndexSchema, manifestSchema } from '../../shared/public-schemas.js';
 import { absent, inventory, safeDirectory } from '../storage/directory.js';
 import { generatedPath, immutablePath, PUBLIC_MARKER, publicMarkerSchema, readPublicMarker, serialize, type PublicMarker } from './directory.js';
-import { validateRelease } from './validate.js';
+import { validatePreviousRelease, validateRelease } from './validate.js';
 import type { PublicArtifacts } from './types.js';
 
 async function exists(path: string) {
@@ -59,7 +59,7 @@ export async function writePublicArtifacts(artifacts: PublicArtifacts, directory
       }
     }
     if (previous.files.length) {
-      const validation = await validateRelease(target, { providerIds: Object.keys(artifacts.manifest.paths.providers) });
+      const validation = await validatePreviousRelease(target, { providerIds: Object.keys(artifacts.manifest.paths.providers) });
       if (!validation.valid) throw new Error(`Previous public release is invalid: ${validation.errors.join('; ')}`);
       if (previous.snapshots.some(({ generatedAt }) => Date.parse(generatedAt) > Date.parse(artifacts.manifest.generatedAt))) {
         throw new Error('Cannot publish an older snapshot over a newer release');

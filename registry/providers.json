@@ -144,6 +144,60 @@
     }
   },
   {
+    "id": "minimax",
+    "name": "MiniMax",
+    "category": "ai",
+    "aliases": ["海螺", "Hailuo"],
+    "tags": ["ai"],
+    "officialStatusUrl": "https://status.minimax.cn/",
+    "officialHomeUrl": "https://www.minimaxi.com/",
+    "displayOrder": 7,
+    "enabled": true,
+    "adapter": {
+      "type": "flashduty",
+      "sourcePageId": "7298961802939",
+      "endpoints": {
+        "page": "https://status.minimax.cn/"
+      },
+      "timeoutMs": 8000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [
+        {
+          "id": "01M88QV2PB9WV1QPBNTTQZQH84",
+          "name": "视频生成",
+          "upstreamIds": [],
+          "namePatterns": []
+        }
+      ],
+      "browserFallback": false
+    }
+  },
+  {
+    "id": "streamlake",
+    "name": "StreamLake",
+    "category": "ai",
+    "aliases": ["快手", "万擎"],
+    "tags": ["ai"],
+    "officialStatusUrl": "https://status.streamlake.com/",
+    "officialHomeUrl": "https://www.streamlake.com/",
+    "displayOrder": 8,
+    "enabled": true,
+    "adapter": {
+      "type": "flashduty",
+      "sourcePageId": "6794868175813",
+      "endpoints": {
+        "page": "https://status.streamlake.com/",
+        "history": "https://status.streamlake.com/history"
+      },
+      "timeoutMs": 8000,
+      "retries": 2,
+      "requiredRegions": [],
+      "componentGroups": [],
+      "browserFallback": false
+    }
+  },
+  {
     "id": "gcp",
     "name": "Google Cloud",
     "category": "cloud-global",
@@ -151,7 +205,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://status.cloud.google.com/",
     "officialHomeUrl": "https://cloud.google.com/",
-    "displayOrder": 7,
+    "displayOrder": 9,
     "enabled": true,
     "adapter": {
       "type": "google-cloud-json",
@@ -174,7 +228,7 @@
     "tags": ["consumer"],
     "officialStatusUrl": "https://www.apple.com/cn/support/systemstatus/",
     "officialHomeUrl": "https://www.apple.com/cn/",
-    "displayOrder": 8,
+    "displayOrder": 10,
     "enabled": true,
     "adapter": {
       "type": "apple-status",
@@ -196,7 +250,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://azure.status.microsoft/en-us/status",
     "officialHomeUrl": "https://azure.microsoft.com/",
-    "displayOrder": 9,
+    "displayOrder": 11,
     "enabled": true,
     "adapter": {
       "type": "azure-status",
@@ -219,7 +273,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://health.amazonaws.cn/health/status",
     "officialHomeUrl": "https://www.amazonaws.cn/",
-    "displayOrder": 10,
+    "displayOrder": 12,
     "enabled": true,
     "adapter": {
       "type": "aws-cn-health",
@@ -243,7 +297,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://status.cloud.tencent.com/",
     "officialHomeUrl": "https://cloud.tencent.com/",
-    "displayOrder": 11,
+    "displayOrder": 13,
     "enabled": true,
     "adapter": {
       "type": "tencent-cloud",
@@ -265,7 +319,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://status.aliyun.com/",
     "officialHomeUrl": "https://www.aliyun.com/",
-    "displayOrder": 12,
+    "displayOrder": 14,
     "enabled": true,
     "adapter": {
       "type": "aliyun",
@@ -287,7 +341,7 @@
     "tags": ["cloud"],
     "officialStatusUrl": "https://cloud.baidu.com/status.html",
     "officialHomeUrl": "https://cloud.baidu.com/",
-    "displayOrder": 13,
+    "displayOrder": 15,
     "enabled": true,
     "adapter": {
       "type": "baidu-cloud",

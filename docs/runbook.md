@@ -37,7 +37,7 @@ npm run probe -- --provider aws-cn --output .statusgrid/probes
 | 1 | 诊断存在来源失败；不会写持久状态 |
 | 2 | 参数、存储、契约、锁或清理异常；停止并检查，不能忽略 |
 
-持久运行退出 0 不表示 13 家均成功，必须查看报告的 `providers[].collection`。`result=null` 是本轮失败，`lastTrustedResult` 仅是历史；`outcome=partial` 可能表示必需实时成功但可选历史失败。导出在持久状态成功后执行；若导出失败，状态可能已更新而公共 manifest 仍是上一轮。
+持久运行退出 0 不表示全部来源均成功，必须查看报告的 `providers[].collection`。`result=null` 是本轮失败，`lastTrustedResult` 仅是历史；`outcome=partial` 可能表示必需实时成功但可选历史失败。导出在持久状态成功后执行；若导出失败，状态可能已更新而公共 manifest 仍是上一轮。
 
 可选本地循环，在独立终端前台执行，Ctrl-C 停止；不会由 UI 启动：
 

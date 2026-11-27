@@ -21,7 +21,7 @@
 | `/feed/category/{cat}.xml` | 分类 RSS：ai、cloud-cn、cloud-global、infra |
 | `/feed/provider/{id}.xml` | 单厂商 RSS |
 
-厂商 ID：cloudflare、github、claude、openai、moonshot、deepseek、gcp、apple-cn、azure、aws-cn、tencent-cloud、aliyun、baidu-cloud。以 `registry/providers.json` 的启用项为准。
+厂商 ID：cloudflare、github、claude、openai、moonshot、deepseek、minimax、streamlake、gcp、apple-cn、azure、aws-cn、tencent-cloud、aliyun、baidu-cloud。以 `registry/providers.json` 的启用项为准。
 
 ## 一致读取
 

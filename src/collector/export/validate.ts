@@ -17,6 +17,15 @@ import { generatedPath, PUBLIC_MARKER, readPublicMarker, serialize } from './dir
 import type { ReleaseOptions, ReleaseReport } from './types.js';
 
 export async function validateRelease(directory: string, options: ReleaseOptions = {}): Promise<ReleaseReport> {
+  return validateReleaseScope(directory, options, false);
+}
+
+/** Existing data may precede additions to the configured scope, but may not contain removed providers. */
+export async function validatePreviousRelease(directory: string, options: ReleaseOptions = {}): Promise<ReleaseReport> {
+  return validateReleaseScope(directory, options, true);
+}
+
+async function validateReleaseScope(directory: string, options: ReleaseOptions, previous: boolean): Promise<ReleaseReport> {
   const report: ReleaseReport = { valid: false, errors: [], files: [], summaryGzipBytes: 0, snapshotId: null };
   const fail = (message: string) => report.errors.push(message);
   try {
@@ -75,9 +84,16 @@ export async function validateRelease(directory: string, options: ReleaseOptions
     const current = manifestSchema.parse(get('api/v1/manifest.json'));
     report.snapshotId = current.snapshotId;
     const expectedIds = options.providerIds ?? registry.filter(({ enabled }) => enabled).map(({ id }) => id);
+    const currentIds = Object.keys(current.paths.providers);
+    if (previous) {
+      if (!currentIds.length || currentIds.some((id) => !expectedIds.includes(id))) {
+        throw new Error('Empty or unsupported provider scope in previous public release');
+      }
+    } else equal([...currentIds].sort(), [...expectedIds].sort(), 'configured provider details');
     const checkManifest = (manifest: Manifest) => {
       const base = `/api/v1/snapshots/${manifest.snapshotId}`;
-      equal(Object.keys(manifest.paths.providers).sort(), [...expectedIds].sort(), 'configured provider details');
+      const providerIds = Object.keys(manifest.paths.providers);
+      if (providerIds.some((id) => !currentIds.includes(id))) throw new Error('Retained snapshot contains removed provider');
       equal(manifest.paths.summary, `${base}/summary.json`, 'summary path');
       equal(manifest.paths.search, `${base}/search.json`, 'search path');
       equal(manifest.paths.recentIncidents, `${base}/incidents/recent.json`, 'recent path');
@@ -93,11 +109,11 @@ export async function validateRelease(directory: string, options: ReleaseOptions
         manifest.paths.health, ...Object.values(manifest.paths.providers)];
       for (const path of paths) equal(envelope(get(path.slice(1))), manifestEnvelope, `snapshot envelope ${path}`);
       const summary = summarySchema.parse(get(manifest.paths.summary.slice(1)));
-      equal(summary.providers.map(({ id }) => id).sort(), [...expectedIds].sort(), 'summary providers');
+      equal(summary.providers.map(({ id }) => id).sort(), [...providerIds].sort(), 'summary providers');
       const search = searchSchema.parse(get(manifest.paths.search.slice(1)));
-      equal(search.providers.map(({ providerId }) => providerId).sort(), [...expectedIds].sort(), 'search providers');
+      equal(search.providers.map(({ providerId }) => providerId).sort(), [...providerIds].sort(), 'search providers');
       const health = healthSchema.parse(get(manifest.paths.health.slice(1)));
-      equal(health.providers.map(({ providerId }) => providerId).sort(), [...expectedIds].sort(), 'health providers');
+      equal(health.providers.map(({ providerId }) => providerId).sort(), [...providerIds].sort(), 'health providers');
       equal(health.runId, manifest.snapshotId, 'health run');
       equal(health.latestPublishedSnapshotId, manifest.snapshotId, 'health published version');
       for (const provider of summary.providers) {
@@ -212,12 +228,12 @@ export async function validateRelease(directory: string, options: ReleaseOptions
     const aliases = { 'summary.json': summary, 'search.json': get(current.paths.search.slice(1)),
       'incidents/recent.json': get(current.paths.recentIncidents.slice(1)), 'meta/health.json': get(current.paths.health.slice(1)),
       'incidents/archive/index.json': get(current.paths.archiveIndex.slice(1)),
-      ...Object.fromEntries(expectedIds.map((id) => [`providers/${id}.json`, get(current.paths.providers[id]!.slice(1))])) };
+      ...Object.fromEntries(currentIds.map((id) => [`providers/${id}.json`, get(current.paths.providers[id]!.slice(1))])) };
     for (const [path, value] of Object.entries(aliases)) equal(get(`api/v1/${path}`), value, `latest alias ${path}`);
     const latestIndex = archiveIndexSchema.parse(get(current.paths.archiveIndex.slice(1)));
     for (const month of latestIndex.months) equal(get(`api/v1/incidents/archive/${month.month}.json`), get(month.path.slice(1)), 'month alias');
     for (const path of ['feed/all.xml', 'feed/atom.xml', ...['ai', 'cloud-cn', 'cloud-global', 'infra'].map((category) =>
-      `feed/category/${category}.xml`), ...expectedIds.map((id) => `feed/provider/${id}.xml`)]) get(path);
+      `feed/category/${category}.xml`), ...currentIds.map((id) => `feed/provider/${id}.xml`)]) get(path);
     if (!disk.includes(PUBLIC_MARKER)) throw new Error('Missing release marker');
   } catch (error) { fail(error instanceof Error ? error.message : 'Invalid release'); }
   report.valid = report.errors.length === 0;

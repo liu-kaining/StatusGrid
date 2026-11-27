@@ -59,6 +59,7 @@ export interface ProviderConfig {
       | 'statuspage-v2'
       | 'incident-io'
       | 'deepseek'
+      | 'flashduty'
       | 'google-cloud-json'
       | 'apple-status'
       | 'azure-status'

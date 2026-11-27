@@ -77,7 +77,7 @@ export const recentSchema = z.strictObject({ ...envelopeFields, incidents: z.arr
 export const healthSchema = z.strictObject({
   ...envelopeFields, runId: text, durationMs: number, latestPublishedSnapshotId: text,
   providers: z.array(z.strictObject({ providerId,
-    sourceType: z.enum(['statuspage-v2', 'incident-io', 'deepseek', 'google-cloud-json', 'apple-status', 'azure-status',
+    sourceType: z.enum(['statuspage-v2', 'incident-io', 'deepseek', 'flashduty', 'google-cloud-json', 'apple-status', 'azure-status',
       'aws-cn-health', 'tencent-cloud', 'aliyun', 'baidu-cloud']), collection: collectionSchema })),
 });
 export const archiveIndexSchema = z.strictObject({

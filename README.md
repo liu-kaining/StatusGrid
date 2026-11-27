@@ -1,6 +1,6 @@
 # StatusGrid
 
-面向 SRE 和架构师的免费基础设施状态看板，聚合 13 家云与 AI 服务的官方公开状态。
+面向 SRE 和架构师的免费基础设施状态看板，聚合 15 家云与 AI 服务的官方公开状态，包括 MiniMax 和 StreamLake。
 
 在线使用：**[grid.thetamind.ai](https://grid.thetamind.ai/)**
 
