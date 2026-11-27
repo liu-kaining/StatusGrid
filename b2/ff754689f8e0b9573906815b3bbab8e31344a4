@@ -1,0 +1,30 @@
+.github/workflows/pages.yml
+  s_79c9ef7a230eaf::t_cc86da046b8778 25,63
+tests/collector/verify-deployment.test.ts
+  s_79c9ef7a230eaf::t_d0b05b53668a39 3,124-155,165,167,169-173,175-176,181-185,187,189-191
+  s_79c9ef7a230eaf::t_f59d0d386ba0b5 156-164,166
+  s_79c9ef7a230eaf::t_543b8d93653470 168,174,177-180,186,188
+  s_79c9ef7a230eaf::t_7b7ce5557fa568 19,30,47-48,52-53,72,81-123
+scripts/verify-deployment.ts
+  s_79c9ef7a230eaf::t_abc48b795d24d5 65-68
+  s_79c9ef7a230eaf::t_bd80180eba3d58 3,8-11,13-18,20-21,39-41,45-48
+  s_79c9ef7a230eaf::t_cc86da046b8778 12,19,49-64,69-77,84-86
+docs/deployment.md
+  s_79c9ef7a230eaf::t_cc86da046b8778 21-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b2ff754689f8e0b9573906815b3bbab8e31344a4",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
