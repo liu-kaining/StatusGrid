@@ -1,0 +1,38 @@
+eslint.config.js
+  s_79c9ef7a230eaf::t_80f33486219b8f 8-10
+workers/scheduler/index.js
+  s_79c9ef7a230eaf::t_428a603d7655b6 1-4,6-46
+  s_79c9ef7a230eaf::t_cbd2bc1c2c182d 5,47
+.gitignore
+  s_79c9ef7a230eaf::t_428a603d7655b6 10-12
+.github/workflows/sync.yml
+  s_79c9ef7a230eaf::t_428a603d7655b6 2,15-18,50
+tsconfig.json
+  s_79c9ef7a230eaf::t_428a603d7655b6 13-14,18
+tests/workers/scheduler.test.ts
+  s_79c9ef7a230eaf::t_cbd2bc1c2c182d 71-74
+  s_79c9ef7a230eaf::t_72034e9dc5b0d9 1-70,75-86
+README.md
+  s_79c9ef7a230eaf::t_80f33486219b8f 26-27,32
+docs/deployment.md
+  s_79c9ef7a230eaf::t_80f33486219b8f 1,7,10,25,27,29-40,42-95,97-102,112
+  s_79c9ef7a230eaf::t_a112e0e190b72a 41,96
+workers/scheduler/wrangler.json
+  s_79c9ef7a230eaf::t_428a603d7655b6 1-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7199996f54bb2a8cfb33f8529f6b7f6355ebdd21",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
