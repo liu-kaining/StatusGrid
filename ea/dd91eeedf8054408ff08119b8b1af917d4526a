@@ -1,0 +1,78 @@
+tests/fixtures/flashduty/minimax.json
+  s_79c9ef7a230eaf::t_7da8dc769c648f 1-56
+tests/collector/provider-expansion.test.ts
+  s_79c9ef7a230eaf::t_af7478e138b80f 210-219,223-231
+  s_79c9ef7a230eaf::t_48380398cd770a 35
+  s_79c9ef7a230eaf::t_1fd2b57594eb24 183-209
+  s_79c9ef7a230eaf::t_581763591cdf3b 14,220-222
+  s_79c9ef7a230eaf::t_786d75131ae6f4 1-13,15-34,36-58,68-88,110,114-115,117-123,125-129,155-182,232-248
+  s_79c9ef7a230eaf::t_661e7ab60b8c1a 59-67,89-109,111-113,116,124,130-154
+src/collector/adapters/index.ts
+  s_79c9ef7a230eaf::t_8ee2909d13e7f0 5,18
+src/collector/export/manifest.ts
+  s_79c9ef7a230eaf::t_65cadaad2b8fa2 6,62
+tests/shared/contracts.test.ts
+  s_79c9ef7a230eaf::t_7478b4ef302f8e 62,64,66
+tests/collector/cli.test.ts
+  s_79c9ef7a230eaf::t_7478b4ef302f8e 33,54,63,65
+scripts/workflow-release.ts
+  s_79c9ef7a230eaf::t_65cadaad2b8fa2 12,63,71-75,77-78,84,90
+  s_79c9ef7a230eaf::t_671f8326fe8170 76
+src/collector/adapters/flashduty.ts
+  s_79c9ef7a230eaf::t_8ee2909d13e7f0 1-13,15-23,25-32,34-46,48-49,55-76,78-85,92-93,95,97-98,100,102,104,106,108,110-112,116,118-125,127-128,131-132,137,139-142,144,146-148,150-155,157-165,167-169,171,173-178,184-186,188-191,193,195-207,209-214,217-218,220,222-223,225-252,254-255,257-272,274-277
+  s_79c9ef7a230eaf::t_15928f408c7c5c 14,24,33,47,50-54,77,86-91,94,96,99,101,103,105,107,109,113-115,117,126,129-130,133-136,138,143,145,149,156,166,170,172,179-183,187,192,194,208,215-216,219,221,224,253,256,273
+src/collector/export/validate.ts
+  s_79c9ef7a230eaf::t_671f8326fe8170 89-91
+  s_79c9ef7a230eaf::t_65cadaad2b8fa2 20-28,87-88,92,95-96,112,114,116,231,236
+docs/runbook.md
+  s_79c9ef7a230eaf::t_3060e59375e723 40
+docs/adding-providers.md
+  s_79c9ef7a230eaf::t_3060e59375e723 28-39
+tests/fixtures/flashduty/streamlake-history.json
+  s_79c9ef7a230eaf::t_7da8dc769c648f 1-5
+tests/fixtures/flashduty/provenance.md
+  s_79c9ef7a230eaf::t_90b1474b880c7c 9,13
+  s_79c9ef7a230eaf::t_7da8dc769c648f 1-8,10-12,14-15
+README.md
+  s_79c9ef7a230eaf::t_3060e59375e723 3
+tests/shared/source-scope.test.ts
+  s_79c9ef7a230eaf::t_7478b4ef302f8e 5,16-22
+registry/providers.json
+  s_79c9ef7a230eaf::t_7478b4ef302f8e 146-199,208,231,253,276,300,322,344
+src/shared/contracts.ts
+  s_79c9ef7a230eaf::t_8ee2909d13e7f0 62
+src/shared/schemas.ts
+  s_79c9ef7a230eaf::t_8ee2909d13e7f0 29,65-67
+  s_79c9ef7a230eaf::t_e5f758c49c69c4 68
+docs/api.md
+  s_79c9ef7a230eaf::t_3060e59375e723 24
+tests/fixtures/flashduty/streamlake.json
+  s_79c9ef7a230eaf::t_7da8dc769c648f 1-21
+scripts/prepare-release.ts
+  s_79c9ef7a230eaf::t_65cadaad2b8fa2 7,42-49,63,74,81
+src/shared/public-schemas.ts
+  s_79c9ef7a230eaf::t_8ee2909d13e7f0 80
+src/collector/adapters/deepseek.ts
+  s_79c9ef7a230eaf::t_7478b4ef302f8e 1-2
+tests/collector/flashduty.test.ts
+  s_79c9ef7a230eaf::t_3060e59375e723 5
+  s_79c9ef7a230eaf::t_67419663e1b1d7 52
+  s_79c9ef7a230eaf::t_7da8dc769c648f 1-4,6-51,53-71,91-96,104-180
+  s_79c9ef7a230eaf::t_e465ba2dae2f27 72-90,97-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "eadd91eeedf8054408ff08119b8b1af917d4526a",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
