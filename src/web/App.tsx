@@ -162,7 +162,14 @@ export function App() {
       </> : <div className="initial-state"><span className="eyebrow">STATUSGRID / PUBLIC SIGNALS</span><h1>服务状态观测台<span className="heading-period">.</span></h1>
         {refreshing ? <StateNotice title="正在读取已发布快照…" /> : <StateNotice title="尚无可用快照" tone="warning" retry={() => void refresh()}>请先运行采集与公开数据导出，再重新检查。{refreshError}</StateNotice>}</div>}
       <DataAccess manifest={manifest} />
-      <footer className="site-footer"><span>StatusGrid <span className="muted">/ 独立公开状态聚合</span></span><span>状态来自厂商公开源，受覆盖范围与采集延迟限制。</span><span className="mono">UTC / SCHEMA 1.0</span></footer>
+      <footer className="site-footer">
+        <span>StatusGrid <span className="muted">/ 独立公开状态聚合</span></span>
+        <span className="footer-note">
+          <span>状态来自厂商公开源，受覆盖范围与采集延迟限制。</span>
+          <span>Powered by <a href="https://github.com/liu-kaining" target="_blank" rel="noopener noreferrer">liukaining</a></span>
+        </span>
+        <span className="mono">UTC / SCHEMA 1.0</span>
+      </footer>
     </main>
     </div>
     {state.view !== 'day' && state.provider && summary && <ProviderDetail key={state.provider} provider={summary.providers.find(({ id }) => id === state.provider)}

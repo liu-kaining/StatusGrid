@@ -15,6 +15,9 @@ main { max-width: 1600px; margin: 0 auto; padding: 42px 40px 0; }
 .data-access { display: flex; justify-content: space-between; gap: 24px; align-items: center; border-top: 1px solid var(--border); padding: 26px 0; margin-top: 36px; }
 .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--border-soft); padding: 20px 0 28px; color: var(--muted); font-size: 10px; }
 .site-footer > span:first-child { color: var(--text); font-size: 12px; }
+.footer-note { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.footer-note a { color: var(--text); font-weight: 550; text-decoration: underline; text-underline-offset: 3px; }
+.footer-note a:hover { color: var(--focus); }
 .initial-state { padding: 36px 0 100px; min-height: 400px; }
 .initial-state h1 { margin: 10px 0 36px; font-size: 32px; font-weight: 500; }
 .modal-backdrop { position: fixed; inset: 0; z-index: 20; background: var(--shadow); display: flex; justify-content: flex-end; }
@@ -48,6 +51,7 @@ main { max-width: 1600px; margin: 0 auto; padding: 42px 40px 0; }
   .matrix-group-heading > span { font-size: 8px; letter-spacing: .4px; }
   .data-access { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 28px; }
   .site-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-note { align-items: flex-start; }
   .detail-header { padding: 20px; } .detail-body { padding: 22px 20px; } .detail-panel { border-left: 0; }
   .detail-header h2 { font-size: 24px; }
   .day-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
