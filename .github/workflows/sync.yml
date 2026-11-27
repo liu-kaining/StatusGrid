@@ -1,7 +1,6 @@
 name: Collect and maintain status
+run-name: "Collect status · ${{ inputs.mode }} · ${{ inputs.scheduled-at && format('Cloudflare {0}', inputs.scheduled-at) || 'manual' }}"
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -13,6 +12,10 @@ on:
         description: 'Diagnostic provider ID(s), comma separated'
         type: string
         default: github
+      scheduled-at:
+        description: 'Cloudflare scheduled UTC time; leave empty for manual runs'
+        type: string
+        default: ''
 permissions:
   contents: read
 concurrency:
@@ -44,7 +47,7 @@ jobs:
       - if: failure()
         run: echo 'Read-only diagnostic failed; no state or site was published.' >> "$GITHUB_STEP_SUMMARY"
   publish:
-    if: github.event_name == 'schedule' || inputs.mode != 'diagnostic'
+    if: inputs.mode != 'diagnostic'
     permissions:
       contents: write
       pages: write

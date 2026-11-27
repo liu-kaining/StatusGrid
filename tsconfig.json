@@ -10,8 +10,10 @@
     "noFallthroughCasesInSwitch": true,
     "noEmit": true,
     "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
     "skipLibCheck": true,
     "types": ["node", "vitest/globals"]
   },
-  "include": ["src", "scripts", "tests", "vite.config.ts", "vitest.config.ts", "playwright.config.ts"]
+  "include": ["src", "scripts", "tests", "workers", "vite.config.ts", "vitest.config.ts", "playwright.config.ts"]
 }

@@ -23,13 +23,13 @@ npm run dev -- --port 5174
 
 ## 自动更新
 
-- GitHub Actions 固定使用 `*/5 * * * *`：每小时第 00、05、10……55 分钟采集。
-- 每次采集触发都执行，不需要配置周期变量。
+- Cloudflare Worker 使用 `*/5 * * * *`，每 5 分钟通过 API 触发 GitHub Actions 采集；GitHub 原生采集 Cron 已关闭。
+- Worker 需要单独部署并配置 GitHub 令牌；只推送本仓库不会启动定时采集。完整后台操作见 [部署文档](docs/deployment.md#cloudflare-每-5-分钟触发采集)。
 - 每轮读取持久状态，采集全部来源，校验并保存数据，再发布 Pages；定时采集复用已构建的前端。
 - 页面在前台每 60 秒检查新快照。没有更新时，5 分钟配置下在 10／15 分钟分别提示延迟／过期。
 - 独立的 Back up collected status 工作流每天 UTC 00:17（上海时间 08:17）备份状态，Artifact 保留 30 天。
 
-GitHub 的定时事件可能延迟或漏发，5 分钟是目标周期。确认自动运行请查看 Actions 中 `event=schedule` 的记录；手动运行成功不能代替该检查。配置与故障处理见 [部署文档](docs/deployment.md)。
+5 分钟是触发目标，实际数据发布时间还包括 Actions 排队与运行耗时。Cloudflare 自动触发在 GitHub 中显示为 `workflow_dispatch`，运行名称带 `Cloudflare` 和计划时间；需同时检查 Worker 的定时日志及线上快照时间持续推进，不能只看手动成功或 Git 提交时间。
 
 ## 数据存储
 

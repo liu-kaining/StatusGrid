@@ -7,6 +7,9 @@ coverage/
 .env
 .env.*
 !.env.example
+.dev.vars
+.dev.vars.*
+.wrangler/
 *.har
 public/api/
 public/feed/
