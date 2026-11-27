@@ -1,0 +1,21 @@
+src/web/styles/layout.css
+  s_79c9ef7a230eaf::t_36c5a9ebdff2fa 18-20,54
+src/web/App.tsx
+  s_79c9ef7a230eaf::t_36c5a9ebdff2fa 165-172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ad18024c25e6e6155fd24f9672d5595506465ccc",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
