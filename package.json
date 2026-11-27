@@ -33,6 +33,7 @@
     "@types/react": "19.3.3",
     "@types/react-dom": "19.3.0",
     "eslint": "9.39.5",
+    "miniflare": "5.20261123.1-beta",
     "playwright": "1.65.1",
     "tsx": "4.23.15",
     "typescript": "6.0.3",

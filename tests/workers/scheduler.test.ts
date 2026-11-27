@@ -26,7 +26,7 @@ describe('Cloudflare scheduled collection', () => {
     expect(url).toBe('https://api.github.com/repos/liu-kaining/StatusGrid/actions/workflows/sync.yml/dispatches');
     expect(options).toMatchObject({
       method: 'POST',
-      redirect: 'error',
+      redirect: 'manual',
       headers: {
         Authorization: 'Bearer test-private-token',
         Accept: 'application/vnd.github+json',
@@ -61,7 +61,7 @@ describe('Cloudflare scheduled collection', () => {
     expect(request).not.toHaveBeenCalled();
   });
 
-  it.each([401, 403, 404, 422, 500])('fails the Cron event on HTTP %s without logging the body or secret', async (status) => {
+  it.each([301, 302, 307, 308, 401, 403, 404, 422, 500])('fails the Cron event on HTTP %s without logging the body or secret', async (status) => {
     const request = vi.fn<typeof fetch>().mockResolvedValue(new Response('private-response-body', {
       status, headers: { 'x-github-request-id': 'failed-request' },
     }));

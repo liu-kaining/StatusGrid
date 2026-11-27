@@ -18,7 +18,7 @@ export default {
     const scheduledAt = new Date(controller.scheduledTime).toISOString();
     const response = await fetch(`https://api.github.com/repos/${repository}/actions/workflows/sync.yml/dispatches`, {
       method: 'POST',
-      redirect: 'error',
+      redirect: 'manual',
       signal: AbortSignal.timeout(20_000),
       headers: {
         Authorization: `Bearer ${token}`,
