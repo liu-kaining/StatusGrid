@@ -5,21 +5,28 @@ import { z } from 'zod';
 import { readReceipt } from './prepare-release.js';
 const envelope = z.object({ snapshotId: z.string(), dataMode: z.literal('live') });
 export async function verifyDeployment(url: string, snapshotId: string | null): Promise<void> {
-  const get = (path: string) => fetch(new URL(path, url), { cache: 'no-store', signal: AbortSignal.timeout(15_000) });
-  const index = await get('/');
-  if (!index.ok || !(await index.text()).includes('<')) throw new Error('Deployed shell is unavailable');
-  const response = await get('/api/v1/manifest.json');
+  const get = (path: string, base: string | URL = url) =>
+    fetch(new URL(path, base), { cache: 'no-store', signal: AbortSignal.timeout(15_000) });
+  const index = await get('');
+  if (!index.ok || !(await index.text()).includes('<')) {
+    throw new Error(`Deployed shell is unavailable (HTTP ${index.status}: ${index.url})`);
+  }
+  const base = new URL(index.url);
+  if (!base.pathname.endsWith('/')) base.pathname += '/';
+  const response = await get('api/v1/manifest.json', base);
   if (snapshotId === null) {
-    if (response.status !== 404) throw new Error('Empty deployment unexpectedly serves public data');
+    if (response.status !== 404) {
+      throw new Error(`Empty deployment manifest must return HTTP 404 (HTTP ${response.status}: ${response.url})`);
+    }
     return;
   }
-  if (!response.ok) throw new Error('Deployed manifest is unavailable');
+  if (!response.ok) throw new Error(`Deployed manifest is unavailable (HTTP ${response.status}: ${response.url})`);
   const manifest = envelope.extend({
     paths: z.object({ summary: z.string().regex(/^\/api\/v1\/[a-zA-Z0-9/._:-]+\.json$/) }),
   }).parse(await response.json());
   if (manifest.snapshotId !== snapshotId) throw new Error('Deployed manifest snapshot does not match release');
-  const summaryResponse = await get(manifest.paths.summary);
-  if (!summaryResponse.ok) throw new Error('Deployed summary is unavailable');
+  const summaryResponse = await get(manifest.paths.summary.slice(1), base);
+  if (!summaryResponse.ok) throw new Error(`Deployed summary is unavailable (HTTP ${summaryResponse.status}: ${summaryResponse.url})`);
   const summary = envelope.parse(await summaryResponse.json());
   if (summary.snapshotId !== snapshotId) throw new Error('Deployed summary snapshot does not match release');
 }
