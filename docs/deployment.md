@@ -4,7 +4,7 @@
 
 ## 仓库初始化与权限
 
-1. 将通过本地检查的源码放在拥有管理权限的 GitHub 仓库 `main`，保留 lockfile、注册表、四个 `.github/workflows/*.yml` 和 `public/CNAME`。不要推送 `.statusgrid`、`dist`、生成 API／Feed、浏览器抓包或 fixture 发布目录。Fork 仓库需先启用 Actions，并确认默认分支上的定时工作流未被禁用。
+1. 将通过本地检查的源码放在拥有管理权限的 GitHub 仓库 `main`，保留 lockfile、注册表、`.github/workflows/*.yml` 和 `public/CNAME`。不要推送 `.statusgrid`、`dist`、生成 API／Feed、浏览器抓包或 fixture 发布目录。Fork 仓库需先启用 Actions，并确认默认分支上的定时工作流未被禁用。
 2. Settings → Actions → General 允许本仓库所用官方 Actions。工作流默认只读，需要写入的 job 显式申请 `contents: write`、`pages: write`、`id-token: write`。组织策略必须允许这些授权，以及自动创建／更新 `data`、`gh-pages`；二者使用受 lease 保护的快照提交，分支保护规则若拒绝此类写入，发布会停止。不要放宽 `main` 的审查保护来绕过数据分支权限。
 3. Settings → Pages → Build and deployment 的 Source 选择 **GitHub Actions**。确认 `github-pages` Environment 的分支／审批限制允许 `main` 的发布 job。这里使用官方 upload-pages-artifact 和 deploy-pages，不能只推送 gh-pages 就假定完成部署。
 4. 默认公开来源不需要云账号密钥、腾讯密钥或自建 PAT。仓库 GITHUB_TOKEN 来自 Actions；生产日志不应加入 Cookie、token 或完整请求头。首次运行前检查外网可达和 Playwright Linux 依赖安装。
@@ -15,7 +15,7 @@
 
 1. 通过 push 到 main 或 PR 触发 **CI**（`ci.yml`），在 Actions 查看结果；该工作流没有手动 Run 入口。它验证 Node 22／24 的类型、lint、单元、构建、空态产物和浏览器用例，不采集真实上游、不写状态。
 2. 手动运行 **Frontend release**（`frontend.yml`，选择 main）。它构建壳，与可用持久状态组合；首次无状态时发布明确 empty 站点，形成可复用的 durable shell 和发布收据。`gh-pages` 保存完整目录；初次尚无数据时 `data` 可以仍不存在。
-3. 手动运行 **Collect and maintain status**（`sync.yml`），`mode=sync`、`interval=5`。它读取最新分支，在隔离 staging 完成真实采集、归并、状态和公共校验，然后先更新 data、再更新 gh-pages，最后上传完整 Pages Artifact 并显式部署。没有 durable shell 的 sync／retry 会拒绝，先补 frontend。
+3. 手动运行 **Collect and maintain status**（`sync.yml`），`mode=sync`。它固定按 5 分钟周期记录统计元数据，读取最新分支，在隔离 staging 完成真实采集、归并、状态和公共校验，然后先更新 data、再更新 gh-pages，最后上传完整 Pages Artifact 并显式部署。没有 durable shell 的 sync／retry 会拒绝，先补 frontend。
 4. 查看发布 job 的部署 URL、验证步骤和 summary，再检查 `/api/v1/manifest.json` 的 `dataMode=live`、快照 ID、生成时间及 UI。看到空态页面表示前端已部署，真实采集完成后才有服务状态。
 
 若 `configure-pages` 提示 `Get Pages site failed / Not Found`，检查 Pages 的 Source、管理员权限和组织策略。修正设置不会自动重跑失败任务，需手动再运行 Frontend release。只有测试或文档变化时，push 发布会因前端指纹未变而跳过；手动运行可用于初始化或恢复。
@@ -24,18 +24,17 @@
 
 ## 周期与维护入口
 
-默认定时为每小时 UTC 第 2、7、12……57 分钟。Settings → Secrets and variables → Actions → Variables 中设置 `STATUSGRID_INTERVAL_MINUTES=10`，切换到第 2、12、22……52 分钟；未设置／5 使用 5 分钟。只接受 5 或 10。工作流包含两条 schedule，但 job 条件只选择配置对应的一条，另一条可能显示 skipped。
+采集只使用一条定时规则 `*/5 * * * *`，每小时 UTC 第 00、05、10……55 分钟触发；北京时间的分钟数相同。每次 schedule 都执行 sync，不读取周期变量，不再筛选 5／10 分钟事件，也不因距离上轮采集较近而跳过。旧的 `STATUSGRID_INTERVAL_MINUTES` 仓库变量不再生效，可以删除。
 
-手动 `interval` 输入只影响该次调用；要长期 10 分钟必须设置仓库变量。页面提示自动使用实际快照 interval：两／三周期为 10／15 或 20／30 分钟。调度是目标，不保证严格实时；积压任务距离上一完整运行结束不足半周期时跳过，手动 sync 不受该跳过限制。被平台漏发／跳过的任务不算采集成功。
+手动 sync／diagnostic 也固定使用 5 分钟统计周期。页面在快照年龄达到 10／15 分钟时分别提示延迟／过期。发布仍串行执行，避免同时写入持久分支；GitHub 的触发时刻可能延迟，cron 配置不等于严格实时保证。
 
 | sync.yml 的 mode | 行为 |
 | --- | --- |
 | sync | 全厂商真实采集、验证、写状态和完整发布 |
 | diagnostic | 按 providers 输入只读采集；不更新状态、不发布；来源失败退出 1 |
 | retry | 复用 data 状态和 gh-pages 壳，重新生成／校验／发布，不重新采集 |
-| backup | 只校验并备份 data，Artifact 保留 30 天，不发布 |
 
-每天 UTC 00:17（上海时间 08:17）还自动运行 backup，不依赖该时刻是否有采集。无持久数据时明确 skipped；损坏数据备份失败而不生成“成功备份”。本机 `collect --interval` 没有自动调度；见运行手册的前台循环。
+备份由独立的 **Back up collected status**（`backup.yml`）每天 UTC 00:17（上海时间 08:17）触发，也可单独手动运行。它只校验并备份 data，不采集、不部署，Artifact 保留 30 天。无持久数据时明确 skipped；损坏数据备份失败而不生成“成功备份”。本机 `collect --interval` 没有自动调度；见运行手册的前台循环。
 
 ### 确认定时任务真的在跑
 

@@ -10,20 +10,19 @@ import { createBrowserPool } from '../src/collector/browser.js';
 import { loadState } from '../src/collector/storage/load.js';
 import { readBranch } from './update-snapshot.js';
 import { prepareRelease, readReceipt, validatePreparedRelease } from './prepare-release.js';
-import { frontendFingerprint, readInterval, shouldSkipSync } from './release-policy.js';
+import { frontendFingerprint } from './release-policy.js';
 import { publishRelease } from './publish-release.js';
 import { backupState } from './backup-state.js';
 import { git } from './git.js';
 export interface WorkflowOptions extends ReleaseOptions {
   repository: string; workDir: string; mode: 'frontend' | 'sync' | 'retry' | 'backup';
-  sourceSha: string; shellDir?: string; expectedFingerprint?: string; intervalMinutes?: 5 | 10;
-  manual?: boolean; now?: string;
-  collect?: (stateDir: string, interval: 5 | 10) => ReturnType<typeof runPersistentCollection>;
+  sourceSha: string; shellDir?: string; expectedFingerprint?: string; now?: string;
+  collect?: (stateDir: string, interval: 5) => ReturnType<typeof runPersistentCollection>;
 }
 export interface WorkflowResult {
   status: 'published' | 'skipped' | 'backed-up'; reason?: string; siteDir?: string; backupPath?: string;
 }
-async function collectStaged(stateDir: string, intervalMinutes: 5 | 10) {
+async function collectStaged(stateDir: string, intervalMinutes: 5) {
   const browser = createBrowserPool({
     timeoutMs: 60_000,
     ...(process.env.STATUSGRID_BROWSER_EXECUTABLE ? { executablePath: process.env.STATUSGRID_BROWSER_EXECUTABLE } : {}),
@@ -64,12 +63,8 @@ export async function runWorkflowRelease(options: WorkflowOptions): Promise<Work
     const validation = await validatePreparedRelease(pages.directory, options);
     if (!validation.valid) throw new Error(`Invalid durable shell: ${validation.errors.join('; ')}`);
   }
-  if (mode === 'sync' && shouldSkipSync(options.now ?? new Date().toISOString(), previous.latest?.completedAt ?? null,
-    options.intervalMinutes ?? 5, options.manual ?? false)) {
-    return { status: 'skipped', reason: 'Already updated within half the collection interval' };
-  }
   if (mode === 'sync') {
-    const collected = await (options.collect ?? collectStaged)(data.directory, options.intervalMinutes ?? 5);
+    const collected = await (options.collect ?? collectStaged)(data.directory, 5);
     if (collected.kind !== 'valid') throw new Error('Collection did not produce validated persistent state');
     // Business failures are a valid stale/missing signal; all infrastructure exceptions propagate.
   }
@@ -125,9 +120,6 @@ export async function main(argv: string[]): Promise<void> {
     sourceSha: process.env.SOURCE_SHA ?? await git(repository, ['rev-parse', 'HEAD']),
     ...(process.env.SHELL_DIR ? { shellDir: resolve(process.env.SHELL_DIR) } : {}),
     ...(process.env.FRONTEND_FINGERPRINT ? { expectedFingerprint: process.env.FRONTEND_FINGERPRINT } : {}),
-    intervalMinutes: process.env.INTERVAL_MINUTES
-      ? readIntervalFromEnvironment(process.env.INTERVAL_MINUTES) : await readInterval(process.env.GITHUB_EVENT_PATH),
-    manual: process.env.GITHUB_EVENT_NAME === 'workflow_dispatch',
   });
   await output({
     status: result.status, publish: String(result.status === 'published'),
@@ -135,10 +127,6 @@ export async function main(argv: string[]): Promise<void> {
   });
   if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY,
     `StatusGrid: ${result.status}${result.reason ? ` — ${result.reason}` : ''}.\n`);
-}
-function readIntervalFromEnvironment(value: string): 5 | 10 {
-  if (!['5', '10'].includes(value)) throw new Error('Interval must be 5 or 10 minutes');
-  return Number(value) as 5 | 10;
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   main(process.argv.slice(2)).catch((error: unknown) => {

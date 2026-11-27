@@ -10,7 +10,7 @@ import { loadState } from '../../src/collector/storage/load.js';
 import { advance, run, source, time } from '../helpers/history.js';
 import { prepareRelease, validatePreparedRelease } from '../../scripts/prepare-release.js';
 import { readBranch, updateSnapshot } from '../../scripts/update-snapshot.js';
-import { frontendFingerprint, shouldSkipSync } from '../../scripts/release-policy.js';
+import { frontendFingerprint } from '../../scripts/release-policy.js';
 import { publishRelease } from '../../scripts/publish-release.js';
 import { backupState } from '../../scripts/backup-state.js';
 import { runWorkflowRelease } from '../../scripts/workflow-release.js';
@@ -210,16 +210,7 @@ describe('snapshot branches use captured-SHA compare and swap', () => {
   });
 });
 
-describe('queue recovery and frontend input identity', () => {
-  it('skips a queued sync only within half a target interval and allows next/manual recovery', () => {
-    expect(shouldSkipSync(time(2), time(0), 5, false)).toBe(true);
-    expect(shouldSkipSync('2026-11-25T12:02:30.000Z', time(0), 5, false)).toBe(false);
-    expect(shouldSkipSync(time(4), time(0), 10, false)).toBe(true);
-    expect(shouldSkipSync(time(5), time(0), 10, false)).toBe(false);
-    expect(shouldSkipSync(time(1), time(0), 5, true)).toBe(false);
-    expect(shouldSkipSync(time(1), null, 5, false)).toBe(false);
-    expect(shouldSkipSync(time(0), time(1), 5, false)).toBe(false);
-  });
+describe('frontend input identity', () => {
   it('keeps frontend A publishable after docs-only B and rejects it after frontend C', async () => {
     const { repo } = await repository();
     await exec('git', ['-C', repo, 'config', 'user.name', 'Test']);
@@ -287,7 +278,7 @@ describe('workflow entrypoints stage before remote writes', () => {
     expect((await readBranch(repo, 'data', join(directory, 'after'))).sha).toBeNull();
     expect((await readBranch(repo, 'gh-pages', join(directory, 'unchanged'))).sha).toBe(pages.sha);
   });
-  it('skips queued work then recovers with the next tick and manual retry without collecting again', async () => {
+  it('collects and publishes every sync even after a recent run while retry preserves collected state', async () => {
     const { repo, directory } = await repository();
     const { shell, state } = await setup();
     await updateSnapshot(repo, { branch: 'data', sha: null, directory: state }, state, 'initial state');
@@ -295,18 +286,27 @@ describe('workflow entrypoints stage before remote writes', () => {
       repository: repo, workDir: join(directory, 'frontend'), mode: 'frontend', shellDir: shell, sourceSha: 'local', ...options,
     });
     const shared = { repository: repo, mode: 'sync' as const, sourceSha: 'local', ...options };
-    const skipped = await runWorkflowRelease({ ...shared, workDir: join(directory, 'queued'), now: time(2),
-      collect: async () => { throw new Error('Queued run must skip collection'); } });
-    expect(skipped.status).toBe('skipped');
+    const recent = await runWorkflowRelease({ ...shared, workDir: join(directory, 'recent'), now: time(2),
+      collect: async (stateDir, interval) => {
+        expect(interval).toBe(5);
+        const collection = run(time(2), null);
+        const state = advance(await loadState(stateDir), collection);
+        await stageState(state, stateDir);
+        return { kind: 'valid', run: collection, state, hasProviderFailures: true };
+      } });
+    expect(recent.status).toBe('published');
+    const first = await readBranch(repo, 'data', join(directory, 'first'));
+    expect((await loadState(first.directory)).latest?.snapshotId).toBe(time(2));
     const next = await runWorkflowRelease({ ...shared, workDir: join(directory, 'next'), now: time(5),
-      collect: async (stateDir) => {
+      collect: async (stateDir, interval) => {
+        expect(interval).toBe(5);
         const collection = run(time(5), null);
         const state = advance(await loadState(stateDir), collection);
         await stageState(state, stateDir);
         return { kind: 'valid', run: collection, state, hasProviderFailures: true };
       } });
     expect(next.status).toBe('published');
-    const retry = await runWorkflowRelease({ ...shared, mode: 'retry', workDir: join(directory, 'retry'), manual: true,
+    const retry = await runWorkflowRelease({ ...shared, mode: 'retry', workDir: join(directory, 'retry'),
       collect: async () => { throw new Error('Retry must preserve state and ledger'); } });
     expect(retry.status).toBe('published');
     const durable = await readBranch(repo, 'data', join(directory, 'durable'));
