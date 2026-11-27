@@ -1,0 +1,30 @@
+docs/deployment.md
+  s_79c9ef7a230eaf::t_8fdd4f9d325d0e 7,18,27,29,37
+.github/workflows/sync.yml
+  s_79c9ef7a230eaf::t_8fdd4f9d325d0e 4,10,43,47,54
+tests/collector/publish.test.ts
+  s_79c9ef7a230eaf::t_8fdd4f9d325d0e 13,213,309
+  s_79c9ef7a230eaf::t_10c50a3d780826 281,289-299,301-302
+.github/workflows/backup.yml
+  s_79c9ef7a230eaf::t_8fdd4f9d325d0e 1-38
+scripts/workflow-release.ts
+  s_79c9ef7a230eaf::t_8fdd4f9d325d0e 13,19-20,25,67
+README.md
+  s_79c9ef7a230eaf::t_8fdd4f9d325d0e 26-27,30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7b7d9cad9dbb66125a7693af8c8fa151fc1b267c",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
