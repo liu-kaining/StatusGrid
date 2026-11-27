@@ -1,0 +1,29 @@
+tests/workers/scheduler.test.ts
+  s_79c9ef7a230eaf::t_9e197c6d343cfe 29,64
+tests/workers/scheduler-runtime.test.ts
+  s_79c9ef7a230eaf::t_3ad2d6dfb788bc 4,14,23
+  s_79c9ef7a230eaf::t_9e197c6d343cfe 1,3,5-13,15-19,21-22,24,26-42,44,50-55,57-58
+  s_79c9ef7a230eaf::t_938c976f7caf9b 2,20,25,43,45-49,56
+package.json
+  s_79c9ef7a230eaf::t_890455a3c2462d 36
+workers/scheduler/index.js
+  s_79c9ef7a230eaf::t_b5542abf472384 21
+package-lock.json
+  s_79c9ef7a230eaf::t_e07f205c9f076b 24,36-144,722-1183,1186-1189,1192-1198,1200-1204,1206,1209-1212,1215-1221,1224-1227,1229-1235,1238-1244,1247-1250,1252-1258,1261-1264,1266-1267,1269,1272-1275,1278-1295,1298,1300,1303-1306,1309-1315,1317-1321,1323-1326,1329-1335,1337-1341,1343,1346,1349-1355,1357-1361,1363,1366,1464-1505,1787-1806,2422-2435,2601-2610,3204-3213,3522-3547,3956-4005,4463-4505,4534-4558
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e1f78b936f433ebb2c08c5231f27f804726943f0",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
