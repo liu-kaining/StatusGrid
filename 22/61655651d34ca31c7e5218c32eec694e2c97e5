@@ -1,0 +1,31 @@
+docs/diagrams/collection-release.svg
+  s_79c9ef7a230eaf::t_1b21a8ab17bcae 1-89
+docs/diagrams/README.md
+  s_79c9ef7a230eaf::t_1b21a8ab17bcae 1-11
+docs/diagrams/architecture.svg
+  s_79c9ef7a230eaf::t_31d6a21760d256 1-21,23-45,49-102
+  s_79c9ef7a230eaf::t_1b21a8ab17bcae 22,46-48
+docs/diagrams/data-flow.svg
+  s_79c9ef7a230eaf::t_1b21a8ab17bcae 1-91
+docs/diagrams/render.ts
+  s_79c9ef7a230eaf::t_1b21a8ab17bcae 1-38
+README.md
+  s_79c9ef7a230eaf::t_1d72dfa19cb052 15,21,29,35
+  s_79c9ef7a230eaf::t_e85a330ba638ab 36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2261655651d34ca31c7e5218c32eec694e2c97e5",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
