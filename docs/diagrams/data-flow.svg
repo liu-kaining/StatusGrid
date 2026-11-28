@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1100" viewBox="0 0 1280 1100" role="img" aria-labelledby="title desc">
+  <title id="title">StatusGrid 数据流转与一致读取</title>
+  <desc id="desc">官方公开信号经适配器标准化，与上轮状态合并后生成新的持久状态和公开数据。完整校验通过后，状态保存到 data，公开文件随完整站点部署。浏览器每六十秒发现 manifest，沿版本化路径读取并验证 snapshotId 和归档 revision；RSS 与 Atom 面向订阅者独立导出。</desc>
+  <defs>
+    <style>
+      text{font-family:"Avenir Next","PingFang SC","Microsoft YaHei",sans-serif;fill:#20362e}
+      .mono{font-family:Menlo,Consolas,monospace;font-size:18px;fill:#536b61}
+      .eyebrow{font-size:17px;font-weight:600;letter-spacing:2px}
+      .title{font-size:46px;font-weight:650;letter-spacing:-1px}
+      .body{font-size:23px;fill:#52685f}
+      .name{font-size:28px;font-weight:600}
+      .small{font-size:21px;fill:#52685f}
+      .label{font-size:20px;font-weight:550}
+      .line{fill:none;stroke:#57776a;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" fill="none" stroke="#57776a" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1280" height="1100" rx="24" fill="#f5f7f3"/>
+  <path d="M56 48h38" stroke="#287653" stroke-width="5"/>
+  <text x="108" y="54" class="eyebrow">STATUSGRID / DATA CONTRACT</text>
+  <text x="56" y="125" class="title">一次发现，一致读取。</text>
+  <text x="56" y="166" class="body">官方信号 → 持久状态 → 版本化公开数据 → 消费端</text>
+  <rect x="1152" y="54" width="72" height="42" rx="21" fill="#e5ede5"/>
+  <text x="1188" y="83" text-anchor="middle" class="mono">03</text>
+
+  <rect x="56" y="218" width="352" height="166" rx="16" fill="#fff" stroke="#c1cedd"/>
+  <text x="80" y="261" class="name">采集与标准化</text>
+  <text x="80" y="303" class="body">官方 JSON / Feed / 状态页</text>
+  <text x="80" y="347" class="small">适配器统一状态、组件与事件</text>
+  <path d="M414 301h43" class="line"/>
+  <rect x="464" y="218" width="352" height="166" rx="16" fill="#fff" stroke="#c1cedd"/>
+  <text x="488" y="261" class="name">与上轮状态合并</text>
+  <text x="488" y="303" class="body">事件、观测、日统计与账本</text>
+  <text x="488" y="347" class="small">完整校验后保存至 data</text>
+  <path d="M822 301h43" class="line"/>
+  <rect x="872" y="218" width="352" height="166" rx="16" fill="#eaf0ea" stroke="#a3bcaa"/>
+  <text x="896" y="261" class="name">导出与完整校验</text>
+  <text x="896" y="303" class="body">同一轮状态派生公开文件</text>
+  <text x="896" y="347" class="small">随完整站点上传并部署</text>
+  <path d="M1048 390v62" class="line"/>
+
+  <rect x="56" y="458" width="1168" height="344" rx="18" fill="#eaf0ea" stroke="#c8d6c9"/>
+  <text x="82" y="497" class="eyebrow">PUBLIC FILES / 公开数据</text>
+  <text x="1198" y="497" text-anchor="end" class="mono">gh-pages → GitHub Pages</text>
+
+  <rect x="82" y="550" width="310" height="172" rx="12" fill="#fff" stroke="#ccd7cf"/>
+  <rect x="82" y="550" width="5" height="172" rx="2" fill="#287653"/>
+  <text x="106" y="594" class="name">manifest</text>
+  <text x="106" y="632" class="mono">/api/v1/manifest.json</text>
+  <text x="106" y="679" class="small">当前版本与数据路径入口</text>
+
+  <path d="M392 607h28v-20h28" class="line"/>
+  <path d="M392 663h28v64h28" class="line"/>
+  <rect x="454" y="530" width="358" height="122" rx="12" fill="#fff" stroke="#c1cedd"/>
+  <text x="478" y="567" class="name">热快照</text>
+  <rect x="658" y="545" width="130" height="32" rx="8" fill="#e7eef7"/>
+  <text x="723" y="568" text-anchor="middle" class="mono" style="fill:#466d9b">snapshotId</text>
+  <text x="478" y="606" class="small">摘要、厂商详情、近期事件</text>
+  <text x="478" y="635" class="small">搜索索引与采集健康</text>
+  <rect x="454" y="676" width="358" height="100" rx="12" fill="#fff" stroke="#c1cedd"/>
+  <text x="478" y="714" class="name">历史归档</text>
+  <rect x="674" y="691" width="114" height="32" rx="8" fill="#e7eef7"/>
+  <text x="731" y="714" text-anchor="middle" class="mono" style="fill:#466d9b">revision</text>
+  <text x="478" y="753" class="small">归档索引与月度事件分片</text>
+
+  <rect x="878" y="550" width="320" height="172" rx="12" fill="#fff" stroke="#ccd7cf"/>
+  <text x="902" y="594" class="name">RSS / Atom</text>
+  <text x="902" y="635" class="body">全局、分类与厂商订阅</text>
+  <text x="902" y="679" class="small">按事件里程碑稳定去重</text>
+
+  <path d="M237 722v174" class="line" stroke-dasharray="6 7"/>
+  <path d="M812 591h26v249h-85v56" class="line"/>
+  <path d="M633 776v120" class="line"/>
+  <path d="M1038 722v174" class="line"/>
+  <rect x="147" y="835" width="180" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="237" y="858" text-anchor="middle" class="label">前台每 60 秒检查</text>
+  <rect x="563" y="835" width="140" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="633" y="858" text-anchor="middle" class="label">按需读取</text>
+  <rect x="988" y="835" width="100" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="1038" y="858" text-anchor="middle" class="label">订阅</text>
+
+  <rect x="56" y="902" width="756" height="126" rx="16" fill="#e3eee5" stroke="#8cb49a"/>
+  <text x="80" y="943" class="name">浏览器：校验后展示</text>
+  <text x="80" y="980" class="small">校验 schema + snapshotId + 归档 revision</text>
+  <text x="80" y="1011" class="small">状态矩阵 · 厂商详情 · 每日聚合 · 历史事件</text>
+  <rect x="878" y="902" width="346" height="126" rx="16" fill="#fff" stroke="#ccd7cf"/>
+  <text x="902" y="946" class="name">Feed 订阅者</text>
+  <text x="902" y="990" class="small">独立读取已发布 XML</text>
+  <text x="56" y="1074" class="mono">STATUSGRID</text>
+  <text x="1224" y="1074" text-anchor="end" class="small">不混用跨轮数据 · 页面刷新不触发上游采集</text>
+</svg>

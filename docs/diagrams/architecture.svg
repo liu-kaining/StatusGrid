@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1020" viewBox="0 0 1280 1020" role="img" aria-labelledby="title desc">
+  <title id="title">StatusGrid 整体架构</title>
+  <desc id="desc">Cloudflare Worker 每五分钟触发 GitHub Actions。Actions 读取源码和官方来源，执行采集、状态合并、完整站点校验，使用 data 与 gh-pages 分支持久化，再显式部署 GitHub Pages，供浏览器、API 和 Feed 消费者访问。前端变更由 frontend.yml 构建。</desc>
+  <defs>
+    <style>
+      text{font-family:"Avenir Next","PingFang SC","Microsoft YaHei",sans-serif;fill:#20362e}
+      .mono{font-family:Menlo,Consolas,monospace;font-size:18px;fill:#536b61}
+      .eyebrow{font-size:17px;font-weight:600;letter-spacing:2px}
+      .title{font-size:46px;font-weight:650;letter-spacing:-1px}
+      .body{font-size:23px;fill:#52685f}
+      .name{font-size:28px;font-weight:600}
+      .small{font-size:20px;fill:#52685f}
+      .label{font-size:20px;font-weight:550}
+      .line{fill:none;stroke:#57776a;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;marker-end:url(#arrow)}
+      .icon{fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="m1 1 7 4-7 4" fill="none" stroke="#57776a" stroke-width="1.5"/></marker>
+    <marker id="orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" fill="none" stroke="#b16a2b" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1280" height="1020" rx="24" fill="#f5f7f3"/>
+  <path d="M56 48h38" stroke="#287653" stroke-width="5"/>
+  <text x="108" y="54" class="eyebrow">STATUSGRID / SYSTEM MAP</text>
+  <text x="56" y="125" class="title">轻量运行，边界清晰。</text>
+  <text x="56" y="166" class="body">定时触发与采集分离 · Git 分支持久化 · 静态站点分发</text>
+  <rect x="1152" y="54" width="72" height="42" rx="21" fill="#e5ede5"/>
+  <text x="1188" y="83" text-anchor="middle" class="mono">01</text>
+
+  <rect x="56" y="218" width="352" height="160" rx="16" fill="#fffaf3" stroke="#dec7ab"/>
+  <g class="icon" color="#b16a2b" transform="translate(82 246)"><circle cx="15" cy="15" r="14"/><path d="M15 6v10l7 4"/></g>
+  <text x="128" y="270" class="name">Cloudflare Worker</text>
+  <text x="82" y="316" class="body">每 5 分钟调用 GitHub API</text>
+  <text x="82" y="350" class="mono">*/5 * * * *</text>
+
+  <rect x="464" y="218" width="352" height="160" rx="16" fill="#f3f7fc" stroke="#c1cedd"/>
+  <g class="icon" color="#466d9b" transform="translate(490 246)"><path d="M5 25h22a8 8 0 0 0 1-16 12 12 0 0 0-23 2 7 7 0 0 0 0 14Z"/></g>
+  <text x="536" y="270" class="name">官方公开状态源</text>
+  <text x="490" y="316" class="body">云、AI 与开发平台</text>
+  <text x="490" y="350" class="small">JSON / RSS / Atom / 状态页</text>
+
+  <rect x="872" y="218" width="352" height="160" rx="16" fill="#fff" stroke="#ccd7cf"/>
+  <g class="icon" color="#52685f" transform="translate(898 246)"><path d="m10 4-9 11 9 11m12-22 9 11-9 11m-5-24-4 26"/></g>
+  <text x="944" y="270" class="name">main 分支</text>
+  <text x="898" y="316" class="body">源码、工作流与来源注册表</text>
+  <text x="898" y="350" class="small">前端输入变化 → frontend.yml</text>
+
+  <path d="M232 378v76" class="line" style="stroke:#b16a2b;marker-end:url(#orange)"/>
+  <path d="M640 378v76" class="line"/>
+  <path d="M1048 378v76" class="line" stroke-dasharray="6 7"/>
+  <rect x="130" y="400" width="204" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="232" y="423" text-anchor="middle" class="mono">workflow_dispatch</text>
+  <rect x="562" y="400" width="156" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="640" y="423" text-anchor="middle" class="small">HTTP / 浏览器</text>
+  <rect x="963" y="400" width="170" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="1048" y="423" text-anchor="middle" class="small">构建前端壳</text>
+
+  <rect x="56" y="460" width="1168" height="260" rx="18" fill="#eaf0ea" stroke="#c8d6c9"/>
+  <text x="82" y="499" class="eyebrow">GITHUB ACTIONS</text>
+  <text x="1198" y="499" text-anchor="end" class="mono">Node.js / TypeScript</text>
+  <rect x="82" y="526" width="304" height="152" rx="12" fill="#fff" stroke="#ccd7cf"/>
+  <rect x="82" y="526" width="5" height="152" rx="2" fill="#b16a2b"/>
+  <text x="106" y="567" class="name">采集入口</text>
+  <text x="106" y="605" class="mono">sync.yml</text>
+  <text x="106" y="646" class="small">恢复上轮状态与前端</text>
+  <path d="M386 602h52" class="line"/>
+  <rect x="442" y="526" width="340" height="152" rx="12" fill="#fff" stroke="#ccd7cf"/>
+  <rect x="442" y="526" width="5" height="152" rx="2" fill="#466d9b"/>
+  <text x="466" y="567" class="name">采集与状态合并</text>
+  <text x="466" y="605" class="mono">HTTP / Playwright</text>
+  <text x="466" y="646" class="small">适配来源、事件与观测</text>
+  <path d="M782 602h52" class="line"/>
+  <rect x="838" y="526" width="360" height="152" rx="12" fill="#fff" stroke="#ccd7cf"/>
+  <rect x="838" y="526" width="5" height="152" rx="2" fill="#287653"/>
+  <text x="862" y="567" class="name">完整站点校验与发布</text>
+  <text x="862" y="605" class="mono">pages.yml</text>
+  <text x="862" y="646" class="small">前端 + 数据 + 发布收据</text>
+
+  <path d="M232 726v87" class="line" style="marker-start:url(#arrow)"/>
+  <path d="M640 726v87" class="line" style="marker-start:url(#arrow)"/>
+  <path d="M1048 726v87" class="line"/>
+  <rect x="155" y="748" width="154" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="232" y="771" text-anchor="middle" class="label">恢复 / 保存</text>
+  <rect x="563" y="748" width="154" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="640" y="771" text-anchor="middle" class="label">复用 / 保存</text>
+  <rect x="918" y="748" width="260" height="32" rx="8" fill="#f5f7f3"/>
+  <text x="1048" y="771" text-anchor="middle" class="label">上传 Artifact · 显式部署</text>
+
+  <rect x="56" y="820" width="352" height="142" rx="16" fill="#fff" stroke="#ccd7cf"/>
+  <text x="82" y="859" class="name">data</text>
+  <text x="82" y="895" class="body">持久采集状态</text>
+  <text x="82" y="932" class="small">事件 · 观测 · 统计 · 去重账本</text>
+  <rect x="464" y="820" width="352" height="142" rx="16" fill="#fff" stroke="#ccd7cf"/>
+  <text x="490" y="859" class="name">gh-pages</text>
+  <text x="490" y="895" class="body">完整静态站点</text>
+  <text x="490" y="932" class="small">前端 · 公开 JSON · Feed</text>
+  <rect x="872" y="820" width="352" height="142" rx="16" fill="#e3eee5" stroke="#8cb49a"/>
+  <circle cx="905" cy="851" r="5" fill="#287653"/>
+  <text x="922" y="859" class="name">GitHub Pages</text>
+  <text x="898" y="895" class="body">grid.thetamind.ai</text>
+  <text x="898" y="932" class="small">HTTPS → 浏览器 / API / Feed</text>
+  <text x="56" y="997" class="mono">STATUSGRID</text>
+  <text x="1224" y="997" text-anchor="end" class="small">分支保存与线上部署分开执行 · 无独立数据库</text>
+</svg>

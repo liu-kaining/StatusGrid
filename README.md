@@ -12,58 +12,13 @@
 
 采集在 GitHub Actions 中执行，浏览器读取 GitHub Pages 上的静态文件。Cloudflare Worker 负责定时调用 GitHub API，不承载网页或存储采集数据。
 
-```mermaid
-flowchart TB
-    worker["Cloudflare Worker<br/>每 5 分钟触发"]
-    main["main 分支<br/>源码与来源注册表"]
-    sources["厂商官方公开状态源"]
-
-    subgraph actions["GitHub Actions"]
-        sync["采集入口<br/>sync.yml"]
-        frontend["前端构建入口<br/>frontend.yml · React / Vite"]
-        release["组装、校验与发布<br/>pages.yml · Node.js / TypeScript"]
-        sync --> release
-        frontend --> release
-    end
-
-    worker -->|"workflow_dispatch"| sync
-    main -->|"采集代码与来源配置"| sync
-    main -->|"前端输入变化时构建"| frontend
-    sources -->|"HTTP / Playwright 采集"| release
-    release <-->|"恢复与保存状态"| data[("data 分支<br/>持久采集状态")]
-    release <-->|"复用前端与保存完整站点"| site[("gh-pages 分支<br/>前端、公开 JSON 与 Feed")]
-    release -->|"上传完整站点 Artifact 并显式部署"| pages["GitHub Pages<br/>grid.thetamind.ai"]
-    pages -->|"HTTPS"| readers["浏览器 / API 消费者 / Feed 订阅者"]
-```
+![整体架构：Cloudflare 定时触发 Actions，使用 data 与 gh-pages 分支持久化，再显式部署 GitHub Pages。](docs/diagrams/architecture.png)
 
 `main` 推送后会检查前端输入指纹，有变化才重新构建；日常定时采集复用 `gh-pages` 中的前端。Worker 单独部署，GitHub 原生采集 Cron 已关闭。写入 `gh-pages` 与部署 Pages 是两个步骤。
 
 ### 每轮采集与发布
 
-```mermaid
-sequenceDiagram
-    participant W as Cloudflare Worker
-    participant A as GitHub Actions
-    participant S as 官方状态源
-    participant D as data 分支
-    participant G as gh-pages 分支
-    participant P as GitHub Pages
-
-    W->>A: 每 5 分钟 dispatch：mode=sync
-    A->>D: 读取上轮持久状态
-    D-->>A: 事件、观测、统计与去重账本
-    A->>G: 读取并校验已有完整站点
-    G-->>A: 可复用前端与已保存的公开数据
-    A->>S: 按注册表采集全部启用来源
-    S-->>A: 状态、组件、事件或采集错误
-    A->>A: 标准化、合并历史、更新统计与账本
-    A->>A: 组装前端与公开数据，完整校验
-    A->>D: 校验远端 SHA 后保存状态
-    A->>G: 校验远端 SHA 后保存完整站点
-    A->>P: 上传 Artifact 并显式部署
-    A->>P: 通过 HTTPS 校验前端、manifest 与摘要
-    P-->>A: 快照 ID 与本次发布一致才通过
-```
+![采集发布流程：定时触发、恢复输入、采集合并、完整校验、依序保存分支、部署并验证本次快照；失败时可用 retry 恢复发布。](docs/diagrams/collection-release.png)
 
 单个来源失败会保留上次可信结果，并标记 `stale`；从未成功的来源标记 `missing`。这类结果可以随其他来源一起发布；状态损坏或整体校验失败则停止发布。
 
@@ -71,39 +26,13 @@ sequenceDiagram
 
 ### 数据流转与一致读取
 
-```mermaid
-flowchart TB
-    source["官方公开数据<br/>JSON / Feed / 状态页"]
-    adapter["来源适配器<br/>标准化状态、组件与事件"]
-    reconcile["与上轮状态合并<br/>生命周期、观测、日统计与账本"]
-    previous["上轮 data 状态"]
-    export["暂存状态与公开数据<br/>导出并完整校验"]
-
-    source --> adapter --> reconcile --> export
-    previous --> reconcile
-
-    subgraph publicData["公开文件 · 随完整站点部署至 Pages"]
-        manifest["当前入口<br/>/api/v1/manifest.json"]
-        hot["热快照 · snapshotId<br/>摘要、详情、事件、搜索与健康"]
-        cold["历史归档 · revision<br/>索引与月度事件"]
-        feeds["RSS / Atom<br/>全局、分类与厂商"]
-    end
-
-    export --> manifest
-    export --> hot
-    export --> cold
-    export --> feeds
-    manifest -->|"快照路径"| hot
-    manifest -->|"归档路径"| cold
-    manifest -.->|"前台每 60 秒检查"| client["浏览器校验并展示<br/>矩阵、详情、日聚合与历史"]
-    hot --> client
-    cold -->|"按需读取历史"| client
-    feeds --> subscriber["Feed 订阅者"]
-```
+![数据流转：官方信号合并为持久状态，导出 manifest、热快照、历史归档与 Feed；浏览器沿 manifest 读取并校验同一版本。](docs/diagrams/data-flow.png)
 
 暂存状态完整校验通过后才保存至 `data`。浏览器先读 manifest，再沿其中的版本化路径加载数据，校验 schema、快照 ID 与归档 revision，避免把不同轮次的摘要、详情和历史混在一起。页面刷新只读取已发布文件，不触发上游采集。
 
 观测与日统计按 UTC 滚动保留 90 天，事件按月持续归档；公开快照至少保留最近 12 份及最近 60 分钟内全部版本。路径与保留规则详见 [公共 API](docs/api.md) 和 [运行手册](docs/runbook.md)。
+
+图示的 [SVG 源文件与图片导出方式](docs/diagrams/README.md) 随仓库维护。
 
 ## 本地运行
 

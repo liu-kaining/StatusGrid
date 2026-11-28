@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1000" viewBox="0 0 1280 1000" role="img" aria-labelledby="title desc">
+  <title id="title">StatusGrid 每轮采集与发布流程</title>
+  <desc id="desc">依序执行六步：Worker 定时触发；恢复 data 状态与 gh-pages 前端；采集并合并历史；组装与完整校验；先保存 data 再保存 gh-pages，分别检查远端 SHA；上传并显式部署 Pages，使用 HTTPS 核验本次快照。单源失败保留可信历史，发布失败后使用 retry 重新发布保存的数据。</desc>
+  <defs>
+    <style>
+      text{font-family:"Avenir Next","PingFang SC","Microsoft YaHei",sans-serif;fill:#20362e}
+      .mono{font-family:Menlo,Consolas,monospace;font-size:18px;fill:#536b61}
+      .eyebrow{font-size:17px;font-weight:600;letter-spacing:2px}
+      .title{font-size:46px;font-weight:650;letter-spacing:-1px}
+      .body{font-size:23px;fill:#52685f}
+      .name{font-size:28px;font-weight:600}
+      .small{font-size:21px;fill:#52685f}
+      .number{font-family:Menlo,Consolas,monospace;font-size:21px;font-weight:600}
+      .line{fill:none;stroke:#57776a;stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="m1 1 7 4-7 4" fill="none" stroke="#57776a" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1280" height="1000" rx="24" fill="#f5f7f3"/>
+  <path d="M56 48h38" stroke="#287653" stroke-width="5"/>
+  <text x="108" y="54" class="eyebrow">STATUSGRID / RELEASE CYCLE</text>
+  <text x="56" y="125" class="title">每一轮，先校验再发布。</text>
+  <text x="56" y="166" class="body">从一次定时触发，到可验证的线上快照</text>
+  <rect x="1152" y="54" width="72" height="42" rx="21" fill="#e5ede5"/>
+  <text x="1188" y="83" text-anchor="middle" class="mono">02</text>
+
+  <text x="56" y="224" class="eyebrow" style="fill:#466d9b">COLLECT / 采集与合并</text>
+  <rect x="56" y="248" width="352" height="214" rx="16" fill="#fffaf3" stroke="#dec7ab"/>
+  <rect x="80" y="272" width="46" height="38" rx="8" fill="#f3e5ce"/>
+  <text x="103" y="298" text-anchor="middle" class="number" style="fill:#946023">01</text>
+  <text x="142" y="300" class="name">定时触发</text>
+  <text x="80" y="350" class="body">Worker 调用 GitHub API</text>
+  <text x="80" y="388" class="mono">sync.yml · mode=sync</text>
+  <text x="80" y="428" class="small">每 5 分钟一次触发目标</text>
+
+  <path d="M414 355h43" class="line"/>
+  <rect x="464" y="248" width="352" height="214" rx="16" fill="#fff" stroke="#c1cedd"/>
+  <rect x="488" y="272" width="46" height="38" rx="8" fill="#e7eef7"/>
+  <text x="511" y="298" text-anchor="middle" class="number" style="fill:#466d9b">02</text>
+  <text x="550" y="300" class="name">恢复持久输入</text>
+  <text x="488" y="350" class="body">读取 data 的上轮状态</text>
+  <text x="488" y="388" class="body">读取 gh-pages 并校验</text>
+  <text x="488" y="428" class="small">复用已保存的前端壳</text>
+
+  <path d="M822 355h43" class="line"/>
+  <rect x="872" y="248" width="352" height="214" rx="16" fill="#fff" stroke="#c1cedd"/>
+  <rect x="896" y="272" width="46" height="38" rx="8" fill="#e7eef7"/>
+  <text x="919" y="298" text-anchor="middle" class="number" style="fill:#466d9b">03</text>
+  <text x="958" y="300" class="name">采集与合并</text>
+  <text x="896" y="350" class="body">采集全部启用来源</text>
+  <text x="896" y="388" class="body">更新事件、观测与日统计</text>
+  <text x="896" y="428" class="small">保留身份映射与去重账本</text>
+
+  <path d="M1048 468v99" class="line"/>
+  <text x="1070" y="525" class="small">进入发布阶段</text>
+  <text x="56" y="550" class="eyebrow" style="fill:#287653">PUBLISH / 校验、持久化与部署</text>
+
+  <rect x="872" y="574" width="352" height="214" rx="16" fill="#fff" stroke="#c1cedd"/>
+  <rect x="896" y="598" width="46" height="38" rx="8" fill="#e7eef7"/>
+  <text x="919" y="624" text-anchor="middle" class="number" style="fill:#466d9b">04</text>
+  <text x="958" y="626" class="name">完整站点校验</text>
+  <text x="896" y="676" class="body">前端 + JSON + Feed</text>
+  <text x="896" y="714" class="body">核对状态、引用与版本</text>
+  <text x="896" y="754" class="small">不合格则停止发布</text>
+
+  <path d="M866 681h-43" class="line"/>
+  <rect x="464" y="574" width="352" height="214" rx="16" fill="#fff" stroke="#9ebca8"/>
+  <rect x="488" y="598" width="46" height="38" rx="8" fill="#e3eee5"/>
+  <text x="511" y="624" text-anchor="middle" class="number" style="fill:#287653">05</text>
+  <text x="550" y="626" class="name">依序持久化</text>
+  <text x="488" y="676" class="body">先 data，再 gh-pages</text>
+  <text x="488" y="714" class="body">分别校验远端 SHA</text>
+  <text x="488" y="754" class="small">CAS 保护 · 两次独立写入</text>
+
+  <path d="M458 681h-43" class="line"/>
+  <rect x="56" y="574" width="352" height="214" rx="16" fill="#e3eee5" stroke="#8cb49a"/>
+  <rect x="80" y="598" width="46" height="38" rx="8" fill="#287653"/>
+  <text x="103" y="624" text-anchor="middle" class="number" style="fill:#fff">06</text>
+  <text x="142" y="626" class="name">部署与线上验证</text>
+  <text x="80" y="676" class="body">Artifact → Pages 显式部署</text>
+  <text x="80" y="714" class="body">HTTPS 读取线上数据</text>
+  <text x="80" y="754" class="small">精确匹配本次 snapshotId</text>
+
+  <rect x="56" y="836" width="1168" height="102" rx="14" fill="#fff" stroke="#ccd7cf"/>
+  <path d="M82 861v52" stroke="#b16a2b" stroke-width="4" stroke-linecap="round"/>
+  <text x="104" y="874" class="small">单源失败：保留可信历史，标记 stale / missing；整体校验失败：停止发布。</text>
+  <text x="104" y="912" class="small" style="fill:#287653">状态已保存但部署失败 → retry 复用状态与前端重新发布，无需重新采集。</text>
+  <text x="56" y="978" class="mono">STATUSGRID</text>
+  <text x="1224" y="978" text-anchor="end" class="small">5 分钟为触发周期 · 另计排队与运行耗时</text>
+</svg>
