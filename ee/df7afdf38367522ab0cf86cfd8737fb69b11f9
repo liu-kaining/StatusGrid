@@ -1,0 +1,20 @@
+README.md
+  s_79c9ef7a230eaf::t_f2042f0bfd809b 56,76-78,80,82,85,87-89,96-98,104-106
+  s_79c9ef7a230eaf::t_a883e930969d1e 9-55,57-75,79,81,83-84,86,90-95,99-103,107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "eedf7afdf38367522ab0cf86cfd8737fb69b11f9",
+  "prompts": {},
+  "sessions": {
+    "s_79c9ef7a230eaf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21277-7e6d-7163-b625-7234a5399ea1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "kaining.lkn <kaining.lkn@antgroup.com>"
+    }
+  }
+}
