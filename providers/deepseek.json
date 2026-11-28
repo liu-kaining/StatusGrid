@@ -1,0 +1,1292 @@
+{
+  "schemaVersion": "1.0",
+  "provider": {
+    "providerId": "deepseek",
+    "officialStatusUrl": "https://status.deepseek.com/",
+    "result": {
+      "providerId": "deepseek",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A",
+          "upstreamId": "01KY4MVS8BM3F9JSYWACGQVG7A",
+          "groupId": null,
+          "name": "DeepSeek V4 Pro API服务(API Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+          "upstreamId": "01KY4MVS8BSBSVW6053QJ37RJE",
+          "groupId": null,
+          "name": "DeepSeek V4.1 Flash API服务(API Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+          "upstreamId": "01KY4ND2PNYT9FY5W4ZH80VGJ4",
+          "groupId": "deepseek:01KY4ND2MQAQKEAGJKTNGREKBR",
+          "name": "对话服务(Chatservice)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01KY4ND2PNNFFY6QKV67WFJW8N",
+          "upstreamId": "01KY4ND2PNNFFY6QKV67WFJW8N",
+          "groupId": "deepseek:01KY4ND2MQAQKEAGJKTNGREKBR",
+          "name": "上传文件服务(File Upload Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01KY4ND2PN6EFSJ4RDYDJYPMNK",
+          "upstreamId": "01KY4ND2PN6EFSJ4RDYDJYPMNK",
+          "groupId": "deepseek:01KY4ND2MQAQKEAGJKTNGREKBR",
+          "name": "搜索服务(Search Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01M5CB9TP3WGM9TV3DM31CFXAR",
+          "upstreamId": "01M5CB9TP3WGM9TV3DM31CFXAR",
+          "groupId": null,
+          "name": "搜索API服务(Search API Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01M5CB9TP3H6168N3WJ5AG5S4F",
+          "upstreamId": "01M5CB9TP3H6168N3WJ5AG5S4F",
+          "groupId": null,
+          "name": "抓取API服务(Fetch API Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "deepseek:7297926596703",
+          "providerId": "deepseek",
+          "upstreamId": "7297926596703",
+          "kind": "incident",
+          "title": "DeepSeek API 性能下降（DeepSeek API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-25T01:10:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-25T01:20:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-11-25T01:20:00.000Z",
+          "durationMinutes": 10,
+          "sourceUrl": "https://status.deepseek.com/incidents/7297926596703",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M884HZH87WR21Y02QY5ETC3J",
+              "phase": "identified",
+              "body": "已定位原因，正在实施修复。\n\nThe cause has been identified and a fix is being implemented.",
+              "timestamp": "2026-11-25T01:10:00.000Z"
+            },
+            {
+              "id": "01M884RRC17SWFBY8DT2ASRDZ6",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-11-25T01:20:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7252143961119",
+          "providerId": "deepseek",
+          "upstreamId": "7252143961119",
+          "kind": "incident",
+          "title": "DeepSeek 网页/Chat 性能下降（DeepSeek Web/Chat Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-14T16:53:58.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-14T17:16:04.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-11-14T17:16:04.000Z",
+          "durationMinutes": 22.1,
+          "sourceUrl": "https://status.deepseek.com/incidents/7252143961119",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M7DFSD2AXW2YECE5VR0MGDY2",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-11-14T16:53:58.000Z"
+            },
+            {
+              "id": "01M7DGY838JYYCGQKFSR8Q2T45",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-11-14T17:16:04.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7219383236287",
+          "providerId": "deepseek",
+          "upstreamId": "7219383236287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 部分中断（DeepSeek Web/API Partially Unavailable）",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A",
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4ND2PN6EFSJ4RDYDJYPMNK"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-07T07:11:38.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-07T07:56:50.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-11-07T07:56:50.000Z",
+          "durationMinutes": 45.2,
+          "sourceUrl": "https://status.deepseek.com/incidents/7219383236287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M6TDJFTVD6GDG74FEB8E2FWR",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-07T07:11:38.000Z"
+            },
+            {
+              "id": "01M6TG586MP8AMZKPGDW39K4DG",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-11-07T07:56:50.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7202016104287",
+          "providerId": "deepseek",
+          "upstreamId": "7202016104287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 部分中断（DeepSeek Web/API Partially Unavailable）",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-03T08:58:16.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-03T10:48:02.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-11-03T10:48:02.000Z",
+          "durationMinutes": 109.76666666666667,
+          "sourceUrl": "https://status.deepseek.com/incidents/7202016104287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M6GA2W2E5K3BV08PVERCG5GT",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-11-03T08:58:16.000Z"
+            },
+            {
+              "id": "01M6GA77TFACF3SA8AZXYAGFT6",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-11-03T09:00:40.000Z"
+            },
+            {
+              "id": "01M6GAJPA4RTM5RQRPZD6CYV55",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T09:06:55.000Z"
+            },
+            {
+              "id": "01M6GAY9W9PXG8GCSAHE9EKAVV",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T09:13:15.000Z"
+            },
+            {
+              "id": "01M6GC852PTVBMSF4CQDH04VEA",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T09:36:07.000Z"
+            },
+            {
+              "id": "01M6GDWV6JXTTQFWHAESRQTPTT",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:04:53.000Z"
+            },
+            {
+              "id": "01M6GEKGB1RA37RQSTYC60N5NM",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:17:16.000Z"
+            },
+            {
+              "id": "01M6GEW41AM05JSQ52P4RAS352",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:21:58.000Z"
+            },
+            {
+              "id": "01M6GF2S8R5GGRX87KRAM7BQ8S",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:25:37.000Z"
+            },
+            {
+              "id": "01M6GFZB42VYVGQ7N4B095EVWH",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:41:12.000Z"
+            },
+            {
+              "id": "01M6GGBV7JNESYCJ7E46D44T1E",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-11-03T10:48:02.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7170710513287",
+          "providerId": "deepseek",
+          "upstreamId": "7170710513287",
+          "kind": "incident",
+          "title": "DeepSeek API 性能下降（DeepSeek API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-27T07:07:39.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-27T07:21:54.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-27T07:21:54.000Z",
+          "durationMinutes": 14.25,
+          "sourceUrl": "https://status.deepseek.com/incidents/7170710513287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M5Y2Z9ABSVX9HGR73029AQEY",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-27T07:07:39.000Z"
+            },
+            {
+              "id": "01M5Y3SC7V78JHP5T65ZED7887",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-27T07:21:54.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7140152117287",
+          "providerId": "deepseek",
+          "upstreamId": "7140152117287",
+          "kind": "incident",
+          "title": "搜索服务异常（Search service error）",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PN6EFSJ4RDYDJYPMNK"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-20T09:20:15.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-20T09:28:53.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-20T09:28:53.000Z",
+          "durationMinutes": 8.633333333333333,
+          "sourceUrl": "https://status.deepseek.com/incidents/7140152117287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M5C9S25JTADMH9ETKG7A2FQB",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-20T09:20:15.000Z"
+            },
+            {
+              "id": "01M5CA8V87VVCQHHV8ETYV0PTM",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-20T09:28:53.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7116348214287",
+          "providerId": "deepseek",
+          "upstreamId": "7116348214287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 部分中断（DeepSeek Web/API Partially Unavailable）",
+          "severity": "major_outage",
+          "sourceSeverity": "major_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-15T00:11:35.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-15T05:04:04.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-15T05:04:04.000Z",
+          "durationMinutes": 292.48333333333335,
+          "sourceUrl": "https://status.deepseek.com/incidents/7116348214287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M4YECTQR0VQF3ZPE0E9XYKXA",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-15T00:11:35.000Z"
+            },
+            {
+              "id": "01M4YEJF2VV58CXT2F9MJY19YC",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-15T00:14:40.000Z"
+            },
+            {
+              "id": "01M4YHJ0J8GFRDEZNRJWPPSKP2",
+              "phase": "identified",
+              "body": "已定位原因，正在实施修复。\n\nThe cause has been identified and a fix is being implemented.",
+              "timestamp": "2026-10-15T01:06:51.000Z"
+            },
+            {
+              "id": "01M4YHNBN62A74FHTX45KBTBZT",
+              "phase": "identified",
+              "body": "已定位原因，正在实施修复。\n\nThe cause has been identified and a fix is being implemented.",
+              "timestamp": "2026-10-15T01:08:41.000Z"
+            },
+            {
+              "id": "01M4YYAACSGGP9T378APNX13YX",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-10-15T04:49:50.000Z"
+            },
+            {
+              "id": "01M4YZ4BJ7TYP0J8R4BEGCA1M0",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-15T05:04:04.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7104277696287",
+          "providerId": "deepseek",
+          "upstreamId": "7104277696287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 性能下降（DeepSeek Web/API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-12T06:42:23.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-12T06:57:54.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-12T06:57:54.000Z",
+          "durationMinutes": 15.516666666666667,
+          "sourceUrl": "https://status.deepseek.com/incidents/7104277696287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M4QDJ7WHX17FVA1E27NY2T5Q",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-12T06:42:23.000Z"
+            },
+            {
+              "id": "01M4QEEMRZ2J7CF4GFXDHGJ2FA",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-12T06:57:54.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7103794822287",
+          "providerId": "deepseek",
+          "upstreamId": "7103794822287",
+          "kind": "incident",
+          "title": "- DeepSeek 网页=部分中断（DeepSeek Web Partially Unavailable）",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-12T04:05:12.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-12T04:16:54.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-12T04:16:54.000Z",
+          "durationMinutes": 11.7,
+          "sourceUrl": "https://status.deepseek.com/incidents/7103794822287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M4Q4JDSHSW5D0NJ0ASF8NXZD",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-12T04:05:12.000Z"
+            },
+            {
+              "id": "01M4Q57V1470A42WT9XVKP327W",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-12T04:16:54.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7086651324287",
+          "providerId": "deepseek",
+          "upstreamId": "7086651324287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 性能下降（DeepSeek Web/API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-08T07:04:38.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-08T07:08:01.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-08T07:08:01.000Z",
+          "durationMinutes": 3.3833333333333333,
+          "sourceUrl": "https://status.deepseek.com/incidents/7086651324287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M4D583HBKVER5JQ1BA7B06YM",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-08T07:04:38.000Z"
+            },
+            {
+              "id": "01M4D5E9549Y8HDT4AJ1VT8YX1",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-08T07:08:01.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7058006316287",
+          "providerId": "deepseek",
+          "upstreamId": "7058006316287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 性能下降（DeepSeek Web/API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A",
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-01T19:40:05.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-01T21:34:35.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-01T21:34:35.000Z",
+          "durationMinutes": 114.5,
+          "sourceUrl": "https://status.deepseek.com/incidents/7058006316287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M3WFPBBHKCVJ2YY4DDKGWQ1Q",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-01T19:40:05.000Z"
+            },
+            {
+              "id": "01M3WGR050JPSE9XVYWWFBHYHH",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-01T19:58:28.000Z"
+            },
+            {
+              "id": "01M3WP803EGFNY504KWRZWFFV4",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-01T21:34:35.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": "2026-11-28T17:40:56.334Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-26T16:44:28.746Z",
+        "nativeHistoryEarliestAt": "2026-10-01T19:40:05.000Z",
+        "limitation": "Native history covers only the supplied calendar/list window; feeds do not establish incident start times"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "ssr_components",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:13.767Z"
+          },
+          {
+            "name": "ssr_active_changes",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:13.767Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": [
+          "Atom feed supplied 19 entries; history from source-native calendar/list only"
+        ]
+      }
+    },
+    "lastTrustedResult": {
+      "providerId": "deepseek",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A",
+          "upstreamId": "01KY4MVS8BM3F9JSYWACGQVG7A",
+          "groupId": null,
+          "name": "DeepSeek V4 Pro API服务(API Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+          "upstreamId": "01KY4MVS8BSBSVW6053QJ37RJE",
+          "groupId": null,
+          "name": "DeepSeek V4.1 Flash API服务(API Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+          "upstreamId": "01KY4ND2PNYT9FY5W4ZH80VGJ4",
+          "groupId": "deepseek:01KY4ND2MQAQKEAGJKTNGREKBR",
+          "name": "对话服务(Chatservice)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01KY4ND2PNNFFY6QKV67WFJW8N",
+          "upstreamId": "01KY4ND2PNNFFY6QKV67WFJW8N",
+          "groupId": "deepseek:01KY4ND2MQAQKEAGJKTNGREKBR",
+          "name": "上传文件服务(File Upload Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01KY4ND2PN6EFSJ4RDYDJYPMNK",
+          "upstreamId": "01KY4ND2PN6EFSJ4RDYDJYPMNK",
+          "groupId": "deepseek:01KY4ND2MQAQKEAGJKTNGREKBR",
+          "name": "搜索服务(Search Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01M5CB9TP3WGM9TV3DM31CFXAR",
+          "upstreamId": "01M5CB9TP3WGM9TV3DM31CFXAR",
+          "groupId": null,
+          "name": "搜索API服务(Search API Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "deepseek:01M5CB9TP3H6168N3WJ5AG5S4F",
+          "upstreamId": "01M5CB9TP3H6168N3WJ5AG5S4F",
+          "groupId": null,
+          "name": "抓取API服务(Fetch API Service)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "deepseek:7297926596703",
+          "providerId": "deepseek",
+          "upstreamId": "7297926596703",
+          "kind": "incident",
+          "title": "DeepSeek API 性能下降（DeepSeek API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-25T01:10:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-25T01:20:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-11-25T01:20:00.000Z",
+          "durationMinutes": 10,
+          "sourceUrl": "https://status.deepseek.com/incidents/7297926596703",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M884HZH87WR21Y02QY5ETC3J",
+              "phase": "identified",
+              "body": "已定位原因，正在实施修复。\n\nThe cause has been identified and a fix is being implemented.",
+              "timestamp": "2026-11-25T01:10:00.000Z"
+            },
+            {
+              "id": "01M884RRC17SWFBY8DT2ASRDZ6",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-11-25T01:20:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7252143961119",
+          "providerId": "deepseek",
+          "upstreamId": "7252143961119",
+          "kind": "incident",
+          "title": "DeepSeek 网页/Chat 性能下降（DeepSeek Web/Chat Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-14T16:53:58.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-14T17:16:04.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-11-14T17:16:04.000Z",
+          "durationMinutes": 22.1,
+          "sourceUrl": "https://status.deepseek.com/incidents/7252143961119",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M7DFSD2AXW2YECE5VR0MGDY2",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-11-14T16:53:58.000Z"
+            },
+            {
+              "id": "01M7DGY838JYYCGQKFSR8Q2T45",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-11-14T17:16:04.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7219383236287",
+          "providerId": "deepseek",
+          "upstreamId": "7219383236287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 部分中断（DeepSeek Web/API Partially Unavailable）",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A",
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4ND2PN6EFSJ4RDYDJYPMNK"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-07T07:11:38.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-07T07:56:50.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-11-07T07:56:50.000Z",
+          "durationMinutes": 45.2,
+          "sourceUrl": "https://status.deepseek.com/incidents/7219383236287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M6TDJFTVD6GDG74FEB8E2FWR",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-07T07:11:38.000Z"
+            },
+            {
+              "id": "01M6TG586MP8AMZKPGDW39K4DG",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-11-07T07:56:50.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7202016104287",
+          "providerId": "deepseek",
+          "upstreamId": "7202016104287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 部分中断（DeepSeek Web/API Partially Unavailable）",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-03T08:58:16.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-03T10:48:02.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-11-03T10:48:02.000Z",
+          "durationMinutes": 109.76666666666667,
+          "sourceUrl": "https://status.deepseek.com/incidents/7202016104287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M6GA2W2E5K3BV08PVERCG5GT",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-11-03T08:58:16.000Z"
+            },
+            {
+              "id": "01M6GA77TFACF3SA8AZXYAGFT6",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-11-03T09:00:40.000Z"
+            },
+            {
+              "id": "01M6GAJPA4RTM5RQRPZD6CYV55",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T09:06:55.000Z"
+            },
+            {
+              "id": "01M6GAY9W9PXG8GCSAHE9EKAVV",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T09:13:15.000Z"
+            },
+            {
+              "id": "01M6GC852PTVBMSF4CQDH04VEA",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T09:36:07.000Z"
+            },
+            {
+              "id": "01M6GDWV6JXTTQFWHAESRQTPTT",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:04:53.000Z"
+            },
+            {
+              "id": "01M6GEKGB1RA37RQSTYC60N5NM",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:17:16.000Z"
+            },
+            {
+              "id": "01M6GEW41AM05JSQ52P4RAS352",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:21:58.000Z"
+            },
+            {
+              "id": "01M6GF2S8R5GGRX87KRAM7BQ8S",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:25:37.000Z"
+            },
+            {
+              "id": "01M6GFZB42VYVGQ7N4B095EVWH",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-11-03T10:41:12.000Z"
+            },
+            {
+              "id": "01M6GGBV7JNESYCJ7E46D44T1E",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-11-03T10:48:02.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7170710513287",
+          "providerId": "deepseek",
+          "upstreamId": "7170710513287",
+          "kind": "incident",
+          "title": "DeepSeek API 性能下降（DeepSeek API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-27T07:07:39.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-27T07:21:54.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-27T07:21:54.000Z",
+          "durationMinutes": 14.25,
+          "sourceUrl": "https://status.deepseek.com/incidents/7170710513287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M5Y2Z9ABSVX9HGR73029AQEY",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-27T07:07:39.000Z"
+            },
+            {
+              "id": "01M5Y3SC7V78JHP5T65ZED7887",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-27T07:21:54.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7140152117287",
+          "providerId": "deepseek",
+          "upstreamId": "7140152117287",
+          "kind": "incident",
+          "title": "搜索服务异常（Search service error）",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PN6EFSJ4RDYDJYPMNK"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-20T09:20:15.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-20T09:28:53.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-20T09:28:53.000Z",
+          "durationMinutes": 8.633333333333333,
+          "sourceUrl": "https://status.deepseek.com/incidents/7140152117287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M5C9S25JTADMH9ETKG7A2FQB",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-20T09:20:15.000Z"
+            },
+            {
+              "id": "01M5CA8V87VVCQHHV8ETYV0PTM",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-20T09:28:53.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7116348214287",
+          "providerId": "deepseek",
+          "upstreamId": "7116348214287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 部分中断（DeepSeek Web/API Partially Unavailable）",
+          "severity": "major_outage",
+          "sourceSeverity": "major_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-15T00:11:35.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-15T05:04:04.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-15T05:04:04.000Z",
+          "durationMinutes": 292.48333333333335,
+          "sourceUrl": "https://status.deepseek.com/incidents/7116348214287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M4YECTQR0VQF3ZPE0E9XYKXA",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-15T00:11:35.000Z"
+            },
+            {
+              "id": "01M4YEJF2VV58CXT2F9MJY19YC",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-15T00:14:40.000Z"
+            },
+            {
+              "id": "01M4YHJ0J8GFRDEZNRJWPPSKP2",
+              "phase": "identified",
+              "body": "已定位原因，正在实施修复。\n\nThe cause has been identified and a fix is being implemented.",
+              "timestamp": "2026-10-15T01:06:51.000Z"
+            },
+            {
+              "id": "01M4YHNBN62A74FHTX45KBTBZT",
+              "phase": "identified",
+              "body": "已定位原因，正在实施修复。\n\nThe cause has been identified and a fix is being implemented.",
+              "timestamp": "2026-10-15T01:08:41.000Z"
+            },
+            {
+              "id": "01M4YYAACSGGP9T378APNX13YX",
+              "phase": "monitoring",
+              "body": "已实施修复，正在监控结果。\n\nA fix has been implemented and the results are being monitored.",
+              "timestamp": "2026-10-15T04:49:50.000Z"
+            },
+            {
+              "id": "01M4YZ4BJ7TYP0J8R4BEGCA1M0",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-15T05:04:04.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7104277696287",
+          "providerId": "deepseek",
+          "upstreamId": "7104277696287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 性能下降（DeepSeek Web/API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE",
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-12T06:42:23.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-12T06:57:54.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-12T06:57:54.000Z",
+          "durationMinutes": 15.516666666666667,
+          "sourceUrl": "https://status.deepseek.com/incidents/7104277696287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M4QDJ7WHX17FVA1E27NY2T5Q",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-12T06:42:23.000Z"
+            },
+            {
+              "id": "01M4QEEMRZ2J7CF4GFXDHGJ2FA",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-12T06:57:54.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7103794822287",
+          "providerId": "deepseek",
+          "upstreamId": "7103794822287",
+          "kind": "incident",
+          "title": "- DeepSeek 网页=部分中断（DeepSeek Web Partially Unavailable）",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-12T04:05:12.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-12T04:16:54.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-12T04:16:54.000Z",
+          "durationMinutes": 11.7,
+          "sourceUrl": "https://status.deepseek.com/incidents/7103794822287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M4Q4JDSHSW5D0NJ0ASF8NXZD",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-12T04:05:12.000Z"
+            },
+            {
+              "id": "01M4Q57V1470A42WT9XVKP327W",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-12T04:16:54.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7086651324287",
+          "providerId": "deepseek",
+          "upstreamId": "7086651324287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 性能下降（DeepSeek Web/API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-08T07:04:38.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-08T07:08:01.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-08T07:08:01.000Z",
+          "durationMinutes": 3.3833333333333333,
+          "sourceUrl": "https://status.deepseek.com/incidents/7086651324287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M4D583HBKVER5JQ1BA7B06YM",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-08T07:04:38.000Z"
+            },
+            {
+              "id": "01M4D5E9549Y8HDT4AJ1VT8YX1",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-08T07:08:01.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "deepseek:7058006316287",
+          "providerId": "deepseek",
+          "upstreamId": "7058006316287",
+          "kind": "incident",
+          "title": "DeepSeek 网页/API 性能下降（DeepSeek Web/API Degraded Performance）",
+          "severity": "degraded",
+          "sourceSeverity": "degraded",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "deepseek:01KY4MVS8BM3F9JSYWACGQVG7A",
+            "deepseek:01KY4ND2PNYT9FY5W4ZH80VGJ4",
+            "deepseek:01KY4MVS8BSBSVW6053QJ37RJE"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-01T19:40:05.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-01T21:34:35.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.767Z",
+          "updatedAt": "2026-10-01T21:34:35.000Z",
+          "durationMinutes": 114.5,
+          "sourceUrl": "https://status.deepseek.com/incidents/7058006316287",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M3WFPBBHKCVJ2YY4DDKGWQ1Q",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-01T19:40:05.000Z"
+            },
+            {
+              "id": "01M3WGR050JPSE9XVYWWFBHYHH",
+              "phase": "investigating",
+              "body": "正在排查问题，以定位原因。\n\nThe issue is being investigated to identify the cause.",
+              "timestamp": "2026-10-01T19:58:28.000Z"
+            },
+            {
+              "id": "01M3WP803EGFNY504KWRZWFFV4",
+              "phase": "resolved",
+              "body": "本次问题已解决，服务已恢复。\n\nThe incident has been resolved and service has been restored.",
+              "timestamp": "2026-10-01T21:34:35.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": "2026-11-28T17:40:56.334Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-26T16:44:28.746Z",
+        "nativeHistoryEarliestAt": "2026-10-01T19:40:05.000Z",
+        "limitation": "Native history covers only the supplied calendar/list window; feeds do not establish incident start times"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "ssr_components",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:13.767Z"
+          },
+          {
+            "name": "ssr_active_changes",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:13.767Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": [
+          "Atom feed supplied 19 entries; history from source-native calendar/list only"
+        ]
+      }
+    },
+    "collection": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.240Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.240Z",
+      "sourceUpdatedAt": "2026-11-28T17:40:56.334Z",
+      "durationMs": 1473.286588,
+      "consecutiveFailures": 0
+    }
+  }
+}

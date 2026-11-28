@@ -1,0 +1,4800 @@
+{
+  "schemaVersion": "1.0",
+  "provider": {
+    "providerId": "aws-cn",
+    "officialStatusUrl": "https://health.amazonaws.cn/health/status",
+    "result": {
+      "providerId": "aws-cn",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "aws-cn:certificatemanager-cn-north-1",
+          "upstreamId": "certificatemanager-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Certificate Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:certificatemanager-cn-northwest-1",
+          "upstreamId": "certificatemanager-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Certificate Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:apigateway-cn-north-1",
+          "upstreamId": "apigateway-cn-north-1",
+          "groupId": null,
+          "name": "Amazon API Gateway",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:apigateway-cn-northwest-1",
+          "upstreamId": "apigateway-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon API Gateway",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:backup-cn-north-1",
+          "upstreamId": "backup-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Backup",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:backup-cn-northwest-1",
+          "upstreamId": "backup-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Backup",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elemental-cn-northwest-1",
+          "upstreamId": "elemental-cn-northwest-1",
+          "groupId": null,
+          "name": "AWS Elemental",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:health",
+          "upstreamId": "health",
+          "groupId": null,
+          "name": "Amazon Health",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ipam-cn-north-1",
+          "upstreamId": "ipam-cn-north-1",
+          "groupId": null,
+          "name": "Amazon VPC IP Address Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ipam-cn-northwest-1",
+          "upstreamId": "ipam-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon VPC IP Address Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:networkfirewall-cn-north-1",
+          "upstreamId": "networkfirewall-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Network Firewall",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:networkfirewall-cn-northwest-1",
+          "upstreamId": "networkfirewall-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Network Firewall",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:aws-partner-central",
+          "upstreamId": "aws-partner-central",
+          "groupId": null,
+          "name": "Amazon Partner Central",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourceexplorer-cn-north-1",
+          "upstreamId": "resourceexplorer-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Resource Explorer",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourceexplorer-cn-northwest-1",
+          "upstreamId": "resourceexplorer-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Resource Explorer",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourcegroups-cn-north-1",
+          "upstreamId": "resourcegroups-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Resource Groups",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourcegroups-cn-northwest-1",
+          "upstreamId": "resourcegroups-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Resource Groups",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:s3rtc-cn-north-1",
+          "upstreamId": "s3rtc-cn-north-1",
+          "groupId": null,
+          "name": "Amazon S3 Replication Time Control",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:s3rtc-cn-northwest-1",
+          "upstreamId": "s3rtc-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon S3 Replication Time Control",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:account",
+          "upstreamId": "account",
+          "groupId": null,
+          "name": "Amazon Account Management",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:verifiedpermissions-cn-north-1",
+          "upstreamId": "verifiedpermissions-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Verified Permissions",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:verifiedpermissions-cn-northwest-1",
+          "upstreamId": "verifiedpermissions-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Verified Permissions",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appmesh-cn-north-1",
+          "upstreamId": "appmesh-cn-north-1",
+          "groupId": null,
+          "name": "Amazon App Mesh",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appmesh-cn-northwest-1",
+          "upstreamId": "appmesh-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon App Mesh",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appconfig-cn-north-1",
+          "upstreamId": "appconfig-cn-north-1",
+          "groupId": null,
+          "name": "Amazon AppConfig",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appconfig-cn-northwest-1",
+          "upstreamId": "appconfig-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon AppConfig",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appsync-cn-north-1",
+          "upstreamId": "appsync-cn-north-1",
+          "groupId": null,
+          "name": "Amazon AppSync",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appsync-cn-northwest-1",
+          "upstreamId": "appsync-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon AppSync",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:athena-cn-north-1",
+          "upstreamId": "athena-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Athena",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:athena-cn-northwest-1",
+          "upstreamId": "athena-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Athena",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:autoscaling-cn-north-1",
+          "upstreamId": "autoscaling-cn-north-1",
+          "groupId": null,
+          "name": "Auto Scaling",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:autoscaling-cn-northwest-1",
+          "upstreamId": "autoscaling-cn-northwest-1",
+          "groupId": null,
+          "name": "Auto Scaling",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:batch-cn-north-1",
+          "upstreamId": "batch-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Batch",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:batch-cn-northwest-1",
+          "upstreamId": "batch-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Batch",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:bedrock-agentcore-cn-north-1",
+          "upstreamId": "bedrock-agentcore-cn-north-1",
+          "groupId": null,
+          "name": "Bedrock AgentCore",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:bedrock-agentcore-cn-northwest-1",
+          "upstreamId": "bedrock-agentcore-cn-northwest-1",
+          "groupId": null,
+          "name": "Bedrock AgentCore",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:billingconsole",
+          "upstreamId": "billingconsole",
+          "groupId": null,
+          "name": "Amazon Billing Console",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicediscovery-cn-north-1",
+          "upstreamId": "servicediscovery-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Cloud Map",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicediscovery-cn-northwest-1",
+          "upstreamId": "servicediscovery-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Cloud Map",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudformation-cn-north-1",
+          "upstreamId": "cloudformation-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudFormation",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudformation-cn-northwest-1",
+          "upstreamId": "cloudformation-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudFormation",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudfront",
+          "upstreamId": "cloudfront",
+          "groupId": null,
+          "name": "Amazon CloudFront",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudtrail-cn-north-1",
+          "upstreamId": "cloudtrail-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudTrail",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudtrail-cn-northwest-1",
+          "upstreamId": "cloudtrail-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudTrail",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudwatch-cn-north-1",
+          "upstreamId": "cloudwatch-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudwatch-cn-northwest-1",
+          "upstreamId": "cloudwatch-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:applicationinsights-cn-north-1",
+          "upstreamId": "applicationinsights-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch Application Insights",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:applicationinsights-cn-northwest-1",
+          "upstreamId": "applicationinsights-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch Application Insights",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudwatchsynthetics-cn-north-1",
+          "upstreamId": "cloudwatchsynthetics-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch Synthetics",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudwatchsynthetics-cn-northwest-1",
+          "upstreamId": "cloudwatchsynthetics-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch Synthetics",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codebuild-cn-north-1",
+          "upstreamId": "codebuild-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CodeBuild",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codebuild-cn-northwest-1",
+          "upstreamId": "codebuild-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CodeBuild",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codecommit-cn-north-1",
+          "upstreamId": "codecommit-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CodeCommit",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codecommit-cn-northwest-1",
+          "upstreamId": "codecommit-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CodeCommit",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codedeploy-cn-north-1",
+          "upstreamId": "codedeploy-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CodeDeploy",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codedeploy-cn-northwest-1",
+          "upstreamId": "codedeploy-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CodeDeploy",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codepipeline-cn-north-1",
+          "upstreamId": "codepipeline-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CodePipeline",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codepipeline-cn-northwest-1",
+          "upstreamId": "codepipeline-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CodePipeline",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cognito-cn-north-1",
+          "upstreamId": "cognito-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Cognito",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:computeoptimizer-cn-north-1",
+          "upstreamId": "computeoptimizer-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Compute Optimizer",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:computeoptimizer-cn-northwest-1",
+          "upstreamId": "computeoptimizer-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Compute Optimizer",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:config-cn-north-1",
+          "upstreamId": "config-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Config",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:config-cn-northwest-1",
+          "upstreamId": "config-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Config",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dlm-cn-north-1",
+          "upstreamId": "dlm-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Data Lifecycle Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dlm-cn-northwest-1",
+          "upstreamId": "dlm-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Data Lifecycle Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:datasync-cn-north-1",
+          "upstreamId": "datasync-cn-north-1",
+          "groupId": null,
+          "name": "Amazon DataSync",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:datasync-cn-northwest-1",
+          "upstreamId": "datasync-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon DataSync",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:aws-glue-cn-north-1",
+          "upstreamId": "aws-glue-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Glue DataBrew",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:aws-glue-cn-northwest-1",
+          "upstreamId": "aws-glue-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Glue DataBrew",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dms-cn-north-1",
+          "upstreamId": "dms-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Database Migration Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dms-cn-northwest-1",
+          "upstreamId": "dms-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Database Migration Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:directconnect-cn-north-1",
+          "upstreamId": "directconnect-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Direct Connect",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:directconnect-cn-northwest-1",
+          "upstreamId": "directconnect-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Direct Connect",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:directoryservice-cn-north-1",
+          "upstreamId": "directoryservice-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Directory Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:directoryservice-cn-northwest-1",
+          "upstreamId": "directoryservice-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Directory Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:docdb-cn-north-1",
+          "upstreamId": "docdb-cn-north-1",
+          "groupId": null,
+          "name": "Amazon DocumentDB",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:docdb-cn-northwest-1",
+          "upstreamId": "docdb-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon DocumentDB",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dynamodb-cn-north-1",
+          "upstreamId": "dynamodb-cn-north-1",
+          "groupId": null,
+          "name": "Amazon DynamoDB",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dynamodb-cn-northwest-1",
+          "upstreamId": "dynamodb-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon DynamoDB",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2-cn-north-1",
+          "upstreamId": "ec2-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Compute Cloud",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2-cn-northwest-1",
+          "upstreamId": "ec2-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Compute Cloud",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:managedssh-cn-north-1",
+          "upstreamId": "managedssh-cn-north-1",
+          "groupId": null,
+          "name": "Amazon EC2 Instance Connect",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:managedssh-cn-northwest-1",
+          "upstreamId": "managedssh-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon EC2 Instance Connect",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2serialconsole-cn-north-1",
+          "upstreamId": "ec2serialconsole-cn-north-1",
+          "groupId": null,
+          "name": "EC2 Serial Console",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2serialconsole-cn-northwest-1",
+          "upstreamId": "ec2serialconsole-cn-northwest-1",
+          "groupId": null,
+          "name": "EC2 Serial Console",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ecr-cn-north-1",
+          "upstreamId": "ecr-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Container Registry",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ecr-cn-northwest-1",
+          "upstreamId": "ecr-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Container Registry",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticfilesystem-cn-north-1",
+          "upstreamId": "elasticfilesystem-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic File System",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticfilesystem-cn-northwest-1",
+          "upstreamId": "elasticfilesystem-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic File System",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elb-cn-north-1",
+          "upstreamId": "elb-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Load Balancing",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elb-cn-northwest-1",
+          "upstreamId": "elb-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Load Balancing",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:emr-cn-north-1",
+          "upstreamId": "emr-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic MapReduce",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:emr-cn-northwest-1",
+          "upstreamId": "emr-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic MapReduce",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:emrserverless-cn-north-1",
+          "upstreamId": "emrserverless-cn-north-1",
+          "groupId": null,
+          "name": "Amazon EMR Serverless",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:emrserverless-cn-northwest-1",
+          "upstreamId": "emrserverless-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon EMR Serverless",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticache-cn-north-1",
+          "upstreamId": "elasticache-cn-north-1",
+          "groupId": null,
+          "name": "Amazon ElastiCache",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticache-cn-northwest-1",
+          "upstreamId": "elasticache-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon ElastiCache",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticbeanstalk-cn-north-1",
+          "upstreamId": "elasticbeanstalk-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Beanstalk",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticbeanstalk-cn-northwest-1",
+          "upstreamId": "elasticbeanstalk-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Beanstalk",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ecs-cn-north-1",
+          "upstreamId": "ecs-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Container Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ecs-cn-northwest-1",
+          "upstreamId": "ecs-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Container Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:eks-cn-north-1",
+          "upstreamId": "eks-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Kubernetes Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:eks-cn-northwest-1",
+          "upstreamId": "eks-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Kubernetes Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:events-cn-north-1",
+          "upstreamId": "events-cn-north-1",
+          "groupId": null,
+          "name": "Amazon EventBridge",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:events-cn-northwest-1",
+          "upstreamId": "events-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon EventBridge",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:scheduler-cn-north-1",
+          "upstreamId": "scheduler-cn-north-1",
+          "groupId": null,
+          "name": "Amazon EventBridge Scheduler",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:scheduler-cn-northwest-1",
+          "upstreamId": "scheduler-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon EventBridge Scheduler",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fsx-cn-north-1",
+          "upstreamId": "fsx-cn-north-1",
+          "groupId": null,
+          "name": "Amazon FSx",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fsx-cn-northwest-1",
+          "upstreamId": "fsx-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon FSx",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fargate-cn-north-1",
+          "upstreamId": "fargate-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Fargate",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fargate-cn-northwest-1",
+          "upstreamId": "fargate-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Fargate",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fms-cn-north-1",
+          "upstreamId": "fms-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Firewall Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fms-cn-northwest-1",
+          "upstreamId": "fms-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Firewall Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:freertos-cn-north-1",
+          "upstreamId": "freertos-cn-north-1",
+          "groupId": null,
+          "name": "Amazon FreeRTOS",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:freertos-cn-northwest-1",
+          "upstreamId": "freertos-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon FreeRTOS",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:gamelift-cn-north-1",
+          "upstreamId": "gamelift-cn-north-1",
+          "groupId": null,
+          "name": "Amazon GameLift Servers",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:gamelift-cn-northwest-1",
+          "upstreamId": "gamelift-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon GameLift Servers",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:glacier-cn-north-1",
+          "upstreamId": "glacier-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Glacier",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:glacier-cn-northwest-1",
+          "upstreamId": "glacier-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Glacier",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:glue-cn-north-1",
+          "upstreamId": "glue-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Glue",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:glue-cn-northwest-1",
+          "upstreamId": "glue-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Glue",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsgreengrass-cn-north-1",
+          "upstreamId": "awsgreengrass-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT Greengrass",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:guardduty-cn-north-1",
+          "upstreamId": "guardduty-cn-north-1",
+          "groupId": null,
+          "name": "Amazon GuardDuty",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:guardduty-cn-northwest-1",
+          "upstreamId": "guardduty-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon GuardDuty",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iam",
+          "upstreamId": "iam",
+          "groupId": null,
+          "name": "Amazon Identity and Access Management",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iamidentitycenter-cn-north-1",
+          "upstreamId": "iamidentitycenter-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IAM Identity Center",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iamidentitycenter-cn-northwest-1",
+          "upstreamId": "iamidentitycenter-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon IAM Identity Center",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iamrolesanywhere-cn-north-1",
+          "upstreamId": "iamrolesanywhere-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Identity and Access Management Roles Anywhere",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iamrolesanywhere-cn-northwest-1",
+          "upstreamId": "iamrolesanywhere-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Identity and Access Management Roles Anywhere",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:imagebuilder-cn-north-1",
+          "upstreamId": "imagebuilder-cn-north-1",
+          "groupId": null,
+          "name": "EC2 Image Builder",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:imagebuilder-cn-northwest-1",
+          "upstreamId": "imagebuilder-cn-northwest-1",
+          "groupId": null,
+          "name": "EC2 Image Builder",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:import-export",
+          "upstreamId": "import-export",
+          "groupId": null,
+          "name": "Amazon Import/Export",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:inspector-cn-north-1",
+          "upstreamId": "inspector-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Inspector",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:inspector-cn-northwest-1",
+          "upstreamId": "inspector-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Inspector",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:internetconnectivity-cn-north-1",
+          "upstreamId": "internetconnectivity-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Internet Connectivity",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:internetconnectivity-cn-northwest-1",
+          "upstreamId": "internetconnectivity-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Internet Connectivity",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsiot-cn-north-1",
+          "upstreamId": "awsiot-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT Core",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsiot-cn-northwest-1",
+          "upstreamId": "awsiot-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon IoT Core",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iotdevicedefender-cn-north-1",
+          "upstreamId": "iotdevicedefender-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT Device Defender",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iotdevicedefender-cn-northwest-1",
+          "upstreamId": "iotdevicedefender-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon IoT Device Defender",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsiotdevicemanagement-cn-north-1",
+          "upstreamId": "awsiotdevicemanagement-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT Device Management",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsiotdevicemanagement-cn-northwest-1",
+          "upstreamId": "awsiotdevicemanagement-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon IoT Device Management",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iotsitewise-cn-north-1",
+          "upstreamId": "iotsitewise-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT SiteWise",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iottwinmaker-cn-north-1",
+          "upstreamId": "iottwinmaker-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT TwinMaker",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kms-cn-north-1",
+          "upstreamId": "kms-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Key Management Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kms-cn-northwest-1",
+          "upstreamId": "kms-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Key Management Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesis-cn-north-1",
+          "upstreamId": "kinesis-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Kinesis Data Streams",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesis-cn-northwest-1",
+          "upstreamId": "kinesis-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Kinesis Data Streams",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesisanalytics-cn-north-1",
+          "upstreamId": "kinesisanalytics-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Managed Service for Apache Flink",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesisanalytics-cn-northwest-1",
+          "upstreamId": "kinesisanalytics-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Managed Service for Apache Flink",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:firehose-cn-north-1",
+          "upstreamId": "firehose-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Data Firehose",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:firehose-cn-northwest-1",
+          "upstreamId": "firehose-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Data Firehose",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesisvideo-cn-north-1",
+          "upstreamId": "kinesisvideo-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Kinesis Video Streams",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:lakeformation-cn-north-1",
+          "upstreamId": "lakeformation-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Lake Formation",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:lakeformation-cn-northwest-1",
+          "upstreamId": "lakeformation-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Lake Formation",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:lambda-cn-north-1",
+          "upstreamId": "lambda-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Lambda",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:lambda-cn-northwest-1",
+          "upstreamId": "lambda-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Lambda",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appwizard-cn-north-1",
+          "upstreamId": "appwizard-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Launch Wizard",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appwizard-cn-northwest-1",
+          "upstreamId": "appwizard-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Launch Wizard",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:licensemanager-cn-north-1",
+          "upstreamId": "licensemanager-cn-north-1",
+          "groupId": null,
+          "name": "Amazon License Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:licensemanager-cn-northwest-1",
+          "upstreamId": "licensemanager-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon License Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:mq-cn-north-1",
+          "upstreamId": "mq-cn-north-1",
+          "groupId": null,
+          "name": "Amazon MQ",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:mq-cn-northwest-1",
+          "upstreamId": "mq-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon MQ",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kafka-cn-north-1",
+          "upstreamId": "kafka-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Managed Streaming for Apache Kafka",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kafka-cn-northwest-1",
+          "upstreamId": "kafka-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Managed Streaming for Apache Kafka",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:airflow-cn-north-1",
+          "upstreamId": "airflow-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Managed Workflows for Apache Airflow",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:airflow-cn-northwest-1",
+          "upstreamId": "airflow-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Managed Workflows for Apache Airflow",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:management-console",
+          "upstreamId": "management-console",
+          "groupId": null,
+          "name": "Amazon Management Console",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:marketplace",
+          "upstreamId": "marketplace",
+          "groupId": null,
+          "name": "Amazon Marketplace",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:memorydb-cn-north-1",
+          "upstreamId": "memorydb-cn-north-1",
+          "groupId": null,
+          "name": "Amazon MemoryDB for Redis",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:memorydb-cn-northwest-1",
+          "upstreamId": "memorydb-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon MemoryDB for Redis",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:multipleservices-cn-north-1",
+          "upstreamId": "multipleservices-cn-north-1",
+          "groupId": null,
+          "name": "Multiple services",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:multipleservices-cn-northwest-1",
+          "upstreamId": "multipleservices-cn-northwest-1",
+          "groupId": null,
+          "name": "Multiple services",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:natgateway-cn-north-1",
+          "upstreamId": "natgateway-cn-north-1",
+          "groupId": null,
+          "name": "Amazon NAT Gateway",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:natgateway-cn-northwest-1",
+          "upstreamId": "natgateway-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon NAT Gateway",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:neptune-db-cn-north-1",
+          "upstreamId": "neptune-db-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Neptune",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:neptune-db-cn-northwest-1",
+          "upstreamId": "neptune-db-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Neptune",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticsearch-cn-north-1",
+          "upstreamId": "elasticsearch-cn-north-1",
+          "groupId": null,
+          "name": "Amazon OpenSearch Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticsearch-cn-northwest-1",
+          "upstreamId": "elasticsearch-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon OpenSearch Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:organizations",
+          "upstreamId": "organizations",
+          "groupId": null,
+          "name": "Amazon Organizations",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:personalize-cn-north-1",
+          "upstreamId": "personalize-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Personalize",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:polly-cn-northwest-1",
+          "upstreamId": "polly-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Polly",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:apipricing-cn-northwest-1",
+          "upstreamId": "apipricing-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Price List Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:acm-pca-cn-north-1",
+          "upstreamId": "acm-pca-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Private Certificate Authority",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:acm-pca-cn-northwest-1",
+          "upstreamId": "acm-pca-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Private Certificate Authority",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:quicksight-cn-north-1",
+          "upstreamId": "quicksight-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Quick",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:rds-cn-north-1",
+          "upstreamId": "rds-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Relational Database Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:rds-cn-northwest-1",
+          "upstreamId": "rds-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Relational Database Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:redshift-cn-north-1",
+          "upstreamId": "redshift-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Redshift",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:redshift-cn-northwest-1",
+          "upstreamId": "redshift-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Redshift",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ram-cn-north-1",
+          "upstreamId": "ram-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Resource Access Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ram-cn-northwest-1",
+          "upstreamId": "ram-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Resource Access Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourcegroupstaggingapi-cn-north-1",
+          "upstreamId": "resourcegroupstaggingapi-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Resource Groups Tagging API",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourcegroupstaggingapi-cn-northwest-1",
+          "upstreamId": "resourcegroupstaggingapi-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Resource Groups Tagging API",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53",
+          "upstreamId": "route53",
+          "groupId": null,
+          "name": "Amazon Route 53",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53privatedns-cn-north-1",
+          "upstreamId": "route53privatedns-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Route 53 Private DNS",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53privatedns-cn-northwest-1",
+          "upstreamId": "route53privatedns-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Route 53 Private DNS",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53resolver-cn-north-1",
+          "upstreamId": "route53resolver-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Route 53 Resolver",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53resolver-cn-northwest-1",
+          "upstreamId": "route53resolver-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Route 53 Resolver",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:s3-cn-north-1",
+          "upstreamId": "s3-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Simple Storage Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:s3-cn-northwest-1",
+          "upstreamId": "s3-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Simple Storage Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sns-cn-north-1",
+          "upstreamId": "sns-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Simple Notification Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sns-cn-northwest-1",
+          "upstreamId": "sns-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Simple Notification Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sqs-cn-north-1",
+          "upstreamId": "sqs-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Simple Queue Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sqs-cn-northwest-1",
+          "upstreamId": "sqs-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Simple Queue Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2systemsmanager-cn-north-1",
+          "upstreamId": "ec2systemsmanager-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Systems Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2systemsmanager-cn-northwest-1",
+          "upstreamId": "ec2systemsmanager-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Systems Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:swf-cn-north-1",
+          "upstreamId": "swf-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Simple Workflow Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:swf-cn-northwest-1",
+          "upstreamId": "swf-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Simple Workflow Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sagemaker-cn-north-1",
+          "upstreamId": "sagemaker-cn-north-1",
+          "groupId": null,
+          "name": "Amazon SageMaker",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sagemaker-cn-northwest-1",
+          "upstreamId": "sagemaker-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon SageMaker",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:secretsmanager-cn-north-1",
+          "upstreamId": "secretsmanager-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Secrets Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:secretsmanager-cn-northwest-1",
+          "upstreamId": "secretsmanager-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Secrets Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:securityhub-cn-north-1",
+          "upstreamId": "securityhub-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Security Hub",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:securityhub-cn-northwest-1",
+          "upstreamId": "securityhub-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Security Hub",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sts-cn-north-1",
+          "upstreamId": "sts-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Security Token Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sts-cn-northwest-1",
+          "upstreamId": "sts-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Security Token Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:serverlessrepo-cn-north-1",
+          "upstreamId": "serverlessrepo-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Serverless Application Repository",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:serverlessrepo-cn-northwest-1",
+          "upstreamId": "serverlessrepo-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Serverless Application Repository",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicecatalog-cn-north-1",
+          "upstreamId": "servicecatalog-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Service Catalog",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicecatalog-cn-northwest-1",
+          "upstreamId": "servicecatalog-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Service Catalog",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicequotas-cn-north-1",
+          "upstreamId": "servicequotas-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Service Quotas",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicequotas-cn-northwest-1",
+          "upstreamId": "servicequotas-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Service Quotas",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:signin-cn-north-1",
+          "upstreamId": "signin-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Sign-In",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:signin-cn-northwest-1",
+          "upstreamId": "signin-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Sign-In",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:signup",
+          "upstreamId": "signup",
+          "groupId": null,
+          "name": "Amazon Sign-Up",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:state-cn-north-1",
+          "upstreamId": "state-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Step Functions",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:state-cn-northwest-1",
+          "upstreamId": "state-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Step Functions",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:storagegateway-cn-north-1",
+          "upstreamId": "storagegateway-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Storage Gateway",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:storagegateway-cn-northwest-1",
+          "upstreamId": "storagegateway-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Storage Gateway",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:supportcenter",
+          "upstreamId": "supportcenter",
+          "groupId": null,
+          "name": "Amazon Support Center",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:supportapi-cn-north-1",
+          "upstreamId": "supportapi-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Support API",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:supportapi-cn-northwest-1",
+          "upstreamId": "supportapi-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Support API",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:trafficmirroring-cn-north-1",
+          "upstreamId": "trafficmirroring-cn-north-1",
+          "groupId": null,
+          "name": "Traffic Mirroring",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:trafficmirroring-cn-northwest-1",
+          "upstreamId": "trafficmirroring-cn-northwest-1",
+          "groupId": null,
+          "name": "Traffic Mirroring",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transcribe-cn-north-1",
+          "upstreamId": "transcribe-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Transcribe",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transcribe-cn-northwest-1",
+          "upstreamId": "transcribe-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Transcribe",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transfer-cn-north-1",
+          "upstreamId": "transfer-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Transfer Family",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transfer-cn-northwest-1",
+          "upstreamId": "transfer-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Transfer Family",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transitgateway-cn-north-1",
+          "upstreamId": "transitgateway-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Transit Gateway",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transitgateway-cn-northwest-1",
+          "upstreamId": "transitgateway-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Transit Gateway",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:trustedadvisor",
+          "upstreamId": "trustedadvisor",
+          "groupId": null,
+          "name": "Amazon Trusted Advisor",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:vmimportexport-cn-north-1",
+          "upstreamId": "vmimportexport-cn-north-1",
+          "groupId": null,
+          "name": "VM Import/Export",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:vmimportexport-cn-northwest-1",
+          "upstreamId": "vmimportexport-cn-northwest-1",
+          "groupId": null,
+          "name": "VM Import/Export",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:vpc-cn-north-1",
+          "upstreamId": "vpc-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Virtual Private Cloud",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:vpc-cn-northwest-1",
+          "upstreamId": "vpc-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Virtual Private Cloud",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:privatelink-cn-north-1",
+          "upstreamId": "privatelink-cn-north-1",
+          "groupId": null,
+          "name": "Amazon VPCE PrivateLink",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:privatelink-cn-northwest-1",
+          "upstreamId": "privatelink-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon VPCE PrivateLink",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awswaf-cn-north-1",
+          "upstreamId": "awswaf-cn-north-1",
+          "groupId": null,
+          "name": "Amazon WAF",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awswaf-cn-northwest-1",
+          "upstreamId": "awswaf-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon WAF",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:workspaces-cn-northwest-1",
+          "upstreamId": "workspaces-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon WorkSpaces",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:xray-cn-north-1",
+          "upstreamId": "xray-cn-north-1",
+          "groupId": null,
+          "name": "Amazon X-Ray",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:xray-cn-northwest-1",
+          "upstreamId": "xray-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon X-Ray",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "aws-cn:MULTIPLE_SERVICES:cn-north-1:1795019767000:AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE",
+          "providerId": "aws-cn",
+          "upstreamId": "MULTIPLE_SERVICES:cn-north-1:1795019767000:AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE",
+          "kind": "incident",
+          "title": "Elevated API Error Rates and Latencies",
+          "severity": null,
+          "sourceSeverity": "AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "aws-cn:multipleservices-cn-north-1"
+          ],
+          "affectedRegions": [
+            "cn-north-1"
+          ],
+          "startedAt": "2026-11-18T16:36:07.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-19T01:41:28.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:16.110Z",
+          "updatedAt": "2026-11-19T01:41:28.239Z",
+          "durationMinutes": 545.35,
+          "sourceUrl": "https://health.amazonaws.cn/health/status",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:0",
+              "phase": "unknown",
+              "body": "我们发现 CN-NORTH-1 区域的 API 错误率和延迟有所升高。| We are experiencing elevated API error rates and latencies in the CN-NORTH-1 Region.",
+              "timestamp": "2026-11-18T16:36:07.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:1",
+              "phase": "unknown",
+              "body": "[[The following AWS services have been affected by this event:]]\nService: apigateway Status: Informational\nService: appconfig Status: Informational\nService: appmesh Status: Informational\nService: appsync Status: Informational\nService: athena Status: Informational\nService: awsiot Status: Informational\nService: awsiotdevicemanagement Status: Informational\nService: batch Status: Informational\nService: bedrock-agentcore Status: Informational\nService: cloudformation Status: Informational\nService: cloudtrail Status: Informational\nService: cloudwatch Status: Informational\nService: codebuild Status: Informational\nService: codedeploy Status: Informational\nService: codepipeline Status: Informational\nService: dynamodb Status: Informational\nService: ec2 Status: Informational\nService: ec2systemsmanager Status: Informational\nService: ecr Status: Informational\nService: ecs Status: Informational\nService: eks Status: Informational\nService: elasticbeanstalk Status: Informational\nService: elasticfilesystem Status: Informational\nService: elb Status: Informational\nService: emr Status: Informational\nService: events Status: Informational\nService: fargate Status: Informational\nService: fsx Status: Informational\nService: glue Status: Informational\nService: iamidentitycenter Status: Informational\nService: imagebuilder Status: Informational\nService: ipam Status: Informational\nService: kafka Status: Informational\nService: kinesisanalytics Status: Informational\nService: kinesisvideo Status: Informational\nService: kms Status: Informational\nService: lakeformation Status: Informational\nService: lambda Status: Informational\nService: licensemanager Status: Informational\nService: management-console Status: Informational\nService: mq Status: Informational\nService: networkfirewall Status: Informational\nService: privatelink Status: Informational\nService: rds Status: Informational\nService: redshift Status: Informational\nService: resourcegroups Status: Informational\nService: route53resolver Status: Informational\nService: sagemaker Status: Informational\nService: scheduler Status: Informational\nService: secretsmanager Status: Informational\nService: servicediscovery Status: Informational\nService: sns Status: Informational\nService: sqs Status: Informational\nService: state Status: Informational\nService: storagegateway Status: Informational\nService: sts Status: Informational\nService: swf Status: Informational\nService: transcribe Status: Informational\nService: transfer Status: Informational\nService: transitgateway Status: Informational\nService: vmimportexport Status: Informational",
+              "timestamp": "2026-11-18T16:36:07.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:2",
+              "phase": "unknown",
+              "body": "我们确认 CN-NORTH-1 区域的多项 AWS 服务出现严重错误率问题。在此期间，客户调用 AWS API 时会遇到延迟增加和 5XX 错误。客户在使用 AWS 服务管理控制台时也可能遇到错误，部分 AWS 终端节点也可能出现连接问题。工程师已被自动调动并立即开始调查。对于部分服务（例如 EC2），影响主要集中在 cnn1-az1。对于 EC2，我们建议客户尝试在其他可用区中启动实例。我们正在积极核实对根本原因的判断，同时努力减轻对 AWS 服务的影响。我们将在北京时间11月19日早上 2:00 提供下一次更新；如有更多信息，我们会提前发布。| We can confirm significant error rates for multiple AWS Services in the CN-NORTH-1 Region. During this time, customers will experience increased latencies and 5XX errors when calling AWS APIs. Customers may also experiencing errors when interacting with AWS Service Management Consoles, and connectivity issues to some AWS endpoints. Engineers were automatically engaged and immediately began investigating. For some services, such as EC2, impact is primarily limited to cnn1-az1. For EC2, we recommend customers attempt to launch in other Availability Zones. We are actively working on both verifying our understanding of the root cause, and mitigating impact to AWS Services. We will provide another update at 10:00 AM, or sooner if we have additional information to share.",
+              "timestamp": "2026-11-18T17:05:14.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:3",
+              "phase": "unknown",
+              "body": "",
+              "timestamp": "2026-11-18T17:18:01.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:4",
+              "phase": "unknown",
+              "body": "我们已查明导致 CN-NORTH-1 区域多项 AWS 服务出现严重错误率问题的根本原因。我们已观察到初步的恢复迹象，并将继续监控，努力实现全面恢复。工程师已被自动调动，正在继续努力全面缓解所有问题。现有资源（例如 EC2 实例和 RDS 数据库实例）未受此问题影响。此次影响是由一个负载均衡器的问题引起的，该负载均衡器负责将流量路由到 SQS 和 SNS，并为 AWS 内部服务提供 DNS 支持。此问题也影响到了其他 AWS 服务，受影响的服务列表见下文。我们建议客户尽可能重试失败的 API 请求。我们将在北京时间11月19日早上 2:15 提供下一次更新；如有更多信息，我们会提前发布。| We have identified the root cause resulting in significant error rates for multiple AWS Services in the CN-NORTH-1 Region. We are seeing early signs of recovery and continue to monitor and work toward full recovery. Engineers were automatically engaged, and continue to work on fully mitigating all issues. Existing resources, such as EC2 Instances and RDS DB Instances are unaffected by this issue. This impact is the result of an issue with a load balancer that is responsible for routing traffic to SQS, SNS, and for DNS supporting internal AWS services. This impact is also affecting other AWS Services. A list of impacted services is available below. We recommend customers retry failed API requests wherever possible. We will provide another update at 10:15 AM, or sooner if we have additional information to share.",
+              "timestamp": "2026-11-18T17:36:54.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:5",
+              "phase": "resolved",
+              "body": "[[The following AWS services have been affected by this event:]]\nService: apigateway Status: Operating normally\nService: appconfig Status: Operating normally\nService: appmesh Status: Operating normally\nService: appsync Status: Operating normally\nService: athena Status: Operating normally\nService: awsiot Status: Operating normally\nService: awsiotdevicemanagement Status: Operating normally\nService: batch Status: Operating normally\nService: bedrock-agentcore Status: Operating normally\nService: cloudformation Status: Operating normally\nService: cloudtrail Status: Operating normally\nService: cloudwatch Status: Operating normally\nService: codebuild Status: Operating normally\nService: codedeploy Status: Operating normally\nService: codepipeline Status: Operating normally\nService: dynamodb Status: Operating normally\nService: ec2 Status: Operating normally\nService: ec2systemsmanager Status: Operating normally\nService: ecr Status: Operating normally\nService: ecs Status: Operating normally\nService: eks Status: Operating normally\nService: elasticbeanstalk Status: Operating normally\nService: elasticfilesystem Status: Operating normally\nService: elb Status: Operating normally\nService: emr Status: Operating normally\nService: events Status: Operating normally\nService: fargate Status: Operating normally\nService: fsx Status: Operating normally\nService: glue Status: Operating normally\nService: iamidentitycenter Status: Operating normally\nService: imagebuilder Status: Operating normally\nService: ipam Status: Operating normally\nService: kafka Status: Operating normally\nService: kinesisanalytics Status: Operating normally\nService: kinesisvideo Status: Operating normally\nService: kms Status: Operating normally\nService: lakeformation Status: Operating normally\nService: lambda Status: Operating normally\nService: licensemanager Status: Operating normally\nService: management-console Status: Operating normally\nService: mq Status: Operating normally\nService: networkfirewall Status: Operating normally\nService: privatelink Status: Operating normally\nService: rds Status: Operating normally\nService: redshift Status: Operating normally\nService: resourcegroups Status: Operating normally\nService: route53resolver Status: Operating normally\nService: sagemaker Status: Operating normally\nService: scheduler Status: Operating normally\nService: secretsmanager Status: Operating normally\nService: servicediscovery Status: Operating normally\nService: sns Status: Operating normally\nService: sqs Status: Operating normally\nService: state Status: Operating normally\nService: storagegateway Status: Operating normally\nService: sts Status: Operating normally\nService: swf Status: Operating normally\nService: transcribe Status: Operating normally\nService: transfer Status: Operating normally\nService: transitgateway Status: Operating normally\nService: vmimportexport Status: Operating normally",
+              "timestamp": "2026-11-18T18:00:37.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:6",
+              "phase": "resolved",
+              "body": "北京时间 2026 年 11 月 19 日 00:15 至 01:36 期间，CN-NORTH-1 区域的多项 AWS 服务出现了严重的错误率问题和 DNS 解析超时。工程师已立即被自动调动，开始查明根本原因并减轻影响。在此期间，客户向 AWS 服务终端节点发出 API 请求时，延迟和错误率均有所增加。现有资源（例如 EC2 实例）未受此问题影响。北京时间 01:03，我们查明根本原因是一个负载均衡器出现问题，该负载均衡器负责将流量路由到 SQS 和 SNS，并为 AWS 内部服务提供 DNS 支持。北京时间 01:15，我们开始观察到初步的恢复迹象，并持续进行缓解工作。北京时间 01:36，影响已完全消除。我们建议客户重试失败的请求。我们预计此问题不会再次发生。该问题已解决，AWS 服务现已恢复正常运行。| Between 8:15 AM and 9:36 AM PST, we experienced significant error rates and DNS resolution timeouts for multiple AWS Services in the CN-NORTH-1 Region. Engineers were immediately and automatically engaged, and began working on both identifying the root cause and mitigating impact. During this time customers experienced increased latencies and error rates for API requests to AWS Service endpoints. Existing resources, such as EC2 instances were unaffected by this issue. At 9:03 AM, we identified the root cause as an issue with a load balancer responsible for routing traffic to SQS, SNS, and DNS that supports internal AWS services. By 9:15 AM, we began observing early signs of recovery, and continued mitigation efforts until impact was fully resolved at 9:36 AM. We recommend customers retry failed requests. We do not expect this issue to reoccur. The issue has been resolved and AWS Services are operating normally.",
+              "timestamp": "2026-11-18T18:00:37.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": null,
+      "coverage": {
+        "basis": "official_public",
+        "regions": [
+          "cn-north-1",
+          "cn-northwest-1"
+        ],
+        "componentScope": "events_only",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-26T16:44:28.903Z",
+        "nativeHistoryEarliestAt": "2026-11-18T16:36:07.000Z",
+        "limitation": "AWS China public events; service catalog verifies China-region scope, finite history not exhaustive"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "currentevents_shape",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:16.110Z"
+          },
+          {
+            "name": "services_region_catalog",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:16.110Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": [
+          "Only cn-north-1/MULTIPLE_SERVICES event form sampled; unrecognized shapes fail closed"
+        ]
+      }
+    },
+    "lastTrustedResult": {
+      "providerId": "aws-cn",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "aws-cn:certificatemanager-cn-north-1",
+          "upstreamId": "certificatemanager-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Certificate Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:certificatemanager-cn-northwest-1",
+          "upstreamId": "certificatemanager-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Certificate Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:apigateway-cn-north-1",
+          "upstreamId": "apigateway-cn-north-1",
+          "groupId": null,
+          "name": "Amazon API Gateway",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:apigateway-cn-northwest-1",
+          "upstreamId": "apigateway-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon API Gateway",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:backup-cn-north-1",
+          "upstreamId": "backup-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Backup",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:backup-cn-northwest-1",
+          "upstreamId": "backup-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Backup",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elemental-cn-northwest-1",
+          "upstreamId": "elemental-cn-northwest-1",
+          "groupId": null,
+          "name": "AWS Elemental",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:health",
+          "upstreamId": "health",
+          "groupId": null,
+          "name": "Amazon Health",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ipam-cn-north-1",
+          "upstreamId": "ipam-cn-north-1",
+          "groupId": null,
+          "name": "Amazon VPC IP Address Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ipam-cn-northwest-1",
+          "upstreamId": "ipam-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon VPC IP Address Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:networkfirewall-cn-north-1",
+          "upstreamId": "networkfirewall-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Network Firewall",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:networkfirewall-cn-northwest-1",
+          "upstreamId": "networkfirewall-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Network Firewall",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:aws-partner-central",
+          "upstreamId": "aws-partner-central",
+          "groupId": null,
+          "name": "Amazon Partner Central",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourceexplorer-cn-north-1",
+          "upstreamId": "resourceexplorer-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Resource Explorer",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourceexplorer-cn-northwest-1",
+          "upstreamId": "resourceexplorer-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Resource Explorer",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourcegroups-cn-north-1",
+          "upstreamId": "resourcegroups-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Resource Groups",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourcegroups-cn-northwest-1",
+          "upstreamId": "resourcegroups-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Resource Groups",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:s3rtc-cn-north-1",
+          "upstreamId": "s3rtc-cn-north-1",
+          "groupId": null,
+          "name": "Amazon S3 Replication Time Control",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:s3rtc-cn-northwest-1",
+          "upstreamId": "s3rtc-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon S3 Replication Time Control",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:account",
+          "upstreamId": "account",
+          "groupId": null,
+          "name": "Amazon Account Management",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:verifiedpermissions-cn-north-1",
+          "upstreamId": "verifiedpermissions-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Verified Permissions",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:verifiedpermissions-cn-northwest-1",
+          "upstreamId": "verifiedpermissions-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Verified Permissions",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appmesh-cn-north-1",
+          "upstreamId": "appmesh-cn-north-1",
+          "groupId": null,
+          "name": "Amazon App Mesh",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appmesh-cn-northwest-1",
+          "upstreamId": "appmesh-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon App Mesh",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appconfig-cn-north-1",
+          "upstreamId": "appconfig-cn-north-1",
+          "groupId": null,
+          "name": "Amazon AppConfig",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appconfig-cn-northwest-1",
+          "upstreamId": "appconfig-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon AppConfig",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appsync-cn-north-1",
+          "upstreamId": "appsync-cn-north-1",
+          "groupId": null,
+          "name": "Amazon AppSync",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appsync-cn-northwest-1",
+          "upstreamId": "appsync-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon AppSync",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:athena-cn-north-1",
+          "upstreamId": "athena-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Athena",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:athena-cn-northwest-1",
+          "upstreamId": "athena-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Athena",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:autoscaling-cn-north-1",
+          "upstreamId": "autoscaling-cn-north-1",
+          "groupId": null,
+          "name": "Auto Scaling",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:autoscaling-cn-northwest-1",
+          "upstreamId": "autoscaling-cn-northwest-1",
+          "groupId": null,
+          "name": "Auto Scaling",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:batch-cn-north-1",
+          "upstreamId": "batch-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Batch",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:batch-cn-northwest-1",
+          "upstreamId": "batch-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Batch",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:bedrock-agentcore-cn-north-1",
+          "upstreamId": "bedrock-agentcore-cn-north-1",
+          "groupId": null,
+          "name": "Bedrock AgentCore",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:bedrock-agentcore-cn-northwest-1",
+          "upstreamId": "bedrock-agentcore-cn-northwest-1",
+          "groupId": null,
+          "name": "Bedrock AgentCore",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:billingconsole",
+          "upstreamId": "billingconsole",
+          "groupId": null,
+          "name": "Amazon Billing Console",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicediscovery-cn-north-1",
+          "upstreamId": "servicediscovery-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Cloud Map",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicediscovery-cn-northwest-1",
+          "upstreamId": "servicediscovery-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Cloud Map",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudformation-cn-north-1",
+          "upstreamId": "cloudformation-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudFormation",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudformation-cn-northwest-1",
+          "upstreamId": "cloudformation-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudFormation",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudfront",
+          "upstreamId": "cloudfront",
+          "groupId": null,
+          "name": "Amazon CloudFront",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudtrail-cn-north-1",
+          "upstreamId": "cloudtrail-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudTrail",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudtrail-cn-northwest-1",
+          "upstreamId": "cloudtrail-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudTrail",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudwatch-cn-north-1",
+          "upstreamId": "cloudwatch-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudwatch-cn-northwest-1",
+          "upstreamId": "cloudwatch-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:applicationinsights-cn-north-1",
+          "upstreamId": "applicationinsights-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch Application Insights",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:applicationinsights-cn-northwest-1",
+          "upstreamId": "applicationinsights-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch Application Insights",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudwatchsynthetics-cn-north-1",
+          "upstreamId": "cloudwatchsynthetics-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch Synthetics",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cloudwatchsynthetics-cn-northwest-1",
+          "upstreamId": "cloudwatchsynthetics-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CloudWatch Synthetics",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codebuild-cn-north-1",
+          "upstreamId": "codebuild-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CodeBuild",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codebuild-cn-northwest-1",
+          "upstreamId": "codebuild-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CodeBuild",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codecommit-cn-north-1",
+          "upstreamId": "codecommit-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CodeCommit",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codecommit-cn-northwest-1",
+          "upstreamId": "codecommit-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CodeCommit",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codedeploy-cn-north-1",
+          "upstreamId": "codedeploy-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CodeDeploy",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codedeploy-cn-northwest-1",
+          "upstreamId": "codedeploy-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CodeDeploy",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codepipeline-cn-north-1",
+          "upstreamId": "codepipeline-cn-north-1",
+          "groupId": null,
+          "name": "Amazon CodePipeline",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:codepipeline-cn-northwest-1",
+          "upstreamId": "codepipeline-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon CodePipeline",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:cognito-cn-north-1",
+          "upstreamId": "cognito-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Cognito",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:computeoptimizer-cn-north-1",
+          "upstreamId": "computeoptimizer-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Compute Optimizer",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:computeoptimizer-cn-northwest-1",
+          "upstreamId": "computeoptimizer-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Compute Optimizer",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:config-cn-north-1",
+          "upstreamId": "config-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Config",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:config-cn-northwest-1",
+          "upstreamId": "config-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Config",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dlm-cn-north-1",
+          "upstreamId": "dlm-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Data Lifecycle Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dlm-cn-northwest-1",
+          "upstreamId": "dlm-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Data Lifecycle Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:datasync-cn-north-1",
+          "upstreamId": "datasync-cn-north-1",
+          "groupId": null,
+          "name": "Amazon DataSync",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:datasync-cn-northwest-1",
+          "upstreamId": "datasync-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon DataSync",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:aws-glue-cn-north-1",
+          "upstreamId": "aws-glue-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Glue DataBrew",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:aws-glue-cn-northwest-1",
+          "upstreamId": "aws-glue-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Glue DataBrew",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dms-cn-north-1",
+          "upstreamId": "dms-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Database Migration Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dms-cn-northwest-1",
+          "upstreamId": "dms-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Database Migration Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:directconnect-cn-north-1",
+          "upstreamId": "directconnect-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Direct Connect",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:directconnect-cn-northwest-1",
+          "upstreamId": "directconnect-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Direct Connect",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:directoryservice-cn-north-1",
+          "upstreamId": "directoryservice-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Directory Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:directoryservice-cn-northwest-1",
+          "upstreamId": "directoryservice-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Directory Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:docdb-cn-north-1",
+          "upstreamId": "docdb-cn-north-1",
+          "groupId": null,
+          "name": "Amazon DocumentDB",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:docdb-cn-northwest-1",
+          "upstreamId": "docdb-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon DocumentDB",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dynamodb-cn-north-1",
+          "upstreamId": "dynamodb-cn-north-1",
+          "groupId": null,
+          "name": "Amazon DynamoDB",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:dynamodb-cn-northwest-1",
+          "upstreamId": "dynamodb-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon DynamoDB",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2-cn-north-1",
+          "upstreamId": "ec2-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Compute Cloud",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2-cn-northwest-1",
+          "upstreamId": "ec2-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Compute Cloud",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:managedssh-cn-north-1",
+          "upstreamId": "managedssh-cn-north-1",
+          "groupId": null,
+          "name": "Amazon EC2 Instance Connect",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:managedssh-cn-northwest-1",
+          "upstreamId": "managedssh-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon EC2 Instance Connect",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2serialconsole-cn-north-1",
+          "upstreamId": "ec2serialconsole-cn-north-1",
+          "groupId": null,
+          "name": "EC2 Serial Console",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2serialconsole-cn-northwest-1",
+          "upstreamId": "ec2serialconsole-cn-northwest-1",
+          "groupId": null,
+          "name": "EC2 Serial Console",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ecr-cn-north-1",
+          "upstreamId": "ecr-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Container Registry",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ecr-cn-northwest-1",
+          "upstreamId": "ecr-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Container Registry",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticfilesystem-cn-north-1",
+          "upstreamId": "elasticfilesystem-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic File System",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticfilesystem-cn-northwest-1",
+          "upstreamId": "elasticfilesystem-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic File System",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elb-cn-north-1",
+          "upstreamId": "elb-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Load Balancing",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elb-cn-northwest-1",
+          "upstreamId": "elb-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Load Balancing",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:emr-cn-north-1",
+          "upstreamId": "emr-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic MapReduce",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:emr-cn-northwest-1",
+          "upstreamId": "emr-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic MapReduce",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:emrserverless-cn-north-1",
+          "upstreamId": "emrserverless-cn-north-1",
+          "groupId": null,
+          "name": "Amazon EMR Serverless",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:emrserverless-cn-northwest-1",
+          "upstreamId": "emrserverless-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon EMR Serverless",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticache-cn-north-1",
+          "upstreamId": "elasticache-cn-north-1",
+          "groupId": null,
+          "name": "Amazon ElastiCache",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticache-cn-northwest-1",
+          "upstreamId": "elasticache-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon ElastiCache",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticbeanstalk-cn-north-1",
+          "upstreamId": "elasticbeanstalk-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Beanstalk",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticbeanstalk-cn-northwest-1",
+          "upstreamId": "elasticbeanstalk-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Beanstalk",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ecs-cn-north-1",
+          "upstreamId": "ecs-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Container Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ecs-cn-northwest-1",
+          "upstreamId": "ecs-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Container Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:eks-cn-north-1",
+          "upstreamId": "eks-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Elastic Kubernetes Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:eks-cn-northwest-1",
+          "upstreamId": "eks-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Elastic Kubernetes Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:events-cn-north-1",
+          "upstreamId": "events-cn-north-1",
+          "groupId": null,
+          "name": "Amazon EventBridge",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:events-cn-northwest-1",
+          "upstreamId": "events-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon EventBridge",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:scheduler-cn-north-1",
+          "upstreamId": "scheduler-cn-north-1",
+          "groupId": null,
+          "name": "Amazon EventBridge Scheduler",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:scheduler-cn-northwest-1",
+          "upstreamId": "scheduler-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon EventBridge Scheduler",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fsx-cn-north-1",
+          "upstreamId": "fsx-cn-north-1",
+          "groupId": null,
+          "name": "Amazon FSx",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fsx-cn-northwest-1",
+          "upstreamId": "fsx-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon FSx",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fargate-cn-north-1",
+          "upstreamId": "fargate-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Fargate",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fargate-cn-northwest-1",
+          "upstreamId": "fargate-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Fargate",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fms-cn-north-1",
+          "upstreamId": "fms-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Firewall Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:fms-cn-northwest-1",
+          "upstreamId": "fms-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Firewall Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:freertos-cn-north-1",
+          "upstreamId": "freertos-cn-north-1",
+          "groupId": null,
+          "name": "Amazon FreeRTOS",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:freertos-cn-northwest-1",
+          "upstreamId": "freertos-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon FreeRTOS",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:gamelift-cn-north-1",
+          "upstreamId": "gamelift-cn-north-1",
+          "groupId": null,
+          "name": "Amazon GameLift Servers",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:gamelift-cn-northwest-1",
+          "upstreamId": "gamelift-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon GameLift Servers",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:glacier-cn-north-1",
+          "upstreamId": "glacier-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Glacier",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:glacier-cn-northwest-1",
+          "upstreamId": "glacier-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Glacier",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:glue-cn-north-1",
+          "upstreamId": "glue-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Glue",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:glue-cn-northwest-1",
+          "upstreamId": "glue-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Glue",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsgreengrass-cn-north-1",
+          "upstreamId": "awsgreengrass-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT Greengrass",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:guardduty-cn-north-1",
+          "upstreamId": "guardduty-cn-north-1",
+          "groupId": null,
+          "name": "Amazon GuardDuty",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:guardduty-cn-northwest-1",
+          "upstreamId": "guardduty-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon GuardDuty",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iam",
+          "upstreamId": "iam",
+          "groupId": null,
+          "name": "Amazon Identity and Access Management",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iamidentitycenter-cn-north-1",
+          "upstreamId": "iamidentitycenter-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IAM Identity Center",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iamidentitycenter-cn-northwest-1",
+          "upstreamId": "iamidentitycenter-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon IAM Identity Center",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iamrolesanywhere-cn-north-1",
+          "upstreamId": "iamrolesanywhere-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Identity and Access Management Roles Anywhere",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iamrolesanywhere-cn-northwest-1",
+          "upstreamId": "iamrolesanywhere-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Identity and Access Management Roles Anywhere",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:imagebuilder-cn-north-1",
+          "upstreamId": "imagebuilder-cn-north-1",
+          "groupId": null,
+          "name": "EC2 Image Builder",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:imagebuilder-cn-northwest-1",
+          "upstreamId": "imagebuilder-cn-northwest-1",
+          "groupId": null,
+          "name": "EC2 Image Builder",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:import-export",
+          "upstreamId": "import-export",
+          "groupId": null,
+          "name": "Amazon Import/Export",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:inspector-cn-north-1",
+          "upstreamId": "inspector-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Inspector",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:inspector-cn-northwest-1",
+          "upstreamId": "inspector-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Inspector",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:internetconnectivity-cn-north-1",
+          "upstreamId": "internetconnectivity-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Internet Connectivity",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:internetconnectivity-cn-northwest-1",
+          "upstreamId": "internetconnectivity-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Internet Connectivity",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsiot-cn-north-1",
+          "upstreamId": "awsiot-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT Core",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsiot-cn-northwest-1",
+          "upstreamId": "awsiot-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon IoT Core",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iotdevicedefender-cn-north-1",
+          "upstreamId": "iotdevicedefender-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT Device Defender",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iotdevicedefender-cn-northwest-1",
+          "upstreamId": "iotdevicedefender-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon IoT Device Defender",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsiotdevicemanagement-cn-north-1",
+          "upstreamId": "awsiotdevicemanagement-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT Device Management",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awsiotdevicemanagement-cn-northwest-1",
+          "upstreamId": "awsiotdevicemanagement-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon IoT Device Management",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iotsitewise-cn-north-1",
+          "upstreamId": "iotsitewise-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT SiteWise",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:iottwinmaker-cn-north-1",
+          "upstreamId": "iottwinmaker-cn-north-1",
+          "groupId": null,
+          "name": "Amazon IoT TwinMaker",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kms-cn-north-1",
+          "upstreamId": "kms-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Key Management Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kms-cn-northwest-1",
+          "upstreamId": "kms-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Key Management Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesis-cn-north-1",
+          "upstreamId": "kinesis-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Kinesis Data Streams",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesis-cn-northwest-1",
+          "upstreamId": "kinesis-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Kinesis Data Streams",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesisanalytics-cn-north-1",
+          "upstreamId": "kinesisanalytics-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Managed Service for Apache Flink",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesisanalytics-cn-northwest-1",
+          "upstreamId": "kinesisanalytics-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Managed Service for Apache Flink",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:firehose-cn-north-1",
+          "upstreamId": "firehose-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Data Firehose",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:firehose-cn-northwest-1",
+          "upstreamId": "firehose-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Data Firehose",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kinesisvideo-cn-north-1",
+          "upstreamId": "kinesisvideo-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Kinesis Video Streams",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:lakeformation-cn-north-1",
+          "upstreamId": "lakeformation-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Lake Formation",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:lakeformation-cn-northwest-1",
+          "upstreamId": "lakeformation-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Lake Formation",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:lambda-cn-north-1",
+          "upstreamId": "lambda-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Lambda",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:lambda-cn-northwest-1",
+          "upstreamId": "lambda-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Lambda",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appwizard-cn-north-1",
+          "upstreamId": "appwizard-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Launch Wizard",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:appwizard-cn-northwest-1",
+          "upstreamId": "appwizard-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Launch Wizard",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:licensemanager-cn-north-1",
+          "upstreamId": "licensemanager-cn-north-1",
+          "groupId": null,
+          "name": "Amazon License Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:licensemanager-cn-northwest-1",
+          "upstreamId": "licensemanager-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon License Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:mq-cn-north-1",
+          "upstreamId": "mq-cn-north-1",
+          "groupId": null,
+          "name": "Amazon MQ",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:mq-cn-northwest-1",
+          "upstreamId": "mq-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon MQ",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kafka-cn-north-1",
+          "upstreamId": "kafka-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Managed Streaming for Apache Kafka",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:kafka-cn-northwest-1",
+          "upstreamId": "kafka-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Managed Streaming for Apache Kafka",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:airflow-cn-north-1",
+          "upstreamId": "airflow-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Managed Workflows for Apache Airflow",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:airflow-cn-northwest-1",
+          "upstreamId": "airflow-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Managed Workflows for Apache Airflow",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:management-console",
+          "upstreamId": "management-console",
+          "groupId": null,
+          "name": "Amazon Management Console",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:marketplace",
+          "upstreamId": "marketplace",
+          "groupId": null,
+          "name": "Amazon Marketplace",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:memorydb-cn-north-1",
+          "upstreamId": "memorydb-cn-north-1",
+          "groupId": null,
+          "name": "Amazon MemoryDB for Redis",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:memorydb-cn-northwest-1",
+          "upstreamId": "memorydb-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon MemoryDB for Redis",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:multipleservices-cn-north-1",
+          "upstreamId": "multipleservices-cn-north-1",
+          "groupId": null,
+          "name": "Multiple services",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:multipleservices-cn-northwest-1",
+          "upstreamId": "multipleservices-cn-northwest-1",
+          "groupId": null,
+          "name": "Multiple services",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:natgateway-cn-north-1",
+          "upstreamId": "natgateway-cn-north-1",
+          "groupId": null,
+          "name": "Amazon NAT Gateway",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:natgateway-cn-northwest-1",
+          "upstreamId": "natgateway-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon NAT Gateway",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:neptune-db-cn-north-1",
+          "upstreamId": "neptune-db-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Neptune",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:neptune-db-cn-northwest-1",
+          "upstreamId": "neptune-db-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Neptune",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticsearch-cn-north-1",
+          "upstreamId": "elasticsearch-cn-north-1",
+          "groupId": null,
+          "name": "Amazon OpenSearch Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:elasticsearch-cn-northwest-1",
+          "upstreamId": "elasticsearch-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon OpenSearch Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:organizations",
+          "upstreamId": "organizations",
+          "groupId": null,
+          "name": "Amazon Organizations",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:personalize-cn-north-1",
+          "upstreamId": "personalize-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Personalize",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:polly-cn-northwest-1",
+          "upstreamId": "polly-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Polly",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:apipricing-cn-northwest-1",
+          "upstreamId": "apipricing-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Price List Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:acm-pca-cn-north-1",
+          "upstreamId": "acm-pca-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Private Certificate Authority",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:acm-pca-cn-northwest-1",
+          "upstreamId": "acm-pca-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Private Certificate Authority",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:quicksight-cn-north-1",
+          "upstreamId": "quicksight-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Quick",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:rds-cn-north-1",
+          "upstreamId": "rds-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Relational Database Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:rds-cn-northwest-1",
+          "upstreamId": "rds-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Relational Database Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:redshift-cn-north-1",
+          "upstreamId": "redshift-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Redshift",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:redshift-cn-northwest-1",
+          "upstreamId": "redshift-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Redshift",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ram-cn-north-1",
+          "upstreamId": "ram-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Resource Access Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ram-cn-northwest-1",
+          "upstreamId": "ram-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Resource Access Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourcegroupstaggingapi-cn-north-1",
+          "upstreamId": "resourcegroupstaggingapi-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Resource Groups Tagging API",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:resourcegroupstaggingapi-cn-northwest-1",
+          "upstreamId": "resourcegroupstaggingapi-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Resource Groups Tagging API",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53",
+          "upstreamId": "route53",
+          "groupId": null,
+          "name": "Amazon Route 53",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53privatedns-cn-north-1",
+          "upstreamId": "route53privatedns-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Route 53 Private DNS",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53privatedns-cn-northwest-1",
+          "upstreamId": "route53privatedns-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Route 53 Private DNS",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53resolver-cn-north-1",
+          "upstreamId": "route53resolver-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Route 53 Resolver",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:route53resolver-cn-northwest-1",
+          "upstreamId": "route53resolver-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Route 53 Resolver",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:s3-cn-north-1",
+          "upstreamId": "s3-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Simple Storage Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:s3-cn-northwest-1",
+          "upstreamId": "s3-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Simple Storage Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sns-cn-north-1",
+          "upstreamId": "sns-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Simple Notification Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sns-cn-northwest-1",
+          "upstreamId": "sns-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Simple Notification Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sqs-cn-north-1",
+          "upstreamId": "sqs-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Simple Queue Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sqs-cn-northwest-1",
+          "upstreamId": "sqs-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Simple Queue Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2systemsmanager-cn-north-1",
+          "upstreamId": "ec2systemsmanager-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Systems Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:ec2systemsmanager-cn-northwest-1",
+          "upstreamId": "ec2systemsmanager-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Systems Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:swf-cn-north-1",
+          "upstreamId": "swf-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Simple Workflow Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:swf-cn-northwest-1",
+          "upstreamId": "swf-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Simple Workflow Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sagemaker-cn-north-1",
+          "upstreamId": "sagemaker-cn-north-1",
+          "groupId": null,
+          "name": "Amazon SageMaker",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sagemaker-cn-northwest-1",
+          "upstreamId": "sagemaker-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon SageMaker",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:secretsmanager-cn-north-1",
+          "upstreamId": "secretsmanager-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Secrets Manager",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:secretsmanager-cn-northwest-1",
+          "upstreamId": "secretsmanager-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Secrets Manager",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:securityhub-cn-north-1",
+          "upstreamId": "securityhub-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Security Hub",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:securityhub-cn-northwest-1",
+          "upstreamId": "securityhub-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Security Hub",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sts-cn-north-1",
+          "upstreamId": "sts-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Security Token Service",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:sts-cn-northwest-1",
+          "upstreamId": "sts-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Security Token Service",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:serverlessrepo-cn-north-1",
+          "upstreamId": "serverlessrepo-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Serverless Application Repository",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:serverlessrepo-cn-northwest-1",
+          "upstreamId": "serverlessrepo-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Serverless Application Repository",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicecatalog-cn-north-1",
+          "upstreamId": "servicecatalog-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Service Catalog",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicecatalog-cn-northwest-1",
+          "upstreamId": "servicecatalog-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Service Catalog",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicequotas-cn-north-1",
+          "upstreamId": "servicequotas-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Service Quotas",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:servicequotas-cn-northwest-1",
+          "upstreamId": "servicequotas-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Service Quotas",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:signin-cn-north-1",
+          "upstreamId": "signin-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Sign-In",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:signin-cn-northwest-1",
+          "upstreamId": "signin-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Sign-In",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:signup",
+          "upstreamId": "signup",
+          "groupId": null,
+          "name": "Amazon Sign-Up",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:state-cn-north-1",
+          "upstreamId": "state-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Step Functions",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:state-cn-northwest-1",
+          "upstreamId": "state-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Step Functions",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:storagegateway-cn-north-1",
+          "upstreamId": "storagegateway-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Storage Gateway",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:storagegateway-cn-northwest-1",
+          "upstreamId": "storagegateway-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Storage Gateway",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:supportcenter",
+          "upstreamId": "supportcenter",
+          "groupId": null,
+          "name": "Amazon Support Center",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:supportapi-cn-north-1",
+          "upstreamId": "supportapi-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Support API",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:supportapi-cn-northwest-1",
+          "upstreamId": "supportapi-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Support API",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:trafficmirroring-cn-north-1",
+          "upstreamId": "trafficmirroring-cn-north-1",
+          "groupId": null,
+          "name": "Traffic Mirroring",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:trafficmirroring-cn-northwest-1",
+          "upstreamId": "trafficmirroring-cn-northwest-1",
+          "groupId": null,
+          "name": "Traffic Mirroring",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transcribe-cn-north-1",
+          "upstreamId": "transcribe-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Transcribe",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transcribe-cn-northwest-1",
+          "upstreamId": "transcribe-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Transcribe",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transfer-cn-north-1",
+          "upstreamId": "transfer-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Transfer Family",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transfer-cn-northwest-1",
+          "upstreamId": "transfer-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Transfer Family",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transitgateway-cn-north-1",
+          "upstreamId": "transitgateway-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Transit Gateway",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:transitgateway-cn-northwest-1",
+          "upstreamId": "transitgateway-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Transit Gateway",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:trustedadvisor",
+          "upstreamId": "trustedadvisor",
+          "groupId": null,
+          "name": "Amazon Trusted Advisor",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:vmimportexport-cn-north-1",
+          "upstreamId": "vmimportexport-cn-north-1",
+          "groupId": null,
+          "name": "VM Import/Export",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:vmimportexport-cn-northwest-1",
+          "upstreamId": "vmimportexport-cn-northwest-1",
+          "groupId": null,
+          "name": "VM Import/Export",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:vpc-cn-north-1",
+          "upstreamId": "vpc-cn-north-1",
+          "groupId": null,
+          "name": "Amazon Virtual Private Cloud",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:vpc-cn-northwest-1",
+          "upstreamId": "vpc-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon Virtual Private Cloud",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:privatelink-cn-north-1",
+          "upstreamId": "privatelink-cn-north-1",
+          "groupId": null,
+          "name": "Amazon VPCE PrivateLink",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:privatelink-cn-northwest-1",
+          "upstreamId": "privatelink-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon VPCE PrivateLink",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awswaf-cn-north-1",
+          "upstreamId": "awswaf-cn-north-1",
+          "groupId": null,
+          "name": "Amazon WAF",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:awswaf-cn-northwest-1",
+          "upstreamId": "awswaf-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon WAF",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:workspaces-cn-northwest-1",
+          "upstreamId": "workspaces-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon WorkSpaces",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:xray-cn-north-1",
+          "upstreamId": "xray-cn-north-1",
+          "groupId": null,
+          "name": "Amazon X-Ray",
+          "aliases": [],
+          "region": "cn-north-1",
+          "reportedStatus": null
+        },
+        {
+          "id": "aws-cn:xray-cn-northwest-1",
+          "upstreamId": "xray-cn-northwest-1",
+          "groupId": null,
+          "name": "Amazon X-Ray",
+          "aliases": [],
+          "region": "cn-northwest-1",
+          "reportedStatus": null
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "aws-cn:MULTIPLE_SERVICES:cn-north-1:1795019767000:AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE",
+          "providerId": "aws-cn",
+          "upstreamId": "MULTIPLE_SERVICES:cn-north-1:1795019767000:AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE",
+          "kind": "incident",
+          "title": "Elevated API Error Rates and Latencies",
+          "severity": null,
+          "sourceSeverity": "AWS_MULTIPLE_SERVICES_OPERATIONAL_ISSUE",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "aws-cn:multipleservices-cn-north-1"
+          ],
+          "affectedRegions": [
+            "cn-north-1"
+          ],
+          "startedAt": "2026-11-18T16:36:07.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-19T01:41:28.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:16.110Z",
+          "updatedAt": "2026-11-19T01:41:28.239Z",
+          "durationMinutes": 545.35,
+          "sourceUrl": "https://health.amazonaws.cn/health/status",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:0",
+              "phase": "unknown",
+              "body": "我们发现 CN-NORTH-1 区域的 API 错误率和延迟有所升高。| We are experiencing elevated API error rates and latencies in the CN-NORTH-1 Region.",
+              "timestamp": "2026-11-18T16:36:07.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:1",
+              "phase": "unknown",
+              "body": "[[The following AWS services have been affected by this event:]]\nService: apigateway Status: Informational\nService: appconfig Status: Informational\nService: appmesh Status: Informational\nService: appsync Status: Informational\nService: athena Status: Informational\nService: awsiot Status: Informational\nService: awsiotdevicemanagement Status: Informational\nService: batch Status: Informational\nService: bedrock-agentcore Status: Informational\nService: cloudformation Status: Informational\nService: cloudtrail Status: Informational\nService: cloudwatch Status: Informational\nService: codebuild Status: Informational\nService: codedeploy Status: Informational\nService: codepipeline Status: Informational\nService: dynamodb Status: Informational\nService: ec2 Status: Informational\nService: ec2systemsmanager Status: Informational\nService: ecr Status: Informational\nService: ecs Status: Informational\nService: eks Status: Informational\nService: elasticbeanstalk Status: Informational\nService: elasticfilesystem Status: Informational\nService: elb Status: Informational\nService: emr Status: Informational\nService: events Status: Informational\nService: fargate Status: Informational\nService: fsx Status: Informational\nService: glue Status: Informational\nService: iamidentitycenter Status: Informational\nService: imagebuilder Status: Informational\nService: ipam Status: Informational\nService: kafka Status: Informational\nService: kinesisanalytics Status: Informational\nService: kinesisvideo Status: Informational\nService: kms Status: Informational\nService: lakeformation Status: Informational\nService: lambda Status: Informational\nService: licensemanager Status: Informational\nService: management-console Status: Informational\nService: mq Status: Informational\nService: networkfirewall Status: Informational\nService: privatelink Status: Informational\nService: rds Status: Informational\nService: redshift Status: Informational\nService: resourcegroups Status: Informational\nService: route53resolver Status: Informational\nService: sagemaker Status: Informational\nService: scheduler Status: Informational\nService: secretsmanager Status: Informational\nService: servicediscovery Status: Informational\nService: sns Status: Informational\nService: sqs Status: Informational\nService: state Status: Informational\nService: storagegateway Status: Informational\nService: sts Status: Informational\nService: swf Status: Informational\nService: transcribe Status: Informational\nService: transfer Status: Informational\nService: transitgateway Status: Informational\nService: vmimportexport Status: Informational",
+              "timestamp": "2026-11-18T16:36:07.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:2",
+              "phase": "unknown",
+              "body": "我们确认 CN-NORTH-1 区域的多项 AWS 服务出现严重错误率问题。在此期间，客户调用 AWS API 时会遇到延迟增加和 5XX 错误。客户在使用 AWS 服务管理控制台时也可能遇到错误，部分 AWS 终端节点也可能出现连接问题。工程师已被自动调动并立即开始调查。对于部分服务（例如 EC2），影响主要集中在 cnn1-az1。对于 EC2，我们建议客户尝试在其他可用区中启动实例。我们正在积极核实对根本原因的判断，同时努力减轻对 AWS 服务的影响。我们将在北京时间11月19日早上 2:00 提供下一次更新；如有更多信息，我们会提前发布。| We can confirm significant error rates for multiple AWS Services in the CN-NORTH-1 Region. During this time, customers will experience increased latencies and 5XX errors when calling AWS APIs. Customers may also experiencing errors when interacting with AWS Service Management Consoles, and connectivity issues to some AWS endpoints. Engineers were automatically engaged and immediately began investigating. For some services, such as EC2, impact is primarily limited to cnn1-az1. For EC2, we recommend customers attempt to launch in other Availability Zones. We are actively working on both verifying our understanding of the root cause, and mitigating impact to AWS Services. We will provide another update at 10:00 AM, or sooner if we have additional information to share.",
+              "timestamp": "2026-11-18T17:05:14.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:3",
+              "phase": "unknown",
+              "body": "",
+              "timestamp": "2026-11-18T17:18:01.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:4",
+              "phase": "unknown",
+              "body": "我们已查明导致 CN-NORTH-1 区域多项 AWS 服务出现严重错误率问题的根本原因。我们已观察到初步的恢复迹象，并将继续监控，努力实现全面恢复。工程师已被自动调动，正在继续努力全面缓解所有问题。现有资源（例如 EC2 实例和 RDS 数据库实例）未受此问题影响。此次影响是由一个负载均衡器的问题引起的，该负载均衡器负责将流量路由到 SQS 和 SNS，并为 AWS 内部服务提供 DNS 支持。此问题也影响到了其他 AWS 服务，受影响的服务列表见下文。我们建议客户尽可能重试失败的 API 请求。我们将在北京时间11月19日早上 2:15 提供下一次更新；如有更多信息，我们会提前发布。| We have identified the root cause resulting in significant error rates for multiple AWS Services in the CN-NORTH-1 Region. We are seeing early signs of recovery and continue to monitor and work toward full recovery. Engineers were automatically engaged, and continue to work on fully mitigating all issues. Existing resources, such as EC2 Instances and RDS DB Instances are unaffected by this issue. This impact is the result of an issue with a load balancer that is responsible for routing traffic to SQS, SNS, and for DNS supporting internal AWS services. This impact is also affecting other AWS Services. A list of impacted services is available below. We recommend customers retry failed API requests wherever possible. We will provide another update at 10:15 AM, or sooner if we have additional information to share.",
+              "timestamp": "2026-11-18T17:36:54.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:5",
+              "phase": "resolved",
+              "body": "[[The following AWS services have been affected by this event:]]\nService: apigateway Status: Operating normally\nService: appconfig Status: Operating normally\nService: appmesh Status: Operating normally\nService: appsync Status: Operating normally\nService: athena Status: Operating normally\nService: awsiot Status: Operating normally\nService: awsiotdevicemanagement Status: Operating normally\nService: batch Status: Operating normally\nService: bedrock-agentcore Status: Operating normally\nService: cloudformation Status: Operating normally\nService: cloudtrail Status: Operating normally\nService: cloudwatch Status: Operating normally\nService: codebuild Status: Operating normally\nService: codedeploy Status: Operating normally\nService: codepipeline Status: Operating normally\nService: dynamodb Status: Operating normally\nService: ec2 Status: Operating normally\nService: ec2systemsmanager Status: Operating normally\nService: ecr Status: Operating normally\nService: ecs Status: Operating normally\nService: eks Status: Operating normally\nService: elasticbeanstalk Status: Operating normally\nService: elasticfilesystem Status: Operating normally\nService: elb Status: Operating normally\nService: emr Status: Operating normally\nService: events Status: Operating normally\nService: fargate Status: Operating normally\nService: fsx Status: Operating normally\nService: glue Status: Operating normally\nService: iamidentitycenter Status: Operating normally\nService: imagebuilder Status: Operating normally\nService: ipam Status: Operating normally\nService: kafka Status: Operating normally\nService: kinesisanalytics Status: Operating normally\nService: kinesisvideo Status: Operating normally\nService: kms Status: Operating normally\nService: lakeformation Status: Operating normally\nService: lambda Status: Operating normally\nService: licensemanager Status: Operating normally\nService: management-console Status: Operating normally\nService: mq Status: Operating normally\nService: networkfirewall Status: Operating normally\nService: privatelink Status: Operating normally\nService: rds Status: Operating normally\nService: redshift Status: Operating normally\nService: resourcegroups Status: Operating normally\nService: route53resolver Status: Operating normally\nService: sagemaker Status: Operating normally\nService: scheduler Status: Operating normally\nService: secretsmanager Status: Operating normally\nService: servicediscovery Status: Operating normally\nService: sns Status: Operating normally\nService: sqs Status: Operating normally\nService: state Status: Operating normally\nService: storagegateway Status: Operating normally\nService: sts Status: Operating normally\nService: swf Status: Operating normally\nService: transcribe Status: Operating normally\nService: transfer Status: Operating normally\nService: transitgateway Status: Operating normally\nService: vmimportexport Status: Operating normally",
+              "timestamp": "2026-11-18T18:00:37.000Z"
+            },
+            {
+              "id": "MULTIPLE_SERVICES:cn-north-1:1795019767000:6",
+              "phase": "resolved",
+              "body": "北京时间 2026 年 11 月 19 日 00:15 至 01:36 期间，CN-NORTH-1 区域的多项 AWS 服务出现了严重的错误率问题和 DNS 解析超时。工程师已立即被自动调动，开始查明根本原因并减轻影响。在此期间，客户向 AWS 服务终端节点发出 API 请求时，延迟和错误率均有所增加。现有资源（例如 EC2 实例）未受此问题影响。北京时间 01:03，我们查明根本原因是一个负载均衡器出现问题，该负载均衡器负责将流量路由到 SQS 和 SNS，并为 AWS 内部服务提供 DNS 支持。北京时间 01:15，我们开始观察到初步的恢复迹象，并持续进行缓解工作。北京时间 01:36，影响已完全消除。我们建议客户重试失败的请求。我们预计此问题不会再次发生。该问题已解决，AWS 服务现已恢复正常运行。| Between 8:15 AM and 9:36 AM PST, we experienced significant error rates and DNS resolution timeouts for multiple AWS Services in the CN-NORTH-1 Region. Engineers were immediately and automatically engaged, and began working on both identifying the root cause and mitigating impact. During this time customers experienced increased latencies and error rates for API requests to AWS Service endpoints. Existing resources, such as EC2 instances were unaffected by this issue. At 9:03 AM, we identified the root cause as an issue with a load balancer responsible for routing traffic to SQS, SNS, and DNS that supports internal AWS services. By 9:15 AM, we began observing early signs of recovery, and continued mitigation efforts until impact was fully resolved at 9:36 AM. We recommend customers retry failed requests. We do not expect this issue to reoccur. The issue has been resolved and AWS Services are operating normally.",
+              "timestamp": "2026-11-18T18:00:37.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": null,
+      "coverage": {
+        "basis": "official_public",
+        "regions": [
+          "cn-north-1",
+          "cn-northwest-1"
+        ],
+        "componentScope": "events_only",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-26T16:44:28.903Z",
+        "nativeHistoryEarliestAt": "2026-11-18T16:36:07.000Z",
+        "limitation": "AWS China public events; service catalog verifies China-region scope, finite history not exhaustive"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "currentevents_shape",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:16.110Z"
+          },
+          {
+            "name": "services_region_catalog",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:16.110Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": [
+          "Only cn-north-1/MULTIPLE_SERVICES event form sampled; unrecognized shapes fail closed"
+        ]
+      }
+    },
+    "collection": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:19.661Z",
+      "lastSuccessAt": "2026-11-28T17:41:19.661Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 3551.204654,
+      "consecutiveFailures": 0
+    }
+  }
+}

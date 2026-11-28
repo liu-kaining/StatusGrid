@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0",
+  "revision": "a3e521985711c2aa8ddc6f27",
+  "generatedAt": "2026-11-28T17:41:28.164Z",
+  "months": [
+    {
+      "month": "2026-01",
+      "revision": "bd63091df389e5e226946595",
+      "path": "incidents/archive/2026-01.json",
+      "incidentCount": 3,
+      "minStartedAt": "2026-01-26T02:36:05.582Z",
+      "maxResolvedAt": "2026-01-30T11:05:25.233Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-02",
+      "revision": "ffa5bb66867bad71226ae690",
+      "path": "incidents/archive/2026-02.json",
+      "incidentCount": 6,
+      "minStartedAt": "2026-02-02T21:04:12.839Z",
+      "maxResolvedAt": "2026-02-27T14:35:00.000Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-03",
+      "revision": "3bef0a5950417310d1991515",
+      "path": "incidents/archive/2026-03.json",
+      "incidentCount": 3,
+      "minStartedAt": "2026-03-04T15:46:33.888Z",
+      "maxResolvedAt": "2026-03-20T16:14:46.000Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-04",
+      "revision": "617b5cfcb7c667ddba66240b",
+      "path": "incidents/archive/2026-04.json",
+      "incidentCount": 12,
+      "minStartedAt": "2026-04-08T01:55:00.000Z",
+      "maxResolvedAt": "2026-04-29T00:37:28.360Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-05",
+      "revision": "240033b660aebd4996df84d3",
+      "path": "incidents/archive/2026-05.json",
+      "incidentCount": 7,
+      "minStartedAt": "2026-05-07T08:35:47.792Z",
+      "maxResolvedAt": "2026-05-29T09:49:19.259Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-06",
+      "revision": "6de15856336d111ae7b7bd82",
+      "path": "incidents/archive/2026-06.json",
+      "incidentCount": 3,
+      "minStartedAt": "2026-06-05T07:00:00.000Z",
+      "maxResolvedAt": "2026-07-01T01:36:01.751Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-07",
+      "revision": "ee62bfd2259a8d4609e6c10b",
+      "path": "incidents/archive/2026-07.json",
+      "incidentCount": 8,
+      "minStartedAt": "2026-07-08T14:59:16.931Z",
+      "maxResolvedAt": "2026-07-26T07:00:00.000Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-08",
+      "revision": "2198d7f6e76f2df61a529319",
+      "path": "incidents/archive/2026-08.json",
+      "incidentCount": 14,
+      "minStartedAt": "2026-08-01T00:43:14.730Z",
+      "maxResolvedAt": "2026-08-31T20:36:00.297Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-09",
+      "revision": "2c1413be676e66fed6f3d764",
+      "path": "incidents/archive/2026-09.json",
+      "incidentCount": 18,
+      "minStartedAt": "2026-09-01T14:42:00.000Z",
+      "maxResolvedAt": "2026-09-29T16:27:21.369Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-10",
+      "revision": "10c3cade9deb04752799587e",
+      "path": "incidents/archive/2026-10.json",
+      "incidentCount": 82,
+      "minStartedAt": "2026-10-01T00:02:00.000Z",
+      "maxResolvedAt": "2026-10-31T07:36:49.879Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-11",
+      "revision": "a0accd7c043b63362eb47d38",
+      "path": "incidents/archive/2026-11.json",
+      "incidentCount": 628,
+      "minStartedAt": "2026-11-01T04:58:48.255Z",
+      "maxResolvedAt": "2026-11-28T17:17:32.498Z",
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    },
+    {
+      "month": "2026-12",
+      "revision": "8aab7b2cc50ec2697bfe8ff8",
+      "path": "incidents/archive/2026-12.json",
+      "incidentCount": 26,
+      "minStartedAt": "2026-12-01T07:00:00.000Z",
+      "maxResolvedAt": null,
+      "updatedAt": "2026-11-28T17:41:28.164Z"
+    }
+  ]
+}

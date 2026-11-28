@@ -1,0 +1,1214 @@
+{
+  "schemaVersion": "1.0",
+  "provider": {
+    "providerId": "factory",
+    "officialStatusUrl": "https://status.factory.ai/",
+    "result": {
+      "providerId": "factory",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "factory:kfqc4mfdkrqx",
+          "upstreamId": "kfqc4mfdkrqx",
+          "groupId": null,
+          "name": "api.factory.ai",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:8j6062wq4cl6",
+          "upstreamId": "8j6062wq4cl6",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Anthropic",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:m3m0vdtgtfwv",
+          "upstreamId": "m3m0vdtgtfwv",
+          "groupId": null,
+          "name": "Web App",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:r06b64mgx3fx",
+          "upstreamId": "r06b64mgx3fx",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "OpenAI",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:06hkh9ffb4l2",
+          "upstreamId": "06hkh9ffb4l2",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Gemini",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:jfcmwr3grbyc",
+          "upstreamId": "jfcmwr3grbyc",
+          "groupId": null,
+          "name": "CLI",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:f1rrp7q0347f",
+          "upstreamId": "f1rrp7q0347f",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Nemotron",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:z1frly8fm1l5",
+          "upstreamId": "z1frly8fm1l5",
+          "groupId": null,
+          "name": "Desktop",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:jnvwmd4fv57n",
+          "upstreamId": "jnvwmd4fv57n",
+          "groupId": null,
+          "name": "Droid Computers",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:w5hflrhnd717",
+          "upstreamId": "w5hflrhnd717",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Grok",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:c9sjq8nsz2kq",
+          "upstreamId": "c9sjq8nsz2kq",
+          "groupId": null,
+          "name": "Models",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:j10vb27rt143",
+          "upstreamId": "j10vb27rt143",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "GLM",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:2vqf4gx25mg5",
+          "upstreamId": "2vqf4gx25mg5",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Kimi",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:qzf53gldr8s5",
+          "upstreamId": "qzf53gldr8s5",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "DeepSeek",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:3rsz2xndmrhp",
+          "upstreamId": "3rsz2xndmrhp",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "MiniMax",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "factory:1mt8tnvvm9mp",
+          "providerId": "factory",
+          "upstreamId": "1mt8tnvvm9mp",
+          "kind": "incident",
+          "title": "Gemini Models Unavailable",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:06hkh9ffb4l2"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-15T04:01:11.303Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-16T19:52:19.574Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-11-16T19:52:19.602Z",
+          "durationMinutes": 2391.13785,
+          "sourceUrl": "https://stspg.io/w5nh5hg0vbpt",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "9g80r4ynlhry",
+              "phase": "resolved",
+              "body": "We have worked with the upstream provider to restore access to Gemini models",
+              "timestamp": "2026-11-16T19:52:19.574Z"
+            },
+            {
+              "id": "g6crvkktqbx3",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-11-16T17:04:38.687Z"
+            },
+            {
+              "id": "ltzcf8m545p3",
+              "phase": "investigating",
+              "body": "We are currently investigating an issue with Gemini models being unavailable.",
+              "timestamp": "2026-11-15T04:01:11.420Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:zwk9mbcvxx3p",
+          "providerId": "factory",
+          "upstreamId": "zwk9mbcvxx3p",
+          "kind": "incident",
+          "title": "Service Disruption: User Authentication",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:kfqc4mfdkrqx",
+            "factory:m3m0vdtgtfwv",
+            "factory:z1frly8fm1l5"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-09-18T22:58:57.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-09-18T23:10:41.796Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-09-18T23:10:41.818Z",
+          "durationMinutes": 11.7466,
+          "sourceUrl": "https://stspg.io/bf3r4b2ydkmw",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "lqcg6q7db002",
+              "phase": "resolved",
+              "body": "The incident affecting our authentication provider, WorkOS, has been resolved.\n\nFor full details regarding the resolution, please visit the WorkOS Status Page at https://status.workos.com/incidents/phs2prf38d75",
+              "timestamp": "2026-09-18T23:10:41.796Z"
+            },
+            {
+              "id": "xj5xmz1b8tx8",
+              "phase": "identified",
+              "body": "For live updates on the incident, check the official WorkOS Status Page at https://status.workos.com",
+              "timestamp": "2026-09-18T22:58:57.000Z"
+            },
+            {
+              "id": "yftbkl159b9b",
+              "phase": "identified",
+              "body": "User logins are currently unavailable due to a critical incident with our authentication provider, WorkOS.\n\nUsers will be unable to log in or create new sessions at this time. Our engineering team is closely tracking the situation with the vendor to ensure fast recovery once their services are restored.\n\nFor live updates on the incident, check the official WorkOS Status Page. We will update this page as soon as authentication functionality returns.",
+              "timestamp": "2026-09-18T22:57:35.944Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:zk166bq625wb",
+          "providerId": "factory",
+          "upstreamId": "zk166bq625wb",
+          "kind": "incident",
+          "title": "GLM 5.2 unavailable in our EU deployment",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:j10vb27rt143"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-25T16:06:02.668Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-25T16:11:43.542Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-25T16:11:43.559Z",
+          "durationMinutes": 5.681233333333333,
+          "sourceUrl": "https://stspg.io/pl8lkdtn7qwq",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "r6ng6d3n62dx",
+              "phase": "resolved",
+              "body": "GLM 5.2 is available again in EU.",
+              "timestamp": "2026-08-25T16:11:43.542Z"
+            },
+            {
+              "id": "xn3cw78bz5vy",
+              "phase": "monitoring",
+              "body": "We're having issues with our inference provider for GLM 5.2 in the EU. We'll update here until the model is back up.",
+              "timestamp": "2026-08-25T16:06:02.779Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:knt66y6xwt78",
+          "providerId": "factory",
+          "upstreamId": "knt66y6xwt78",
+          "kind": "incident",
+          "title": "DeepSeek V4 Flash Degraded",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:qzf53gldr8s5"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-19T07:37:36.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-19T08:05:56.784Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-19T08:05:56.810Z",
+          "durationMinutes": 28.3464,
+          "sourceUrl": "https://stspg.io/8f124s9tdfn0",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "pbdc1gdyyw9w",
+              "phase": "resolved",
+              "body": "Response times have recovered to baseline levels.",
+              "timestamp": "2026-08-19T08:05:56.784Z"
+            },
+            {
+              "id": "8h0s852bhq8s",
+              "phase": "identified",
+              "body": "We're monitoring an issue with our DeepSeek V4 Flash deployment that is causing slow response times. We will provide an update once this has been resolved.",
+              "timestamp": "2026-08-19T07:37:36.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:kbn3392f4hjp",
+          "providerId": "factory",
+          "upstreamId": "kbn3392f4hjp",
+          "kind": "incident",
+          "title": "Degraded Minimax M3 availability",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:3rsz2xndmrhp"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-11T19:24:30.949Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-11T21:22:18.652Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-11T21:22:18.669Z",
+          "durationMinutes": 117.79505,
+          "sourceUrl": "https://stspg.io/5g646p06w9mc",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "nr6nt07kjcp3",
+              "phase": "resolved",
+              "body": "Minimax M3 serving is fully restored.",
+              "timestamp": "2026-08-11T21:22:18.652Z"
+            },
+            {
+              "id": "s6mp29m4p9fv",
+              "phase": "monitoring",
+              "body": "We are observing improved Minimax M3 serving. We will keep monitoring the service quality to make sure it is fully recovered.",
+              "timestamp": "2026-08-11T20:36:17.872Z"
+            },
+            {
+              "id": "8b8yk2ry02ff",
+              "phase": "identified",
+              "body": "We have identified an issue with our Minimax M3 serving. We are in communication with our providers and awaiting resolution. We advise temporarily switching to other models in the meantime for uninterrupted workflow.",
+              "timestamp": "2026-08-11T19:24:31.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:c112ywpnrgcg",
+          "providerId": "factory",
+          "upstreamId": "c112ywpnrgcg",
+          "kind": "incident",
+          "title": "OpenAI Models Returning 431 Errors",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:r06b64mgx3fx"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-07T16:12:26.593Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-07T21:14:53.311Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-07T21:14:53.325Z",
+          "durationMinutes": 302.4453,
+          "sourceUrl": "https://stspg.io/8yfx6z10nkc8",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "8qf4b9kp9wb8",
+              "phase": "resolved",
+              "body": "We deployed a backend fix for the errors affecting OpenAI models and have confirmed that error rates returned to normal. Users can resume normal usage; no Factory CLI or Desktop update or other action is required.",
+              "timestamp": "2026-08-07T21:14:53.311Z"
+            },
+            {
+              "id": "gtxzwgqvt52p",
+              "phase": "monitoring",
+              "body": "To mitigate the issue, users encountering 431 errors should update to Factory CLI `0.188.0` or newer, or Desktop `0.145.0` or newer",
+              "timestamp": "2026-08-07T18:49:53.553Z"
+            },
+            {
+              "id": "n0cm5r6gv5sm",
+              "phase": "monitoring",
+              "body": "We continue to investigate 431 errors from OpenAI models. We advise temporarily  switching to non-OpenAI models for uninterrupted workflow.",
+              "timestamp": "2026-08-07T18:32:49.569Z"
+            },
+            {
+              "id": "8c5ggff3cchg",
+              "phase": "monitoring",
+              "body": "OpenAI models may return 'Error: 431 status code (no body)'. We are in communication with OpenAI and awaiting resolution.",
+              "timestamp": "2026-08-07T16:12:26.672Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:tfpwl3ygngs6",
+          "providerId": "factory",
+          "upstreamId": "tfpwl3ygngs6",
+          "kind": "incident",
+          "title": "Missions API entitlement mismatch",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:m3m0vdtgtfwv",
+            "factory:jfcmwr3grbyc",
+            "factory:z1frly8fm1l5"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-01T00:43:14.730Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-01T01:35:01.703Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-01T01:36:08.108Z",
+          "durationMinutes": 51.78288333333333,
+          "sourceUrl": "https://stspg.io/qk3bj2841m1r",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "t67vb0s8hy2n",
+              "phase": "resolved",
+              "body": "Fix has been deployed in production.",
+              "timestamp": "2026-08-01T01:35:01.703Z"
+            },
+            {
+              "id": "m5vj1wwqf36x",
+              "phase": "identified",
+              "body": "Enterprise accounts are being prompted for billing info when this should be isolated to self-serve",
+              "timestamp": "2026-08-01T00:59:11.527Z"
+            },
+            {
+              "id": "9pl0yzrghq0k",
+              "phase": "investigating",
+              "body": "Enterprise accounts are being prompted for billing info when this should be isolated to self-serve",
+              "timestamp": "2026-08-01T00:58:49.182Z"
+            },
+            {
+              "id": "kdgx380h0lz2",
+              "phase": "investigating",
+              "body": "Enterprise accounts are being prompted for billing info when this should be isolated to self-serve",
+              "timestamp": "2026-08-01T00:43:14.779Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:lxyc2jnlr0m6",
+          "providerId": "factory",
+          "upstreamId": "lxyc2jnlr0m6",
+          "kind": "incident",
+          "title": "Login for Windows Users",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-07-26T07:00:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-26T07:00:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-07-28T00:01:56.520Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/whdvx218073v",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "lq8fvrptggff",
+              "phase": "resolved",
+              "body": "Windows users faced an issue blocking login on the latest version of the Desktop App.",
+              "timestamp": "2026-07-26T07:00:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:zchbzfgwymx6",
+          "providerId": "factory",
+          "upstreamId": "zchbzfgwymx6",
+          "kind": "incident",
+          "title": "Subscription Lifecycle Actions Down",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:kfqc4mfdkrqx",
+            "factory:m3m0vdtgtfwv"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-23T01:31:58.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-23T01:52:21.749Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-07-23T01:52:21.760Z",
+          "durationMinutes": 20.395816666666665,
+          "sourceUrl": "https://stspg.io/zbqp711v29d1",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "shtwcpxw75kh",
+              "phase": "resolved",
+              "body": "All actions have fully recovered.",
+              "timestamp": "2026-07-23T01:52:21.749Z"
+            },
+            {
+              "id": "c8w8p5r6mq00",
+              "phase": "monitoring",
+              "body": "The fix has been deployed. Seeing signs of recovery.",
+              "timestamp": "2026-07-23T01:43:29.000Z"
+            },
+            {
+              "id": "2dsr3mc9nqvd",
+              "phase": "monitoring",
+              "body": "A new release is being hotfixed.",
+              "timestamp": "2026-07-23T01:31:58.000Z"
+            },
+            {
+              "id": "sn1spfkwxnx0",
+              "phase": "monitoring",
+              "body": "Actions to subscriptions like creation and cancellation have been failing.",
+              "timestamp": "2026-07-23T01:21:55.523Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": "2026-11-28T17:04:25.149Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-27T08:16:12.402Z",
+        "nativeHistoryEarliestAt": "2026-07-23T01:31:58.000Z",
+        "limitation": "Historical endpoint returns a finite recent window"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "summary",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:15.448Z"
+          },
+          {
+            "name": "active_incidents",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:15.448Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": []
+      }
+    },
+    "lastTrustedResult": {
+      "providerId": "factory",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "factory:kfqc4mfdkrqx",
+          "upstreamId": "kfqc4mfdkrqx",
+          "groupId": null,
+          "name": "api.factory.ai",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:8j6062wq4cl6",
+          "upstreamId": "8j6062wq4cl6",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Anthropic",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:m3m0vdtgtfwv",
+          "upstreamId": "m3m0vdtgtfwv",
+          "groupId": null,
+          "name": "Web App",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:r06b64mgx3fx",
+          "upstreamId": "r06b64mgx3fx",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "OpenAI",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:06hkh9ffb4l2",
+          "upstreamId": "06hkh9ffb4l2",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Gemini",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:jfcmwr3grbyc",
+          "upstreamId": "jfcmwr3grbyc",
+          "groupId": null,
+          "name": "CLI",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:f1rrp7q0347f",
+          "upstreamId": "f1rrp7q0347f",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Nemotron",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:z1frly8fm1l5",
+          "upstreamId": "z1frly8fm1l5",
+          "groupId": null,
+          "name": "Desktop",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:jnvwmd4fv57n",
+          "upstreamId": "jnvwmd4fv57n",
+          "groupId": null,
+          "name": "Droid Computers",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:w5hflrhnd717",
+          "upstreamId": "w5hflrhnd717",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Grok",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:c9sjq8nsz2kq",
+          "upstreamId": "c9sjq8nsz2kq",
+          "groupId": null,
+          "name": "Models",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:j10vb27rt143",
+          "upstreamId": "j10vb27rt143",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "GLM",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:2vqf4gx25mg5",
+          "upstreamId": "2vqf4gx25mg5",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "Kimi",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:qzf53gldr8s5",
+          "upstreamId": "qzf53gldr8s5",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "DeepSeek",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "factory:3rsz2xndmrhp",
+          "upstreamId": "3rsz2xndmrhp",
+          "groupId": "factory:c9sjq8nsz2kq",
+          "name": "MiniMax",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "factory:1mt8tnvvm9mp",
+          "providerId": "factory",
+          "upstreamId": "1mt8tnvvm9mp",
+          "kind": "incident",
+          "title": "Gemini Models Unavailable",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:06hkh9ffb4l2"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-15T04:01:11.303Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-16T19:52:19.574Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-11-16T19:52:19.602Z",
+          "durationMinutes": 2391.13785,
+          "sourceUrl": "https://stspg.io/w5nh5hg0vbpt",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "9g80r4ynlhry",
+              "phase": "resolved",
+              "body": "We have worked with the upstream provider to restore access to Gemini models",
+              "timestamp": "2026-11-16T19:52:19.574Z"
+            },
+            {
+              "id": "g6crvkktqbx3",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-11-16T17:04:38.687Z"
+            },
+            {
+              "id": "ltzcf8m545p3",
+              "phase": "investigating",
+              "body": "We are currently investigating an issue with Gemini models being unavailable.",
+              "timestamp": "2026-11-15T04:01:11.420Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:zwk9mbcvxx3p",
+          "providerId": "factory",
+          "upstreamId": "zwk9mbcvxx3p",
+          "kind": "incident",
+          "title": "Service Disruption: User Authentication",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:kfqc4mfdkrqx",
+            "factory:m3m0vdtgtfwv",
+            "factory:z1frly8fm1l5"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-09-18T22:58:57.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-09-18T23:10:41.796Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-09-18T23:10:41.818Z",
+          "durationMinutes": 11.7466,
+          "sourceUrl": "https://stspg.io/bf3r4b2ydkmw",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "lqcg6q7db002",
+              "phase": "resolved",
+              "body": "The incident affecting our authentication provider, WorkOS, has been resolved.\n\nFor full details regarding the resolution, please visit the WorkOS Status Page at https://status.workos.com/incidents/phs2prf38d75",
+              "timestamp": "2026-09-18T23:10:41.796Z"
+            },
+            {
+              "id": "xj5xmz1b8tx8",
+              "phase": "identified",
+              "body": "For live updates on the incident, check the official WorkOS Status Page at https://status.workos.com",
+              "timestamp": "2026-09-18T22:58:57.000Z"
+            },
+            {
+              "id": "yftbkl159b9b",
+              "phase": "identified",
+              "body": "User logins are currently unavailable due to a critical incident with our authentication provider, WorkOS.\n\nUsers will be unable to log in or create new sessions at this time. Our engineering team is closely tracking the situation with the vendor to ensure fast recovery once their services are restored.\n\nFor live updates on the incident, check the official WorkOS Status Page. We will update this page as soon as authentication functionality returns.",
+              "timestamp": "2026-09-18T22:57:35.944Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:zk166bq625wb",
+          "providerId": "factory",
+          "upstreamId": "zk166bq625wb",
+          "kind": "incident",
+          "title": "GLM 5.2 unavailable in our EU deployment",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:j10vb27rt143"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-25T16:06:02.668Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-25T16:11:43.542Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-25T16:11:43.559Z",
+          "durationMinutes": 5.681233333333333,
+          "sourceUrl": "https://stspg.io/pl8lkdtn7qwq",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "r6ng6d3n62dx",
+              "phase": "resolved",
+              "body": "GLM 5.2 is available again in EU.",
+              "timestamp": "2026-08-25T16:11:43.542Z"
+            },
+            {
+              "id": "xn3cw78bz5vy",
+              "phase": "monitoring",
+              "body": "We're having issues with our inference provider for GLM 5.2 in the EU. We'll update here until the model is back up.",
+              "timestamp": "2026-08-25T16:06:02.779Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:knt66y6xwt78",
+          "providerId": "factory",
+          "upstreamId": "knt66y6xwt78",
+          "kind": "incident",
+          "title": "DeepSeek V4 Flash Degraded",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:qzf53gldr8s5"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-19T07:37:36.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-19T08:05:56.784Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-19T08:05:56.810Z",
+          "durationMinutes": 28.3464,
+          "sourceUrl": "https://stspg.io/8f124s9tdfn0",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "pbdc1gdyyw9w",
+              "phase": "resolved",
+              "body": "Response times have recovered to baseline levels.",
+              "timestamp": "2026-08-19T08:05:56.784Z"
+            },
+            {
+              "id": "8h0s852bhq8s",
+              "phase": "identified",
+              "body": "We're monitoring an issue with our DeepSeek V4 Flash deployment that is causing slow response times. We will provide an update once this has been resolved.",
+              "timestamp": "2026-08-19T07:37:36.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:kbn3392f4hjp",
+          "providerId": "factory",
+          "upstreamId": "kbn3392f4hjp",
+          "kind": "incident",
+          "title": "Degraded Minimax M3 availability",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:3rsz2xndmrhp"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-11T19:24:30.949Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-11T21:22:18.652Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-11T21:22:18.669Z",
+          "durationMinutes": 117.79505,
+          "sourceUrl": "https://stspg.io/5g646p06w9mc",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "nr6nt07kjcp3",
+              "phase": "resolved",
+              "body": "Minimax M3 serving is fully restored.",
+              "timestamp": "2026-08-11T21:22:18.652Z"
+            },
+            {
+              "id": "s6mp29m4p9fv",
+              "phase": "monitoring",
+              "body": "We are observing improved Minimax M3 serving. We will keep monitoring the service quality to make sure it is fully recovered.",
+              "timestamp": "2026-08-11T20:36:17.872Z"
+            },
+            {
+              "id": "8b8yk2ry02ff",
+              "phase": "identified",
+              "body": "We have identified an issue with our Minimax M3 serving. We are in communication with our providers and awaiting resolution. We advise temporarily switching to other models in the meantime for uninterrupted workflow.",
+              "timestamp": "2026-08-11T19:24:31.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:c112ywpnrgcg",
+          "providerId": "factory",
+          "upstreamId": "c112ywpnrgcg",
+          "kind": "incident",
+          "title": "OpenAI Models Returning 431 Errors",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:r06b64mgx3fx"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-07T16:12:26.593Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-07T21:14:53.311Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-07T21:14:53.325Z",
+          "durationMinutes": 302.4453,
+          "sourceUrl": "https://stspg.io/8yfx6z10nkc8",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "8qf4b9kp9wb8",
+              "phase": "resolved",
+              "body": "We deployed a backend fix for the errors affecting OpenAI models and have confirmed that error rates returned to normal. Users can resume normal usage; no Factory CLI or Desktop update or other action is required.",
+              "timestamp": "2026-08-07T21:14:53.311Z"
+            },
+            {
+              "id": "gtxzwgqvt52p",
+              "phase": "monitoring",
+              "body": "To mitigate the issue, users encountering 431 errors should update to Factory CLI `0.188.0` or newer, or Desktop `0.145.0` or newer",
+              "timestamp": "2026-08-07T18:49:53.553Z"
+            },
+            {
+              "id": "n0cm5r6gv5sm",
+              "phase": "monitoring",
+              "body": "We continue to investigate 431 errors from OpenAI models. We advise temporarily  switching to non-OpenAI models for uninterrupted workflow.",
+              "timestamp": "2026-08-07T18:32:49.569Z"
+            },
+            {
+              "id": "8c5ggff3cchg",
+              "phase": "monitoring",
+              "body": "OpenAI models may return 'Error: 431 status code (no body)'. We are in communication with OpenAI and awaiting resolution.",
+              "timestamp": "2026-08-07T16:12:26.672Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:tfpwl3ygngs6",
+          "providerId": "factory",
+          "upstreamId": "tfpwl3ygngs6",
+          "kind": "incident",
+          "title": "Missions API entitlement mismatch",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:m3m0vdtgtfwv",
+            "factory:jfcmwr3grbyc",
+            "factory:z1frly8fm1l5"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-01T00:43:14.730Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-01T01:35:01.703Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-08-01T01:36:08.108Z",
+          "durationMinutes": 51.78288333333333,
+          "sourceUrl": "https://stspg.io/qk3bj2841m1r",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "t67vb0s8hy2n",
+              "phase": "resolved",
+              "body": "Fix has been deployed in production.",
+              "timestamp": "2026-08-01T01:35:01.703Z"
+            },
+            {
+              "id": "m5vj1wwqf36x",
+              "phase": "identified",
+              "body": "Enterprise accounts are being prompted for billing info when this should be isolated to self-serve",
+              "timestamp": "2026-08-01T00:59:11.527Z"
+            },
+            {
+              "id": "9pl0yzrghq0k",
+              "phase": "investigating",
+              "body": "Enterprise accounts are being prompted for billing info when this should be isolated to self-serve",
+              "timestamp": "2026-08-01T00:58:49.182Z"
+            },
+            {
+              "id": "kdgx380h0lz2",
+              "phase": "investigating",
+              "body": "Enterprise accounts are being prompted for billing info when this should be isolated to self-serve",
+              "timestamp": "2026-08-01T00:43:14.779Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:lxyc2jnlr0m6",
+          "providerId": "factory",
+          "upstreamId": "lxyc2jnlr0m6",
+          "kind": "incident",
+          "title": "Login for Windows Users",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-07-26T07:00:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-26T07:00:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-07-28T00:01:56.520Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/whdvx218073v",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "lq8fvrptggff",
+              "phase": "resolved",
+              "body": "Windows users faced an issue blocking login on the latest version of the Desktop App.",
+              "timestamp": "2026-07-26T07:00:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "factory:zchbzfgwymx6",
+          "providerId": "factory",
+          "upstreamId": "zchbzfgwymx6",
+          "kind": "incident",
+          "title": "Subscription Lifecycle Actions Down",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "factory:kfqc4mfdkrqx",
+            "factory:m3m0vdtgtfwv"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-23T01:31:58.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-23T01:52:21.749Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.448Z",
+          "updatedAt": "2026-07-23T01:52:21.760Z",
+          "durationMinutes": 20.395816666666665,
+          "sourceUrl": "https://stspg.io/zbqp711v29d1",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "shtwcpxw75kh",
+              "phase": "resolved",
+              "body": "All actions have fully recovered.",
+              "timestamp": "2026-07-23T01:52:21.749Z"
+            },
+            {
+              "id": "c8w8p5r6mq00",
+              "phase": "monitoring",
+              "body": "The fix has been deployed. Seeing signs of recovery.",
+              "timestamp": "2026-07-23T01:43:29.000Z"
+            },
+            {
+              "id": "2dsr3mc9nqvd",
+              "phase": "monitoring",
+              "body": "A new release is being hotfixed.",
+              "timestamp": "2026-07-23T01:31:58.000Z"
+            },
+            {
+              "id": "sn1spfkwxnx0",
+              "phase": "monitoring",
+              "body": "Actions to subscriptions like creation and cancellation have been failing.",
+              "timestamp": "2026-07-23T01:21:55.523Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": "2026-11-28T17:04:25.149Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-27T08:16:12.402Z",
+        "nativeHistoryEarliestAt": "2026-07-23T01:31:58.000Z",
+        "limitation": "Historical endpoint returns a finite recent window"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "summary",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:15.448Z"
+          },
+          {
+            "name": "active_incidents",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:15.448Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": []
+      }
+    },
+    "collection": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:16.110Z",
+      "lastSuccessAt": "2026-11-28T17:41:16.110Z",
+      "sourceUpdatedAt": "2026-11-28T17:04:25.149Z",
+      "durationMs": 661.8238529999999,
+      "consecutiveFailures": 0
+    }
+  }
+}

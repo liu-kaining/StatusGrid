@@ -1,0 +1,2262 @@
+{
+  "schemaVersion": "1.0",
+  "provider": {
+    "providerId": "minimax",
+    "officialStatusUrl": "https://status.minimax.cn/",
+    "result": {
+      "providerId": "minimax",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "minimax:01M88QV58SMAA318DVA1HBG6Y8",
+          "upstreamId": "01M88QV58SMAA318DVA1HBG6Y8",
+          "groupId": null,
+          "name": "文本模型",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "minimax:01M88QV58TPECB40H48WHBVTTM",
+          "upstreamId": "01M88QV58TPECB40H48WHBVTTM",
+          "groupId": null,
+          "name": "图片生成",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "minimax:01M88QV58T3NDJ8FM1GKW8FXFA",
+          "upstreamId": "01M88QV58T3NDJ8FM1GKW8FXFA",
+          "groupId": "minimax:01M88QV2PB9WV1QPBNTTQZQH84",
+          "name": "Hailuo 系列",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "minimax:01M88QV58T6S2FM4J6NV7RCC88",
+          "upstreamId": "01M88QV58T6S2FM4J6NV7RCC88",
+          "groupId": null,
+          "name": "语音合成",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "minimax:01M88QV58T8V7789S99D80DKRC",
+          "upstreamId": "01M88QV58T8V7789S99D80DKRC",
+          "groupId": "minimax:01M88QV2PB9WV1QPBNTTQZQH84",
+          "name": "H3 系列",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "minimax:7307657128086",
+          "providerId": "minimax",
+          "upstreamId": "7307657128086",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-22T02:10:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-22T02:11:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-22T02:11:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307657128086",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSTPHAMV6NJ8C3QPSMFBC",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-22T02:10:00.000Z"
+            },
+            {
+              "id": "01M8DSSTPHAMV6NJ8C3R3D4RMV",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-22T02:11:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7298974404191",
+          "providerId": "minimax",
+          "upstreamId": "7298974404191",
+          "kind": "incident",
+          "title": "语音合成 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58T6S2FM4J6NV7RCC88"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-18T01:52:45.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-18T02:22:42.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-18T02:22:42.000Z",
+          "durationMinutes": 29.95,
+          "sourceUrl": "https://status.minimax.cn/incidents/7298974404191",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M88R2GWCXH7H8BNGT4KTG6G2",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-18T01:52:45.000Z"
+            },
+            {
+              "id": "01M88R2GWCXH7H8BNGT73XHF80",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-18T02:22:42.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307657055894",
+          "providerId": "minimax",
+          "upstreamId": "7307657055894",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-17T08:26:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-17T08:29:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-17T08:29:00.000Z",
+          "durationMinutes": 3,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307657055894",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSSA6WVR56SG7VCA4S5MV",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-17T08:26:00.000Z"
+            },
+            {
+              "id": "01M8DSSSA6WVR56SG7VF2DYZEP",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-17T08:29:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656980118",
+          "providerId": "minimax",
+          "upstreamId": "7307656980118",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-17T08:15:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-17T08:22:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-17T08:22:00.000Z",
+          "durationMinutes": 7,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656980118",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSQVY5CRN22STXTCPCJ9P",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-17T08:15:00.000Z"
+            },
+            {
+              "id": "01M8DSSQVY5CRN22STXWFPNG8B",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-17T08:22:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656903830",
+          "providerId": "minimax",
+          "upstreamId": "7307656903830",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-17T08:01:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-17T08:11:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-17T08:11:00.000Z",
+          "durationMinutes": 10,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656903830",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSPDHB1V9X0XAVY2ZH3AY",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-17T08:01:00.000Z"
+            },
+            {
+              "id": "01M8DSSPDHB1V9X0XAW16TTZYQ",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-17T08:11:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656833686",
+          "providerId": "minimax",
+          "upstreamId": "7307656833686",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-16T02:11:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-16T02:14:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-16T02:14:00.000Z",
+          "durationMinutes": 3,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656833686",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSN2V0B5C93K3BA0QHWA1",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-16T02:11:00.000Z"
+            },
+            {
+              "id": "01M8DSSN2V0B5C93K3BDHJZN7F",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-16T02:14:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656745622",
+          "providerId": "minimax",
+          "upstreamId": "7307656745622",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-16T01:55:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-16T02:02:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-16T02:02:00.000Z",
+          "durationMinutes": 7,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656745622",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSKD2N78WB6V2C6QF7SG4",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-16T01:55:00.000Z"
+            },
+            {
+              "id": "01M8DSSKD2N78WB6V2C8XW4NM0",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-16T02:02:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656672918",
+          "providerId": "minimax",
+          "upstreamId": "7307656672918",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-15T21:48:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-15T21:49:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-15T21:49:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656672918",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSJ0GF392GA1BZ7C2V3KK",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-15T21:48:00.000Z"
+            },
+            {
+              "id": "01M8DSSJ0GF392GA1BZ8F05098",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-15T21:49:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656600214",
+          "providerId": "minimax",
+          "upstreamId": "7307656600214",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-15T20:24:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-15T20:25:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-15T20:25:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656600214",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSGM9SG5DC5FF7XGYTPRS",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-15T20:24:00.000Z"
+            },
+            {
+              "id": "01M8DSSGM9SG5DC5FF7ZQVXWKR",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-15T20:25:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656509123",
+          "providerId": "minimax",
+          "upstreamId": "7307656509123",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-14T05:01:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-14T05:02:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-14T05:02:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656509123",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSEWFAGAXFB4Z0JH4PWKY",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-14T05:01:00.000Z"
+            },
+            {
+              "id": "01M8DSSEWFAGAXFB4Z0KRPVAQB",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-14T05:02:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656416918",
+          "providerId": "minimax",
+          "upstreamId": "7307656416918",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-03T07:10:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-03T07:13:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-03T07:13:00.000Z",
+          "durationMinutes": 3,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656416918",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSD4C511VTNKFNJRQD6NK",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-03T07:10:00.000Z"
+            },
+            {
+              "id": "01M8DSSD4C511VTNKFNMHEKCPR",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-03T07:13:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656265411",
+          "providerId": "minimax",
+          "upstreamId": "7307656265411",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-26T22:09:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-26T22:11:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-26T22:11:00.000Z",
+          "durationMinutes": 2,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656265411",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSA7WBFCNDBY491FEF2X2",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-26T22:09:00.000Z"
+            },
+            {
+              "id": "01M8DSSA7WBFCNDBY491GRCC4Y",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-26T22:11:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656159382",
+          "providerId": "minimax",
+          "upstreamId": "7307656159382",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-25T14:26:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-25T14:27:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-25T14:27:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656159382",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS870YSJP6VESFS0P8FEC",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-25T14:26:00.000Z"
+            },
+            {
+              "id": "01M8DSS870YSJP6VESFSGRTZCE",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-25T14:27:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656015510",
+          "providerId": "minimax",
+          "upstreamId": "7307656015510",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-22T02:56:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-22T02:58:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-22T02:58:00.000Z",
+          "durationMinutes": 2,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656015510",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS5F6113PZZNEY0ZQA1C2",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-22T02:56:00.000Z"
+            },
+            {
+              "id": "01M8DSS5F6113PZZNEY3SV8C08",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-22T02:58:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655941782",
+          "providerId": "minimax",
+          "upstreamId": "7307655941782",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-20T22:25:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-20T22:26:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-20T22:26:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655941782",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS429Q95TPSJ94ZG9BZ6F",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-20T22:25:00.000Z"
+            },
+            {
+              "id": "01M8DSS429Q95TPSJ952W7QN9T",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-20T22:26:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655831747",
+          "providerId": "minimax",
+          "upstreamId": "7307655831747",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-20T03:20:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-20T03:29:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-20T03:29:00.000Z",
+          "durationMinutes": 9,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655831747",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS1Z21TKAV99B4DPZY18C",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-20T03:20:00.000Z"
+            },
+            {
+              "id": "01M8DSS1Z21TKAV99B4HNJHJS2",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-20T03:29:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655762070",
+          "providerId": "minimax",
+          "upstreamId": "7307655762070",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-20T01:20:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-20T01:21:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-20T01:21:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655762070",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS0MKAKJT7ABXVCNJY255",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-20T01:20:00.000Z"
+            },
+            {
+              "id": "01M8DSS0MKAKJT7ABXVEE92FXZ",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-20T01:21:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7298973455455",
+          "providerId": "minimax",
+          "upstreamId": "7298973455455",
+          "kind": "incident",
+          "title": "语音合成 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58T6S2FM4J6NV7RCC88"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-16T04:20:45.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-16T04:23:44.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-16T04:23:44.000Z",
+          "durationMinutes": 2.9833333333333334,
+          "sourceUrl": "https://status.minimax.cn/incidents/7298973455455",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M88R1YSD76YFYZRJZA48GM71",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-16T04:20:45.000Z"
+            },
+            {
+              "id": "01M88R1YSD76YFYZRJZDZZA9WF",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-16T04:23:44.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7298973342384",
+          "providerId": "minimax",
+          "upstreamId": "7298973342384",
+          "kind": "incident",
+          "title": "语音合成 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58T6S2FM4J6NV7RCC88"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-09T08:27:45.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-09T08:32:44.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-09T08:32:44.000Z",
+          "durationMinutes": 4.983333333333333,
+          "sourceUrl": "https://status.minimax.cn/incidents/7298973342384",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M88R1WM7MWFM5RD5Q89H0M10",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-09T08:27:45.000Z"
+            },
+            {
+              "id": "01M88R1WM7MWFM5RD5QB72ZEMZ",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-09T08:32:44.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655636118",
+          "providerId": "minimax",
+          "upstreamId": "7307655636118",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T10:26:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T10:30:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T10:30:00.000Z",
+          "durationMinutes": 4,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655636118",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRY7N37WZYAMBY9EDZ64X",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T10:26:00.000Z"
+            },
+            {
+              "id": "01M8DSRY7N37WZYAMBYBB6APKS",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T10:30:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655561878",
+          "providerId": "minimax",
+          "upstreamId": "7307655561878",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T10:12:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T10:13:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T10:13:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655561878",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRWTJ82G0PGBE9TFBTSHD",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T10:12:00.000Z"
+            },
+            {
+              "id": "01M8DSRWTJ82G0PGBE9TMZFGEG",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T10:13:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655321283",
+          "providerId": "minimax",
+          "upstreamId": "7307655321283",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T09:16:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T09:21:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T09:21:00.000Z",
+          "durationMinutes": 5,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655321283",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRR7MZMF1HVJ3G8HEF25J",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T09:16:00.000Z"
+            },
+            {
+              "id": "01M8DSRR7MZMF1HVJ3G92MGN4A",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T09:21:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655228566",
+          "providerId": "minimax",
+          "upstreamId": "7307655228566",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T09:09:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T09:14:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T09:14:00.000Z",
+          "durationMinutes": 5,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655228566",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRPF5Y07HR83NP4CF1YA6",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T09:09:00.000Z"
+            },
+            {
+              "id": "01M8DSRPF5Y07HR83NP6Q3QS9T",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T09:14:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655125142",
+          "providerId": "minimax",
+          "upstreamId": "7307655125142",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T08:50:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T08:51:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T08:51:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655125142",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRMG0CZTQGJZZY3XEQ5YW",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T08:50:00.000Z"
+            },
+            {
+              "id": "01M8DSRMG0CZTQGJZZY7NM5MHN",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T08:51:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655050390",
+          "providerId": "minimax",
+          "upstreamId": "7307655050390",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-01T01:02:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-01T01:07:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-01T01:07:00.000Z",
+          "durationMinutes": 5,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655050390",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRK2B8A9JQWMQ3PJK1QW6",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-01T01:02:00.000Z"
+            },
+            {
+              "id": "01M8DSRK2B8A9JQWMQ3PZW3JT9",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-01T01:07:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307654936214",
+          "providerId": "minimax",
+          "upstreamId": "7307654936214",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-01T00:02:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-01T00:04:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-01T00:04:00.000Z",
+          "durationMinutes": 2,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307654936214",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRGWP17GSK9BR45HVYQKM",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-01T00:02:00.000Z"
+            },
+            {
+              "id": "01M8DSRGWP17GSK9BR497GFTJ9",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-01T00:04:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": "2026-11-28T17:41:15.706Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-27T07:36:18.852Z",
+        "nativeHistoryEarliestAt": "2026-10-01T00:02:00.000Z",
+        "limitation": "Native history covers only the supplied calendar/list window; feeds do not establish incident start times"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "ssr_components",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:13.914Z"
+          },
+          {
+            "name": "ssr_active_changes",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:13.914Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": []
+      }
+    },
+    "lastTrustedResult": {
+      "providerId": "minimax",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "minimax:01M88QV58SMAA318DVA1HBG6Y8",
+          "upstreamId": "01M88QV58SMAA318DVA1HBG6Y8",
+          "groupId": null,
+          "name": "文本模型",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "minimax:01M88QV58TPECB40H48WHBVTTM",
+          "upstreamId": "01M88QV58TPECB40H48WHBVTTM",
+          "groupId": null,
+          "name": "图片生成",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "minimax:01M88QV58T3NDJ8FM1GKW8FXFA",
+          "upstreamId": "01M88QV58T3NDJ8FM1GKW8FXFA",
+          "groupId": "minimax:01M88QV2PB9WV1QPBNTTQZQH84",
+          "name": "Hailuo 系列",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "minimax:01M88QV58T6S2FM4J6NV7RCC88",
+          "upstreamId": "01M88QV58T6S2FM4J6NV7RCC88",
+          "groupId": null,
+          "name": "语音合成",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "minimax:01M88QV58T8V7789S99D80DKRC",
+          "upstreamId": "01M88QV58T8V7789S99D80DKRC",
+          "groupId": "minimax:01M88QV2PB9WV1QPBNTTQZQH84",
+          "name": "H3 系列",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "minimax:7307657128086",
+          "providerId": "minimax",
+          "upstreamId": "7307657128086",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-22T02:10:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-22T02:11:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-22T02:11:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307657128086",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSTPHAMV6NJ8C3QPSMFBC",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-22T02:10:00.000Z"
+            },
+            {
+              "id": "01M8DSSTPHAMV6NJ8C3R3D4RMV",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-22T02:11:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7298974404191",
+          "providerId": "minimax",
+          "upstreamId": "7298974404191",
+          "kind": "incident",
+          "title": "语音合成 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58T6S2FM4J6NV7RCC88"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-18T01:52:45.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-18T02:22:42.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-18T02:22:42.000Z",
+          "durationMinutes": 29.95,
+          "sourceUrl": "https://status.minimax.cn/incidents/7298974404191",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M88R2GWCXH7H8BNGT4KTG6G2",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-18T01:52:45.000Z"
+            },
+            {
+              "id": "01M88R2GWCXH7H8BNGT73XHF80",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-18T02:22:42.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307657055894",
+          "providerId": "minimax",
+          "upstreamId": "7307657055894",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-17T08:26:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-17T08:29:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-17T08:29:00.000Z",
+          "durationMinutes": 3,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307657055894",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSSA6WVR56SG7VCA4S5MV",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-17T08:26:00.000Z"
+            },
+            {
+              "id": "01M8DSSSA6WVR56SG7VF2DYZEP",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-17T08:29:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656980118",
+          "providerId": "minimax",
+          "upstreamId": "7307656980118",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-17T08:15:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-17T08:22:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-17T08:22:00.000Z",
+          "durationMinutes": 7,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656980118",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSQVY5CRN22STXTCPCJ9P",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-17T08:15:00.000Z"
+            },
+            {
+              "id": "01M8DSSQVY5CRN22STXWFPNG8B",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-17T08:22:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656903830",
+          "providerId": "minimax",
+          "upstreamId": "7307656903830",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-17T08:01:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-17T08:11:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-17T08:11:00.000Z",
+          "durationMinutes": 10,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656903830",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSPDHB1V9X0XAVY2ZH3AY",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-17T08:01:00.000Z"
+            },
+            {
+              "id": "01M8DSSPDHB1V9X0XAW16TTZYQ",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-17T08:11:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656833686",
+          "providerId": "minimax",
+          "upstreamId": "7307656833686",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-16T02:11:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-16T02:14:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-16T02:14:00.000Z",
+          "durationMinutes": 3,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656833686",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSN2V0B5C93K3BA0QHWA1",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-16T02:11:00.000Z"
+            },
+            {
+              "id": "01M8DSSN2V0B5C93K3BDHJZN7F",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-16T02:14:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656745622",
+          "providerId": "minimax",
+          "upstreamId": "7307656745622",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-16T01:55:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-16T02:02:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-16T02:02:00.000Z",
+          "durationMinutes": 7,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656745622",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSKD2N78WB6V2C6QF7SG4",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-16T01:55:00.000Z"
+            },
+            {
+              "id": "01M8DSSKD2N78WB6V2C8XW4NM0",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-16T02:02:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656672918",
+          "providerId": "minimax",
+          "upstreamId": "7307656672918",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-15T21:48:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-15T21:49:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-15T21:49:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656672918",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSJ0GF392GA1BZ7C2V3KK",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-15T21:48:00.000Z"
+            },
+            {
+              "id": "01M8DSSJ0GF392GA1BZ8F05098",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-15T21:49:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656600214",
+          "providerId": "minimax",
+          "upstreamId": "7307656600214",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-15T20:24:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-15T20:25:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-15T20:25:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656600214",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSGM9SG5DC5FF7XGYTPRS",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-15T20:24:00.000Z"
+            },
+            {
+              "id": "01M8DSSGM9SG5DC5FF7ZQVXWKR",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-15T20:25:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656509123",
+          "providerId": "minimax",
+          "upstreamId": "7307656509123",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-14T05:01:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-14T05:02:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-14T05:02:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656509123",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSEWFAGAXFB4Z0JH4PWKY",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-14T05:01:00.000Z"
+            },
+            {
+              "id": "01M8DSSEWFAGAXFB4Z0KRPVAQB",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-14T05:02:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656416918",
+          "providerId": "minimax",
+          "upstreamId": "7307656416918",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-03T07:10:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-03T07:13:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-11-03T07:13:00.000Z",
+          "durationMinutes": 3,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656416918",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSD4C511VTNKFNJRQD6NK",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-11-03T07:10:00.000Z"
+            },
+            {
+              "id": "01M8DSSD4C511VTNKFNMHEKCPR",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-11-03T07:13:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656265411",
+          "providerId": "minimax",
+          "upstreamId": "7307656265411",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-26T22:09:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-26T22:11:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-26T22:11:00.000Z",
+          "durationMinutes": 2,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656265411",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSSA7WBFCNDBY491FEF2X2",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-26T22:09:00.000Z"
+            },
+            {
+              "id": "01M8DSSA7WBFCNDBY491GRCC4Y",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-26T22:11:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656159382",
+          "providerId": "minimax",
+          "upstreamId": "7307656159382",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-25T14:26:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-25T14:27:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-25T14:27:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656159382",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS870YSJP6VESFS0P8FEC",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-25T14:26:00.000Z"
+            },
+            {
+              "id": "01M8DSS870YSJP6VESFSGRTZCE",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-25T14:27:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307656015510",
+          "providerId": "minimax",
+          "upstreamId": "7307656015510",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-22T02:56:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-22T02:58:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-22T02:58:00.000Z",
+          "durationMinutes": 2,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307656015510",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS5F6113PZZNEY0ZQA1C2",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-22T02:56:00.000Z"
+            },
+            {
+              "id": "01M8DSS5F6113PZZNEY3SV8C08",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-22T02:58:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655941782",
+          "providerId": "minimax",
+          "upstreamId": "7307655941782",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-20T22:25:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-20T22:26:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-20T22:26:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655941782",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS429Q95TPSJ94ZG9BZ6F",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-20T22:25:00.000Z"
+            },
+            {
+              "id": "01M8DSS429Q95TPSJ952W7QN9T",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-20T22:26:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655831747",
+          "providerId": "minimax",
+          "upstreamId": "7307655831747",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-20T03:20:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-20T03:29:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-20T03:29:00.000Z",
+          "durationMinutes": 9,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655831747",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS1Z21TKAV99B4DPZY18C",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-20T03:20:00.000Z"
+            },
+            {
+              "id": "01M8DSS1Z21TKAV99B4HNJHJS2",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-20T03:29:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655762070",
+          "providerId": "minimax",
+          "upstreamId": "7307655762070",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-20T01:20:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-20T01:21:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-20T01:21:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655762070",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSS0MKAKJT7ABXVCNJY255",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-20T01:20:00.000Z"
+            },
+            {
+              "id": "01M8DSS0MKAKJT7ABXVEE92FXZ",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-20T01:21:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7298973455455",
+          "providerId": "minimax",
+          "upstreamId": "7298973455455",
+          "kind": "incident",
+          "title": "语音合成 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58T6S2FM4J6NV7RCC88"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-16T04:20:45.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-16T04:23:44.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-16T04:23:44.000Z",
+          "durationMinutes": 2.9833333333333334,
+          "sourceUrl": "https://status.minimax.cn/incidents/7298973455455",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M88R1YSD76YFYZRJZA48GM71",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-16T04:20:45.000Z"
+            },
+            {
+              "id": "01M88R1YSD76YFYZRJZDZZA9WF",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-16T04:23:44.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7298973342384",
+          "providerId": "minimax",
+          "upstreamId": "7298973342384",
+          "kind": "incident",
+          "title": "语音合成 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58T6S2FM4J6NV7RCC88"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-09T08:27:45.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-09T08:32:44.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-09T08:32:44.000Z",
+          "durationMinutes": 4.983333333333333,
+          "sourceUrl": "https://status.minimax.cn/incidents/7298973342384",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M88R1WM7MWFM5RD5Q89H0M10",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-09T08:27:45.000Z"
+            },
+            {
+              "id": "01M88R1WM7MWFM5RD5QB72ZEMZ",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-09T08:32:44.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655636118",
+          "providerId": "minimax",
+          "upstreamId": "7307655636118",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T10:26:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T10:30:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T10:30:00.000Z",
+          "durationMinutes": 4,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655636118",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRY7N37WZYAMBY9EDZ64X",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T10:26:00.000Z"
+            },
+            {
+              "id": "01M8DSRY7N37WZYAMBYBB6APKS",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T10:30:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655561878",
+          "providerId": "minimax",
+          "upstreamId": "7307655561878",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T10:12:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T10:13:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T10:13:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655561878",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRWTJ82G0PGBE9TFBTSHD",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T10:12:00.000Z"
+            },
+            {
+              "id": "01M8DSRWTJ82G0PGBE9TMZFGEG",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T10:13:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655321283",
+          "providerId": "minimax",
+          "upstreamId": "7307655321283",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T09:16:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T09:21:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T09:21:00.000Z",
+          "durationMinutes": 5,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655321283",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRR7MZMF1HVJ3G8HEF25J",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T09:16:00.000Z"
+            },
+            {
+              "id": "01M8DSRR7MZMF1HVJ3G92MGN4A",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T09:21:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655228566",
+          "providerId": "minimax",
+          "upstreamId": "7307655228566",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T09:09:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T09:14:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T09:14:00.000Z",
+          "durationMinutes": 5,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655228566",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRPF5Y07HR83NP4CF1YA6",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T09:09:00.000Z"
+            },
+            {
+              "id": "01M8DSRPF5Y07HR83NP6Q3QS9T",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T09:14:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655125142",
+          "providerId": "minimax",
+          "upstreamId": "7307655125142",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-05T08:50:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-05T08:51:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-05T08:51:00.000Z",
+          "durationMinutes": 1,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655125142",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRMG0CZTQGJZZY3XEQ5YW",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-05T08:50:00.000Z"
+            },
+            {
+              "id": "01M8DSRMG0CZTQGJZZY7NM5MHN",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-05T08:51:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307655050390",
+          "providerId": "minimax",
+          "upstreamId": "7307655050390",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-01T01:02:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-01T01:07:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-01T01:07:00.000Z",
+          "durationMinutes": 5,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307655050390",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRK2B8A9JQWMQ3PJK1QW6",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-01T01:02:00.000Z"
+            },
+            {
+              "id": "01M8DSRK2B8A9JQWMQ3PZW3JT9",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-01T01:07:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "minimax:7307654936214",
+          "providerId": "minimax",
+          "upstreamId": "7307654936214",
+          "kind": "incident",
+          "title": "文本模型 错误率升高",
+          "severity": "partial_outage",
+          "sourceSeverity": "partial_outage",
+          "severityBasis": "component",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "minimax:01M88QV58SMAA318DVA1HBG6Y8"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-10-01T00:02:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-01T00:04:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:13.914Z",
+          "updatedAt": "2026-10-01T00:04:00.000Z",
+          "durationMinutes": 2,
+          "sourceUrl": "https://status.minimax.cn/incidents/7307654936214",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "01M8DSRGWP17GSK9BR45HVYQKM",
+              "phase": "investigating",
+              "body": "我们正在调查此问题。",
+              "timestamp": "2026-10-01T00:02:00.000Z"
+            },
+            {
+              "id": "01M8DSRGWP17GSK9BR497GFTJ9",
+              "phase": "resolved",
+              "body": "该问题已解决。",
+              "timestamp": "2026-10-01T00:04:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": "2026-11-28T17:41:15.706Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-27T07:36:18.852Z",
+        "nativeHistoryEarliestAt": "2026-10-01T00:02:00.000Z",
+        "limitation": "Native history covers only the supplied calendar/list window; feeds do not establish incident start times"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "ssr_components",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:13.914Z"
+          },
+          {
+            "name": "ssr_active_changes",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:13.914Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": []
+      }
+    },
+    "collection": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.630Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.630Z",
+      "sourceUpdatedAt": "2026-11-28T17:41:15.706Z",
+      "durationMs": 1716.3412199999993,
+      "consecutiveFailures": 0
+    }
+  }
+}

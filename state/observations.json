@@ -1,0 +1,1989 @@
+{
+  "schemaVersion": "1.0",
+  "providers": {
+    "cloudflare": [
+      {
+        "at": "2026-11-26T16:44:28.898Z",
+        "through": "2026-11-26T16:44:28.898Z",
+        "intervalMinutes": 5,
+        "status": "major_outage"
+      },
+      {
+        "at": "2026-11-26T17:26:45.855Z",
+        "through": "2026-11-26T17:26:45.855Z",
+        "intervalMinutes": 5,
+        "status": "major_outage"
+      },
+      {
+        "at": "2026-11-27T00:43:47.945Z",
+        "through": "2026-11-27T00:43:47.945Z",
+        "intervalMinutes": 5,
+        "status": "partial_outage"
+      },
+      {
+        "at": "2026-11-27T06:21:19.734Z",
+        "through": "2026-11-28T00:16:29.490Z",
+        "intervalMinutes": 5,
+        "status": "partial_outage"
+      },
+      {
+        "at": "2026-11-28T00:27:13.784Z",
+        "through": "2026-11-28T07:21:24.911Z",
+        "intervalMinutes": 5,
+        "status": "partial_outage"
+      },
+      {
+        "at": "2026-11-28T07:26:12.180Z",
+        "through": "2026-11-28T09:21:10.842Z",
+        "intervalMinutes": 5,
+        "status": "major_outage"
+      },
+      {
+        "at": "2026-11-28T09:26:19.029Z",
+        "through": "2026-11-28T17:41:14.104Z",
+        "intervalMinutes": 5,
+        "status": "partial_outage"
+      }
+    ],
+    "github": [
+      {
+        "at": "2026-11-26T16:44:28.888Z",
+        "through": "2026-11-26T16:44:28.888Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:45.552Z",
+        "through": "2026-11-26T17:26:45.552Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:48.233Z",
+        "through": "2026-11-27T00:43:48.233Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:19.257Z",
+        "through": "2026-11-28T00:16:29.362Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:13.774Z",
+        "through": "2026-11-28T17:41:14.422Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "claude": [
+      {
+        "at": "2026-11-26T16:44:28.808Z",
+        "through": "2026-11-26T16:44:28.808Z",
+        "intervalMinutes": 5,
+        "status": "major_outage"
+      },
+      {
+        "at": "2026-11-26T17:26:45.303Z",
+        "through": "2026-11-26T17:26:45.303Z",
+        "intervalMinutes": 5,
+        "status": "major_outage"
+      },
+      {
+        "at": "2026-11-27T00:43:47.821Z",
+        "through": "2026-11-27T00:43:47.821Z",
+        "intervalMinutes": 5,
+        "status": "major_outage"
+      },
+      {
+        "at": "2026-11-27T06:21:19.264Z",
+        "through": "2026-11-28T00:16:29.057Z",
+        "intervalMinutes": 5,
+        "status": "major_outage"
+      },
+      {
+        "at": "2026-11-28T00:27:13.697Z",
+        "through": "2026-11-28T17:41:13.914Z",
+        "intervalMinutes": 5,
+        "status": "major_outage"
+      }
+    ],
+    "openai": [
+      {
+        "at": "2026-11-26T16:44:30.620Z",
+        "through": "2026-11-26T16:44:30.620Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:47.442Z",
+        "through": "2026-11-26T17:26:47.442Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:49.111Z",
+        "through": "2026-11-27T00:43:49.111Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:20.539Z",
+        "through": "2026-11-28T00:16:30.331Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:14.670Z",
+        "through": "2026-11-28T17:41:20.045Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "moonshot": [
+      {
+        "at": "2026-11-26T16:44:29.064Z",
+        "through": "2026-11-26T16:44:29.064Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:48.733Z",
+        "through": "2026-11-26T17:26:48.733Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:49.174Z",
+        "through": "2026-11-27T00:43:49.174Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:21.447Z",
+        "through": "2026-11-27T08:46:18.107Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T08:51:23.913Z",
+        "through": "2026-11-27T08:51:23.913Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T08:56:08.758Z",
+        "through": "2026-11-27T13:46:19.097Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T13:51:40.501Z",
+        "through": "2026-11-27T13:51:40.501Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T13:56:17.416Z",
+        "through": "2026-11-27T14:37:12.891Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T14:41:23.561Z",
+        "through": "2026-11-27T14:41:23.561Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T14:46:16.761Z",
+        "through": "2026-11-28T00:16:29.792Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:14.213Z",
+        "through": "2026-11-28T17:41:15.407Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "deepseek": [
+      {
+        "at": "2026-11-26T16:44:31.034Z",
+        "through": "2026-11-26T16:44:31.034Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:46.374Z",
+        "through": "2026-11-26T17:26:46.374Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:49.339Z",
+        "through": "2026-11-27T00:43:49.339Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:20.549Z",
+        "through": "2026-11-27T22:01:17.811Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T22:06:27.145Z",
+        "through": "2026-11-27T22:06:27.145Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T22:11:22.483Z",
+        "through": "2026-11-28T00:16:34.832Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:14.931Z",
+        "through": "2026-11-28T01:06:43.146Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T01:11:18.875Z",
+        "through": "2026-11-28T01:16:23.081Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T01:21:09.726Z",
+        "through": "2026-11-28T17:41:15.240Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "gcp": [
+      {
+        "at": "2026-11-26T16:44:28.903Z",
+        "through": "2026-11-26T16:44:28.903Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:45.609Z",
+        "through": "2026-11-26T17:26:45.609Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:48.405Z",
+        "through": "2026-11-27T00:43:48.405Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:19.354Z",
+        "through": "2026-11-28T00:16:30.413Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:15.084Z",
+        "through": "2026-11-28T17:41:15.849Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "apple-cn": [
+      {
+        "at": "2026-11-26T16:44:29.275Z",
+        "through": "2026-11-26T16:44:29.275Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:45.960Z",
+        "through": "2026-11-26T17:26:45.960Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:48.548Z",
+        "through": "2026-11-27T00:43:48.548Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:19.381Z",
+        "through": "2026-11-28T00:16:30.659Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:15.191Z",
+        "through": "2026-11-28T17:41:17.420Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "azure": [
+      {
+        "at": "2026-11-26T16:44:30.348Z",
+        "through": "2026-11-26T16:44:30.348Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:48.630Z",
+        "through": "2026-11-26T17:26:48.630Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:51.323Z",
+        "through": "2026-11-27T00:43:51.323Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:22.543Z",
+        "through": "2026-11-28T00:16:33.994Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:17.946Z",
+        "through": "2026-11-28T17:41:18.572Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "aws-cn": [
+      {
+        "at": "2026-11-26T16:44:32.314Z",
+        "through": "2026-11-26T16:44:32.314Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:49.910Z",
+        "through": "2026-11-26T17:26:49.910Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:52.853Z",
+        "through": "2026-11-27T00:43:52.853Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:23.792Z",
+        "through": "2026-11-28T00:16:35.217Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:19.261Z",
+        "through": "2026-11-28T17:41:19.661Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "tencent-cloud": [
+      {
+        "at": "2026-11-26T16:44:34.292Z",
+        "through": "2026-11-26T16:44:34.292Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:51.085Z",
+        "through": "2026-11-26T17:26:51.085Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:43:53.573Z",
+        "through": "2026-11-27T00:43:53.573Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:25.422Z",
+        "through": "2026-11-27T16:41:13.796Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T16:46:41.574Z",
+        "through": "2026-11-27T16:46:41.574Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T16:51:16.248Z",
+        "through": "2026-11-27T23:11:09.319Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T23:16:55.721Z",
+        "through": "2026-11-27T23:16:55.721Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T23:21:31.108Z",
+        "through": "2026-11-28T00:16:35.858Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:20.370Z",
+        "through": "2026-11-28T01:21:15.389Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T01:26:44.334Z",
+        "through": "2026-11-28T01:26:44.334Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T01:31:21.910Z",
+        "through": "2026-11-28T03:56:14.271Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T04:01:44.688Z",
+        "through": "2026-11-28T04:01:44.688Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T04:06:20.219Z",
+        "through": "2026-11-28T04:31:10.754Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T04:36:56.365Z",
+        "through": "2026-11-28T04:36:56.365Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T04:41:15.585Z",
+        "through": "2026-11-28T15:21:20.688Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T15:26:44.421Z",
+        "through": "2026-11-28T15:26:44.421Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T15:31:14.668Z",
+        "through": "2026-11-28T17:41:21.530Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "aliyun": [
+      {
+        "at": "2026-11-26T16:44:39.563Z",
+        "through": "2026-11-26T16:44:39.563Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:55.835Z",
+        "through": "2026-11-26T17:26:55.835Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:44:00.336Z",
+        "through": "2026-11-27T00:44:00.336Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:29.907Z",
+        "through": "2026-11-27T08:11:12.276Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T08:16:47.251Z",
+        "through": "2026-11-27T08:16:47.251Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T08:21:24.960Z",
+        "through": "2026-11-27T08:31:52.230Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T08:36:53.238Z",
+        "through": "2026-11-27T08:36:53.238Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T08:41:20.473Z",
+        "through": "2026-11-27T09:01:23.773Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T09:06:41.032Z",
+        "through": "2026-11-27T09:06:41.032Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T09:11:27.770Z",
+        "through": "2026-11-27T09:46:37.991Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T09:51:42.565Z",
+        "through": "2026-11-27T09:51:42.565Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T09:56:23.457Z",
+        "through": "2026-11-27T11:21:27.431Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T11:26:17.378Z",
+        "through": "2026-11-27T11:26:17.378Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T11:31:20.117Z",
+        "through": "2026-11-27T14:16:40.341Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T14:21:56.459Z",
+        "through": "2026-11-27T14:21:56.459Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T14:26:24.698Z",
+        "through": "2026-11-27T17:36:27.880Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T17:42:13.191Z",
+        "through": "2026-11-27T17:42:13.191Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T17:46:23.534Z",
+        "through": "2026-11-27T18:01:26.033Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T18:06:41.912Z",
+        "through": "2026-11-27T18:06:41.912Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T18:11:14.097Z",
+        "through": "2026-11-27T20:51:19.047Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T20:56:49.485Z",
+        "through": "2026-11-27T20:56:49.485Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T21:01:23.442Z",
+        "through": "2026-11-27T21:06:28.985Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T21:11:46.822Z",
+        "through": "2026-11-27T21:11:46.822Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T21:16:34.426Z",
+        "through": "2026-11-27T21:31:25.739Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T21:36:53.972Z",
+        "through": "2026-11-27T21:36:53.972Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T21:41:31.298Z",
+        "through": "2026-11-28T00:06:27.240Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:11:39.967Z",
+        "through": "2026-11-28T00:11:39.967Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T00:16:40.660Z",
+        "through": "2026-11-28T00:16:40.660Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:24.657Z",
+        "through": "2026-11-28T00:36:28.337Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:41:43.179Z",
+        "through": "2026-11-28T00:41:43.179Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T00:46:30.688Z",
+        "through": "2026-11-28T08:41:17.137Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T08:46:48.286Z",
+        "through": "2026-11-28T08:46:48.286Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T08:51:45.929Z",
+        "through": "2026-11-28T09:26:32.630Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T09:31:38.989Z",
+        "through": "2026-11-28T09:31:38.989Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T09:36:15.823Z",
+        "through": "2026-11-28T10:46:16.275Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T10:51:59.237Z",
+        "through": "2026-11-28T10:51:59.237Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T10:56:20.433Z",
+        "through": "2026-11-28T17:06:21.961Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T17:11:44.735Z",
+        "through": "2026-11-28T17:11:44.735Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T17:16:23.383Z",
+        "through": "2026-11-28T17:41:27.486Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "baidu-cloud": [
+      {
+        "at": "2026-11-26T16:44:48.011Z",
+        "through": "2026-11-26T16:44:48.011Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-26T17:26:58.275Z",
+        "through": "2026-11-26T17:26:58.275Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T00:44:00.496Z",
+        "through": "2026-11-27T00:44:00.496Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T06:21:31.149Z",
+        "through": "2026-11-27T07:11:38.074Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T07:16:42.583Z",
+        "through": "2026-11-27T07:16:42.583Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T07:21:21.099Z",
+        "through": "2026-11-27T07:21:21.099Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T07:26:44.154Z",
+        "through": "2026-11-27T07:26:44.154Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T07:31:27.794Z",
+        "through": "2026-11-27T07:36:38.649Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T07:41:40.831Z",
+        "through": "2026-11-27T07:41:40.831Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T07:46:35.715Z",
+        "through": "2026-11-27T07:51:43.090Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T07:56:40.484Z",
+        "through": "2026-11-27T07:56:40.484Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T08:01:32.563Z",
+        "through": "2026-11-27T08:11:19.285Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T08:16:44.001Z",
+        "through": "2026-11-27T08:16:44.001Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T08:21:26.635Z",
+        "through": "2026-11-27T08:21:26.635Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T08:26:47.162Z",
+        "through": "2026-11-27T08:26:47.162Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T08:31:57.332Z",
+        "through": "2026-11-27T08:46:34.551Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T08:51:46.342Z",
+        "through": "2026-11-27T08:51:46.342Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T08:56:23.891Z",
+        "through": "2026-11-27T08:56:23.891Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T09:01:44.109Z",
+        "through": "2026-11-27T09:01:44.109Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T09:06:17.057Z",
+        "through": "2026-11-27T09:36:27.333Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T09:41:46.764Z",
+        "through": "2026-11-27T09:41:46.764Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T09:46:42.602Z",
+        "through": "2026-11-27T10:11:40.921Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T10:16:59.993Z",
+        "through": "2026-11-27T10:16:59.993Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T10:21:16.323Z",
+        "through": "2026-11-27T10:21:16.323Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T10:26:37.625Z",
+        "through": "2026-11-27T10:31:41.859Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T10:36:30.129Z",
+        "through": "2026-11-27T10:56:22.534Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T11:02:07.435Z",
+        "through": "2026-11-27T11:06:57.345Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T11:11:21.356Z",
+        "through": "2026-11-27T12:31:25.803Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T12:36:51.039Z",
+        "through": "2026-11-27T12:36:51.039Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T12:41:20.549Z",
+        "through": "2026-11-27T13:26:38.387Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T13:32:02.360Z",
+        "through": "2026-11-27T13:32:02.360Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T13:36:22.056Z",
+        "through": "2026-11-27T13:36:22.056Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T13:41:43.188Z",
+        "through": "2026-11-27T13:41:43.188Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T13:46:38.438Z",
+        "through": "2026-11-27T14:01:30.228Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T14:07:02.985Z",
+        "through": "2026-11-27T14:26:45.456Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T14:31:22.225Z",
+        "through": "2026-11-27T14:31:22.225Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T14:37:49.281Z",
+        "through": "2026-11-27T14:41:46.813Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T14:46:33.358Z",
+        "through": "2026-11-27T14:51:26.263Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T14:56:41.710Z",
+        "through": "2026-11-27T14:56:41.710Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T15:01:39.053Z",
+        "through": "2026-11-27T15:01:39.053Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T15:07:04.398Z",
+        "through": "2026-11-27T15:07:04.398Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T15:11:24.623Z",
+        "through": "2026-11-27T15:11:24.623Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T15:16:45.274Z",
+        "through": "2026-11-27T15:16:45.274Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T15:21:32.288Z",
+        "through": "2026-11-27T15:46:34.864Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T15:52:10.929Z",
+        "through": "2026-11-27T15:52:10.929Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T15:56:18.557Z",
+        "through": "2026-11-27T16:01:30.425Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T16:06:51.780Z",
+        "through": "2026-11-27T16:06:51.780Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T16:11:44.155Z",
+        "through": "2026-11-27T16:21:32.555Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T16:26:41.710Z",
+        "through": "2026-11-27T16:26:41.710Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T16:32:04.267Z",
+        "through": "2026-11-27T17:01:22.908Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T17:07:22.776Z",
+        "through": "2026-11-27T17:16:47.038Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T17:21:27.999Z",
+        "through": "2026-11-27T17:31:33.836Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T17:36:44.541Z",
+        "through": "2026-11-27T17:36:44.541Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T17:41:50.559Z",
+        "through": "2026-11-27T17:41:50.559Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T17:46:41.215Z",
+        "through": "2026-11-27T17:46:41.215Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T17:51:31.116Z",
+        "through": "2026-11-27T18:26:25.522Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T18:31:36.667Z",
+        "through": "2026-11-27T18:31:36.667Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T18:36:29.115Z",
+        "through": "2026-11-27T18:56:19.929Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T19:01:43.642Z",
+        "through": "2026-11-27T19:07:04.608Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T19:11:22.465Z",
+        "through": "2026-11-27T19:21:30.287Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T19:27:06.613Z",
+        "through": "2026-11-27T19:27:06.613Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T19:31:19.977Z",
+        "through": "2026-11-27T20:36:19.472Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T20:41:49.697Z",
+        "through": "2026-11-27T20:41:49.697Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T20:46:25.502Z",
+        "through": "2026-11-27T20:56:28.455Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T21:01:41.055Z",
+        "through": "2026-11-27T21:06:47.459Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T21:11:29.402Z",
+        "through": "2026-11-27T21:41:39.752Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T21:46:36.311Z",
+        "through": "2026-11-27T21:51:43.473Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T21:56:22.267Z",
+        "through": "2026-11-27T22:01:36.207Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T22:06:44.529Z",
+        "through": "2026-11-27T22:06:44.529Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T22:11:32.605Z",
+        "through": "2026-11-27T22:11:32.605Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T22:16:42.556Z",
+        "through": "2026-11-27T22:16:42.556Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T22:21:24.822Z",
+        "through": "2026-11-27T22:26:26.894Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T22:31:42.600Z",
+        "through": "2026-11-27T22:31:42.600Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T22:36:24.669Z",
+        "through": "2026-11-27T22:41:23.033Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T22:46:43.826Z",
+        "through": "2026-11-27T22:46:43.826Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T22:51:29.846Z",
+        "through": "2026-11-28T00:11:17.141Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:17:02.379Z",
+        "through": "2026-11-28T00:17:02.379Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T00:27:38.645Z",
+        "through": "2026-11-28T02:11:14.165Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T02:16:48.604Z",
+        "through": "2026-11-28T02:16:48.604Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T02:21:23.819Z",
+        "through": "2026-11-28T03:56:19.351Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T04:01:40.509Z",
+        "through": "2026-11-28T04:01:40.509Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T04:06:23.096Z",
+        "through": "2026-11-28T04:31:16.929Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T04:36:53.942Z",
+        "through": "2026-11-28T04:36:53.942Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T04:41:18.687Z",
+        "through": "2026-11-28T05:41:27.892Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T05:46:48.341Z",
+        "through": "2026-11-28T05:46:48.341Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T05:51:22.561Z",
+        "through": "2026-11-28T06:11:21.376Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T06:16:50.009Z",
+        "through": "2026-11-28T06:16:50.009Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T06:21:19.030Z",
+        "through": "2026-11-28T06:36:22.810Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T06:41:39.104Z",
+        "through": "2026-11-28T06:41:39.104Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T06:46:22.289Z",
+        "through": "2026-11-28T07:06:29.606Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T07:11:47.513Z",
+        "through": "2026-11-28T07:16:39.901Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T07:21:37.962Z",
+        "through": "2026-11-28T07:21:37.962Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T07:26:43.961Z",
+        "through": "2026-11-28T07:26:43.961Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T07:31:22.117Z",
+        "through": "2026-11-28T07:36:24.242Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T07:41:45.627Z",
+        "through": "2026-11-28T07:41:45.627Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T07:46:41.012Z",
+        "through": "2026-11-28T07:56:23.843Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T08:01:41.174Z",
+        "through": "2026-11-28T08:01:41.174Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T08:06:27.899Z",
+        "through": "2026-11-28T08:16:19.603Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T08:21:51.022Z",
+        "through": "2026-11-28T08:21:51.022Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T08:26:34.492Z",
+        "through": "2026-11-28T08:31:26.048Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T08:37:01.330Z",
+        "through": "2026-11-28T08:37:01.330Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T08:41:16.703Z",
+        "through": "2026-11-28T08:41:16.703Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T08:46:44.756Z",
+        "through": "2026-11-28T08:52:08.890Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T08:56:29.067Z",
+        "through": "2026-11-28T09:46:25.071Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T09:51:44.698Z",
+        "through": "2026-11-28T09:51:44.698Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T09:56:22.437Z",
+        "through": "2026-11-28T09:56:22.437Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T10:01:35.919Z",
+        "through": "2026-11-28T10:06:37.473Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T10:11:27.763Z",
+        "through": "2026-11-28T10:11:27.763Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T10:16:36.182Z",
+        "through": "2026-11-28T10:16:36.182Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T10:21:20.637Z",
+        "through": "2026-11-28T10:31:31.033Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T10:36:59.338Z",
+        "through": "2026-11-28T10:36:59.338Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T10:41:40.945Z",
+        "through": "2026-11-28T10:41:40.945Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T10:46:35.279Z",
+        "through": "2026-11-28T10:46:35.279Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T10:51:43.735Z",
+        "through": "2026-11-28T10:56:16.901Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T11:01:49.101Z",
+        "through": "2026-11-28T11:01:49.101Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T11:06:25.238Z",
+        "through": "2026-11-28T12:16:29.150Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T12:21:35.172Z",
+        "through": "2026-11-28T12:21:35.172Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T12:26:26.757Z",
+        "through": "2026-11-28T12:51:29.482Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T12:56:43.298Z",
+        "through": "2026-11-28T12:56:43.298Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T13:01:27.012Z",
+        "through": "2026-11-28T13:11:22.890Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T13:16:48.787Z",
+        "through": "2026-11-28T13:16:48.787Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T13:21:25.883Z",
+        "through": "2026-11-28T14:06:15.439Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T14:11:43.325Z",
+        "through": "2026-11-28T14:11:43.325Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T14:16:42.043Z",
+        "through": "2026-11-28T14:16:42.043Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T14:21:40.784Z",
+        "through": "2026-11-28T14:21:40.784Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T14:26:21.127Z",
+        "through": "2026-11-28T14:36:47.037Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T14:41:48.120Z",
+        "through": "2026-11-28T14:41:48.120Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T14:46:29.582Z",
+        "through": "2026-11-28T14:51:18.957Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T14:56:43.579Z",
+        "through": "2026-11-28T14:56:43.579Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T15:01:24.938Z",
+        "through": "2026-11-28T15:51:26.082Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T15:56:43.018Z",
+        "through": "2026-11-28T15:56:43.018Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T16:01:24.139Z",
+        "through": "2026-11-28T16:36:23.370Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T16:41:40.917Z",
+        "through": "2026-11-28T16:56:42.555Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T17:01:20.558Z",
+        "through": "2026-11-28T17:41:28.163Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "minimax": [
+      {
+        "at": "2026-11-27T07:36:20.160Z",
+        "through": "2026-11-28T00:16:30.745Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:14.918Z",
+        "through": "2026-11-28T17:41:15.630Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "streamlake": [
+      {
+        "at": "2026-11-27T07:36:20.427Z",
+        "through": "2026-11-28T00:16:30.766Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:15.397Z",
+        "through": "2026-11-28T17:41:16.174Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "xai": [
+      {
+        "at": "2026-11-27T08:16:12.219Z",
+        "through": "2026-11-27T15:56:01.868Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T16:01:15.133Z",
+        "through": "2026-11-27T18:21:05.367Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T18:26:08.908Z",
+        "through": "2026-11-28T00:16:29.701Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:14.356Z",
+        "through": "2026-11-28T17:41:15.448Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "devin": [
+      {
+        "at": "2026-11-27T08:16:12.515Z",
+        "through": "2026-11-27T13:46:19.663Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T13:51:41.264Z",
+        "through": "2026-11-27T13:51:41.264Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T13:56:18.037Z",
+        "through": "2026-11-27T14:37:13.518Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T14:41:24.224Z",
+        "through": "2026-11-27T14:41:24.224Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T14:46:09.771Z",
+        "through": "2026-11-27T15:26:14.207Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T15:31:28.376Z",
+        "through": "2026-11-27T15:31:28.376Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T15:36:11.259Z",
+        "through": "2026-11-27T16:06:18.364Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T16:11:42.228Z",
+        "through": "2026-11-27T16:11:42.228Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T16:16:17.436Z",
+        "through": "2026-11-28T00:16:30.342Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:14.965Z",
+        "through": "2026-11-28T10:31:09.783Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T10:36:36.893Z",
+        "through": "2026-11-28T10:36:36.893Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T10:41:23.913Z",
+        "through": "2026-11-28T17:41:15.845Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "opencode": [
+      {
+        "at": "2026-11-27T08:16:12.402Z",
+        "through": "2026-11-27T10:11:20.420Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-27T10:16:26.530Z",
+        "through": "2026-11-27T10:16:26.530Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T10:21:05.446Z",
+        "through": "2026-11-27T10:36:11.008Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-27T10:41:12.548Z",
+        "through": "2026-11-27T10:41:12.548Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T10:46:10.118Z",
+        "through": "2026-11-27T11:41:11.893Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-27T11:46:11.611Z",
+        "through": "2026-11-27T11:46:11.611Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T11:51:14.110Z",
+        "through": "2026-11-27T14:51:12.798Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-27T14:56:10.688Z",
+        "through": "2026-11-27T15:01:16.269Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T15:06:31.748Z",
+        "through": "2026-11-27T22:21:13.882Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-27T22:26:13.005Z",
+        "through": "2026-11-27T22:26:13.005Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T22:31:11.375Z",
+        "through": "2026-11-27T22:31:11.375Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-27T22:36:12.287Z",
+        "through": "2026-11-27T22:36:12.287Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T22:41:10.211Z",
+        "through": "2026-11-27T23:01:05.401Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-27T23:06:08.987Z",
+        "through": "2026-11-27T23:06:08.987Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T23:11:01.946Z",
+        "through": "2026-11-28T00:01:11.492Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T00:06:12.117Z",
+        "through": "2026-11-28T00:06:12.117Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T00:11:05.814Z",
+        "through": "2026-11-28T00:16:29.849Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T00:27:14.680Z",
+        "through": "2026-11-28T00:31:02.694Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T00:36:12.967Z",
+        "through": "2026-11-28T00:36:12.967Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T00:41:09.024Z",
+        "through": "2026-11-28T00:41:09.024Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T00:46:17.694Z",
+        "through": "2026-11-28T00:51:12.349Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T00:56:04.289Z",
+        "through": "2026-11-28T00:56:04.289Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T01:01:40.394Z",
+        "through": "2026-11-28T01:11:04.904Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T01:16:09.068Z",
+        "through": "2026-11-28T10:46:04.420Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T10:51:26.064Z",
+        "through": "2026-11-28T10:51:26.064Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T10:56:06.151Z",
+        "through": "2026-11-28T11:41:11.603Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T11:46:12.209Z",
+        "through": "2026-11-28T11:46:12.209Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T11:51:28.816Z",
+        "through": "2026-11-28T12:26:14.613Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T12:31:11.031Z",
+        "through": "2026-11-28T12:31:11.031Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T12:36:07.987Z",
+        "through": "2026-11-28T12:56:11.885Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T13:01:12.489Z",
+        "through": "2026-11-28T13:01:12.489Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T13:06:06.455Z",
+        "through": "2026-11-28T13:11:12.483Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T13:16:15.166Z",
+        "through": "2026-11-28T13:21:07.264Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T13:26:11.576Z",
+        "through": "2026-11-28T13:51:10.526Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T13:56:10.615Z",
+        "through": "2026-11-28T13:56:10.615Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T14:01:22.897Z",
+        "through": "2026-11-28T14:01:22.897Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T14:06:05.129Z",
+        "through": "2026-11-28T14:06:05.129Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T14:11:11.963Z",
+        "through": "2026-11-28T14:26:04.296Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T14:31:12.866Z",
+        "through": "2026-11-28T14:31:12.866Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T14:36:32.952Z",
+        "through": "2026-11-28T14:36:32.952Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T14:41:16.547Z",
+        "through": "2026-11-28T14:41:16.547Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T14:46:15.759Z",
+        "through": "2026-11-28T15:21:11.404Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      },
+      {
+        "at": "2026-11-28T15:26:09.040Z",
+        "through": "2026-11-28T15:31:08.724Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-28T15:36:37.483Z",
+        "through": "2026-11-28T17:41:15.489Z",
+        "intervalMinutes": 5,
+        "status": "degraded"
+      }
+    ],
+    "factory": [
+      {
+        "at": "2026-11-27T08:16:13.062Z",
+        "through": "2026-11-27T08:46:19.166Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T08:51:24.800Z",
+        "through": "2026-11-27T08:51:24.800Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T08:56:09.232Z",
+        "through": "2026-11-27T13:46:20.078Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-27T13:51:41.671Z",
+        "through": "2026-11-27T13:51:41.671Z",
+        "intervalMinutes": 5,
+        "status": null
+      },
+      {
+        "at": "2026-11-27T13:56:18.502Z",
+        "through": "2026-11-28T00:16:30.540Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:15.238Z",
+        "through": "2026-11-28T17:41:16.110Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ],
+    "zed": [
+      {
+        "at": "2026-11-27T08:16:13.371Z",
+        "through": "2026-11-28T00:16:30.554Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      },
+      {
+        "at": "2026-11-28T00:27:15.113Z",
+        "through": "2026-11-28T17:41:18.613Z",
+        "intervalMinutes": 5,
+        "status": "operational"
+      }
+    ]
+  }
+}

@@ -1,0 +1,4954 @@
+{
+  "schemaVersion": "1.0",
+  "provider": {
+    "providerId": "devin",
+    "officialStatusUrl": "https://www.devinstatus.com/",
+    "result": {
+      "providerId": "devin",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "devin:d87cp5jknh1c",
+          "upstreamId": "d87cp5jknh1c",
+          "groupId": null,
+          "name": "Cloud Web Client",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:y4zznb49vqqy",
+          "upstreamId": "y4zznb49vqqy",
+          "groupId": "devin:92j5h0ttqxfb",
+          "name": "Cloud Web Client (Enterprise)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:dcwvkrgpzxkl",
+          "upstreamId": "dcwvkrgpzxkl",
+          "groupId": "devin:9ydbk2b55pk1",
+          "name": "Desktop Agent (Fedstart)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:q72cy1kjpk4r",
+          "upstreamId": "q72cy1kjpk4r",
+          "groupId": null,
+          "name": "Cloud Agent",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:c20stk646s0v",
+          "upstreamId": "c20stk646s0v",
+          "groupId": "devin:92j5h0ttqxfb",
+          "name": "Cloud Agent (Enterprise)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:767fhhcg1xh6",
+          "upstreamId": "767fhhcg1xh6",
+          "groupId": "devin:9ydbk2b55pk1",
+          "name": "Enterprise Portal (Fedstart)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:h6z52njyz22z",
+          "upstreamId": "h6z52njyz22z",
+          "groupId": null,
+          "name": "Desktop Agent",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:n7v68h5h9010",
+          "upstreamId": "n7v68h5h9010",
+          "groupId": "devin:92j5h0ttqxfb",
+          "name": "Desktop Agent (Enterprise)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:q604f8cp8q9q",
+          "upstreamId": "q604f8cp8q9q",
+          "groupId": "devin:9ydbk2b55pk1",
+          "name": "Desktop Tab (Fedstart)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:170m7l75sh6m",
+          "upstreamId": "170m7l75sh6m",
+          "groupId": null,
+          "name": "Desktop Tab",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:jmr17mx1kt4c",
+          "upstreamId": "jmr17mx1kt4c",
+          "groupId": "devin:92j5h0ttqxfb",
+          "name": "Desktop Tab (Enterprise)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:hgmbfbs72ryp",
+          "upstreamId": "hgmbfbs72ryp",
+          "groupId": null,
+          "name": "Integrations",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:92j5h0ttqxfb",
+          "upstreamId": "92j5h0ttqxfb",
+          "groupId": null,
+          "name": "Enterprise",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:9ydbk2b55pk1",
+          "upstreamId": "9ydbk2b55pk1",
+          "groupId": null,
+          "name": "Federal",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "devin:hrnddcrr3fgr",
+          "providerId": "devin",
+          "upstreamId": "hrnddcrr3fgr",
+          "kind": "incident",
+          "title": "Elevated errors for Gemini models",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:h6z52njyz22z"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-16T00:28:15.909Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-16T02:07:42.705Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-11-16T02:07:42.729Z",
+          "durationMinutes": 99.4466,
+          "sourceUrl": "https://stspg.io/16qgrbhgmh4l",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "y7wmyw8lbr6m",
+              "phase": "resolved",
+              "body": "This incident is resolved. Requests to Gemini models have been successful since approximately 5:19 PM PST.",
+              "timestamp": "2026-11-16T02:07:42.705Z"
+            },
+            {
+              "id": "4x5b4ftw93sn",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-11-16T01:27:12.233Z"
+            },
+            {
+              "id": "70c7psgxl5hc",
+              "phase": "monitoring",
+              "body": "Our upstream model provider restored access at approximately 5:19 PM PST. Requests to Gemini models are successful again. We are monitoring the results.",
+              "timestamp": "2026-11-16T01:25:58.316Z"
+            },
+            {
+              "id": "y98hzm1x3z1n",
+              "phase": "identified",
+              "body": "Since approximately 3:48 PM PST, most requests to Gemini models fail with an error. We identified an issue with our upstream model provider, and we are working with the provider to restore access. Other models are not affected. Please select a different model until we resolve this issue.",
+              "timestamp": "2026-11-16T00:28:16.050Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:3jn6pw36byyk",
+          "providerId": "devin",
+          "upstreamId": "3jn6pw36byyk",
+          "kind": "incident",
+          "title": "Increased wait times for automation triggers",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-11-04T18:35:06.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-04T19:25:47.911Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-11-04T19:25:47.933Z",
+          "durationMinutes": 50.69851666666667,
+          "sourceUrl": "https://stspg.io/2mp4z8ypfw3x",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "qlp1y9bxnhw3",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-11-04T19:25:47.911Z"
+            },
+            {
+              "id": "98qh5yd8rfgb",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-11-04T18:54:12.103Z"
+            },
+            {
+              "id": "p7j2wtxdr23l",
+              "phase": "investigating",
+              "body": "We are seeing elevated wait times for automation driven sessions to start",
+              "timestamp": "2026-11-04T18:35:06.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:skkx0y4xfsjj",
+          "providerId": "devin",
+          "upstreamId": "skkx0y4xfsjj",
+          "kind": "incident",
+          "title": "Degraded performance in Ask Devin",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-10-26T15:29:52.351Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-26T16:30:16.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-10-26T18:55:43.492Z",
+          "durationMinutes": 60.39415,
+          "sourceUrl": "https://stspg.io/jkypc7xszbd7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "svs33s6z33hy",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-10-26T16:30:16.000Z"
+            },
+            {
+              "id": "mqx8qcc0bqf2",
+              "phase": "investigating",
+              "body": "We are investigating the issue impacting Ask Devin functionality",
+              "timestamp": "2026-10-26T15:29:52.403Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:c9dm49d3vph1",
+          "providerId": "devin",
+          "upstreamId": "c9dm49d3vph1",
+          "kind": "incident",
+          "title": "Devin webapp down",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-09-24T19:59:44.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-09-24T22:03:04.638Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-09-24T22:03:04.651Z",
+          "durationMinutes": 123.34396666666666,
+          "sourceUrl": "https://stspg.io/1yx8p95mhm41",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "8n77ggkq3zbv",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-09-24T22:03:04.638Z"
+            },
+            {
+              "id": "6tppy4vkkzls",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-09-24T20:12:24.405Z"
+            },
+            {
+              "id": "l0gcvt3m366l",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-09-24T20:09:11.086Z"
+            },
+            {
+              "id": "qs0xv9m67hc5",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-09-24T20:08:45.346Z"
+            },
+            {
+              "id": "k9jnhmp230y1",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-09-24T19:59:44.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:84rwp0yjmgc5",
+          "providerId": "devin",
+          "upstreamId": "84rwp0yjmgc5",
+          "kind": "incident",
+          "title": "Multiple services experiencing degraded performance",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy",
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-09-17T13:40:23.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-09-17T15:20:04.389Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-09-17T15:20:04.408Z",
+          "durationMinutes": 99.68981666666667,
+          "sourceUrl": "https://stspg.io/87h8n4bz9pq7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "16mh2lhsvfb2",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-09-17T15:20:04.389Z"
+            },
+            {
+              "id": "knjqmzfbc5dh",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-09-17T14:26:07.682Z"
+            },
+            {
+              "id": "djn2mll7nzwx",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-09-17T14:25:43.817Z"
+            },
+            {
+              "id": "8ww4nqz2mqtp",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-09-17T14:10:00.396Z"
+            },
+            {
+              "id": "v4y01xh5xg2j",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-09-17T13:40:23.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:26pf0c5sr4zw",
+          "providerId": "devin",
+          "upstreamId": "26pf0c5sr4zw",
+          "kind": "incident",
+          "title": "Degradation in new Devin Sessions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-09-03T21:28:28.236Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-09-03T22:41:32.617Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-09-03T22:41:32.631Z",
+          "durationMinutes": 73.07301666666666,
+          "sourceUrl": "https://stspg.io/vjz2sr1h9pq4",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "fj9xkrdnn409",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-09-03T22:41:32.617Z"
+            },
+            {
+              "id": "xk467q01ndkj",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-09-03T22:20:33.084Z"
+            },
+            {
+              "id": "lf2hxvhn90dw",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-09-03T22:18:42.433Z"
+            },
+            {
+              "id": "r0xylgf3y39n",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-09-03T21:28:36.658Z"
+            },
+            {
+              "id": "xywyfvsw8b22",
+              "phase": "investigating",
+              "body": "We have identified that one of our cloud providers is having an outage impacting new devin launches",
+              "timestamp": "2026-09-03T21:28:28.287Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:8cj9m8z3w8tz",
+          "providerId": "devin",
+          "upstreamId": "8cj9m8z3w8tz",
+          "kind": "incident",
+          "title": "Devin Cloud is unavailable",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-13T13:38:54.033Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-13T16:18:24.126Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-08-13T16:18:24.145Z",
+          "durationMinutes": 159.50155,
+          "sourceUrl": "https://stspg.io/x0lzpjngx5fp",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "tqjxh8mwdv25",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-08-13T16:18:24.126Z"
+            },
+            {
+              "id": "2hffrtzdr05v",
+              "phase": "identified",
+              "body": "Some users may still experience slower response times. We are steadily recovering and are still working to fully restore normal performance",
+              "timestamp": "2026-08-13T16:08:32.929Z"
+            },
+            {
+              "id": "lghcg3t61ljk",
+              "phase": "investigating",
+              "body": "Our engineering team has identified elevated database connection activity as the source of the issue and has applied several mitigations; the application is partially operational, though some users may still experience slower response times. We are seeing steady recovery and are working closely with our infrastructure provider to fully restore normal performance. We will share additional updates as the situation progresses.",
+              "timestamp": "2026-08-13T15:53:15.478Z"
+            },
+            {
+              "id": "q6rbtgrkb8mc",
+              "phase": "investigating",
+              "body": "We are still investigating the issue",
+              "timestamp": "2026-08-13T15:07:10.002Z"
+            },
+            {
+              "id": "1m3lv2lzmvr0",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-08-13T13:38:54.122Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:rnnlghwr6dfj",
+          "providerId": "devin",
+          "upstreamId": "rnnlghwr6dfj",
+          "kind": "incident",
+          "title": "Devin unavailable",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy",
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-13T03:48:50.806Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-13T04:08:51.006Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-08-13T04:08:51.020Z",
+          "durationMinutes": 20.003333333333334,
+          "sourceUrl": "https://stspg.io/p29jwkfg0zkr",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "7hp90293k563",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-08-13T04:08:51.006Z"
+            },
+            {
+              "id": "7qf8myb3p71s",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-08-13T03:53:55.186Z"
+            },
+            {
+              "id": "m6pkw72bz6qt",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-08-13T03:48:50.957Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:k0pr38j0qnzp",
+          "providerId": "devin",
+          "upstreamId": "k0pr38j0qnzp",
+          "kind": "incident",
+          "title": "Devin sessions unable to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-08-11T19:23:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-11T19:23:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-08-12T19:18:54.150Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/68jzx2q2rpl2",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "34j4mp99qlyw",
+              "phase": "resolved",
+              "body": "Sessions were temporarily extremely slow to start or be resumed.",
+              "timestamp": "2026-08-11T19:23:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:z3cpvsnxxy9x",
+          "providerId": "devin",
+          "upstreamId": "z3cpvsnxxy9x",
+          "kind": "incident",
+          "title": "Devin sessions queued",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-08-10T14:45:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-10T14:45:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-08-11T00:04:23.559Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/1tz13vxt9rlf",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "9fv25m0pnl20",
+              "phase": "resolved",
+              "body": "Devin sessions queued for users for up to 12 minutes.",
+              "timestamp": "2026-08-10T14:45:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:flt3jd29vddx",
+          "providerId": "devin",
+          "upstreamId": "flt3jd29vddx",
+          "kind": "incident",
+          "title": "Devin sessions queuing platform-wide",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-22T14:56:07.536Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-22T15:39:44.098Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-22T15:39:44.121Z",
+          "durationMinutes": 43.609366666666666,
+          "sourceUrl": "https://stspg.io/dxbmz8cvjb2c",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "k77tywz3mdz9",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-07-22T15:39:44.098Z"
+            },
+            {
+              "id": "gsm9xgg52ybq",
+              "phase": "monitoring",
+              "body": "We have implemented a fix and are monitoring for further issues. Sessions are running normally.",
+              "timestamp": "2026-07-22T15:34:32.000Z"
+            },
+            {
+              "id": "gj3dnsg0jwlj",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-07-22T14:56:07.672Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:82x5tqr4psbz",
+          "providerId": "devin",
+          "upstreamId": "82x5tqr4psbz",
+          "kind": "incident",
+          "title": "Github outage",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:hgmbfbs72ryp"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-20T01:32:24.522Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-20T03:51:28.795Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-20T03:51:28.810Z",
+          "durationMinutes": 139.07121666666666,
+          "sourceUrl": "https://stspg.io/922ps298q92v",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "1dsfjvtw5l4g",
+              "phase": "resolved",
+              "body": "The GitHub incident has been resolved upstream.",
+              "timestamp": "2026-07-20T03:51:28.795Z"
+            },
+            {
+              "id": "0fm5bbswkv18",
+              "phase": "identified",
+              "body": "We are aware of an ongoing outage affecting github.com. If your repositories are hosted there, you may experience degraded performance.",
+              "timestamp": "2026-07-20T01:32:24.615Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:94grgdx623cy",
+          "providerId": "devin",
+          "upstreamId": "94grgdx623cy",
+          "kind": "incident",
+          "title": "GitHub outage",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy",
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-16T23:19:53.125Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-17T00:41:34.280Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-17T00:41:34.292Z",
+          "durationMinutes": 81.68591666666667,
+          "sourceUrl": "https://stspg.io/wd3ndh7dfqqr",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "27xljn73d6hq",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-07-17T00:41:34.280Z"
+            },
+            {
+              "id": "2gw54n6jp580",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-07-17T00:00:03.592Z"
+            },
+            {
+              "id": "tlb78qc3tx7c",
+              "phase": "identified",
+              "body": "We are aware of an ongoing outage affecting github.com. If your repositories are hosted there, you may experience degraded performance.",
+              "timestamp": "2026-07-16T23:19:53.302Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:7f2tjw8jzlwh",
+          "providerId": "devin",
+          "upstreamId": "7f2tjw8jzlwh",
+          "kind": "incident",
+          "title": "Devin Webapp is Slow to Load",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-08T14:59:16.931Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-08T16:45:19.788Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-08T16:45:19.819Z",
+          "durationMinutes": 106.04761666666667,
+          "sourceUrl": "https://stspg.io/wcwkdkf4r528",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "jf28zjmp3qrs",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-07-08T16:45:19.788Z"
+            },
+            {
+              "id": "cndj90yjmlpt",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-07-08T16:23:13.633Z"
+            },
+            {
+              "id": "byrh7fzmbq52",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-07-08T15:01:26.554Z"
+            },
+            {
+              "id": "gkx0cl2yq69b",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-07-08T14:59:17.087Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:94027hxm86sk",
+          "providerId": "devin",
+          "upstreamId": "94027hxm86sk",
+          "kind": "incident",
+          "title": "Sessions intermittently crashing and failing to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-06-30T14:14:54.120Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-01T01:36:01.751Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-01T01:36:01.776Z",
+          "durationMinutes": 681.1271833333333,
+          "sourceUrl": "https://stspg.io/spqyc974g2k3",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "pcj57rmzk6kr",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-07-01T01:36:01.751Z"
+            },
+            {
+              "id": "b496ttfx292n",
+              "phase": "monitoring",
+              "body": "We are still implementing permanent fixes.",
+              "timestamp": "2026-06-30T21:39:07.283Z"
+            },
+            {
+              "id": "nvzht90vq5b9",
+              "phase": "monitoring",
+              "body": "We are still monitoring for issues.",
+              "timestamp": "2026-06-30T19:20:10.961Z"
+            },
+            {
+              "id": "c30hspqnxbrg",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-06-30T16:19:34.322Z"
+            },
+            {
+              "id": "0vl4kxlljkk1",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-06-30T16:02:44.515Z"
+            },
+            {
+              "id": "mwn2tj8tlyb7",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-06-30T14:14:54.243Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:qqhbkdqzx8ll",
+          "providerId": "devin",
+          "upstreamId": "qqhbkdqzx8ll",
+          "kind": "incident",
+          "title": "Sessions are slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-06-17T17:07:01.638Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-06-17T19:30:20.479Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-06-17T19:30:20.495Z",
+          "durationMinutes": 143.31401666666667,
+          "sourceUrl": "https://stspg.io/nkm9gchn4nk7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "sq3hs8qrcscs",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-06-17T19:30:20.479Z"
+            },
+            {
+              "id": "zjbqsjhc5qwg",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-06-17T17:18:13.578Z"
+            },
+            {
+              "id": "0qyrs07sjjfk",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-06-17T17:07:01.768Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:6ggv1rk121rp",
+          "providerId": "devin",
+          "upstreamId": "6ggv1rk121rp",
+          "kind": "incident",
+          "title": "Devin's machines are failing to start or resume",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-29T05:27:06.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-29T09:49:19.259Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-29T09:49:19.277Z",
+          "durationMinutes": 262.2209833333333,
+          "sourceUrl": "https://stspg.io/7bwdbm5h8yxs",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "k16zpq8c7xd9",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-29T09:49:19.259Z"
+            },
+            {
+              "id": "cktyzspn30d1",
+              "phase": "monitoring",
+              "body": "New sessions will work properly. Sessions that started between 10 PM PT and 2:10 AM PT are affected and will still fail to save properly when suspending.",
+              "timestamp": "2026-05-29T09:26:55.000Z"
+            },
+            {
+              "id": "c4k406rjmj62",
+              "phase": "identified",
+              "body": "We are continuing to work on a fix for this issue.",
+              "timestamp": "2026-05-29T08:01:53.073Z"
+            },
+            {
+              "id": "ch8s746jmdqh",
+              "phase": "identified",
+              "body": "VM issues have been resolved. However, suspending and resuming of sessions may not work correctly at this time.",
+              "timestamp": "2026-05-29T07:53:30.333Z"
+            },
+            {
+              "id": "j4ktmm3m87j4",
+              "phase": "identified",
+              "body": "The issue has been identified as an outage in an upstream provider and a fix is being implemented.\n\nDedicated deployment enterprise sessions are not affected.",
+              "timestamp": "2026-05-29T05:27:06.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:9n60ln5h3hfr",
+          "providerId": "devin",
+          "upstreamId": "9n60ln5h3hfr",
+          "kind": "incident",
+          "title": "Devin Session Disruptions",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-26T17:56:13.751Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-26T19:13:05.693Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-26T20:56:23.775Z",
+          "durationMinutes": 76.8657,
+          "sourceUrl": "https://stspg.io/0yll4rr3nfqf",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "98dnscc0fczy",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-26T19:13:05.693Z"
+            },
+            {
+              "id": "0rcgn0k53d5r",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-05-26T19:10:36.469Z"
+            },
+            {
+              "id": "y0tt5k9rd8db",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-05-26T18:14:29.344Z"
+            },
+            {
+              "id": "3r0y9rjjjwy1",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-05-26T17:56:13.809Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:9g0wd5s3flhc",
+          "providerId": "devin",
+          "upstreamId": "9g0wd5s3flhc",
+          "kind": "incident",
+          "title": "Service disruption for customers using non default linux distros in VPC deployments",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-14T15:01:57.323Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-14T15:40:03.229Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-14T15:40:03.242Z",
+          "durationMinutes": 38.09843333333333,
+          "sourceUrl": "https://stspg.io/psyzsf3d0dxm",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "rm8qzk9tj7s2",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-14T15:40:03.229Z"
+            },
+            {
+              "id": "94bnp4jn4bws",
+              "phase": "investigating",
+              "body": "We are experiencing a service disruption to a subset of customers using non-default (Amazon Linux, RHEL) distros in VPC environments. A fix has been identified and being released.",
+              "timestamp": "2026-05-14T15:01:57.402Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:9ssxblt6kg2t",
+          "providerId": "devin",
+          "upstreamId": "9ssxblt6kg2t",
+          "kind": "incident",
+          "title": "Degraded performance in some Devin sessions",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-13T13:57:42.192Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-13T16:05:42.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-13T17:06:21.086Z",
+          "durationMinutes": 127.9968,
+          "sourceUrl": "https://stspg.io/bt04dzz76m32",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "rw1q818yfr0n",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-13T16:05:42.000Z"
+            },
+            {
+              "id": "lqj66rpb2h7f",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-05-13T15:41:51.607Z"
+            },
+            {
+              "id": "bv2djgc3yqw8",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-05-13T15:07:22.808Z"
+            },
+            {
+              "id": "9qn03zv9vsv1",
+              "phase": "identified",
+              "body": "We have identified the issue and are continuing to work on a resolution.",
+              "timestamp": "2026-05-13T14:57:26.508Z"
+            },
+            {
+              "id": "r3p6b5kz0tjy",
+              "phase": "identified",
+              "body": "We have identified the issue and are working on a resolution.",
+              "timestamp": "2026-05-13T14:27:47.034Z"
+            },
+            {
+              "id": "wl4mqnw16160",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-05-13T14:16:04.453Z"
+            },
+            {
+              "id": "w9s1z2k1cjmg",
+              "phase": "investigating",
+              "body": "We are currently investigating an issue with degraded connectivity in Devin sessions.",
+              "timestamp": "2026-05-13T13:57:42.261Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:f7jfg1vd8kmv",
+          "providerId": "devin",
+          "upstreamId": "f7jfg1vd8kmv",
+          "kind": "incident",
+          "title": "Devin Session Disruptions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-12T16:56:09.702Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-12T17:39:51.051Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-12T17:39:51.065Z",
+          "durationMinutes": 43.68915,
+          "sourceUrl": "https://stspg.io/pm6v92nzydjl",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "m7g0szghjzk6",
+              "phase": "resolved",
+              "body": "This incident has been resolved",
+              "timestamp": "2026-05-12T17:39:51.051Z"
+            },
+            {
+              "id": "cymzqvrnc0t1",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented",
+              "timestamp": "2026-05-12T17:14:37.730Z"
+            },
+            {
+              "id": "wy1g8rsb2130",
+              "phase": "investigating",
+              "body": "Some enterprise Devin sessions are experiencing interruptions starting up. We are currently investigating this issue.",
+              "timestamp": "2026-05-12T16:56:09.795Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:bl3qhprfy134",
+          "providerId": "devin",
+          "upstreamId": "bl3qhprfy134",
+          "kind": "incident",
+          "title": "Devin Session Disruptions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-07T15:17:16.597Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-07T16:52:16.690Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-07T16:52:16.709Z",
+          "durationMinutes": 95.00155,
+          "sourceUrl": "https://stspg.io/6cb9r091cs1j",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "4v99kvyz4t2g",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-07T16:52:16.690Z"
+            },
+            {
+              "id": "cygkl4g5d6n0",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-05-07T15:17:16.671Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:h7zx82nbcrkf",
+          "providerId": "devin",
+          "upstreamId": "h7zx82nbcrkf",
+          "kind": "incident",
+          "title": "Devin Session Interruptions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy",
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-07T08:35:47.792Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-07T10:14:24.518Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-07T10:14:24.533Z",
+          "durationMinutes": 98.6121,
+          "sourceUrl": "https://stspg.io/6rfbkjzks020",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "rxt950ym2bmd",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-07T10:14:24.518Z"
+            },
+            {
+              "id": "kmj0qd6shwkq",
+              "phase": "investigating",
+              "body": "Devin sessions can be interrupted or seem to be interrupted inconsistently.",
+              "timestamp": "2026-05-07T08:35:47.916Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:rsgkcf8k23v2",
+          "providerId": "devin",
+          "upstreamId": "rsgkcf8k23v2",
+          "kind": "incident",
+          "title": "Sessions Queuing",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-28T18:27:59.106Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-29T00:37:28.360Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-29T00:37:28.374Z",
+          "durationMinutes": 369.4875666666667,
+          "sourceUrl": "https://stspg.io/yqnxq7rh2r0h",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "qy6l17s7z7d0",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-29T00:37:28.360Z"
+            },
+            {
+              "id": "vbpc591d5ck5",
+              "phase": "monitoring",
+              "body": "Given the severity of the incident, the fix(es) are being monitored to ensure no recurrence.",
+              "timestamp": "2026-04-28T20:55:32.888Z"
+            },
+            {
+              "id": "zdscrth693xb",
+              "phase": "identified",
+              "body": "Cognition is still fixing the underlying issue and further investigating to identify potential other, related issues.",
+              "timestamp": "2026-04-28T20:11:52.337Z"
+            },
+            {
+              "id": "18vyyx6kr4zq",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-28T19:30:41.201Z"
+            },
+            {
+              "id": "85ck51b57rbz",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-28T19:19:07.125Z"
+            },
+            {
+              "id": "49qjcky5zjmy",
+              "phase": "investigating",
+              "body": "Investigating -- the prior issue appears to have re-surfaced.",
+              "timestamp": "2026-04-28T18:27:59.143Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:0t872cllfjn3",
+          "providerId": "devin",
+          "upstreamId": "0t872cllfjn3",
+          "kind": "incident",
+          "title": "Devins slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-28T12:44:00.993Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-28T17:38:20.802Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-28T17:38:20.816Z",
+          "durationMinutes": 294.33015,
+          "sourceUrl": "https://stspg.io/n1d0jj1mdzj3",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "2pt958j1jpwm",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-28T17:38:20.802Z"
+            },
+            {
+              "id": "6htkmjyy7nn1",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-28T14:02:16.655Z"
+            },
+            {
+              "id": "699vvsq72vqg",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-28T12:44:01.090Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:z5dhn2vk7mm5",
+          "providerId": "devin",
+          "upstreamId": "z5dhn2vk7mm5",
+          "kind": "incident",
+          "title": "Sessions queuing",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-28T12:55:55.063Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-28T17:37:29.581Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-28T17:37:29.601Z",
+          "durationMinutes": 281.5753,
+          "sourceUrl": "https://stspg.io/csy0cjd5yjnz",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "657fs2b3nyv4",
+              "phase": "resolved",
+              "body": "Incident has been resolved.",
+              "timestamp": "2026-04-28T17:37:29.581Z"
+            },
+            {
+              "id": "x61dynwp73t8",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-28T17:35:20.418Z"
+            },
+            {
+              "id": "d49ywyf41wxj",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring results.",
+              "timestamp": "2026-04-28T17:31:02.002Z"
+            },
+            {
+              "id": "l09sgpmt63b9",
+              "phase": "identified",
+              "body": "Cognition is still working a fix for this issue.",
+              "timestamp": "2026-04-28T17:26:09.750Z"
+            },
+            {
+              "id": "k0myn6w41sp8",
+              "phase": "identified",
+              "body": "Cognition is still working on the fix",
+              "timestamp": "2026-04-28T16:28:55.865Z"
+            },
+            {
+              "id": "0j78jdncgysr",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-28T15:35:57.954Z"
+            },
+            {
+              "id": "ml7ng7pl72v0",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-04-28T14:07:16.252Z"
+            },
+            {
+              "id": "qvblbbr3fnr4",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-28T13:51:19.628Z"
+            },
+            {
+              "id": "qr8s0j43h9nk",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-04-28T12:55:55.159Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:lx9fq0t990bf",
+          "providerId": "devin",
+          "upstreamId": "lx9fq0t990bf",
+          "kind": "incident",
+          "title": "Significant delays in new sessions and frequent crashes",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-27T16:11:50.648Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-27T17:04:38.497Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-27T17:04:38.511Z",
+          "durationMinutes": 52.79748333333333,
+          "sourceUrl": "https://stspg.io/tln9grkxz7s7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "0ft95w4ldttj",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-27T17:04:38.497Z"
+            },
+            {
+              "id": "jl6x6nbpwvbl",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-27T16:51:24.262Z"
+            },
+            {
+              "id": "13gb1sk52x6v",
+              "phase": "identified",
+              "body": "We are continuing to work on a fix for this issue.",
+              "timestamp": "2026-04-27T16:30:27.345Z"
+            },
+            {
+              "id": "j06bvmbrl6bt",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-27T16:27:30.331Z"
+            },
+            {
+              "id": "ydlvs77qh6cq",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-04-27T16:11:50.757Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:129zn0y5hp3m",
+          "providerId": "devin",
+          "upstreamId": "129zn0y5hp3m",
+          "kind": "incident",
+          "title": "Devins slow to start",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-27T09:09:01.586Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-27T09:19:52.897Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-27T09:19:52.915Z",
+          "durationMinutes": 10.855183333333333,
+          "sourceUrl": "https://stspg.io/3gpj8w2sd0w5",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "y6r3zvc9hq5h",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-27T09:19:52.897Z"
+            },
+            {
+              "id": "9jgm48265ydn",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-27T09:15:52.093Z"
+            },
+            {
+              "id": "9d89q9zzqz8b",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-27T09:09:01.673Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:wq1j7zcdwpdh",
+          "providerId": "devin",
+          "upstreamId": "wq1j7zcdwpdh",
+          "kind": "incident",
+          "title": "New Devins slow to start",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-04-26T10:00:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-26T10:00:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-27T00:34:18.813Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/rhrwf39pbyr0",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "nklkg96vznxp",
+              "phase": "resolved",
+              "body": "This issue has been resolved.",
+              "timestamp": "2026-04-26T10:00:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:64j82ryt6gj1",
+          "providerId": "devin",
+          "upstreamId": "64j82ryt6gj1",
+          "kind": "incident",
+          "title": "Delayed integrations-based messages (e.g. Slack, Github PR comments)",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-24T17:41:58.474Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-24T22:16:36.388Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-24T22:16:36.406Z",
+          "durationMinutes": 274.6319,
+          "sourceUrl": "https://stspg.io/6t62n15x3r09",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "tvw4d7179jz5",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-24T22:16:36.388Z"
+            },
+            {
+              "id": "c25h904vhxr0",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-24T18:40:10.103Z"
+            },
+            {
+              "id": "sx0vctxdpt0v",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-04-24T17:41:58.531Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:f9m95x3z1b8c",
+          "providerId": "devin",
+          "upstreamId": "f9m95x3z1b8c",
+          "kind": "incident",
+          "title": "Delayed integrations-based messages (e.g. Slack, Github PR comments)",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-23T20:12:13.247Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-23T22:37:17.444Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-23T22:37:17.463Z",
+          "durationMinutes": 145.06995,
+          "sourceUrl": "https://stspg.io/sq29dntl5djb",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "9jq20w6whsxk",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-23T22:37:17.444Z"
+            },
+            {
+              "id": "347137yvt84k",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-23T22:11:36.806Z"
+            },
+            {
+              "id": "njmfg2y50xw4",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-23T21:32:46.478Z"
+            },
+            {
+              "id": "gm81hd9b7m17",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-23T21:21:36.812Z"
+            },
+            {
+              "id": "pgw1rrb3gjt5",
+              "phase": "identified",
+              "body": "A fix has been identified, and a preliminary patch has been applied.",
+              "timestamp": "2026-04-23T20:55:39.686Z"
+            },
+            {
+              "id": "s1dlwjngkg3z",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-04-23T20:12:13.340Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:r8prdtcxk4b4",
+          "providerId": "devin",
+          "upstreamId": "r8prdtcxk4b4",
+          "kind": "incident",
+          "title": "Platform-wide session crashes and queued sessions.",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-20T14:31:47.746Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-20T20:46:05.232Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-20T20:46:05.246Z",
+          "durationMinutes": 374.2914333333333,
+          "sourceUrl": "https://stspg.io/5mjjvynkbrpq",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "lc3tqhfq26m0",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-20T20:46:05.232Z"
+            },
+            {
+              "id": "78lh8ff914h5",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor performance for further issues.",
+              "timestamp": "2026-04-20T18:16:48.885Z"
+            },
+            {
+              "id": "dfvyksnyvk3m",
+              "phase": "monitoring",
+              "body": "Platform performance has stabilized, and Cognition is continuing to investigate for potential side effects.",
+              "timestamp": "2026-04-20T17:33:04.914Z"
+            },
+            {
+              "id": "92h048qn9qtg",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-04-20T17:17:58.914Z"
+            },
+            {
+              "id": "pwswwgns8bzw",
+              "phase": "monitoring",
+              "body": "A fix has been applied to the platform and Cognition is monitoring.",
+              "timestamp": "2026-04-20T17:13:29.330Z"
+            },
+            {
+              "id": "77gn1l0lnwpf",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-20T17:06:43.417Z"
+            },
+            {
+              "id": "m6nv3xmpz2fg",
+              "phase": "identified",
+              "body": "Cognition is applying fixes to resolve the ongoing platform-wide issue.",
+              "timestamp": "2026-04-20T16:33:32.032Z"
+            },
+            {
+              "id": "2fkqm47m0gt4",
+              "phase": "identified",
+              "body": "Cognition is applying fixes to address the degraded performance and crashing sessions. We apologize for any inconvenience.",
+              "timestamp": "2026-04-20T16:00:34.655Z"
+            },
+            {
+              "id": "fdn9dgvvgghb",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-20T14:59:03.504Z"
+            },
+            {
+              "id": "rnz9vpsvppzg",
+              "phase": "investigating",
+              "body": "Sessions may be slow to start, we are investigating",
+              "timestamp": "2026-04-20T14:31:47.840Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:bfv1w3ddd7sp",
+          "providerId": "devin",
+          "upstreamId": "bfv1w3ddd7sp",
+          "kind": "incident",
+          "title": "Devins slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-16T06:35:29.284Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-16T07:32:35.009Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-16T07:32:35.032Z",
+          "durationMinutes": 57.095416666666665,
+          "sourceUrl": "https://stspg.io/5qk11vnrtqkq",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "qltxprx1c8hl",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-16T07:32:35.009Z"
+            },
+            {
+              "id": "8zkr3dfqs956",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-16T06:35:29.364Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:c0fvsm16qsk4",
+          "providerId": "devin",
+          "upstreamId": "c0fvsm16qsk4",
+          "kind": "incident",
+          "title": "Networking issues resulting in disconnected sessions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-15T18:30:55.440Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-15T22:11:47.701Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-15T22:11:47.716Z",
+          "durationMinutes": 220.87101666666666,
+          "sourceUrl": "https://stspg.io/jqxsg78b4gbx",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "xccy9nm7dm3f",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-15T22:11:47.701Z"
+            },
+            {
+              "id": "zxws0qytx40t",
+              "phase": "monitoring",
+              "body": "A fix has been applied and the agent is stable. We're monitoring for follow up issues.",
+              "timestamp": "2026-04-15T19:11:27.708Z"
+            },
+            {
+              "id": "0fzpq378tmvt",
+              "phase": "investigating",
+              "body": "We are currently investigating",
+              "timestamp": "2026-04-15T18:30:55.562Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:m4dvw1wlp94b",
+          "providerId": "devin",
+          "upstreamId": "m4dvw1wlp94b",
+          "kind": "incident",
+          "title": "Session crashes",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-04-08T01:55:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-08T01:55:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-08T04:21:40.422Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/b7pmtldr6mr7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "hh2k65wh60t8",
+              "phase": "resolved",
+              "body": "Cognition detected signifiant numbers of crashing sessions and pushed a fix within 20 min. Sessions that were active during the impacted period will likely to crash, but resume successfully if woken.",
+              "timestamp": "2026-04-08T01:55:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:v10wmjfd7n7l",
+          "providerId": "devin",
+          "upstreamId": "v10wmjfd7n7l",
+          "kind": "incident",
+          "title": "Issue with sending Devin session responses",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-03-20T15:17:36.725Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-03-20T16:14:46.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-03-20T19:56:26.819Z",
+          "durationMinutes": 57.154583333333335,
+          "sourceUrl": "https://stspg.io/zfl5ddzh60mq",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "tj95hffwrrg3",
+              "phase": "resolved",
+              "body": "This incident has been resolved, and affected components were actually web services and web server, not agent. Uptimes have been updated accordingly.",
+              "timestamp": "2026-03-20T16:14:46.000Z"
+            },
+            {
+              "id": "x3782q7bl2x4",
+              "phase": "investigating",
+              "body": "Fix has been applied and user sessions are confirmed working.",
+              "timestamp": "2026-03-20T16:13:05.108Z"
+            },
+            {
+              "id": "nq8fpjrn5nrm",
+              "phase": "investigating",
+              "body": "We have identified the root cause and are assessing a fix",
+              "timestamp": "2026-03-20T16:01:03.748Z"
+            },
+            {
+              "id": "bpg9sxlvwn56",
+              "phase": "investigating",
+              "body": "We are continuing to investigate the issue.",
+              "timestamp": "2026-03-20T15:55:39.273Z"
+            },
+            {
+              "id": "wmrmx1t6rn32",
+              "phase": "investigating",
+              "body": "We are continuing to investigate the issue.",
+              "timestamp": "2026-03-20T15:34:06.639Z"
+            },
+            {
+              "id": "1x08hvd7dx95",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-03-20T15:17:51.129Z"
+            },
+            {
+              "id": "xtwqhgfrgf6b",
+              "phase": "investigating",
+              "body": "We are currently experiencing an issue with sending follow up messages to existing Devin sessions. We are currently investigating the issue.",
+              "timestamp": "2026-03-20T15:17:36.768Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:c9xc1hlq3wy7",
+          "providerId": "devin",
+          "upstreamId": "c9xc1hlq3wy7",
+          "kind": "incident",
+          "title": "Degraded performance Devin wide",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-03-12T17:33:40.267Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-03-12T17:54:22.914Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-03-12T17:54:22.930Z",
+          "durationMinutes": 20.71078333333333,
+          "sourceUrl": "https://stspg.io/2qy22m9s6g1x",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "fkr8l4clt12h",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-03-12T17:54:22.914Z"
+            },
+            {
+              "id": "1wltk06rj6dy",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-03-12T17:34:07.633Z"
+            },
+            {
+              "id": "lwrjk9hwym2b",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-03-12T17:33:40.355Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:pvqpxbynhhhb",
+          "providerId": "devin",
+          "upstreamId": "pvqpxbynhhhb",
+          "kind": "incident",
+          "title": "Sessions slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-03-04T15:46:33.888Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-03-04T15:53:02.055Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-03-04T15:53:02.071Z",
+          "durationMinutes": 6.46945,
+          "sourceUrl": "https://stspg.io/t4vt82912wgt",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "yzl3n57thyvc",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-03-04T15:53:02.055Z"
+            },
+            {
+              "id": "s2zbccj38m8t",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-03-04T15:46:33.960Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:mnhxbdbtbjc6",
+          "providerId": "devin",
+          "upstreamId": "mnhxbdbtbjc6",
+          "kind": "incident",
+          "title": "Devin website slowness",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-02-18T13:00:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-18T13:00:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-18T13:57:42.996Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/zmw86nls0d2q",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "1lgczv5r5jcl",
+              "phase": "resolved",
+              "body": "This issue has been resolved,",
+              "timestamp": "2026-02-18T13:00:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:dsqqny5jwj2b",
+          "providerId": "devin",
+          "upstreamId": "dsqqny5jwj2b",
+          "kind": "incident",
+          "title": "Devin unavailable for some users",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-02-12T05:51:14.492Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-12T06:25:37.606Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-12T06:25:37.621Z",
+          "durationMinutes": 34.38523333333333,
+          "sourceUrl": "https://stspg.io/2k4n9wk5c1hh",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "5wkhmvqdqyks",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-02-12T06:25:37.606Z"
+            },
+            {
+              "id": "ldh2wc890x6n",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-02-12T05:53:09.850Z"
+            },
+            {
+              "id": "dmbwg1lvhgsl",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-02-12T05:51:14.598Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:v8h2q5nnvjcc",
+          "providerId": "devin",
+          "upstreamId": "v8h2q5nnvjcc",
+          "kind": "incident",
+          "title": "Starting Devin sessions degraded",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-02-05T16:28:47.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-05T17:53:06.138Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-05T17:53:06.153Z",
+          "durationMinutes": 84.31896666666667,
+          "sourceUrl": "https://stspg.io/jqwjrbdy8gl5",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "n079j2l1n317",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-02-05T17:53:06.138Z"
+            },
+            {
+              "id": "7g99qff6jb1r",
+              "phase": "monitoring",
+              "body": "A patch to accelerate draining of the queue has been applied. At this moment, we expect the system to be fully operational, but will continue to monitor.",
+              "timestamp": "2026-02-05T17:27:04.791Z"
+            },
+            {
+              "id": "8ztc87c3rrk3",
+              "phase": "identified",
+              "body": "We have identified a root cause and have applied a mitigation. There is a large backlog of session requests so slowness is still expected. We are working on accelerating draining the queue.",
+              "timestamp": "2026-02-05T17:22:48.512Z"
+            },
+            {
+              "id": "6fqcww8bv5qf",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue. We are seeing continued delays when starting Devin sessions.",
+              "timestamp": "2026-02-05T17:10:05.293Z"
+            },
+            {
+              "id": "l696cf2k4flz",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-02-05T16:48:40.651Z"
+            },
+            {
+              "id": "9sd54g95znmq",
+              "phase": "investigating",
+              "body": "Due to spikes in demand, Devins are slow to start. Some Devins are being started in a degraded state. We are currently investigating the issue.",
+              "timestamp": "2026-02-05T16:28:47.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:5xh90h4k0k92",
+          "providerId": "devin",
+          "upstreamId": "5xh90h4k0k92",
+          "kind": "incident",
+          "title": "Devin repo setup experience degraded",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-02-04T12:00:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-04T12:00:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-04T14:01:02.275Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/nqqcwlffkv6h",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "rr3tykj5r5j5",
+              "phase": "resolved",
+              "body": "We are aware of an issue impacting the Devin session setup experience in production environments. Some users may experience delays or incomplete loading during repository setup. Our engineering team has identified the issue and is working on a fix. We will notify you once service is fully restored. Thank you for your patience.",
+              "timestamp": "2026-02-04T12:00:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:k49c2xz9346p",
+          "providerId": "devin",
+          "upstreamId": "k49c2xz9346p",
+          "kind": "incident",
+          "title": "Incident with billing system",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-02-02T21:04:12.839Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-03T07:18:20.660Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-03T07:18:20.676Z",
+          "durationMinutes": 614.13035,
+          "sourceUrl": "https://stspg.io/r7jjjkpwndd0",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "dlg6wp6mtmw7",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-02-03T07:18:20.660Z"
+            },
+            {
+              "id": "58mkpw4rkhf5",
+              "phase": "investigating",
+              "body": "Billing events are remaining queued for an extended period of time. Updates to usage data will be delayed.",
+              "timestamp": "2026-02-02T21:04:12.955Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:btp0j77wgvm6",
+          "providerId": "devin",
+          "upstreamId": "btp0j77wgvm6",
+          "kind": "incident",
+          "title": "Devins slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-01-30T09:06:16.769Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-01-30T11:05:25.233Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-01-30T11:05:25.255Z",
+          "durationMinutes": 119.14106666666666,
+          "sourceUrl": "https://stspg.io/4bmytw75hqvx",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "r20h28lqfz8h",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-01-30T11:05:25.233Z"
+            },
+            {
+              "id": "jcg825by6l3b",
+              "phase": "monitoring",
+              "body": "We're currently working through the existing queue of Devins.",
+              "timestamp": "2026-01-30T09:58:57.983Z"
+            },
+            {
+              "id": "k1q40t2t1rnk",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-01-30T09:06:16.874Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:r7wx7lhc3k11",
+          "providerId": "devin",
+          "upstreamId": "r7wx7lhc3k11",
+          "kind": "incident",
+          "title": "Starting Devin sessions degraded",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-01-27T10:13:03.280Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-01-27T10:34:31.592Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-01-27T10:34:31.611Z",
+          "durationMinutes": 21.471866666666667,
+          "sourceUrl": "https://stspg.io/87r92c3hnpbn",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "wqs65jtbzmcg",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-01-27T10:34:31.592Z"
+            },
+            {
+              "id": "321mhvf9zdjy",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-01-27T10:13:03.393Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:7xg868bmd0p3",
+          "providerId": "devin",
+          "upstreamId": "7xg868bmd0p3",
+          "kind": "incident",
+          "title": "Devins are delayed to start",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-01-26T02:36:05.582Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-01-26T02:47:48.032Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-01-26T02:47:48.049Z",
+          "durationMinutes": 11.7075,
+          "sourceUrl": "https://stspg.io/w1xg7km6jh40",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "674z97m0s3lp",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-01-26T02:47:48.032Z"
+            },
+            {
+              "id": "klyy6wj4yn51",
+              "phase": "monitoring",
+              "body": "Due to spikes in demand, Devins are slow to start. We have added more capacity and are monitoring the situation as we go through the queue of unstarted Devins. We will improve our autoscaling algorithm to avoid this type of issue in the future.",
+              "timestamp": "2026-01-26T02:36:05.682Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": "2026-11-28T17:04:28.123Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-27T08:16:11.939Z",
+        "nativeHistoryEarliestAt": "2026-01-26T02:36:05.582Z",
+        "limitation": "Finite recent history; invalid source records were rejected"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "summary",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:15.240Z"
+          },
+          {
+            "name": "active_incidents",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:15.240Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": "invalid_payload",
+        "currentIncidentIds": [],
+        "warnings": [
+          "Historical backfill invalid (invalid_payload)"
+        ]
+      }
+    },
+    "lastTrustedResult": {
+      "providerId": "devin",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "devin:d87cp5jknh1c",
+          "upstreamId": "d87cp5jknh1c",
+          "groupId": null,
+          "name": "Cloud Web Client",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:y4zznb49vqqy",
+          "upstreamId": "y4zznb49vqqy",
+          "groupId": "devin:92j5h0ttqxfb",
+          "name": "Cloud Web Client (Enterprise)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:dcwvkrgpzxkl",
+          "upstreamId": "dcwvkrgpzxkl",
+          "groupId": "devin:9ydbk2b55pk1",
+          "name": "Desktop Agent (Fedstart)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:q72cy1kjpk4r",
+          "upstreamId": "q72cy1kjpk4r",
+          "groupId": null,
+          "name": "Cloud Agent",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:c20stk646s0v",
+          "upstreamId": "c20stk646s0v",
+          "groupId": "devin:92j5h0ttqxfb",
+          "name": "Cloud Agent (Enterprise)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:767fhhcg1xh6",
+          "upstreamId": "767fhhcg1xh6",
+          "groupId": "devin:9ydbk2b55pk1",
+          "name": "Enterprise Portal (Fedstart)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:h6z52njyz22z",
+          "upstreamId": "h6z52njyz22z",
+          "groupId": null,
+          "name": "Desktop Agent",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:n7v68h5h9010",
+          "upstreamId": "n7v68h5h9010",
+          "groupId": "devin:92j5h0ttqxfb",
+          "name": "Desktop Agent (Enterprise)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:q604f8cp8q9q",
+          "upstreamId": "q604f8cp8q9q",
+          "groupId": "devin:9ydbk2b55pk1",
+          "name": "Desktop Tab (Fedstart)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:170m7l75sh6m",
+          "upstreamId": "170m7l75sh6m",
+          "groupId": null,
+          "name": "Desktop Tab",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:jmr17mx1kt4c",
+          "upstreamId": "jmr17mx1kt4c",
+          "groupId": "devin:92j5h0ttqxfb",
+          "name": "Desktop Tab (Enterprise)",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:hgmbfbs72ryp",
+          "upstreamId": "hgmbfbs72ryp",
+          "groupId": null,
+          "name": "Integrations",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:92j5h0ttqxfb",
+          "upstreamId": "92j5h0ttqxfb",
+          "groupId": null,
+          "name": "Enterprise",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        },
+        {
+          "id": "devin:9ydbk2b55pk1",
+          "upstreamId": "9ydbk2b55pk1",
+          "groupId": null,
+          "name": "Federal",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational",
+          "displayCollapsed": false
+        }
+      ],
+      "incidents": [
+        {
+          "sourceIdentity": "devin:hrnddcrr3fgr",
+          "providerId": "devin",
+          "upstreamId": "hrnddcrr3fgr",
+          "kind": "incident",
+          "title": "Elevated errors for Gemini models",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:h6z52njyz22z"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-11-16T00:28:15.909Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-16T02:07:42.705Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-11-16T02:07:42.729Z",
+          "durationMinutes": 99.4466,
+          "sourceUrl": "https://stspg.io/16qgrbhgmh4l",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "y7wmyw8lbr6m",
+              "phase": "resolved",
+              "body": "This incident is resolved. Requests to Gemini models have been successful since approximately 5:19 PM PST.",
+              "timestamp": "2026-11-16T02:07:42.705Z"
+            },
+            {
+              "id": "4x5b4ftw93sn",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-11-16T01:27:12.233Z"
+            },
+            {
+              "id": "70c7psgxl5hc",
+              "phase": "monitoring",
+              "body": "Our upstream model provider restored access at approximately 5:19 PM PST. Requests to Gemini models are successful again. We are monitoring the results.",
+              "timestamp": "2026-11-16T01:25:58.316Z"
+            },
+            {
+              "id": "y98hzm1x3z1n",
+              "phase": "identified",
+              "body": "Since approximately 3:48 PM PST, most requests to Gemini models fail with an error. We identified an issue with our upstream model provider, and we are working with the provider to restore access. Other models are not affected. Please select a different model until we resolve this issue.",
+              "timestamp": "2026-11-16T00:28:16.050Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:3jn6pw36byyk",
+          "providerId": "devin",
+          "upstreamId": "3jn6pw36byyk",
+          "kind": "incident",
+          "title": "Increased wait times for automation triggers",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-11-04T18:35:06.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-11-04T19:25:47.911Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-11-04T19:25:47.933Z",
+          "durationMinutes": 50.69851666666667,
+          "sourceUrl": "https://stspg.io/2mp4z8ypfw3x",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "qlp1y9bxnhw3",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-11-04T19:25:47.911Z"
+            },
+            {
+              "id": "98qh5yd8rfgb",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-11-04T18:54:12.103Z"
+            },
+            {
+              "id": "p7j2wtxdr23l",
+              "phase": "investigating",
+              "body": "We are seeing elevated wait times for automation driven sessions to start",
+              "timestamp": "2026-11-04T18:35:06.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:skkx0y4xfsjj",
+          "providerId": "devin",
+          "upstreamId": "skkx0y4xfsjj",
+          "kind": "incident",
+          "title": "Degraded performance in Ask Devin",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-10-26T15:29:52.351Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-10-26T16:30:16.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-10-26T18:55:43.492Z",
+          "durationMinutes": 60.39415,
+          "sourceUrl": "https://stspg.io/jkypc7xszbd7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "svs33s6z33hy",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-10-26T16:30:16.000Z"
+            },
+            {
+              "id": "mqx8qcc0bqf2",
+              "phase": "investigating",
+              "body": "We are investigating the issue impacting Ask Devin functionality",
+              "timestamp": "2026-10-26T15:29:52.403Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:c9dm49d3vph1",
+          "providerId": "devin",
+          "upstreamId": "c9dm49d3vph1",
+          "kind": "incident",
+          "title": "Devin webapp down",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-09-24T19:59:44.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-09-24T22:03:04.638Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-09-24T22:03:04.651Z",
+          "durationMinutes": 123.34396666666666,
+          "sourceUrl": "https://stspg.io/1yx8p95mhm41",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "8n77ggkq3zbv",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-09-24T22:03:04.638Z"
+            },
+            {
+              "id": "6tppy4vkkzls",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-09-24T20:12:24.405Z"
+            },
+            {
+              "id": "l0gcvt3m366l",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-09-24T20:09:11.086Z"
+            },
+            {
+              "id": "qs0xv9m67hc5",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-09-24T20:08:45.346Z"
+            },
+            {
+              "id": "k9jnhmp230y1",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-09-24T19:59:44.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:84rwp0yjmgc5",
+          "providerId": "devin",
+          "upstreamId": "84rwp0yjmgc5",
+          "kind": "incident",
+          "title": "Multiple services experiencing degraded performance",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy",
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-09-17T13:40:23.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-09-17T15:20:04.389Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-09-17T15:20:04.408Z",
+          "durationMinutes": 99.68981666666667,
+          "sourceUrl": "https://stspg.io/87h8n4bz9pq7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "16mh2lhsvfb2",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-09-17T15:20:04.389Z"
+            },
+            {
+              "id": "knjqmzfbc5dh",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-09-17T14:26:07.682Z"
+            },
+            {
+              "id": "djn2mll7nzwx",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-09-17T14:25:43.817Z"
+            },
+            {
+              "id": "8ww4nqz2mqtp",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-09-17T14:10:00.396Z"
+            },
+            {
+              "id": "v4y01xh5xg2j",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-09-17T13:40:23.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:26pf0c5sr4zw",
+          "providerId": "devin",
+          "upstreamId": "26pf0c5sr4zw",
+          "kind": "incident",
+          "title": "Degradation in new Devin Sessions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-09-03T21:28:28.236Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-09-03T22:41:32.617Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-09-03T22:41:32.631Z",
+          "durationMinutes": 73.07301666666666,
+          "sourceUrl": "https://stspg.io/vjz2sr1h9pq4",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "fj9xkrdnn409",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-09-03T22:41:32.617Z"
+            },
+            {
+              "id": "xk467q01ndkj",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-09-03T22:20:33.084Z"
+            },
+            {
+              "id": "lf2hxvhn90dw",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-09-03T22:18:42.433Z"
+            },
+            {
+              "id": "r0xylgf3y39n",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-09-03T21:28:36.658Z"
+            },
+            {
+              "id": "xywyfvsw8b22",
+              "phase": "investigating",
+              "body": "We have identified that one of our cloud providers is having an outage impacting new devin launches",
+              "timestamp": "2026-09-03T21:28:28.287Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:8cj9m8z3w8tz",
+          "providerId": "devin",
+          "upstreamId": "8cj9m8z3w8tz",
+          "kind": "incident",
+          "title": "Devin Cloud is unavailable",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-13T13:38:54.033Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-13T16:18:24.126Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-08-13T16:18:24.145Z",
+          "durationMinutes": 159.50155,
+          "sourceUrl": "https://stspg.io/x0lzpjngx5fp",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "tqjxh8mwdv25",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-08-13T16:18:24.126Z"
+            },
+            {
+              "id": "2hffrtzdr05v",
+              "phase": "identified",
+              "body": "Some users may still experience slower response times. We are steadily recovering and are still working to fully restore normal performance",
+              "timestamp": "2026-08-13T16:08:32.929Z"
+            },
+            {
+              "id": "lghcg3t61ljk",
+              "phase": "investigating",
+              "body": "Our engineering team has identified elevated database connection activity as the source of the issue and has applied several mitigations; the application is partially operational, though some users may still experience slower response times. We are seeing steady recovery and are working closely with our infrastructure provider to fully restore normal performance. We will share additional updates as the situation progresses.",
+              "timestamp": "2026-08-13T15:53:15.478Z"
+            },
+            {
+              "id": "q6rbtgrkb8mc",
+              "phase": "investigating",
+              "body": "We are still investigating the issue",
+              "timestamp": "2026-08-13T15:07:10.002Z"
+            },
+            {
+              "id": "1m3lv2lzmvr0",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-08-13T13:38:54.122Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:rnnlghwr6dfj",
+          "providerId": "devin",
+          "upstreamId": "rnnlghwr6dfj",
+          "kind": "incident",
+          "title": "Devin unavailable",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy",
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-08-13T03:48:50.806Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-13T04:08:51.006Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-08-13T04:08:51.020Z",
+          "durationMinutes": 20.003333333333334,
+          "sourceUrl": "https://stspg.io/p29jwkfg0zkr",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "7hp90293k563",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-08-13T04:08:51.006Z"
+            },
+            {
+              "id": "7qf8myb3p71s",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-08-13T03:53:55.186Z"
+            },
+            {
+              "id": "m6pkw72bz6qt",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-08-13T03:48:50.957Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:k0pr38j0qnzp",
+          "providerId": "devin",
+          "upstreamId": "k0pr38j0qnzp",
+          "kind": "incident",
+          "title": "Devin sessions unable to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-08-11T19:23:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-11T19:23:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-08-12T19:18:54.150Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/68jzx2q2rpl2",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "34j4mp99qlyw",
+              "phase": "resolved",
+              "body": "Sessions were temporarily extremely slow to start or be resumed.",
+              "timestamp": "2026-08-11T19:23:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:z3cpvsnxxy9x",
+          "providerId": "devin",
+          "upstreamId": "z3cpvsnxxy9x",
+          "kind": "incident",
+          "title": "Devin sessions queued",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-08-10T14:45:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-08-10T14:45:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-08-11T00:04:23.559Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/1tz13vxt9rlf",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "9fv25m0pnl20",
+              "phase": "resolved",
+              "body": "Devin sessions queued for users for up to 12 minutes.",
+              "timestamp": "2026-08-10T14:45:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:flt3jd29vddx",
+          "providerId": "devin",
+          "upstreamId": "flt3jd29vddx",
+          "kind": "incident",
+          "title": "Devin sessions queuing platform-wide",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-22T14:56:07.536Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-22T15:39:44.098Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-22T15:39:44.121Z",
+          "durationMinutes": 43.609366666666666,
+          "sourceUrl": "https://stspg.io/dxbmz8cvjb2c",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "k77tywz3mdz9",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-07-22T15:39:44.098Z"
+            },
+            {
+              "id": "gsm9xgg52ybq",
+              "phase": "monitoring",
+              "body": "We have implemented a fix and are monitoring for further issues. Sessions are running normally.",
+              "timestamp": "2026-07-22T15:34:32.000Z"
+            },
+            {
+              "id": "gj3dnsg0jwlj",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-07-22T14:56:07.672Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:82x5tqr4psbz",
+          "providerId": "devin",
+          "upstreamId": "82x5tqr4psbz",
+          "kind": "incident",
+          "title": "Github outage",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:hgmbfbs72ryp"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-20T01:32:24.522Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-20T03:51:28.795Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-20T03:51:28.810Z",
+          "durationMinutes": 139.07121666666666,
+          "sourceUrl": "https://stspg.io/922ps298q92v",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "1dsfjvtw5l4g",
+              "phase": "resolved",
+              "body": "The GitHub incident has been resolved upstream.",
+              "timestamp": "2026-07-20T03:51:28.795Z"
+            },
+            {
+              "id": "0fm5bbswkv18",
+              "phase": "identified",
+              "body": "We are aware of an ongoing outage affecting github.com. If your repositories are hosted there, you may experience degraded performance.",
+              "timestamp": "2026-07-20T01:32:24.615Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:94grgdx623cy",
+          "providerId": "devin",
+          "upstreamId": "94grgdx623cy",
+          "kind": "incident",
+          "title": "GitHub outage",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy",
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-16T23:19:53.125Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-17T00:41:34.280Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-17T00:41:34.292Z",
+          "durationMinutes": 81.68591666666667,
+          "sourceUrl": "https://stspg.io/wd3ndh7dfqqr",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "27xljn73d6hq",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-07-17T00:41:34.280Z"
+            },
+            {
+              "id": "2gw54n6jp580",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-07-17T00:00:03.592Z"
+            },
+            {
+              "id": "tlb78qc3tx7c",
+              "phase": "identified",
+              "body": "We are aware of an ongoing outage affecting github.com. If your repositories are hosted there, you may experience degraded performance.",
+              "timestamp": "2026-07-16T23:19:53.302Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:7f2tjw8jzlwh",
+          "providerId": "devin",
+          "upstreamId": "7f2tjw8jzlwh",
+          "kind": "incident",
+          "title": "Devin Webapp is Slow to Load",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-07-08T14:59:16.931Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-08T16:45:19.788Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-08T16:45:19.819Z",
+          "durationMinutes": 106.04761666666667,
+          "sourceUrl": "https://stspg.io/wcwkdkf4r528",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "jf28zjmp3qrs",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-07-08T16:45:19.788Z"
+            },
+            {
+              "id": "cndj90yjmlpt",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-07-08T16:23:13.633Z"
+            },
+            {
+              "id": "byrh7fzmbq52",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-07-08T15:01:26.554Z"
+            },
+            {
+              "id": "gkx0cl2yq69b",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-07-08T14:59:17.087Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:94027hxm86sk",
+          "providerId": "devin",
+          "upstreamId": "94027hxm86sk",
+          "kind": "incident",
+          "title": "Sessions intermittently crashing and failing to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-06-30T14:14:54.120Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-07-01T01:36:01.751Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-07-01T01:36:01.776Z",
+          "durationMinutes": 681.1271833333333,
+          "sourceUrl": "https://stspg.io/spqyc974g2k3",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "pcj57rmzk6kr",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-07-01T01:36:01.751Z"
+            },
+            {
+              "id": "b496ttfx292n",
+              "phase": "monitoring",
+              "body": "We are still implementing permanent fixes.",
+              "timestamp": "2026-06-30T21:39:07.283Z"
+            },
+            {
+              "id": "nvzht90vq5b9",
+              "phase": "monitoring",
+              "body": "We are still monitoring for issues.",
+              "timestamp": "2026-06-30T19:20:10.961Z"
+            },
+            {
+              "id": "c30hspqnxbrg",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-06-30T16:19:34.322Z"
+            },
+            {
+              "id": "0vl4kxlljkk1",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-06-30T16:02:44.515Z"
+            },
+            {
+              "id": "mwn2tj8tlyb7",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-06-30T14:14:54.243Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:qqhbkdqzx8ll",
+          "providerId": "devin",
+          "upstreamId": "qqhbkdqzx8ll",
+          "kind": "incident",
+          "title": "Sessions are slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-06-17T17:07:01.638Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-06-17T19:30:20.479Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-06-17T19:30:20.495Z",
+          "durationMinutes": 143.31401666666667,
+          "sourceUrl": "https://stspg.io/nkm9gchn4nk7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "sq3hs8qrcscs",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-06-17T19:30:20.479Z"
+            },
+            {
+              "id": "zjbqsjhc5qwg",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-06-17T17:18:13.578Z"
+            },
+            {
+              "id": "0qyrs07sjjfk",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-06-17T17:07:01.768Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:6ggv1rk121rp",
+          "providerId": "devin",
+          "upstreamId": "6ggv1rk121rp",
+          "kind": "incident",
+          "title": "Devin's machines are failing to start or resume",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-29T05:27:06.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-29T09:49:19.259Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-29T09:49:19.277Z",
+          "durationMinutes": 262.2209833333333,
+          "sourceUrl": "https://stspg.io/7bwdbm5h8yxs",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "k16zpq8c7xd9",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-29T09:49:19.259Z"
+            },
+            {
+              "id": "cktyzspn30d1",
+              "phase": "monitoring",
+              "body": "New sessions will work properly. Sessions that started between 10 PM PT and 2:10 AM PT are affected and will still fail to save properly when suspending.",
+              "timestamp": "2026-05-29T09:26:55.000Z"
+            },
+            {
+              "id": "c4k406rjmj62",
+              "phase": "identified",
+              "body": "We are continuing to work on a fix for this issue.",
+              "timestamp": "2026-05-29T08:01:53.073Z"
+            },
+            {
+              "id": "ch8s746jmdqh",
+              "phase": "identified",
+              "body": "VM issues have been resolved. However, suspending and resuming of sessions may not work correctly at this time.",
+              "timestamp": "2026-05-29T07:53:30.333Z"
+            },
+            {
+              "id": "j4ktmm3m87j4",
+              "phase": "identified",
+              "body": "The issue has been identified as an outage in an upstream provider and a fix is being implemented.\n\nDedicated deployment enterprise sessions are not affected.",
+              "timestamp": "2026-05-29T05:27:06.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:9n60ln5h3hfr",
+          "providerId": "devin",
+          "upstreamId": "9n60ln5h3hfr",
+          "kind": "incident",
+          "title": "Devin Session Disruptions",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-26T17:56:13.751Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-26T19:13:05.693Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-26T20:56:23.775Z",
+          "durationMinutes": 76.8657,
+          "sourceUrl": "https://stspg.io/0yll4rr3nfqf",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "98dnscc0fczy",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-26T19:13:05.693Z"
+            },
+            {
+              "id": "0rcgn0k53d5r",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-05-26T19:10:36.469Z"
+            },
+            {
+              "id": "y0tt5k9rd8db",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-05-26T18:14:29.344Z"
+            },
+            {
+              "id": "3r0y9rjjjwy1",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-05-26T17:56:13.809Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:9g0wd5s3flhc",
+          "providerId": "devin",
+          "upstreamId": "9g0wd5s3flhc",
+          "kind": "incident",
+          "title": "Service disruption for customers using non default linux distros in VPC deployments",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-14T15:01:57.323Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-14T15:40:03.229Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-14T15:40:03.242Z",
+          "durationMinutes": 38.09843333333333,
+          "sourceUrl": "https://stspg.io/psyzsf3d0dxm",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "rm8qzk9tj7s2",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-14T15:40:03.229Z"
+            },
+            {
+              "id": "94bnp4jn4bws",
+              "phase": "investigating",
+              "body": "We are experiencing a service disruption to a subset of customers using non-default (Amazon Linux, RHEL) distros in VPC environments. A fix has been identified and being released.",
+              "timestamp": "2026-05-14T15:01:57.402Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:9ssxblt6kg2t",
+          "providerId": "devin",
+          "upstreamId": "9ssxblt6kg2t",
+          "kind": "incident",
+          "title": "Degraded performance in some Devin sessions",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-13T13:57:42.192Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-13T16:05:42.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-13T17:06:21.086Z",
+          "durationMinutes": 127.9968,
+          "sourceUrl": "https://stspg.io/bt04dzz76m32",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "rw1q818yfr0n",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-13T16:05:42.000Z"
+            },
+            {
+              "id": "lqj66rpb2h7f",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-05-13T15:41:51.607Z"
+            },
+            {
+              "id": "bv2djgc3yqw8",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-05-13T15:07:22.808Z"
+            },
+            {
+              "id": "9qn03zv9vsv1",
+              "phase": "identified",
+              "body": "We have identified the issue and are continuing to work on a resolution.",
+              "timestamp": "2026-05-13T14:57:26.508Z"
+            },
+            {
+              "id": "r3p6b5kz0tjy",
+              "phase": "identified",
+              "body": "We have identified the issue and are working on a resolution.",
+              "timestamp": "2026-05-13T14:27:47.034Z"
+            },
+            {
+              "id": "wl4mqnw16160",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-05-13T14:16:04.453Z"
+            },
+            {
+              "id": "w9s1z2k1cjmg",
+              "phase": "investigating",
+              "body": "We are currently investigating an issue with degraded connectivity in Devin sessions.",
+              "timestamp": "2026-05-13T13:57:42.261Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:f7jfg1vd8kmv",
+          "providerId": "devin",
+          "upstreamId": "f7jfg1vd8kmv",
+          "kind": "incident",
+          "title": "Devin Session Disruptions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-12T16:56:09.702Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-12T17:39:51.051Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-12T17:39:51.065Z",
+          "durationMinutes": 43.68915,
+          "sourceUrl": "https://stspg.io/pm6v92nzydjl",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "m7g0szghjzk6",
+              "phase": "resolved",
+              "body": "This incident has been resolved",
+              "timestamp": "2026-05-12T17:39:51.051Z"
+            },
+            {
+              "id": "cymzqvrnc0t1",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented",
+              "timestamp": "2026-05-12T17:14:37.730Z"
+            },
+            {
+              "id": "wy1g8rsb2130",
+              "phase": "investigating",
+              "body": "Some enterprise Devin sessions are experiencing interruptions starting up. We are currently investigating this issue.",
+              "timestamp": "2026-05-12T16:56:09.795Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:bl3qhprfy134",
+          "providerId": "devin",
+          "upstreamId": "bl3qhprfy134",
+          "kind": "incident",
+          "title": "Devin Session Disruptions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-07T15:17:16.597Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-07T16:52:16.690Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-07T16:52:16.709Z",
+          "durationMinutes": 95.00155,
+          "sourceUrl": "https://stspg.io/6cb9r091cs1j",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "4v99kvyz4t2g",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-07T16:52:16.690Z"
+            },
+            {
+              "id": "cygkl4g5d6n0",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-05-07T15:17:16.671Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:h7zx82nbcrkf",
+          "providerId": "devin",
+          "upstreamId": "h7zx82nbcrkf",
+          "kind": "incident",
+          "title": "Devin Session Interruptions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy",
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-05-07T08:35:47.792Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-05-07T10:14:24.518Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-05-07T10:14:24.533Z",
+          "durationMinutes": 98.6121,
+          "sourceUrl": "https://stspg.io/6rfbkjzks020",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "rxt950ym2bmd",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-05-07T10:14:24.518Z"
+            },
+            {
+              "id": "kmj0qd6shwkq",
+              "phase": "investigating",
+              "body": "Devin sessions can be interrupted or seem to be interrupted inconsistently.",
+              "timestamp": "2026-05-07T08:35:47.916Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:rsgkcf8k23v2",
+          "providerId": "devin",
+          "upstreamId": "rsgkcf8k23v2",
+          "kind": "incident",
+          "title": "Sessions Queuing",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-28T18:27:59.106Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-29T00:37:28.360Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-29T00:37:28.374Z",
+          "durationMinutes": 369.4875666666667,
+          "sourceUrl": "https://stspg.io/yqnxq7rh2r0h",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "qy6l17s7z7d0",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-29T00:37:28.360Z"
+            },
+            {
+              "id": "vbpc591d5ck5",
+              "phase": "monitoring",
+              "body": "Given the severity of the incident, the fix(es) are being monitored to ensure no recurrence.",
+              "timestamp": "2026-04-28T20:55:32.888Z"
+            },
+            {
+              "id": "zdscrth693xb",
+              "phase": "identified",
+              "body": "Cognition is still fixing the underlying issue and further investigating to identify potential other, related issues.",
+              "timestamp": "2026-04-28T20:11:52.337Z"
+            },
+            {
+              "id": "18vyyx6kr4zq",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-28T19:30:41.201Z"
+            },
+            {
+              "id": "85ck51b57rbz",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-28T19:19:07.125Z"
+            },
+            {
+              "id": "49qjcky5zjmy",
+              "phase": "investigating",
+              "body": "Investigating -- the prior issue appears to have re-surfaced.",
+              "timestamp": "2026-04-28T18:27:59.143Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:0t872cllfjn3",
+          "providerId": "devin",
+          "upstreamId": "0t872cllfjn3",
+          "kind": "incident",
+          "title": "Devins slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-28T12:44:00.993Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-28T17:38:20.802Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-28T17:38:20.816Z",
+          "durationMinutes": 294.33015,
+          "sourceUrl": "https://stspg.io/n1d0jj1mdzj3",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "2pt958j1jpwm",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-28T17:38:20.802Z"
+            },
+            {
+              "id": "6htkmjyy7nn1",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-28T14:02:16.655Z"
+            },
+            {
+              "id": "699vvsq72vqg",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-28T12:44:01.090Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:z5dhn2vk7mm5",
+          "providerId": "devin",
+          "upstreamId": "z5dhn2vk7mm5",
+          "kind": "incident",
+          "title": "Sessions queuing",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-28T12:55:55.063Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-28T17:37:29.581Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-28T17:37:29.601Z",
+          "durationMinutes": 281.5753,
+          "sourceUrl": "https://stspg.io/csy0cjd5yjnz",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "657fs2b3nyv4",
+              "phase": "resolved",
+              "body": "Incident has been resolved.",
+              "timestamp": "2026-04-28T17:37:29.581Z"
+            },
+            {
+              "id": "x61dynwp73t8",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-28T17:35:20.418Z"
+            },
+            {
+              "id": "d49ywyf41wxj",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring results.",
+              "timestamp": "2026-04-28T17:31:02.002Z"
+            },
+            {
+              "id": "l09sgpmt63b9",
+              "phase": "identified",
+              "body": "Cognition is still working a fix for this issue.",
+              "timestamp": "2026-04-28T17:26:09.750Z"
+            },
+            {
+              "id": "k0myn6w41sp8",
+              "phase": "identified",
+              "body": "Cognition is still working on the fix",
+              "timestamp": "2026-04-28T16:28:55.865Z"
+            },
+            {
+              "id": "0j78jdncgysr",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-28T15:35:57.954Z"
+            },
+            {
+              "id": "ml7ng7pl72v0",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-04-28T14:07:16.252Z"
+            },
+            {
+              "id": "qvblbbr3fnr4",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-28T13:51:19.628Z"
+            },
+            {
+              "id": "qr8s0j43h9nk",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-04-28T12:55:55.159Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:lx9fq0t990bf",
+          "providerId": "devin",
+          "upstreamId": "lx9fq0t990bf",
+          "kind": "incident",
+          "title": "Significant delays in new sessions and frequent crashes",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-27T16:11:50.648Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-27T17:04:38.497Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-27T17:04:38.511Z",
+          "durationMinutes": 52.79748333333333,
+          "sourceUrl": "https://stspg.io/tln9grkxz7s7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "0ft95w4ldttj",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-27T17:04:38.497Z"
+            },
+            {
+              "id": "jl6x6nbpwvbl",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-27T16:51:24.262Z"
+            },
+            {
+              "id": "13gb1sk52x6v",
+              "phase": "identified",
+              "body": "We are continuing to work on a fix for this issue.",
+              "timestamp": "2026-04-27T16:30:27.345Z"
+            },
+            {
+              "id": "j06bvmbrl6bt",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-27T16:27:30.331Z"
+            },
+            {
+              "id": "ydlvs77qh6cq",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-04-27T16:11:50.757Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:129zn0y5hp3m",
+          "providerId": "devin",
+          "upstreamId": "129zn0y5hp3m",
+          "kind": "incident",
+          "title": "Devins slow to start",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-27T09:09:01.586Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-27T09:19:52.897Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-27T09:19:52.915Z",
+          "durationMinutes": 10.855183333333333,
+          "sourceUrl": "https://stspg.io/3gpj8w2sd0w5",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "y6r3zvc9hq5h",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-27T09:19:52.897Z"
+            },
+            {
+              "id": "9jgm48265ydn",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-27T09:15:52.093Z"
+            },
+            {
+              "id": "9d89q9zzqz8b",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-27T09:09:01.673Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:wq1j7zcdwpdh",
+          "providerId": "devin",
+          "upstreamId": "wq1j7zcdwpdh",
+          "kind": "incident",
+          "title": "New Devins slow to start",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-04-26T10:00:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-26T10:00:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-27T00:34:18.813Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/rhrwf39pbyr0",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "nklkg96vznxp",
+              "phase": "resolved",
+              "body": "This issue has been resolved.",
+              "timestamp": "2026-04-26T10:00:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:64j82ryt6gj1",
+          "providerId": "devin",
+          "upstreamId": "64j82ryt6gj1",
+          "kind": "incident",
+          "title": "Delayed integrations-based messages (e.g. Slack, Github PR comments)",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-24T17:41:58.474Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-24T22:16:36.388Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-24T22:16:36.406Z",
+          "durationMinutes": 274.6319,
+          "sourceUrl": "https://stspg.io/6t62n15x3r09",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "tvw4d7179jz5",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-24T22:16:36.388Z"
+            },
+            {
+              "id": "c25h904vhxr0",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-24T18:40:10.103Z"
+            },
+            {
+              "id": "sx0vctxdpt0v",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-04-24T17:41:58.531Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:f9m95x3z1b8c",
+          "providerId": "devin",
+          "upstreamId": "f9m95x3z1b8c",
+          "kind": "incident",
+          "title": "Delayed integrations-based messages (e.g. Slack, Github PR comments)",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-23T20:12:13.247Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-23T22:37:17.444Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-23T22:37:17.463Z",
+          "durationMinutes": 145.06995,
+          "sourceUrl": "https://stspg.io/sq29dntl5djb",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "9jq20w6whsxk",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-23T22:37:17.444Z"
+            },
+            {
+              "id": "347137yvt84k",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-23T22:11:36.806Z"
+            },
+            {
+              "id": "njmfg2y50xw4",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-23T21:32:46.478Z"
+            },
+            {
+              "id": "gm81hd9b7m17",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-23T21:21:36.812Z"
+            },
+            {
+              "id": "pgw1rrb3gjt5",
+              "phase": "identified",
+              "body": "A fix has been identified, and a preliminary patch has been applied.",
+              "timestamp": "2026-04-23T20:55:39.686Z"
+            },
+            {
+              "id": "s1dlwjngkg3z",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-04-23T20:12:13.340Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:r8prdtcxk4b4",
+          "providerId": "devin",
+          "upstreamId": "r8prdtcxk4b4",
+          "kind": "incident",
+          "title": "Platform-wide session crashes and queued sessions.",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-20T14:31:47.746Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-20T20:46:05.232Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-20T20:46:05.246Z",
+          "durationMinutes": 374.2914333333333,
+          "sourceUrl": "https://stspg.io/5mjjvynkbrpq",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "lc3tqhfq26m0",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-20T20:46:05.232Z"
+            },
+            {
+              "id": "78lh8ff914h5",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor performance for further issues.",
+              "timestamp": "2026-04-20T18:16:48.885Z"
+            },
+            {
+              "id": "dfvyksnyvk3m",
+              "phase": "monitoring",
+              "body": "Platform performance has stabilized, and Cognition is continuing to investigate for potential side effects.",
+              "timestamp": "2026-04-20T17:33:04.914Z"
+            },
+            {
+              "id": "92h048qn9qtg",
+              "phase": "monitoring",
+              "body": "We are continuing to monitor for any further issues.",
+              "timestamp": "2026-04-20T17:17:58.914Z"
+            },
+            {
+              "id": "pwswwgns8bzw",
+              "phase": "monitoring",
+              "body": "A fix has been applied to the platform and Cognition is monitoring.",
+              "timestamp": "2026-04-20T17:13:29.330Z"
+            },
+            {
+              "id": "77gn1l0lnwpf",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-20T17:06:43.417Z"
+            },
+            {
+              "id": "m6nv3xmpz2fg",
+              "phase": "identified",
+              "body": "Cognition is applying fixes to resolve the ongoing platform-wide issue.",
+              "timestamp": "2026-04-20T16:33:32.032Z"
+            },
+            {
+              "id": "2fkqm47m0gt4",
+              "phase": "identified",
+              "body": "Cognition is applying fixes to address the degraded performance and crashing sessions. We apologize for any inconvenience.",
+              "timestamp": "2026-04-20T16:00:34.655Z"
+            },
+            {
+              "id": "fdn9dgvvgghb",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-04-20T14:59:03.504Z"
+            },
+            {
+              "id": "rnz9vpsvppzg",
+              "phase": "investigating",
+              "body": "Sessions may be slow to start, we are investigating",
+              "timestamp": "2026-04-20T14:31:47.840Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:bfv1w3ddd7sp",
+          "providerId": "devin",
+          "upstreamId": "bfv1w3ddd7sp",
+          "kind": "incident",
+          "title": "Devins slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-16T06:35:29.284Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-16T07:32:35.009Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-16T07:32:35.032Z",
+          "durationMinutes": 57.095416666666665,
+          "sourceUrl": "https://stspg.io/5qk11vnrtqkq",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "qltxprx1c8hl",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-16T07:32:35.009Z"
+            },
+            {
+              "id": "8zkr3dfqs956",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-04-16T06:35:29.364Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:c0fvsm16qsk4",
+          "providerId": "devin",
+          "upstreamId": "c0fvsm16qsk4",
+          "kind": "incident",
+          "title": "Networking issues resulting in disconnected sessions",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-04-15T18:30:55.440Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-15T22:11:47.701Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-15T22:11:47.716Z",
+          "durationMinutes": 220.87101666666666,
+          "sourceUrl": "https://stspg.io/jqxsg78b4gbx",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "xccy9nm7dm3f",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-04-15T22:11:47.701Z"
+            },
+            {
+              "id": "zxws0qytx40t",
+              "phase": "monitoring",
+              "body": "A fix has been applied and the agent is stable. We're monitoring for follow up issues.",
+              "timestamp": "2026-04-15T19:11:27.708Z"
+            },
+            {
+              "id": "0fzpq378tmvt",
+              "phase": "investigating",
+              "body": "We are currently investigating",
+              "timestamp": "2026-04-15T18:30:55.562Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:m4dvw1wlp94b",
+          "providerId": "devin",
+          "upstreamId": "m4dvw1wlp94b",
+          "kind": "incident",
+          "title": "Session crashes",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-04-08T01:55:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-04-08T01:55:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-04-08T04:21:40.422Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/b7pmtldr6mr7",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "hh2k65wh60t8",
+              "phase": "resolved",
+              "body": "Cognition detected signifiant numbers of crashing sessions and pushed a fix within 20 min. Sessions that were active during the impacted period will likely to crash, but resume successfully if woken.",
+              "timestamp": "2026-04-08T01:55:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:v10wmjfd7n7l",
+          "providerId": "devin",
+          "upstreamId": "v10wmjfd7n7l",
+          "kind": "incident",
+          "title": "Issue with sending Devin session responses",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-03-20T15:17:36.725Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-03-20T16:14:46.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-03-20T19:56:26.819Z",
+          "durationMinutes": 57.154583333333335,
+          "sourceUrl": "https://stspg.io/zfl5ddzh60mq",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "tj95hffwrrg3",
+              "phase": "resolved",
+              "body": "This incident has been resolved, and affected components were actually web services and web server, not agent. Uptimes have been updated accordingly.",
+              "timestamp": "2026-03-20T16:14:46.000Z"
+            },
+            {
+              "id": "x3782q7bl2x4",
+              "phase": "investigating",
+              "body": "Fix has been applied and user sessions are confirmed working.",
+              "timestamp": "2026-03-20T16:13:05.108Z"
+            },
+            {
+              "id": "nq8fpjrn5nrm",
+              "phase": "investigating",
+              "body": "We have identified the root cause and are assessing a fix",
+              "timestamp": "2026-03-20T16:01:03.748Z"
+            },
+            {
+              "id": "bpg9sxlvwn56",
+              "phase": "investigating",
+              "body": "We are continuing to investigate the issue.",
+              "timestamp": "2026-03-20T15:55:39.273Z"
+            },
+            {
+              "id": "wmrmx1t6rn32",
+              "phase": "investigating",
+              "body": "We are continuing to investigate the issue.",
+              "timestamp": "2026-03-20T15:34:06.639Z"
+            },
+            {
+              "id": "1x08hvd7dx95",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-03-20T15:17:51.129Z"
+            },
+            {
+              "id": "xtwqhgfrgf6b",
+              "phase": "investigating",
+              "body": "We are currently experiencing an issue with sending follow up messages to existing Devin sessions. We are currently investigating the issue.",
+              "timestamp": "2026-03-20T15:17:36.768Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:c9xc1hlq3wy7",
+          "providerId": "devin",
+          "upstreamId": "c9xc1hlq3wy7",
+          "kind": "incident",
+          "title": "Degraded performance Devin wide",
+          "severity": "major_outage",
+          "sourceSeverity": "critical",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-03-12T17:33:40.267Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-03-12T17:54:22.914Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-03-12T17:54:22.930Z",
+          "durationMinutes": 20.71078333333333,
+          "sourceUrl": "https://stspg.io/2qy22m9s6g1x",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "fkr8l4clt12h",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-03-12T17:54:22.914Z"
+            },
+            {
+              "id": "1wltk06rj6dy",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-03-12T17:34:07.633Z"
+            },
+            {
+              "id": "lwrjk9hwym2b",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-03-12T17:33:40.355Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:pvqpxbynhhhb",
+          "providerId": "devin",
+          "upstreamId": "pvqpxbynhhhb",
+          "kind": "incident",
+          "title": "Sessions slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-03-04T15:46:33.888Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-03-04T15:53:02.055Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-03-04T15:53:02.071Z",
+          "durationMinutes": 6.46945,
+          "sourceUrl": "https://stspg.io/t4vt82912wgt",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "yzl3n57thyvc",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-03-04T15:53:02.055Z"
+            },
+            {
+              "id": "s2zbccj38m8t",
+              "phase": "investigating",
+              "body": "We are currently investigating this issue.",
+              "timestamp": "2026-03-04T15:46:33.960Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:mnhxbdbtbjc6",
+          "providerId": "devin",
+          "upstreamId": "mnhxbdbtbjc6",
+          "kind": "incident",
+          "title": "Devin website slowness",
+          "severity": null,
+          "sourceSeverity": "none",
+          "severityBasis": "unknown",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-02-18T13:00:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-18T13:00:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-18T13:57:42.996Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/zmw86nls0d2q",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "1lgczv5r5jcl",
+              "phase": "resolved",
+              "body": "This issue has been resolved,",
+              "timestamp": "2026-02-18T13:00:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:dsqqny5jwj2b",
+          "providerId": "devin",
+          "upstreamId": "dsqqny5jwj2b",
+          "kind": "incident",
+          "title": "Devin unavailable for some users",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-02-12T05:51:14.492Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-12T06:25:37.606Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-12T06:25:37.621Z",
+          "durationMinutes": 34.38523333333333,
+          "sourceUrl": "https://stspg.io/2k4n9wk5c1hh",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "5wkhmvqdqyks",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-02-12T06:25:37.606Z"
+            },
+            {
+              "id": "ldh2wc890x6n",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-02-12T05:53:09.850Z"
+            },
+            {
+              "id": "dmbwg1lvhgsl",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-02-12T05:51:14.598Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:v8h2q5nnvjcc",
+          "providerId": "devin",
+          "upstreamId": "v8h2q5nnvjcc",
+          "kind": "incident",
+          "title": "Starting Devin sessions degraded",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-02-05T16:28:47.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-05T17:53:06.138Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-05T17:53:06.153Z",
+          "durationMinutes": 84.31896666666667,
+          "sourceUrl": "https://stspg.io/jqwjrbdy8gl5",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "n079j2l1n317",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-02-05T17:53:06.138Z"
+            },
+            {
+              "id": "7g99qff6jb1r",
+              "phase": "monitoring",
+              "body": "A patch to accelerate draining of the queue has been applied. At this moment, we expect the system to be fully operational, but will continue to monitor.",
+              "timestamp": "2026-02-05T17:27:04.791Z"
+            },
+            {
+              "id": "8ztc87c3rrk3",
+              "phase": "identified",
+              "body": "We have identified a root cause and have applied a mitigation. There is a large backlog of session requests so slowness is still expected. We are working on accelerating draining the queue.",
+              "timestamp": "2026-02-05T17:22:48.512Z"
+            },
+            {
+              "id": "6fqcww8bv5qf",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue. We are seeing continued delays when starting Devin sessions.",
+              "timestamp": "2026-02-05T17:10:05.293Z"
+            },
+            {
+              "id": "l696cf2k4flz",
+              "phase": "investigating",
+              "body": "We are continuing to investigate this issue.",
+              "timestamp": "2026-02-05T16:48:40.651Z"
+            },
+            {
+              "id": "9sd54g95znmq",
+              "phase": "investigating",
+              "body": "Due to spikes in demand, Devins are slow to start. Some Devins are being started in a degraded state. We are currently investigating the issue.",
+              "timestamp": "2026-02-05T16:28:47.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:5xh90h4k0k92",
+          "providerId": "devin",
+          "upstreamId": "5xh90h4k0k92",
+          "kind": "incident",
+          "title": "Devin repo setup experience degraded",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [],
+          "affectedRegions": [],
+          "startedAt": "2026-02-04T12:00:00.000Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-04T12:00:00.000Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-04T14:01:02.275Z",
+          "durationMinutes": 0,
+          "sourceUrl": "https://stspg.io/nqqcwlffkv6h",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "rr3tykj5r5j5",
+              "phase": "resolved",
+              "body": "We are aware of an issue impacting the Devin session setup experience in production environments. Some users may experience delays or incomplete loading during repository setup. Our engineering team has identified the issue and is working on a fix. We will notify you once service is fully restored. Thank you for your patience.",
+              "timestamp": "2026-02-04T12:00:00.000Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:k49c2xz9346p",
+          "providerId": "devin",
+          "upstreamId": "k49c2xz9346p",
+          "kind": "incident",
+          "title": "Incident with billing system",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:d87cp5jknh1c",
+            "devin:y4zznb49vqqy"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-02-02T21:04:12.839Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-02-03T07:18:20.660Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-02-03T07:18:20.676Z",
+          "durationMinutes": 614.13035,
+          "sourceUrl": "https://stspg.io/r7jjjkpwndd0",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "dlg6wp6mtmw7",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-02-03T07:18:20.660Z"
+            },
+            {
+              "id": "58mkpw4rkhf5",
+              "phase": "investigating",
+              "body": "Billing events are remaining queued for an extended period of time. Updates to usage data will be delayed.",
+              "timestamp": "2026-02-02T21:04:12.955Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:btp0j77wgvm6",
+          "providerId": "devin",
+          "upstreamId": "btp0j77wgvm6",
+          "kind": "incident",
+          "title": "Devins slow to start",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-01-30T09:06:16.769Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-01-30T11:05:25.233Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-01-30T11:05:25.255Z",
+          "durationMinutes": 119.14106666666666,
+          "sourceUrl": "https://stspg.io/4bmytw75hqvx",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "r20h28lqfz8h",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-01-30T11:05:25.233Z"
+            },
+            {
+              "id": "jcg825by6l3b",
+              "phase": "monitoring",
+              "body": "We're currently working through the existing queue of Devins.",
+              "timestamp": "2026-01-30T09:58:57.983Z"
+            },
+            {
+              "id": "k1q40t2t1rnk",
+              "phase": "monitoring",
+              "body": "A fix has been implemented and we are monitoring the results.",
+              "timestamp": "2026-01-30T09:06:16.874Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:r7wx7lhc3k11",
+          "providerId": "devin",
+          "upstreamId": "r7wx7lhc3k11",
+          "kind": "incident",
+          "title": "Starting Devin sessions degraded",
+          "severity": "major_outage",
+          "sourceSeverity": "major",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r",
+            "devin:c20stk646s0v"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-01-27T10:13:03.280Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-01-27T10:34:31.592Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-01-27T10:34:31.611Z",
+          "durationMinutes": 21.471866666666667,
+          "sourceUrl": "https://stspg.io/87r92c3hnpbn",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "wqs65jtbzmcg",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-01-27T10:34:31.592Z"
+            },
+            {
+              "id": "321mhvf9zdjy",
+              "phase": "identified",
+              "body": "The issue has been identified and a fix is being implemented.",
+              "timestamp": "2026-01-27T10:13:03.393Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        },
+        {
+          "sourceIdentity": "devin:7xg868bmd0p3",
+          "providerId": "devin",
+          "upstreamId": "7xg868bmd0p3",
+          "kind": "incident",
+          "title": "Devins are delayed to start",
+          "severity": "degraded",
+          "sourceSeverity": "minor",
+          "severityBasis": "source",
+          "state": "resolved",
+          "affectedComponentIds": [
+            "devin:q72cy1kjpk4r"
+          ],
+          "affectedRegions": [],
+          "startedAt": "2026-01-26T02:36:05.582Z",
+          "startTimeBasis": "source_started_at",
+          "resolvedAt": "2026-01-26T02:47:48.032Z",
+          "resolvedTimeBasis": "source",
+          "lastObservedAt": "2026-11-28T17:41:15.240Z",
+          "updatedAt": "2026-01-26T02:47:48.049Z",
+          "durationMinutes": 11.7075,
+          "sourceUrl": "https://stspg.io/w1xg7km6jh40",
+          "postmortemUrl": null,
+          "updates": [
+            {
+              "id": "674z97m0s3lp",
+              "phase": "resolved",
+              "body": "This incident has been resolved.",
+              "timestamp": "2026-01-26T02:47:48.032Z"
+            },
+            {
+              "id": "klyy6wj4yn51",
+              "phase": "monitoring",
+              "body": "Due to spikes in demand, Devins are slow to start. We have added more capacity and are monitoring the situation as we go through the queue of unstarted Devins. We will improve our autoscaling algorithm to avoid this type of issue in the future.",
+              "timestamp": "2026-01-26T02:36:05.682Z"
+            }
+          ],
+          "origin": "official",
+          "isSynthetic": false
+        }
+      ],
+      "sourceUpdatedAt": "2026-11-28T17:04:28.123Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-27T08:16:11.939Z",
+        "nativeHistoryEarliestAt": "2026-01-26T02:36:05.582Z",
+        "limitation": "Finite recent history; invalid source records were rejected"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "summary",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:15.240Z"
+          },
+          {
+            "name": "active_incidents",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:15.240Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": "invalid_payload",
+        "currentIncidentIds": [],
+        "warnings": [
+          "Historical backfill invalid (invalid_payload)"
+        ]
+      }
+    },
+    "collection": {
+      "outcome": "partial",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.845Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.845Z",
+      "sourceUpdatedAt": "2026-11-28T17:04:28.123Z",
+      "durationMs": 605.0203099999999,
+      "consecutiveFailures": 0
+    }
+  }
+}

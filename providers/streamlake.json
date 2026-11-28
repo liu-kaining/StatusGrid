@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "1.0",
+  "provider": {
+    "providerId": "streamlake",
+    "officialStatusUrl": "https://status.streamlake.com/",
+    "result": {
+      "providerId": "streamlake",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "streamlake:01KZ3ABSP0PVBET4FP2TBEP7RW",
+          "upstreamId": "01KZ3ABSP0PVBET4FP2TBEP7RW",
+          "groupId": null,
+          "name": "官网首页服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3ABSP0Q2ZF5V52SNCBB6WK",
+          "upstreamId": "01KZ3ABSP0Q2ZF5V52SNCBB6WK",
+          "groupId": null,
+          "name": "万擎控制台服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3DT1GJS4XMFYFMDCGFJW92",
+          "upstreamId": "01KZ3DT1GJS4XMFYFMDCGFJW92",
+          "groupId": null,
+          "name": "KAT-Coder-Pro-V2.5 API服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3DT1GJ63FBECCH52KWJMTH",
+          "upstreamId": "01KZ3DT1GJ63FBECCH52KWJMTH",
+          "groupId": null,
+          "name": "GLM-5.2 API服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3DT1GJ9R6WC00G1FJ4BE75",
+          "upstreamId": "01KZ3DT1GJ9R6WC00G1FJ4BE75",
+          "groupId": null,
+          "name": "DeepSeek-V4-Pro API服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3DT1GJ4X5EBG2KEJPH47MM",
+          "upstreamId": "01KZ3DT1GJ4X5EBG2KEJPH47MM",
+          "groupId": null,
+          "name": "开发机服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        }
+      ],
+      "incidents": [],
+      "sourceUpdatedAt": "2026-11-28T17:41:16.152Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-27T07:36:19.030Z",
+        "nativeHistoryEarliestAt": null,
+        "limitation": "Native history covers only the supplied calendar/list window; feeds do not establish incident start times"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "ssr_components",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:14.104Z"
+          },
+          {
+            "name": "ssr_active_changes",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:14.104Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": []
+      }
+    },
+    "lastTrustedResult": {
+      "providerId": "streamlake",
+      "reportedStatus": "operational",
+      "components": [
+        {
+          "id": "streamlake:01KZ3ABSP0PVBET4FP2TBEP7RW",
+          "upstreamId": "01KZ3ABSP0PVBET4FP2TBEP7RW",
+          "groupId": null,
+          "name": "官网首页服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3ABSP0Q2ZF5V52SNCBB6WK",
+          "upstreamId": "01KZ3ABSP0Q2ZF5V52SNCBB6WK",
+          "groupId": null,
+          "name": "万擎控制台服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3DT1GJS4XMFYFMDCGFJW92",
+          "upstreamId": "01KZ3DT1GJS4XMFYFMDCGFJW92",
+          "groupId": null,
+          "name": "KAT-Coder-Pro-V2.5 API服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3DT1GJ63FBECCH52KWJMTH",
+          "upstreamId": "01KZ3DT1GJ63FBECCH52KWJMTH",
+          "groupId": null,
+          "name": "GLM-5.2 API服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3DT1GJ9R6WC00G1FJ4BE75",
+          "upstreamId": "01KZ3DT1GJ9R6WC00G1FJ4BE75",
+          "groupId": null,
+          "name": "DeepSeek-V4-Pro API服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        },
+        {
+          "id": "streamlake:01KZ3DT1GJ4X5EBG2KEJPH47MM",
+          "upstreamId": "01KZ3DT1GJ4X5EBG2KEJPH47MM",
+          "groupId": null,
+          "name": "开发机服务",
+          "aliases": [],
+          "region": null,
+          "reportedStatus": "operational"
+        }
+      ],
+      "incidents": [],
+      "sourceUpdatedAt": "2026-11-28T17:41:16.152Z",
+      "coverage": {
+        "basis": "official_public",
+        "regions": [],
+        "componentScope": "full",
+        "currentState": "complete",
+        "history": "native",
+        "observedSince": "2026-11-27T07:36:19.030Z",
+        "nativeHistoryEarliestAt": null,
+        "limitation": "Native history covers only the supplied calendar/list window; feeds do not establish incident start times"
+      },
+      "evidence": {
+        "requiredChecks": [
+          {
+            "name": "ssr_components",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:14.104Z"
+          },
+          {
+            "name": "ssr_active_changes",
+            "passed": true,
+            "checkedAt": "2026-11-28T17:41:14.104Z"
+          }
+        ],
+        "historyCompleteThrough": null,
+        "historyError": null,
+        "currentIncidentIds": [],
+        "warnings": []
+      }
+    },
+    "collection": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:16.174Z",
+      "lastSuccessAt": "2026-11-28T17:41:16.174Z",
+      "sourceUpdatedAt": "2026-11-28T17:41:16.152Z",
+      "durationMs": 2070.4463780000005,
+      "consecutiveFailures": 0
+    }
+  }
+}

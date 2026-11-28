@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "1.0",
+  "providers": {
+    "cloudflare": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:14.104Z",
+      "lastSuccessAt": "2026-11-28T17:41:14.104Z",
+      "sourceUpdatedAt": "2026-11-28T17:11:14.934Z",
+      "durationMs": 360.711327,
+      "consecutiveFailures": 0
+    },
+    "github": {
+      "outcome": "partial",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:14.422Z",
+      "lastSuccessAt": "2026-11-28T17:41:14.422Z",
+      "sourceUpdatedAt": "2026-11-28T17:04:06.464Z",
+      "durationMs": 659.4496509999999,
+      "consecutiveFailures": 0
+    },
+    "claude": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:13.914Z",
+      "lastSuccessAt": "2026-11-28T17:41:13.914Z",
+      "sourceUpdatedAt": "2026-11-28T17:04:25.380Z",
+      "durationMs": 150.15648899999997,
+      "consecutiveFailures": 0
+    },
+    "openai": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:20.045Z",
+      "lastSuccessAt": "2026-11-28T17:41:20.045Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 6280.900234000001,
+      "consecutiveFailures": 0
+    },
+    "moonshot": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.407Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.407Z",
+      "sourceUpdatedAt": "2026-11-28T17:04:30.990Z",
+      "durationMs": 1641.0052159999996,
+      "consecutiveFailures": 0
+    },
+    "deepseek": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.240Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.240Z",
+      "sourceUpdatedAt": "2026-11-28T17:40:56.334Z",
+      "durationMs": 1473.286588,
+      "consecutiveFailures": 0
+    },
+    "minimax": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.630Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.630Z",
+      "sourceUpdatedAt": "2026-11-28T17:41:15.706Z",
+      "durationMs": 1716.3412199999993,
+      "consecutiveFailures": 0
+    },
+    "streamlake": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:16.174Z",
+      "lastSuccessAt": "2026-11-28T17:41:16.174Z",
+      "sourceUpdatedAt": "2026-11-28T17:41:16.152Z",
+      "durationMs": 2070.4463780000005,
+      "consecutiveFailures": 0
+    },
+    "xai": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.448Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.448Z",
+      "sourceUpdatedAt": "2026-11-28T17:41:10.500Z",
+      "durationMs": 1026.3391589999992,
+      "consecutiveFailures": 0
+    },
+    "devin": {
+      "outcome": "partial",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.845Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.845Z",
+      "sourceUpdatedAt": "2026-11-28T17:04:28.123Z",
+      "durationMs": 605.0203099999999,
+      "consecutiveFailures": 0
+    },
+    "opencode": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.489Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.489Z",
+      "sourceUpdatedAt": "2026-11-28T17:40:32.498Z",
+      "durationMs": 82.68869199999972,
+      "consecutiveFailures": 0
+    },
+    "factory": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:16.110Z",
+      "lastSuccessAt": "2026-11-28T17:41:16.110Z",
+      "sourceUpdatedAt": "2026-11-28T17:04:25.149Z",
+      "durationMs": 661.8238529999999,
+      "consecutiveFailures": 0
+    },
+    "zed": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:18.613Z",
+      "lastSuccessAt": "2026-11-28T17:41:18.613Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 3123.822717,
+      "consecutiveFailures": 0
+    },
+    "gcp": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:15.849Z",
+      "lastSuccessAt": "2026-11-28T17:41:15.849Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 219.3006459999997,
+      "consecutiveFailures": 0
+    },
+    "apple-cn": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:17.420Z",
+      "lastSuccessAt": "2026-11-28T17:41:17.420Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 1575.1080070000007,
+      "consecutiveFailures": 0
+    },
+    "azure": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:18.572Z",
+      "lastSuccessAt": "2026-11-28T17:41:18.572Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 2722.778204,
+      "consecutiveFailures": 0
+    },
+    "aws-cn": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:19.661Z",
+      "lastSuccessAt": "2026-11-28T17:41:19.661Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 3551.204654,
+      "consecutiveFailures": 0
+    },
+    "tencent-cloud": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:21.530Z",
+      "lastSuccessAt": "2026-11-28T17:41:21.530Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 5355.738831000001,
+      "consecutiveFailures": 0
+    },
+    "aliyun": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:27.486Z",
+      "lastSuccessAt": "2026-11-28T17:41:27.486Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 10065.653511,
+      "consecutiveFailures": 0
+    },
+    "baidu-cloud": {
+      "outcome": "success",
+      "freshness": "fresh",
+      "reason": null,
+      "message": null,
+      "lastCheckedAt": "2026-11-28T17:41:28.163Z",
+      "lastSuccessAt": "2026-11-28T17:41:28.163Z",
+      "sourceUpdatedAt": null,
+      "durationMs": 9591.170086,
+      "consecutiveFailures": 0
+    }
+  }
+}
